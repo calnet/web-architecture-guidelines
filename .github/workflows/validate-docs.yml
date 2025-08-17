@@ -1,0 +1,48 @@
+name: Documentation Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: [ 'docs/**' ]
+  pull_request:
+    branches: [ main ]
+    paths: [ 'docs/**' ]
+
+jobs:
+  validate-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check Markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v13
+        with:
+          globs: 'docs/**/*.md'
+
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate directory structure
+        run: |
+          # Check required directories exist
+          test -d docs/ai-agents || (echo "Missing docs/ai-agents directory" && exit 1)
+          test -d docs/templates || (echo "Missing docs/templates directory" && exit 1)
+          
+          # Check required files exist
+          test -f docs/external-documentation-links.md || (echo "Missing external documentation links" && exit 1)
+          test -f docs/project-integration-guide.md || (echo "Missing project integration guide" && exit 1)
+          
+          echo "✅ All required files and directories exist"
