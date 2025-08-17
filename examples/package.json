@@ -1,0 +1,54 @@
+{
+  "name": "project-example",
+  "version": "1.0.0",
+  "description": "Example project following web architecture guidelines",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --config @org/eslint-config-base",
+    "lint:fix": "eslint . --config @org/eslint-config-base --fix",
+    "type-check": "tsc --noEmit",
+    "test": "vitest --config ./vitest.config.ts",
+    "test:unit": "vitest run --coverage",
+    "test:integration": "vitest run --config ./vitest.integration.config.ts",
+    "test:e2e": "playwright test",
+    "test:coverage": "vitest run --coverage",
+    "test:base-compliance": "npm run lint && npm run test:unit && npm run test:integration",
+    "docs:validate-structure": "./scripts/validate-docs-structure.sh",
+    "docs:validate-templates": "./scripts/validate-templates.sh",
+    "docs:copy-templates": "./scripts/copy-templates.sh",
+    "docs:update-templates": "./scripts/update-templates.sh",
+    "docs:validate": "npm run docs:validate-structure && npm run docs:validate-templates",
+    "validate:architecture": "./scripts/validate-architecture.sh",
+    "validate:security": "./scripts/validate-security.sh",
+    "validate:performance": "./scripts/validate-performance.sh",
+    "generate:compliance-report": "./scripts/generate-compliance-report.sh",
+    "check:template-updates": "./scripts/check-template-updates.sh"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@org/eslint-config-base": "^1.0.0",
+    "@org/prettier-config": "^1.0.0",
+    "@org/documentation-templates": "^1.0.0",
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
