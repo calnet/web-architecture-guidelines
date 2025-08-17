@@ -1,0 +1,43 @@
+name: Sync Documentation Templates
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly on Monday
+  workflow_dispatch:
+
+jobs:
+  sync-templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check for template updates
+        id: check
+        run: |
+          # Download latest templates
+          curl -o /tmp/templates.zip $BASE_REPO/archive/main.zip
+          
+          # Compare versions and create PR if updates available
+          if [ "$(diff docs/templates/ /tmp/templates/)" ]; then
+            echo "templates_updated=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Create update PR
+        if: steps.check.outputs.templates_updated == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: 'docs: update documentation templates'
+          body: |
+            ## Template Updates Available
+            
+            This PR updates documentation templates to the latest version.
+            
+            ### Changes
+            - Updated templates from base guidelines
+            - Preserved project-specific customizations
+            - Updated template metadata
+            
+            ### Action Required
+            - [ ] Review template changes
+            - [ ] Update customized sections if needed
+            - [ ] Test documentation generation
