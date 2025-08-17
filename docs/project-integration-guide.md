@@ -18,17 +18,31 @@ Base Guidelines (This Repository)
 ├── Technology Recommendations
 ├── Security Standards
 ├── Testing Strategies
-└── Documentation Templates
+└── Documentation Templates (Organized by Category)
+    ├── Architecture Templates (ADR, System Architecture)
+    ├── API Templates (REST API Specifications)
+    ├── User Guide Templates (User Manual, Admin Manual)
+    └── Development Templates (Setup Guide, Coding Standards)
 
 Project-Specific Repository
 ├── README.md (references base guidelines)
 ├── docs/
-│   ├── architecture-decisions.md
-│   ├── project-extensions.md
-│   ├── technology-choices.md
-│   └── deployment-guide.md
+│   ├── architecture/
+│   │   ├── decisions/                  # ADRs using base template
+│   │   ├── system-architecture.md     # Using base template
+│   │   └── diagrams/
+│   ├── api/
+│   │   └── api-specification.md       # Using base template
+│   ├── user-guides/
+│   │   ├── user-manual.md             # Using base template
+│   │   └── admin-manual.md            # Using base template
+│   ├── development/
+│   │   ├── setup-guide.md             # Using base template
+│   │   ├── coding-standards.md        # Extending base template
+│   │   └── deployment-guide.md
+│   └── project-extensions.md
 ├── .github/
-│   └── workflows/ (based on base CI/CD templates)
+│   └── workflows/                     # Based on base CI/CD templates
 └── config/
     └── quality-standards.json
 ```
@@ -45,6 +59,18 @@ Create a `ARCHITECTURE.md` file in your project root:
 
 ## Base Guidelines
 This project follows the [Organization Architecture Guidelines](link-to-base-repo).
+
+## Documentation Structure
+We use the standardized template structure from the base guidelines:
+
+### 📁 Documentation Organization
+```
+docs/
+├── architecture/           # Technical architecture (using base templates)
+├── api/                   # API documentation (using base templates)
+├── user-guides/           # User documentation (using base templates)
+└── development/           # Development guides (using base templates)
+```
 
 ## Project-Specific Extensions
 - [Technology Stack Decisions](#technology-stack)
@@ -71,27 +97,69 @@ Based on the base guidelines, this project uses:
 | State Management | Redux Toolkit | Zustand | Simpler for our use case |
 ```
 
-### 2. Extend Documentation Templates
+### 2. Implement Template Structure
+
+**Copy and Customize Templates:**
+
+```bash
+# Create project documentation structure
+mkdir -p docs/{architecture,api,user-guides,development}
+
+# Copy relevant templates from base guidelines
+cp base-guidelines/docs/templates/architecture/adr-template.md \
+   docs/architecture/adr-template.md
+
+cp base-guidelines/docs/templates/architecture/system-architecture-document.md \
+   docs/architecture/system-architecture.md
+
+cp base-guidelines/docs/templates/api/api-specification.md \
+   docs/api/api-specification.md
+
+cp base-guidelines/docs/templates/user-guides/user-manual-template.md \
+   docs/user-guides/user-manual.md
+
+cp base-guidelines/docs/templates/user-guides/admin-manual-template.md \
+   docs/user-guides/admin-manual.md
+
+cp base-guidelines/docs/templates/development/setup-guide-template.md \
+   docs/development/setup-guide.md
+
+cp base-guidelines/docs/templates/development/coding-standards-template.md \
+   docs/development/coding-standards.md
+```
 
 **Create Project-Specific Documentation Structure:**
 
 ```
 docs/
+├── README.md                          # Project documentation index
 ├── architecture/
-│   ├── decisions/ (ADRs following base template)
-│   ├── diagrams/ (using base diagram standards)
-│   └── patterns/ (project-specific pattern implementations)
+│   ├── decisions/                     # ADRs using base template
+│   │   ├── adr-001-database-choice.md
+│   │   ├── adr-002-frontend-framework.md
+│   │   └── adr-003-authentication-strategy.md
+│   ├── system-architecture.md         # Complete system docs
+│   ├── diagrams/                      # Architecture diagrams
+│   │   ├── system-context.puml
+│   │   ├── container-diagram.puml
+│   │   └── deployment-diagram.puml
+│   └── patterns/                      # Project-specific patterns
+├── api/
+│   ├── api-specification.md           # REST API documentation
+│   ├── graphql-schema.md              # GraphQL documentation
+│   └── webhooks.md                    # Webhook documentation
+├── user-guides/
+│   ├── user-manual.md                 # End-user documentation
+│   ├── admin-manual.md                # Administrator documentation
+│   ├── quick-start.md                 # Getting started guide
+│   └── troubleshooting.md             # Common issues and solutions
 ├── development/
-│   ├── setup-guide.md (extends base setup template)
-│   ├── coding-standards.md (references base + additions)
-│   └── review-checklist.md (based on base template)
-├── deployment/
-│   ├── environments.md
-│   ├── ci-cd-pipeline.md
-│   └── monitoring.md
-└── user-guides/
-    ├── admin-manual.md
-    └── end-user-guide.md
+│   ├── setup-guide.md                 # Environment setup
+│   ├── coding-standards.md            # Project-specific standards
+│   ├── testing-guide.md               # Testing procedures
+│   ├── deployment-guide.md            # Deployment procedures
+│   └── contributing.md                # Contribution guidelines
+└── project-extensions.md              # Project-specific deviations
 ```
 
 ### 3. Technology Integration
@@ -103,12 +171,13 @@ docs/
   "scripts": {
     "lint": "eslint . --config @org/eslint-config-base",
     "test": "vitest --config ./vitest.config.ts",
-    "test:base-compliance": "npm run lint && npm run test:unit && npm run test:integration"
+    "test:base-compliance": "npm run lint && npm run test:unit && npm run test:integration",
+    "docs:templates": "npm run docs:copy-templates && npm run docs:validate"
   },
   "devDependencies": {
     "@org/eslint-config-base": "^1.0.0",
     "@org/prettier-config": "^1.0.0",
-    "@org/jest-config": "^1.0.0"
+    "@org/documentation-templates": "^1.0.0"
   }
 }
 ```
@@ -144,6 +213,11 @@ jobs:
           npm run type-check
           npm run test:coverage
       
+      - name: Validate documentation structure
+        run: |
+          npm run docs:validate-structure
+          npm run docs:validate-templates
+      
       - name: Validate architecture compliance
         run: |
           npm run validate:architecture
@@ -160,86 +234,254 @@ jobs:
           path: reports/compliance-report.html
 ```
 
-## Project Extension Patterns
+## Template Usage Patterns
 
-### 1. Technology Stack Extensions
+### 1. Architecture Documentation Extensions
 
-**Pattern: Additive Technology Choices**
+**Pattern: Extended ADR Template**
 ```markdown
-## Technology Stack Extensions
+# ADR-001: Database Technology Selection
 
-### Base Stack Compliance
-✅ Backend: Node.js + TypeScript (as recommended)
-✅ Database: PostgreSQL (as recommended)
-✅ Testing: Jest (as recommended)
+## Base Guideline Reference
+- **Aligns with**: [Database selection criteria from base guidelines]
+- **Template Used**: [Base ADR template v1.0]
 
-### Project-Specific Additions
-- **GraphQL**: Added for flexible API queries
-  - Rationale: Mobile app needs optimized queries
-  - Implementation: Apollo Server + Code-first approach
-  - Integration: Follows base REST API patterns for auth/middleware
+## Context Extension
+**Project**: E-commerce Platform
+**Stakeholders**: Backend team, DevOps, Product team
 
-- **Redis**: Added for caching
-  - Rationale: High-performance requirements
-  - Implementation: Bull queues + session storage
-  - Integration: Follows base caching strategies
+## Decision
+Based on base guidelines recommendation for PostgreSQL, with project-specific extensions:
+- **Primary Database**: PostgreSQL 14
+- **Extension**: Added read replicas for analytics workload
+- **Extension**: TimescaleDB for time-series metrics data
 
-### Deviations (with approval)
-- **Frontend Framework**: Vue.js instead of React
-  - Rationale: Team expertise, existing component library
-  - Approval: Architecture Review Board - ARB-2024-001
-  - Compliance: Still follows base component patterns
+## Project-Specific Considerations
+- High transaction volume (10k+ orders/hour)
+- Complex reporting requirements
+- Real-time analytics needs
+
+## Implementation
+**Phase 1**: Implement base PostgreSQL setup (following base setup guide)
+**Phase 2**: Add read replicas for analytics
+**Phase 3**: Integrate TimescaleDB for metrics
+
+## Compliance Verification
+- [x] Security review completed using base security checklist
+- [x] Performance benchmarks met (base SLA requirements)
+- [x] Documentation updated following base template
+- [x] Base guideline alignment verified
 ```
 
-### 2. Security Extensions
-
-**Pattern: Enhanced Security Requirements**
+**Pattern: System Architecture with Template Structure**
 ```markdown
-## Security Extensions
+# E-commerce Platform System Architecture
 
-### Base Security Compliance
-✅ Authentication: JWT + refresh tokens
-✅ Authorization: RBAC implementation
-✅ Input Validation: Joi schemas
-✅ Security Headers: Helmet.js configuration
+## Template Compliance
+**Based on**: [Base System Architecture Document Template v1.0]
+**Customizations**: Added e-commerce specific sections
+**Review Date**: [Date]
 
-### Project-Specific Enhancements
-- **Additional Compliance**: HIPAA requirements
-  - Implementation: Encryption at rest + audit logging
-  - Documentation: security/hipaa-compliance.md
-  
-- **Enhanced Authentication**: Hardware security keys
-  - Implementation: WebAuthn integration
-  - Fallback: Base JWT implementation maintained
-  
-- **Data Classification**: PII handling procedures
-  - Implementation: Custom middleware + data masking
-  - Integration: Extends base audit logging
+## Document Information
+[Following base template structure...]
+
+## Business Context
+[Using base template sections with project-specific content...]
+
+## Architecture Overview
+### Base Compliance
+✅ Follows Clean Architecture principles (from base guidelines)
+✅ Implements security-by-design (base security framework)
+✅ Uses recommended technology stack (base tech recommendations)
+
+### Project-Specific Extensions
+- **Microservices Architecture**: Based on base patterns
+- **Event-Driven Design**: Using base event sourcing patterns
+- **High Availability**: 99.9% uptime requirement (exceeds base 99.5%)
 ```
 
-### 3. Performance Extensions
+### 2. API Documentation Extensions
 
-**Pattern: Performance Optimization**
+**Pattern: Extended API Specification**
 ```markdown
-## Performance Extensions
+# E-commerce API Specification
 
-### Base Performance Compliance
-✅ Caching Strategy: Multi-layer implementation
-✅ Database Optimization: Indexing + query optimization
-✅ Frontend Performance: Code splitting + lazy loading
+## Template Compliance
+**Based on**: [Base API Specification Template v1.0]
+**Extensions**: Added e-commerce specific endpoints
+**API Version**: v2.0
 
-### Project-Specific Optimizations
-- **Real-time Requirements**: WebSocket implementation
-  - Technology: Socket.io + Redis adapter
-  - Integration: Follows base API authentication
-  
-- **High Availability**: Load balancing + failover
-  - Implementation: Kubernetes + Istio service mesh
-  - Monitoring: Extends base observability stack
-  
-- **Global Distribution**: CDN + edge computing
-  - Implementation: CloudFlare Workers + edge caching
-  - Integration: Maintains base security headers
+## Base Template Structure
+[Following base template organization...]
+
+## Project-Specific Endpoints
+
+### E-commerce Extensions
+Beyond the base CRUD operations, we've added:
+
+#### POST /api/v2/orders/checkout
+Process order checkout with payment integration
+
+**Request Body**:
+```json
+{
+  "items": [...],
+  "payment": {...},
+  "shipping": {...}
+}
+```
+
+**Response**:
+```json
+{
+  "orderId": "string",
+  "status": "pending|confirmed|failed",
+  "paymentStatus": "processing|completed|failed"
+}
+```
+
+## Base Compliance
+✅ Follows base error format specification
+✅ Uses base authentication patterns
+✅ Implements base rate limiting approach
+✅ Includes base pagination structure
+```
+
+### 3. Development Guide Extensions
+
+**Pattern: Setup Guide with Project Specifics**
+```markdown
+# Development Environment Setup
+
+## Template Compliance
+**Based on**: [Base Setup Guide Template v1.0]
+**Project Extensions**: E-commerce specific services
+**Last Updated**: [Date]
+
+## Prerequisites
+Before starting, complete the [Base Development Environment Setup](link-to-base-setup).
+
+## Base Setup Compliance
+✅ Node.js 18+ (base requirement)
+✅ Docker (base requirement)
+✅ Git configuration (base standards)
+✅ IDE setup (base configuration)
+
+## Project-Specific Setup
+
+### Additional Services Required
+Beyond base PostgreSQL and Redis:
+
+```bash
+# E-commerce specific services
+docker-compose up -d elasticsearch  # Product search
+docker-compose up -d stripe-cli     # Payment testing
+docker-compose up -d mailhog        # Email testing
+```
+
+### Environment Variables
+Extends base `.env.local` with:
+```env
+# Base variables (from base template)
+DATABASE_URL="postgresql://..."
+JWT_SECRET="..."
+
+# Project-specific variables
+STRIPE_SECRET_KEY="sk_test_..."
+ELASTICSEARCH_URL="http://localhost:9200"
+EMAIL_SERVICE="mailhog"
+```
+
+### Verification Steps
+After completing base setup:
+1. ✅ Base application loads (base verification)
+2. ✅ Database connects (base verification)
+3. 🆕 Product search works (project-specific)
+4. 🆕 Payment processing works (project-specific)
+5. 🆕 Email notifications work (project-specific)
+```
+
+## Documentation Template Integration
+
+### 1. Template Versioning and Updates
+
+**Track Template Usage:**
+```markdown
+## Documentation Metadata
+
+| Document | Base Template | Version | Last Updated | Customizations |
+|----------|---------------|---------|--------------|----------------|
+| System Architecture | system-architecture-document.md | v1.0 | 2024-01-15 | Added e-commerce sections |
+| API Specification | api-specification.md | v1.0 | 2024-01-10 | Added payment endpoints |
+| User Manual | user-manual-template.md | v1.0 | 2024-01-05 | Added checkout workflow |
+| Setup Guide | setup-guide-template.md | v1.0 | 2024-01-01 | Added e-commerce services |
+```
+
+**Update Notification Process:**
+```bash
+# Script to check for template updates
+#!/bin/bash
+echo "Checking for base template updates..."
+
+# Compare template versions
+BASE_TEMPLATE_VERSION=$(curl -s $BASE_REPO/docs/templates/VERSION)
+LOCAL_TEMPLATE_VERSION=$(cat docs/.template-version)
+
+if [ "$BASE_TEMPLATE_VERSION" != "$LOCAL_TEMPLATE_VERSION" ]; then
+    echo "📋 Template updates available!"
+    echo "Current: $LOCAL_TEMPLATE_VERSION"
+    echo "Latest: $BASE_TEMPLATE_VERSION"
+    echo "Run 'npm run docs:update-templates' to update"
+fi
+```
+
+### 2. Automated Template Synchronization
+
+**Template Update Workflow:**
+```yaml
+# .github/workflows/sync-templates.yml
+name: Sync Documentation Templates
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly on Monday
+  workflow_dispatch:
+
+jobs:
+  sync-templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check for template updates
+        run: |
+          # Download latest templates
+          curl -o /tmp/templates.zip $BASE_REPO/archive/main.zip
+          
+          # Compare versions and create PR if updates available
+          if [ "$(diff docs/templates/ /tmp/templates/)" ]; then
+            echo "templates_updated=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Create update PR
+        if: steps.check.outputs.templates_updated == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: 'docs: update documentation templates'
+          body: |
+            ## Template Updates Available
+            
+            This PR updates documentation templates to the latest version.
+            
+            ### Changes
+            - Updated templates from base guidelines
+            - Preserved project-specific customizations
+            - Updated template metadata
+            
+            ### Action Required
+            - [ ] Review template changes
+            - [ ] Update customized sections if needed
+            - [ ] Test documentation generation
 ```
 
 ## Collaboration Workflow
@@ -250,253 +492,154 @@ jobs:
 ```markdown
 ## Architecture Review Process
 
-### Project Feedback Collection
+### Template Feedback Collection
 1. **Monthly Review Meeting**
-   - Present project-specific challenges
-   - Discuss deviations and their effectiveness
-   - Propose improvements to base guidelines
+   - Review template usage effectiveness
+   - Identify missing sections or improvements
+   - Discuss template maintenance burden
+   - Propose template enhancements
 
-2. **Quarterly Guidelines Update**
+2. **Template Usage Metrics**
+   - Track which templates are most/least used
+   - Measure time-to-documentation for new features
+   - Assess documentation quality improvements
+   - Monitor template compliance rates
+
+3. **Quarterly Template Updates**
    - Consolidate feedback from all projects
-   - Update base guidelines with proven patterns
-   - Deprecate outdated recommendations
-
-3. **Annual Architecture Assessment**
-   - Technology stack evolution review
-   - Industry best practices integration
-   - Long-term roadmap alignment
+   - Update base templates with proven patterns
+   - Deprecate unused template sections
+   - Add new template categories as needed
 ```
 
 ### 2. Cross-Project Knowledge Sharing
 
-**Knowledge Sharing Framework:**
+**Template Improvement Framework:**
 ```markdown
-## Knowledge Sharing
+## Template Knowledge Sharing
 
-### Pattern Library Contributions
-- Successful project patterns → Base guidelines
-- Reusable components → Shared component library
-- Proven solutions → Architecture decision records
+### Successful Template Patterns
+- **Pattern**: Extended API template with webhook documentation
+- **Project**: E-commerce platform
+- **Benefit**: Reduced integration time by 50%
+- **Recommendation**: Add to base API template
+
+### Template Customization Library
+- **Reusable Sections**: Industry-specific template additions
+- **Component Library**: Common documentation components
+- **Style Guide**: Consistent formatting and branding
+- **Example Gallery**: Real-world template implementations
 
 ### Communication Channels
-- **Architecture Slack Channel**: Daily discussions
-- **Monthly Tech Talks**: Deep dives into implementations
-- **Quarterly All-Hands**: Architecture evolution updates
-- **Annual Conference**: External knowledge integration
+- **Template Slack Channel**: Daily template questions and tips
+- **Monthly Template Office Hours**: Help with complex customizations
+- **Quarterly Template Conference**: Share advanced implementations
+- **Template Wiki**: Searchable knowledge base
 ```
 
-### 3. Compliance Monitoring
+### 3. Template Compliance Monitoring
 
-**Automated Compliance Checking:**
+**Automated Template Validation:**
 ```typescript
-// compliance-checker.ts
-interface ComplianceCheck {
-  name: string;
-  category: 'security' | 'performance' | 'quality' | 'architecture';
-  severity: 'error' | 'warning' | 'info';
-  check: (project: ProjectConfig) => Promise<ComplianceResult>;
+// template-compliance-checker.ts
+interface TemplateCompliance {
+  templateName: string;
+  baseVersion: string;
+  projectVersion: string;
+  complianceScore: number;
+  missingRequiredSections: string[];
+  customizations: string[];
 }
 
-const complianceChecks: ComplianceCheck[] = [
-  {
-    name: 'Security Headers',
-    category: 'security',
-    severity: 'error',
-    check: async (project) => {
-      const hasHelmet = project.dependencies.includes('helmet');
-      const hasCSP = project.hasContentSecurityPolicy;
-      
-      return {
-        passed: hasHelmet && hasCSP,
-        message: hasHelmet ? 'Security headers configured' : 'Missing helmet.js',
-        details: { helmet: hasHelmet, csp: hasCSP }
-      };
-    }
-  },
+async function validateTemplateCompliance(
+  projectPath: string
+): Promise<TemplateCompliance[]> {
+  const templates = await scanProjectTemplates(projectPath);
+  const baseTemplates = await fetchBaseTemplates();
   
-  {
-    name: 'Testing Coverage',
-    category: 'quality',
-    severity: 'error',
-    check: async (project) => {
-      const coverage = await project.getTestCoverage();
-      const threshold = 80; // Base guideline requirement
-      
-      return {
-        passed: coverage.total >= threshold,
-        message: `Test coverage: ${coverage.total}% (threshold: ${threshold}%)`,
-        details: coverage
-      };
-    }
-  }
-];
+  return templates.map(template => {
+    const baseTemplate = baseTemplates.find(t => t.name === template.name);
+    const compliance = calculateCompliance(template, baseTemplate);
+    
+    return {
+      templateName: template.name,
+      baseVersion: baseTemplate?.version || 'unknown',
+      projectVersion: template.version,
+      complianceScore: compliance.score,
+      missingRequiredSections: compliance.missingSections,
+      customizations: compliance.customizations
+    };
+  });
+}
 
 // Usage in CI/CD
-export async function validateCompliance(projectPath: string): Promise<ComplianceReport> {
-  const project = await analyzeProject(projectPath);
-  const results = await Promise.all(
-    complianceChecks.map(check => check.check(project))
-  );
+export async function generateComplianceReport(
+  projectPath: string
+): Promise<void> {
+  const compliance = await validateTemplateCompliance(projectPath);
   
-  return {
-    overall: results.every(r => r.passed),
-    checks: results,
-    recommendations: generateRecommendations(results)
+  const report = {
+    overall: compliance.every(t => t.complianceScore >= 0.8),
+    templates: compliance,
+    recommendations: generateRecommendations(compliance)
   };
+  
+  await generateHTMLReport(report);
+  await uploadToArtifacts(report);
 }
-```
-
-## Documentation Templates Integration
-
-### 1. ADR Template Extension
-
-**Base ADR Template + Project Context:**
-```markdown
-# ADR-XXX: [Decision Title]
-
-## Context Extension
-**Project**: [Project Name]
-**Base Guideline Reference**: [Link to relevant base guideline section]
-**Stakeholders**: [Project-specific stakeholders]
-
-## Base Guideline Compliance
-- **Aligns with**: [Base guideline sections that support this decision]
-- **Deviates from**: [Any deviations with justification]
-- **Extends**: [How this builds upon base recommendations]
-
-## Decision
-[Decision details with project-specific context]
-
-## Alternatives Considered
-[Include base guideline recommendations as alternatives]
-
-## Implementation
-**Phase 1**: Implement base guideline compliance
-**Phase 2**: Add project-specific enhancements
-**Phase 3**: Document lessons learned for base guideline feedback
-
-## Consequences
-**Positive**:
-- Maintains base guideline compliance
-- [Project-specific benefits]
-
-**Negative**:
-- [Project-specific challenges]
-- Additional complexity over base implementation
-
-## Compliance Verification
-- [ ] Security review completed
-- [ ] Performance benchmarks met
-- [ ] Documentation updated
-- [ ] Base guideline alignment verified
-```
-
-### 2. Setup Guide Extension
-
-**Project Setup Guide Template:**
-```markdown
-# Project Setup Guide
-
-## Prerequisites
-Before starting, ensure you have completed the [Base Development Environment Setup](link-to-base-setup).
-
-## Project-Specific Setup
-
-### 1. Clone and Install
-```bash
-git clone [project-repo]
-cd [project-name]
-npm install
-
-# Install base configuration
-npm install @org/eslint-config-base @org/prettier-config
-```
-
-### 2. Environment Configuration
-```bash
-# Copy base environment template
-cp .env.base.example .env.local
-
-# Add project-specific variables
-echo "PROJECT_SPECIFIC_VAR=value" >> .env.local
-```
-
-### 3. Database Setup
-```bash
-# Base PostgreSQL setup (from base guidelines)
-npm run db:setup:base
-
-# Project-specific migrations
-npm run db:migrate:project
-```
-
-### 4. Verification
-```bash
-# Run base compliance checks
-npm run validate:base-compliance
-
-# Run project-specific tests
-npm run test:project
-```
-
-## Development Workflow
-Follow the [Base Development Workflow](link) with these project-specific additions:
-- [Project-specific workflow steps]
-- [Additional tools/processes]
 ```
 
 ## Continuous Improvement Process
 
-### 1. Regular Assessment
+### 1. Template Evolution
 
-**Monthly Project Health Check:**
+**Template Lifecycle Management:**
 ```markdown
-## Project Health Assessment
+## Template Version Control
 
-### Base Guideline Compliance
-- [ ] Security standards met
-- [ ] Performance benchmarks achieved
-- [ ] Code quality gates passed
-- [ ] Documentation up to date
+### Version Schema
+- **Major (1.0 → 2.0)**: Breaking changes to template structure
+- **Minor (1.0 → 1.1)**: New sections or significant improvements
+- **Patch (1.0.0 → 1.0.1)**: Bug fixes and minor clarifications
 
-### Project-Specific Metrics
-- [ ] Feature delivery velocity
-- [ ] Bug resolution time
-- [ ] User satisfaction scores
-- [ ] Technical debt levels
+### Update Process
+1. **Proposal**: Submit template improvement proposal
+2. **Review**: Architecture review board evaluation
+3. **Pilot**: Test in 1-2 projects before global rollout
+4. **Feedback**: Collect usage feedback and metrics
+5. **Rollout**: Gradual adoption across all projects
+6. **Monitoring**: Track adoption and effectiveness
 
-### Improvement Opportunities
-1. **Technology Upgrades**: [Based on base guideline updates]
-2. **Process Improvements**: [Lessons learned]
-3. **Knowledge Gaps**: [Training needs]
+### Deprecation Policy
+- **6-month notice** for major template changes
+- **Migration guides** for breaking changes
+- **Backward compatibility** when possible
+- **Support period** for legacy templates
 ```
 
-### 2. Contribution Back to Base
+### 2. Metrics and Success Measurement
 
-**Guideline Improvement Process:**
+**Template Effectiveness Metrics:**
 ```markdown
-## Contributing to Base Guidelines
+## Template Success Metrics
 
-### Successful Patterns
-Document patterns that worked well:
-1. **Problem Solved**: [Describe the challenge]
-2. **Solution Implemented**: [Detail the approach]
-3. **Results Achieved**: [Quantify the benefits]
-4. **Applicability**: [Which projects could benefit]
+### Adoption Metrics
+- **Template Usage Rate**: % of projects using each template
+- **Time to Documentation**: Average time to create quality docs
+- **Compliance Score**: Average compliance with base templates
+- **Update Velocity**: How quickly projects adopt template updates
 
-### Proposed Updates
-Submit proposals for base guideline updates:
-1. **Current Limitation**: [What's missing]
-2. **Proposed Addition**: [Suggested improvement]
-3. **Validation**: [How it was tested]
-4. **Impact Assessment**: [Effect on other projects]
+### Quality Metrics
+- **Documentation Completeness**: % of required sections completed
+- **User Satisfaction**: Developer and user feedback scores
+- **Maintenance Burden**: Time spent updating documentation
+- **Error Reduction**: Fewer documentation-related issues
 
-### Review Process
-1. Submit proposal to Architecture Review Board
-2. Pilot implementation in current project
-3. Gather feedback from other project teams
-4. Formal approval and integration
-5. Documentation update and communication
+### Business Impact
+- **Onboarding Speed**: New developer time-to-productivity
+- **Support Ticket Reduction**: Fewer docs-related support requests
+- **Audit Compliance**: Easier regulatory and security audits
+- **Knowledge Retention**: Reduced impact of team member turnover
 ```
 
-This integration guide ensures that projects can extend base guidelines while maintaining consistency and contributing to continuous improvement across the organization.
+This integration guide ensures that projects can effectively utilize the organized template structure while maintaining consistency and contributing to continuous improvement across the organization. The categorized templates make it easier to find the right documentation format and maintain professional standards across all projects.
