@@ -58,7 +58,7 @@ Create a `ARCHITECTURE.md` file in your project root:
 # Project Architecture
 
 ## Base Guidelines
-This project follows the [Organization Architecture Guidelines](link-to-base-repo).
+This project follows the [Organization Architecture Guidelines](https://github.com/calnet/web-architecture-guidelines).
 
 ## Documentation Structure
 We use the standardized template structure from the base guidelines:
