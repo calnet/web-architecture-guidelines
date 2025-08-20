@@ -2,7 +2,8 @@
 
 [Previous content remains the same through Frontend Integration Patterns...]
 
-### Frontend Integration Patterns
+## Frontend Integration Patterns
+
 ```typescript
 // React hook for Anthropic API integration
 export const useAnthropicChat = (conversationId?: string) => {
@@ -111,6 +112,7 @@ export const useAnthropicCompletion = () => {
     generateCompletion
   };
 };
+
 ```
 
 ## Best Practices Summary
