@@ -34,7 +34,7 @@ When asked about web application architecture, follow this systematic approach:
 
 **Backend Frameworks (Choose based on team expertise):**
 
-```
+```text
 Node.js Ecosystem:
 - Express.js + TypeScript (flexibility)
 - NestJS (enterprise structure)
@@ -53,7 +53,7 @@ Other Recommendations:
 
 **Frontend Frameworks:**
 
-```
+```text
 Component-Based:
 - React + TypeScript + Next.js
 - Vue 3 + TypeScript + Nuxt
@@ -69,7 +69,7 @@ State Management:
 
 **Database Selection:**
 
-```
+```text
 Relational (Recommended for most cases):
 - PostgreSQL (feature-rich, JSON support)
 - MySQL (widespread compatibility)
@@ -91,7 +91,7 @@ ORM/Database Tools:
 
 **Authentication & Authorization:**
 
-```
+```text
 Authentication Options:
 - JWT tokens with refresh mechanism
 - Session-based authentication
@@ -119,7 +119,7 @@ Authorization Patterns:
 
 **Test Pyramid Implementation:**
 
-```
+```text
 Unit Tests (70%):
 - Business logic testing
 - Pure function testing
@@ -169,7 +169,7 @@ End-to-End Tests (10%):
 
 **CI/CD Pipeline:**
 
-```
+```text
 Source Control:
 - Git with feature branch workflow
 - Conventional commits
