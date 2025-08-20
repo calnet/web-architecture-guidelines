@@ -1,12 +1,15 @@
 # GitHub Copilot Web Application Architecture Instructions
 
 ## Code Generation Philosophy
+
 When generating code suggestions for web applications, prioritize clean, maintainable, and secure patterns. Always suggest industry best practices and include relevant comments explaining architectural decisions.
 
 ## Architecture Pattern Recognition
 
 ### Identify Project Context
+
 Analyze the existing codebase to understand:
+
 - **Framework**: React, Vue, Angular, Express, Django, etc.
 - **Language**: TypeScript, JavaScript, Python, C#, Java
 - **Patterns**: Clean Architecture, MVC, MVP, Component-based
@@ -14,9 +17,11 @@ Analyze the existing codebase to understand:
 - **Build Tools**: Webpack, Vite, Rollup, Parcel
 
 ### Suggest Appropriate Patterns
+
 Based on project context, recommend:
 
 **For Component-Based Frontend:**
+
 ```typescript
 // Suggest functional components with hooks
 const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
@@ -40,6 +45,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
 ```
 
 **For Backend API Design:**
+
 ```typescript
 // Suggest clean controller patterns
 @Controller('/api/users')
@@ -70,6 +76,7 @@ export class UserController {
 ## Security-First Code Suggestions
 
 ### Authentication & Authorization
+
 ```typescript
 // Suggest secure authentication patterns
 class AuthService {
@@ -100,6 +107,7 @@ class AuthService {
 ```
 
 ### Input Validation & Sanitization
+
 ```typescript
 // Suggest validation decorators and DTOs
 export class CreateUserDto {
@@ -128,6 +136,7 @@ export class CreateUserDto {
 ## Performance-Optimized Patterns
 
 ### Database Optimization
+
 ```typescript
 // Suggest efficient database patterns
 @Entity()
@@ -154,6 +163,7 @@ export class User {
 ```
 
 ### Frontend Performance
+
 ```typescript
 // Suggest memoization and optimization
 const ExpensiveComponent: React.FC<Props> = memo(({ data, onUpdate }) => {
@@ -184,6 +194,7 @@ const ExpensiveComponent: React.FC<Props> = memo(({ data, onUpdate }) => {
 ## Testing Patterns
 
 ### Unit Testing
+
 ```typescript
 // Suggest comprehensive test patterns
 describe('UserService', () => {
@@ -235,6 +246,7 @@ describe('UserService', () => {
 ```
 
 ### Integration Testing
+
 ```typescript
 // Suggest API integration test patterns
 describe('UserController (e2e)', () => {
@@ -275,6 +287,7 @@ describe('UserController (e2e)', () => {
 ## Error Handling & Logging
 
 ### Structured Error Handling
+
 ```typescript
 // Suggest consistent error handling patterns
 export class ApiError extends Error {
@@ -335,6 +348,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 ## Code Comments & Documentation
 
 ### Suggest Meaningful Comments
+
 ```typescript
 /**
  * Processes user payment with retry logic and fraud detection
@@ -369,6 +383,7 @@ async processPayment(
 ## Configuration & Environment Management
 
 ### Suggest Environment-Based Configuration
+
 ```typescript
 // Suggest type-safe configuration patterns
 export interface AppConfig {
@@ -415,6 +430,7 @@ export const config = (): AppConfig => ({
 ## Code Quality Guidelines
 
 ### Suggest Code Organization
+
 - Use consistent file and folder naming conventions
 - Implement barrel exports for clean imports
 - Separate concerns with clear module boundaries
@@ -423,6 +439,7 @@ export const config = (): AppConfig => ({
 - Follow SOLID principles in class design
 
 ### Suggest Performance Best Practices
+
 - Implement proper caching strategies
 - Use database connection pooling
 - Implement rate limiting for API endpoints
@@ -431,6 +448,7 @@ export const config = (): AppConfig => ({
 - Use CDN for static assets
 
 ### Suggest Security Best Practices
+
 - Never expose sensitive data in client-side code
 - Implement proper CORS configuration
 - Use parameterized queries to prevent SQL injection
