@@ -118,6 +118,7 @@ export const useAnthropicCompletion = () => {
 ## Best Practices Summary
 
 ### API Usage Optimization
+
 1. **Implement intelligent caching** for repeated queries
 2. **Use streaming responses** for better user experience
 3. **Batch requests** where possible to reduce API calls
@@ -125,6 +126,7 @@ export const useAnthropicCompletion = () => {
 5. **Handle rate limits** gracefully with exponential backoff
 
 ### Security Considerations
+
 1. **Filter inputs and outputs** for safety and compliance
 2. **Implement audit logging** for all API interactions
 3. **Use secure API key management** with rotation
@@ -132,6 +134,7 @@ export const useAnthropicCompletion = () => {
 5. **Implement proper authentication** and authorization
 
 ### Performance Best Practices
+
 1. **Optimize prompt engineering** to reduce token usage
 2. **Implement circuit breakers** for resilience
 3. **Use connection pooling** for HTTP requests
@@ -139,10 +142,13 @@ export const useAnthropicCompletion = () => {
 5. **Monitor and alert** on performance metrics
 
 ### Error Handling
+
 1. **Implement graceful degradation** for API failures
 2. **Provide meaningful error messages** to users
 3. **Log errors comprehensively** for debugging
 4. **Implement retry logic** for transient failures
 5. **Have fallback mechanisms** for critical features
 
-Remember: Always prioritize user experience, security, and cost efficiency when integrating with the Anthropic API. Monitor usage patterns and optimize continuously based on real-world performance data.
+Remember: Always prioritize user experience, security,
+and cost efficiency when integrating with the Anthropic API.
+Monitor usage patterns and optimize continuously based on real-world performance data.
