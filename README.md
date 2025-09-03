@@ -19,6 +19,7 @@ docs/
 │   ├── gemini-architecture-instructions.md
 │   └── anthropic-api-architecture-instructions.md
 ├── external-documentation-links.md     # Curated external resources
+├── integration-automation-script.md     # Automated integration script documentation
 ├── project-integration-guide.md        # How to extend these guidelines
 └── templates/                          # Documentation templates (organized by category)
     ├── README.md                       # Template index and usage guide
@@ -43,9 +44,10 @@ docs/
 3. Adapt recommendations based on project context
 
 ### For Development Teams
-1. Review the [Project Integration Guide](docs/project-integration-guide.md)
-2. Use [documentation templates](docs/templates/) for your project
-3. Reference [external documentation](docs/external-documentation-links.md) as needed
+1. Use the [Integration Automation Script](docs/integration-automation-script.md) for automated setup
+2. Review the [Project Integration Guide](docs/project-integration-guide.md) for manual integration
+3. Use [documentation templates](docs/templates/) for your project
+4. Reference [external documentation](docs/external-documentation-links.md) as needed
 
 ### For Project-Specific Implementation
 1. Fork or reference this repository
