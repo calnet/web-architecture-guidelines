@@ -11,7 +11,7 @@ interface TemplateCompliance {
   filePath: string;
 }
 
-interface ComplianceReport {
+export interface ComplianceReport {
   overall: boolean;
   overallScore: number;
   templates: TemplateCompliance[];

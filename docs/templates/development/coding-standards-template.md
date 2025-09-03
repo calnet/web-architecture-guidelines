@@ -2,35 +2,260 @@
 
 [Previous content through React Performance continues...]
 
-### React Performance
-```tsx
-// Wrap expensive components in React.memo
+# [Project Name] Coding Standards
+
+This document defines the coding standards and best practices for [Project Name]. Following these standards ensures code consistency, maintainability, and collaboration effectiveness across the development team.
+
+## Code Style
+
+### Formatting and Indentation
+
+**TypeScript/JavaScript**:
+- Use **2 spaces** for indentation (no tabs)
+- Maximum line length: **100 characters**
+- Use **semicolons** at the end of statements
+- Use **single quotes** for strings, double quotes for JSX attributes
+- Add trailing commas in multi-line objects and arrays
+
+```typescript
+// Good
+const config = {
+  apiUrl: 'https://api.example.com',
+  timeout: 5000,
+  retries: 3,
+};
+
+// Bad
+const config = {
+    apiUrl: "https://api.example.com",
+    timeout: 5000,
+    retries: 3
+}
+```
+
+**CSS/SCSS**:
+- Use **2 spaces** for indentation
+- Use **kebab-case** for class names
+- Order properties alphabetically within blocks
+- Use **rem/em** for scalable units, **px** for borders and fixed elements
+
+```scss
+// Good
+.button-primary {
+  background-color: #007bff;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+```
+
+### Naming Conventions
+
+**Variables and Functions**:
+- Use **camelCase** for variables and functions
+- Use descriptive names that explain intent
+- Avoid abbreviations unless commonly understood
+- Use verbs for functions, nouns for variables
+
+```typescript
+// Good
+const userAccountBalance = 1500.50;
+const isUserAuthenticated = true;
+
+function calculateTotalPrice(items: CartItem[]): number {
+  return items.reduce((total, item) => total + item.price, 0);
+}
+```
+
+**Constants**:
+- Use **SCREAMING_SNAKE_CASE** for constants
+- Group related constants in enums or const objects
+
+```typescript
+// Good
+const MAX_RETRY_ATTEMPTS = 3;
+const API_ENDPOINTS = {
+  USERS: '/api/users',
+  ORDERS: '/api/orders',
+  PRODUCTS: '/api/products',
+} as const;
+
+enum UserRole {
+  ADMIN = 'admin',
+  USER = 'user',
+  GUEST = 'guest',
+}
+```
+
+## Best Practices
+
+### Code Organization
+
+**Project Structure**:
+```
+src/
+├── components/          # Reusable UI components
+│   ├── common/         # Shared components
+│   └── pages/          # Page-specific components
+├── services/           # Business logic and API calls
+├── hooks/              # Custom React hooks
+├── utils/              # Pure utility functions
+├── types/              # TypeScript type definitions
+├── constants/          # Application constants
+├── assets/             # Static assets (images, fonts)
+└── styles/             # Global styles and themes
+```
+
+### Function and Method Design
+
+**Function Size and Responsibility**:
+- Keep functions small and focused (ideally < 20 lines)
+- Each function should have a single responsibility
+- Use pure functions when possible
+
+```typescript
+// Good - Single responsibility, pure function
+function calculateDiscountAmount(price: number, discountPercent: number): number {
+  return price * (discountPercent / 100);
+}
+
+function formatCurrency(amount: number, currency = 'USD'): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(amount);
+}
+```
+
+### Error Handling
+
+**Exception Handling**:
+- Always handle errors explicitly
+- Use specific error types
+- Provide meaningful error messages
+- Log errors appropriately
+
+```typescript
+// Good
+async function fetchUserData(userId: string): Promise<User> {
+  try {
+    const response = await apiClient.get(`/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    if (error instanceof NotFoundError) {
+      throw new UserNotFoundError(`User with ID ${userId} not found`);
+    }
+    
+    logger.error('Failed to fetch user data', { userId, error });
+    throw new UserDataFetchError('Unable to retrieve user information');
+  }
+}
+```
+
+## Testing
+
+### Test Structure and Organization
+
+**Test File Naming**:
+- Use `.test.ts` or `.spec.ts` suffix
+- Mirror the directory structure of source files
+- Use descriptive test file names
+
+**Test Organization**:
+- Group related tests with `describe` blocks
+- Use clear, descriptive test names
+- Follow Arrange-Act-Assert pattern
+
+```typescript
+// Good
+describe('UserService', () => {
+  describe('createUser', () => {
+    it('should create a new user with valid data', async () => {
+      // Arrange
+      const userData = {
+        email: 'test@example.com',
+        firstName: 'John',
+        lastName: 'Doe',
+      };
+      const expectedUser = { id: '123', ...userData };
+      mockUserRepository.create.mockResolvedValue(expectedUser);
+      
+      // Act
+      const result = await userService.createUser(userData);
+      
+      // Assert
+      expect(result).toEqual(expectedUser);
+      expect(mockUserRepository.create).toHaveBeenCalledWith(userData);
+    });
+  });
+});
+```
+
+## Performance Guidelines
+
+### General Performance Principles
+
+**Code Efficiency**:
+- Prefer algorithms with better time complexity
+- Avoid nested loops when possible
+- Cache expensive computations
+- Use appropriate data structures
+
+```typescript
+// Good - O(n) complexity with Map lookup
+function findUsersByRole(users: User[], targetRole: string): User[] {
+  const roleMap = new Map<string, User[]>();
+  
+  users.forEach(user => {
+    if (!roleMap.has(user.role)) {
+      roleMap.set(user.role, []);
+    }
+    roleMap.get(user.role)!.push(user);
+  });
+  
+  return roleMap.get(targetRole) || [];
+}
+```
+
+### Frontend Performance
+
+**React Performance**:
+```typescript
+// Use React.memo for expensive components
 const ExpensiveComponent = React.memo(({ data, onAction }: Props) => {
   // Component implementation
 }, (prevProps, nextProps) => {
-  // Custom comparison function if needed
   return prevProps.data.id === nextProps.data.id;
 });
 
-// Use useCallback for event handlers passed to child components
+// Use useCallback for event handlers
 const handleItemClick = useCallback((id: string) => {
   onItemSelect(id);
   trackUserAction('item_click', { itemId: id });
 }, [onItemSelect]);
-
-// Optimize re-renders with proper dependency arrays
-useEffect(() => {
-  // Only run when specific values change
-  fetchUserData(userId);
-}, [userId]); // Don't include fetchUserData if it's stable
-
-// Use useMemo for expensive computations
-const sortedAndFilteredItems = useMemo(() => {
-  return items
-    .filter(item => item.status === filter)
-    .sort((a, b) => a.name.localeCompare(b.name));
-}, [items, filter]);
 ```
+
+### Backend Performance
+
+**Database Optimization**:
+```typescript
+// Use proper indexing and selective queries
+const users = await userRepository.find({
+  where: { status: 'active' }, // Ensure status column is indexed
+  select: ['id', 'name', 'email'], // Only select needed columns
+  take: 20, // Limit results
+});
+```
+
+---
+
+**Template Metadata:**
+- Version: 1.0
+- Last Updated: [Date]
+- Maintained by: [Team Name]
+- Review Schedule: Quarterly
 
 ### Database Performance
 ```typescript
