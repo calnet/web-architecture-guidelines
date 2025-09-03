@@ -379,7 +379,7 @@ function generateHTMLReport(report: ComplianceReport): string {
 }
 
 // Export for use as a module
-export { TemplateComplianceChecker, TemplateCompliance, ComplianceReport };
+export { TemplateComplianceChecker, TemplateCompliance };
 
 // CLI entry point
 if (require.main === module) {
