@@ -9,12 +9,14 @@ This documentation outlines the architectural principles, technology stack, and 
 ### Core Architectural Principles
 
 **Clean Architecture**
+
 - Separation of concerns with clear layer boundaries
 - Dependency inversion: higher-level modules don't depend on lower-level modules
 - Business logic remains independent of frameworks, databases, and external services
 - Testable architecture with mockable dependencies
 
 **Layered Architecture Structure**:
+
 ```
 ┌─────────────────────────────────────┐
 │           Presentation Layer         │ ← UI Components, Controllers
@@ -28,12 +30,14 @@ This documentation outlines the architectural principles, technology stack, and 
 ```
 
 **Domain-Driven Design (DDD)**
+
 - Business logic organized around domain concepts
 - Bounded contexts to manage complexity
 - Ubiquitous language shared between technical and business teams
 - Aggregate roots to maintain data consistency
 
 **Microservices Considerations**
+
 - Service boundaries aligned with business capabilities
 - Independent deployment and scaling
 - Event-driven communication between services
@@ -42,6 +46,7 @@ This documentation outlines the architectural principles, technology stack, and 
 ### Technology Stack
 
 **Frontend Technologies**:
+
 - **Framework**: React 18+ with TypeScript
 - **State Management**: Redux Toolkit or Zustand for complex applications
 - **Routing**: React Router v6
@@ -50,6 +55,7 @@ This documentation outlines the architectural principles, technology stack, and 
 - **Testing**: Jest + React Testing Library + Playwright for E2E
 
 **Backend Technologies**:
+
 - **Runtime**: Node.js 18+ LTS
 - **Framework**: Express.js or Fastify for REST APIs, tRPC for type-safe APIs
 - **Language**: TypeScript for type safety and developer experience
@@ -58,12 +64,14 @@ This documentation outlines the architectural principles, technology stack, and 
 - **ORM**: Prisma or TypeORM for database interactions
 
 **Database Solutions**:
+
 - **Primary Database**: PostgreSQL 14+ for ACID compliance and advanced features
 - **Caching**: Redis 6+ for session storage and application caching
 - **Search**: Elasticsearch for full-text search capabilities
 - **Time-Series Data**: InfluxDB for metrics and monitoring data
 
 **Infrastructure and DevOps**:
+
 - **Containerization**: Docker with multi-stage builds
 - **Orchestration**: Kubernetes or Docker Compose for development
 - **CI/CD**: GitHub Actions, GitLab CI, or Azure DevOps
@@ -75,6 +83,7 @@ This documentation outlines the architectural principles, technology stack, and 
 ### Frontend Components
 
 **Component Architecture**:
+
 ```
 src/
 ├── components/
@@ -98,12 +107,14 @@ src/
 ```
 
 **Component Design Principles**:
+
 - Single Responsibility: Each component has one clear purpose
 - Composition over inheritance for component reusability
 - Props interface clearly defines component contracts
 - Minimal state with efficient updates using React hooks
 
 **State Management Strategy**:
+
 - Local state with `useState` for component-specific data
 - Context API for theme, authentication, and user preferences
 - External state management (Redux/Zustand) for complex application state
@@ -112,6 +123,7 @@ src/
 ### Backend Components
 
 **Service Layer Architecture**:
+
 ```
 src/
 ├── controllers/             # HTTP request handlers
@@ -125,12 +137,14 @@ src/
 ```
 
 **Service Design Patterns**:
+
 - Repository pattern for data access abstraction
 - Dependency injection for testability and flexibility
 - Service layer for business logic encapsulation
 - Middleware for cross-cutting concerns (auth, logging, validation)
 
 **API Design Standards**:
+
 - RESTful API design following OpenAPI 3.0 specification
 - Consistent error responses with proper HTTP status codes
 - Request/response validation with detailed error messages
@@ -140,12 +154,14 @@ src/
 ### Database Design
 
 **Data Modeling Principles**:
+
 - Normalized database design to reduce redundancy
 - Proper indexing strategy for query performance
 - Foreign key constraints for data integrity
 - Audit trails for sensitive data changes
 
 **Database Patterns**:
+
 - Repository pattern for data access layer
 - Unit of Work pattern for transaction management
 - Database migrations for schema version control
@@ -156,18 +172,21 @@ src/
 ### Security-by-Design Principles
 
 **Authentication and Authorization**:
+
 - Multi-factor authentication (MFA) for sensitive accounts
 - Role-based access control (RBAC) with principle of least privilege
 - JWT tokens with short expiration and secure refresh mechanism
 - OAuth 2.0/OpenID Connect for third-party authentication
 
 **Data Protection**:
+
 - Encryption at rest using AES-256 for sensitive data
 - Encryption in transit with TLS 1.3 for all communications
 - Personal data anonymization and pseudonymization techniques
 - Secure key management with hardware security modules (HSM) or cloud KMS
 
 **Input Validation and Sanitization**:
+
 ```typescript
 // Example: Robust input validation
 import { z } from 'zod';
@@ -187,6 +206,7 @@ function createUser(input: unknown) {
 ```
 
 **Security Headers and Policies**:
+
 ```typescript
 // Security middleware configuration
 app.use(helmet({
@@ -209,6 +229,7 @@ app.use(helmet({
 ### Threat Modeling and Mitigation
 
 **Common Threat Vectors**:
+
 - SQL Injection: Use parameterized queries and ORM protection
 - Cross-Site Scripting (XSS): Content Security Policy and input sanitization
 - Cross-Site Request Forgery (CSRF): CSRF tokens and SameSite cookies
@@ -216,6 +237,7 @@ app.use(helmet({
 - Data breaches: Encryption, access controls, and monitoring
 
 **Security Monitoring**:
+
 - Real-time security event monitoring and alerting
 - Failed authentication attempt tracking
 - Suspicious activity pattern detection
@@ -226,6 +248,7 @@ app.use(helmet({
 ### Performance Optimization Strategies
 
 **Frontend Performance**:
+
 - Code splitting and lazy loading for reduced initial bundle size
 - Image optimization with modern formats (WebP, AVIF)
 - Caching strategies with service workers for offline capabilities
@@ -253,6 +276,7 @@ const ExpensiveList = memo(({ items, onSelect }) => {
 ```
 
 **Backend Performance**:
+
 - Database query optimization with proper indexing
 - Caching strategies at multiple layers (application, database, CDN)
 - Connection pooling and resource management
@@ -280,12 +304,14 @@ class UserService {
 ### Scalability Considerations
 
 **Horizontal Scaling**:
+
 - Stateless application design for easy horizontal scaling
 - Load balancing strategies for traffic distribution
 - Database sharding and read replicas for data scaling
 - Microservices architecture for independent service scaling
 
 **Vertical Scaling**:
+
 - Resource monitoring and automatic scaling policies
 - Performance profiling to identify bottlenecks
 - Memory and CPU optimization techniques
@@ -294,6 +320,7 @@ class UserService {
 ### Monitoring and Observability
 
 **Application Performance Monitoring**:
+
 ```typescript
 // Example: Performance monitoring integration
 import { performance } from 'perf_hooks';
@@ -338,11 +365,13 @@ class PerformanceMonitor {
 ### Environment Management
 
 **Environment Separation**:
+
 - **Development**: Local development with hot reloading
 - **Staging**: Production-like environment for integration testing
 - **Production**: Live environment with full monitoring and backups
 
 **Configuration Management**:
+
 ```typescript
 // Example: Environment-based configuration
 interface AppConfig {
@@ -383,6 +412,7 @@ function loadConfig(): AppConfig {
 ### Containerization and Orchestration
 
 **Docker Configuration**:
+
 ```dockerfile
 # Multi-stage build for optimization
 FROM node:18-alpine AS builder
@@ -402,6 +432,7 @@ CMD ["npm", "start"]
 ```
 
 **Kubernetes Deployment**:
+
 - Horizontal Pod Autoscaling based on CPU/memory usage
 - Health checks and readiness probes for zero-downtime deployments
 - ConfigMaps and Secrets for configuration management
@@ -410,6 +441,7 @@ CMD ["npm", "start"]
 ### CI/CD Pipeline
 
 **Continuous Integration**:
+
 ```yaml
 # Example GitHub Actions workflow
 name: CI/CD Pipeline
@@ -454,6 +486,7 @@ jobs:
 ```
 
 **Deployment Strategies**:
+
 - Blue-Green deployments for zero-downtime updates
 - Canary deployments for gradual rollout and risk mitigation
 - Feature flags for controlled feature releases
@@ -462,12 +495,14 @@ jobs:
 ### Monitoring and Alerting
 
 **Infrastructure Monitoring**:
+
 - Server metrics: CPU, memory, disk usage, network I/O
 - Application metrics: Response times, error rates, throughput
 - Database metrics: Connection pools, query performance, replication lag
 - Custom business metrics: User activity, feature adoption, revenue
 
 **Alerting Configuration**:
+
 ```yaml
 # Example Prometheus alerting rules
 groups:
@@ -493,6 +528,7 @@ groups:
 ---
 
 **Document Information**:
+
 - **Version**: 1.0
 - **Last Updated**: September 2025
 - **Review Schedule**: Quarterly
