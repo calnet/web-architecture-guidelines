@@ -8,35 +8,35 @@ This documentation outlines the architectural principles, technology stack, and 
 
 ### Core Architectural Principles
 
-**Clean Architecture**
+#### Clean Architecture
 
 - Separation of concerns with clear layer boundaries
 - Dependency inversion: higher-level modules don't depend on lower-level modules
 - Business logic remains independent of frameworks, databases, and external services
 - Testable architecture with mockable dependencies
 
-**Layered Architecture Structure**:
+#### Layered Architecture Structure
 
-```
+```text
 ┌─────────────────────────────────────┐
-│           Presentation Layer         │ ← UI Components, Controllers
+│           Presentation Layer        │ ← UI Components, Controllers
 ├─────────────────────────────────────┤
-│            Application Layer         │ ← Use Cases, Application Services
+│            Application Layer        │ ← Use Cases, Application Services
 ├─────────────────────────────────────┤
 │             Domain Layer            │ ← Business Logic, Entities, Rules
 ├─────────────────────────────────────┤
-│          Infrastructure Layer        │ ← Database, External APIs, File System
+│          Infrastructure Layer       │ ← Database, External APIs, File System
 └─────────────────────────────────────┘
 ```
 
-**Domain-Driven Design (DDD)**
+#### Domain-Driven Design (DDD)
 
 - Business logic organized around domain concepts
 - Bounded contexts to manage complexity
 - Ubiquitous language shared between technical and business teams
 - Aggregate roots to maintain data consistency
 
-**Microservices Considerations**
+#### Microservices Considerations
 
 - Service boundaries aligned with business capabilities
 - Independent deployment and scaling
@@ -84,7 +84,7 @@ This documentation outlines the architectural principles, technology stack, and 
 
 **Component Architecture**:
 
-```
+```text
 src/
 ├── components/
 │   ├── common/              # Shared UI components
@@ -124,7 +124,7 @@ src/
 
 **Service Layer Architecture**:
 
-```
+```text
 src/
 ├── controllers/             # HTTP request handlers
 ├── services/                # Business logic services
