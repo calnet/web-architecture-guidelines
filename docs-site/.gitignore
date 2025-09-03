@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Coverage reports
+coverage/
+
+# Auto-synced documentation (these are copied from parent repo)
+public/README.md
+public/git-commands-and-setup.md
+public/CLAUDE.md
+public/LICENSE
+public/docs/
+public/examples/
+public/scripts/
+public/tools/
