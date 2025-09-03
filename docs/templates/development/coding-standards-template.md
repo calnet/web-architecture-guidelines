@@ -12,7 +12,7 @@ This document defines the coding standards and best practices for [Project Name]
 
 **TypeScript/JavaScript**:
 
--   Use **2 spaces** for indentation (no tabs)
+-   Use **4 spaces** for indentation (no tabs)
 -   Maximum line length: **100 characters**
 -   Use **semicolons** at the end of statements
 -   Use **single quotes** for strings, double quotes for JSX attributes
@@ -28,15 +28,15 @@ const config = {
 
 // Bad
 const config = {
-    apiUrl: "https://api.example.com",
-    timeout: 5000,
-    retries: 3,
+  apiUrl: "https://api.example.com",
+  timeout: 5000,
+  retries: 3,
 };
 ```
 
 **CSS/SCSS**:
 
--   Use **2 spaces** for indentation
+-   Use **4 spaces** for indentation
 -   Use **kebab-case** for class names
 -   Order properties alphabetically within blocks
 -   Use **rem/em** for scalable units, **px** for borders and fixed elements
