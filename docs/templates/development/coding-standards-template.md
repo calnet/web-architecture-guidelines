@@ -28,9 +28,9 @@ const config = {
 
 // Bad
 const config = {
-  apiUrl: "https://api.example.com",
-  timeout: 5000,
-  retries: 3,
+    apiUrl: "https://api.example.com",
+    timeout: 5000,
+    retries: 3,
 };
 ```
 
