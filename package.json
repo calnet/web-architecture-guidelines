@@ -12,7 +12,10 @@
     "lint:performance": "./scripts/validate-performance.sh",
     "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance",
     "check:errors": "./scripts/check-project-errors.sh",
-    "check:comprehensive": "npx tsc && npm run check:errors"
+    "check:comprehensive": "npx tsc && npm run check:errors",
+    "compliance:enhance": "./scripts/enhance-template-compliance.sh",
+    "compliance:report": "./scripts/generate-compliance-report.sh",
+    "compliance:validate": "npm run compliance:enhance && npm run compliance:report"
   },
   "dependencies": {
     "typescript": "^5.9.2"

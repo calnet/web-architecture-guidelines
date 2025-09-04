@@ -1,5 +1,9 @@
 # API Specification Template
 
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Compliance Score**: Targeting 100%  
+
 ## Overview
 - **Version**: [Version number]
 - **Base URL**: [API base URL]

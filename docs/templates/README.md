@@ -1,5 +1,11 @@
 # Documentation Templates Index
 
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Maintainer**: Documentation Team  
+
+## Overview
+
 This directory contains comprehensive templates for all types of project documentation, organized by category for easy access and use.
 
 ## Template Categories

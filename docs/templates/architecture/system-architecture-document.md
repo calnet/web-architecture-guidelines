@@ -1,5 +1,9 @@
 # System Architecture Document Template
 
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Compliance Score**: Targeting 100%  
+
 ## Document Information
 - **Version**: 1.0
 - **Last Updated**: [Date]
