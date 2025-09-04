@@ -138,13 +138,46 @@ Comprehensive templates organized by category for consistent, professional docum
 - **Security**: Authentication, authorization, and data protection
 - **Performance**: Optimization strategies and monitoring
 
+## Project Validation
+
+### Error Checking
+The repository includes comprehensive validation tools to ensure quality and consistency:
+
+```bash
+# Run comprehensive project error check
+npm run check:errors
+
+# Run individual validation checks
+npm run lint:templates        # Validate template structure
+npm run lint:architecture     # Check architecture compliance  
+npm run lint:security         # Security compliance check
+npm run lint:performance      # Performance validation
+npm run lint:all             # Run all individual checks
+
+# Full validation with TypeScript compilation
+npm run check:comprehensive
+```
+
+### Validation Coverage
+- ✅ Documentation structure integrity
+- ✅ Architecture compliance (9 core principles)
+- ✅ Security best practices and vulnerability scanning
+- ✅ Performance considerations and optimization
+- ✅ Template completeness and compliance
+- ✅ Link validation (internal and external)
+- ✅ Dependency security audit
+- ✅ File system integrity
+
+See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for detailed validation results.
+
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/improvement`)
 3. Make your changes and add tests
-4. Commit with conventional commit messages
-5. Submit a pull request
+4. Run `npm run check:errors` to validate your changes
+5. Commit with conventional commit messages
+6. Submit a pull request
 
 ### Commit Message Format
 ```

@@ -50,3 +50,8 @@ coverage/
 
 # Claude Code local settings and chat history
 .claude/
+
+# Build artifacts
+tsconfig.json
+dist/
+/tmp/

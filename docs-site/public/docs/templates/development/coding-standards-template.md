@@ -1,6 +1,8 @@
 # Coding Standards Template
 
-[Previous content through React Performance continues...]
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Target Audience**: Development Team  
 
 # [Project Name] Coding Standards
 
@@ -28,9 +30,9 @@ const config = {
 
 // Bad
 const config = {
-  apiUrl: "https://api.example.com",
-  timeout: 5000,
-  retries: 3,
+    apiUrl: "https://api.example.com",
+    timeout: 5000,
+    retries: 3,
 };
 ```
 

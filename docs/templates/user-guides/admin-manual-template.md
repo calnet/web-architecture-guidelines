@@ -1,5 +1,9 @@
 # [Application Name] Administrator Manual
 
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Target Audience**: System Administrators  
+
 ## Overview
 
 This manual provides comprehensive guidance for system administrators managing [Application Name]. It covers user management, system configuration, security settings, monitoring, and troubleshooting procedures.

@@ -1,5 +1,9 @@
 # [Application Name] User Manual
 
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Target Audience**: End Users  
+
 ## Table of Contents
 1. [Getting Started](#getting-started)
 2. [Basic Features](#basic-features)

@@ -1,5 +1,7 @@
 # Architecture Decision Record (ADR) Template
 
+## Status
+
 **Status**: [Proposed | Accepted | Deprecated | Superseded]  
 **Date**: [YYYY-MM-DD]  
 **Authors**: [Name(s)]  

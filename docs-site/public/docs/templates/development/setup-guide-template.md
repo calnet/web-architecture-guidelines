@@ -1,5 +1,9 @@
 # Development Environment Setup Guide Template
 
+**Template Version**: 1.0  
+**Last Updated**: 2025-09-04  
+**Target Audience**: Developers  
+
 ## Prerequisites
 Before starting, ensure you have the following installed:
 - **Node.js**: Version 18.x or higher
