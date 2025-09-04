@@ -4,13 +4,15 @@
   "description": "Comprehensive guidelines for building well-architected web applications",
   "scripts": {
     "security:audit": "npm audit",
-    "security:audit-fix": "npm audit fix",
+    "security:audit-fix": "npm audit fix", 
     "security:check": "npm audit --audit-level moderate",
     "lint:templates": "./scripts/validate-templates.sh",
     "lint:architecture": "./scripts/validate-architecture.sh",
     "lint:security": "./scripts/validate-security.sh",
     "lint:performance": "./scripts/validate-performance.sh",
-    "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance"
+    "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance",
+    "check:errors": "./scripts/check-project-errors.sh",
+    "check:comprehensive": "npx tsc && npm run check:errors"
   },
   "dependencies": {
     "typescript": "^5.9.2"
