@@ -212,7 +212,7 @@ class TemplateComplianceChecker {
   private extractProjectVersion(content: string): string | null {
     const versionMatch = content.match(/version:\s*([^\s\n]+)/i) ||
                         content.match(/v(\d+\.\d+(?:\.\d+)?)/i);
-    return versionMatch ? versionMatch[1] : null;
+    return versionMatch ? (versionMatch[1] ?? null) : null;
   }
 
   private generateRecommendations(compliance: TemplateCompliance[]): string[] {
