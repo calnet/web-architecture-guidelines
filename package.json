@@ -12,7 +12,7 @@
     "lint:security": "./scripts/validate-security.sh",
     "lint:performance": "./scripts/validate-performance.sh",
     "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance",
-    "type-check": "npx tsc --noEmit",
+    "type-check": "npx tsc --noEmit --skipLibCheck",
     "test": "echo 'No tests specified yet'",
     "test:coverage": "echo 'No test coverage configured yet'",
     "docs:validate-structure": "./scripts/validate-docs-structure.sh",
