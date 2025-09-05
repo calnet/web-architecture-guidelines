@@ -1,6 +1,6 @@
 {
   "name": "web-architecture-guidelines",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Comprehensive guidelines for building well-architected web applications",
   "scripts": {
     "security:audit": "npm audit",
@@ -15,7 +15,9 @@
     "check:comprehensive": "npx tsc && npm run check:errors",
     "compliance:enhance": "./scripts/enhance-template-compliance.sh",
     "compliance:report": "./scripts/generate-compliance-report.sh",
-    "compliance:validate": "npm run compliance:enhance && npm run compliance:report"
+    "compliance:validate": "npm run compliance:enhance && npm run compliance:report",
+    "versions:sync": "./scripts/sync-versions.sh",
+    "versions:validate": "./scripts/validate-versions.sh"
   },
   "dependencies": {
     "typescript": "^5.9.2"

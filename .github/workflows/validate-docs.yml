@@ -46,3 +46,13 @@ jobs:
           test -f docs/project-integration-guide.md || (echo "Missing project integration guide" && exit 1)
           
           echo "✅ All required files and directories exist"
+
+  validate-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate version consistency
+        run: |
+          chmod +x ./scripts/validate-versions.sh
+          ./scripts/validate-versions.sh

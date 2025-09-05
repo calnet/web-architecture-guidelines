@@ -637,6 +637,49 @@ export async function generateComplianceReport(
 - **Migration guides** for breaking changes
 - **Backward compatibility** when possible
 - **Support period** for legacy templates
+
+### Centralized Version Management
+
+**Version Synchronization:**
+
+The repository includes automated tools to maintain version consistency across all documentation:
+
+```bash
+# Validate all versions are aligned
+npm run versions:validate
+
+# Synchronize all versions to match the root VERSION file
+npm run versions:sync
+```
+
+**Version Files Managed:**
+- Root `VERSION` file (source of truth)
+- `package.json` version
+- Template version files (`docs/.template-version`, `docs/templates/VERSION`)
+- Document metadata versions (architecture, security, performance docs)
+- Individual template versions
+
+**CI/CD Integration:**
+
+The validation workflow includes version consistency checks:
+
+```yaml
+# .github/workflows/validate-docs.yml
+validate-versions:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: Validate version consistency
+      run: |
+        chmod +x ./scripts/validate-versions.sh
+        ./scripts/validate-versions.sh
+```
+
+**Best Practices:**
+- Update the root `VERSION` file when making significant changes
+- Run `npm run versions:sync` after version updates
+- Include version validation in local development workflow
+- All template and document versions should stay aligned
 ```
 
 ### 2. Metrics and Success Measurement
