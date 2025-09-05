@@ -57,6 +57,19 @@ check_file "docs/templates/user-guides/admin-manual-template.md" || ERRORS=$((ER
 check_file "docs/templates/development/setup-guide-template.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/templates/development/coding-standards-template.md" || ERRORS=$((ERRORS + 1))
 
+# Check critical script files mentioned in documentation
+check_file "scripts/integrate-web-architecture-guidelines.sh" || ERRORS=$((ERRORS + 1))
+check_file "scripts/validate-docs-structure.sh" || ERRORS=$((ERRORS + 1))
+check_file "scripts/validate-templates.sh" || ERRORS=$((ERRORS + 1))
+check_file "scripts/validate-architecture.sh" || ERRORS=$((ERRORS + 1))
+check_file "scripts/validate-security.sh" || ERRORS=$((ERRORS + 1))
+check_file "scripts/validate-performance.sh" || ERRORS=$((ERRORS + 1))
+
+# Check workflow files
+check_file ".github/workflows/validate-docs.yml" || ERRORS=$((ERRORS + 1))
+check_file ".github/workflows/sync-templates.yml" || ERRORS=$((ERRORS + 1))
+check_file ".github/workflows/base-compliance.yml" || ERRORS=$((ERRORS + 1))
+
 # Summary
 echo ""
 if [ $ERRORS -eq 0 ]; then
