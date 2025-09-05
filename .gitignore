@@ -52,6 +52,5 @@ coverage/
 .claude/
 
 # Build artifacts
-tsconfig.json
 dist/
 /tmp/
