@@ -140,25 +140,29 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 1. Resource Constraint Guidance & Decision Trees
 
-**Team Size Considerations**
+#### Tier 1: Small Teams (1-3 developers)
+**Foundation Level - Startup & MVP Focus**
 
-- **Small Teams (1-3 developers)**
-  - Monolithic architecture with modular design
-  - Managed services over self-hosted solutions
-  - Simplified deployment and monitoring
-  - Focus on rapid iteration and learning
+- Monolithic architecture with modular design
+- Managed services over self-hosted solutions
+- Simplified deployment and monitoring
+- Focus on rapid iteration and learning
 
-- **Medium Teams (4-10 developers)**
-  - Modular monolith with clear boundaries
-  - Microservices for specific domains
-  - Dedicated DevOps practices
-  - Formal code review processes
+#### Tier 2: Medium Teams (4-10 developers)
+**Professional Level - Production Ready**
 
-- **Large Teams (10+ developers)**
-  - Microservices architecture
-  - Advanced CI/CD and automation
-  - Dedicated platform teams
-  - Enterprise-grade monitoring and security
+- Modular monolith with clear boundaries
+- Microservices for specific domains
+- Dedicated DevOps practices
+- Formal code review processes
+
+#### Tier 3: Large Teams (10+ developers)
+**Enterprise Level - Large-Scale Systems**
+
+- Microservices architecture
+- Advanced CI/CD and automation
+- Dedicated platform teams
+- Enterprise-grade monitoring and security
 
 ### 2. Architectural Patterns
 
