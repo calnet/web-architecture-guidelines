@@ -8,6 +8,9 @@ on:
     branches: [ main ]
     paths: [ 'docs/**' ]
 
+permissions:
+  contents: read
+
 jobs:
   validate-links:
     runs-on: ubuntu-latest
