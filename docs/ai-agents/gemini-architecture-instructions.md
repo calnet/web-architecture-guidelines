@@ -1,7 +1,7 @@
 # Gemini Web Application Architecture Instructions
 
-**Instruction Version**: 1.1.0  
-**Last Updated**: 2025-09-06 @ 17:03  
+**Instruction Version**: 1.2.0  
+**Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: Google Gemini
 
 ## Primary Directive

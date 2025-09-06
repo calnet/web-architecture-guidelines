@@ -1,7 +1,7 @@
 # API Specification Template
 
-**Template Version**: 1.1.0
-**Last Updated**: 2025-09-06 @ 17:03  
+**Template Version**: 1.2.0
+**Last Updated**: 2025-09-06 @ 18:49
 **Compliance Score**: Targeting 100%  
 
 ## Overview
@@ -255,5 +255,5 @@ curl -X POST https://api.example.com/v1/users \
 See the `examples/` directory for complete request/response examples.
 
 ---
-*Template Version: 1.1.0******  
+*Template Version: 1.2.0********  
 *Last Updated: [Date]*

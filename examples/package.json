@@ -1,6 +1,6 @@
 {
   "name": "project-example",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Example project following web architecture guidelines",
   "scripts": {
     "dev": "next dev",

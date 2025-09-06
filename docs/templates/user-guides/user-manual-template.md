@@ -1,7 +1,7 @@
 # [Application Name] User Manual
 
-**Template Version**: 1.1.0
-**Last Updated**: 2025-09-06 @ 17:03  
+**Template Version**: 1.2.0
+**Last Updated**: 2025-09-06 @ 18:49
 **Target Audience**: End Users  
 
 ## Table of Contents
@@ -336,4 +336,4 @@ A: Refunds are available within 30 days of purchase. Contact support for assista
 ---
 *Last updated: [Date]*  
 *Version: [Version number]*  
-*Template Version: 1.1.0******
+*Template Version: 1.2.0********
