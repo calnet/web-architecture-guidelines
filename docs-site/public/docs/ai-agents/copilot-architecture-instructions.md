@@ -1,15 +1,15 @@
 # GitHub Copilot Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.1
+**Instruction Version**: 1.3.2
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: GitHub Copilot
 
 ## Enhanced Claude Integration
 
-**New in v1.2.0**: This repository includes an Enhanced Claude Code Review workflow system that complements GitHub Copilot's code generation capabilities with comprehensive automated analysis and optimization recommendations.
+**New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system that complements GitHub Copilot's code generation capabilities with comprehensive automated analysis and optimization recommendations.
 
 ### AI Tool Collaboration Strategy
-When working with repositories that have the Enhanced Claude workflow system:
+When working with repositories that have the AI-Powered Code Review system:
 
 1. **Code Generation** (GitHub Copilot): Generate clean, maintainable code following architectural patterns
 2. **Code Review** (Enhanced Claude): Automated analysis through `/architecture-review`, `/security-scan`, `/performance-check` commands
@@ -45,7 +45,7 @@ const ApiClient = {
 };
 ```
 
-For complete Enhanced Claude workflow setup, see the repository's IMPLEMENTATION_GUIDE.md.
+For complete AI-Powered Code Review workflow setup, see the repository's IMPLEMENTATION_GUIDE.md.
 
 ## Code Generation Philosophy
 

@@ -4,7 +4,7 @@ Comprehensive guidelines for building well-architected, secure, scalable, and ma
 
 ## Overview
 
-This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices. It includes an advanced **Enhanced Claude Code Review workflow system** with automated workflows, custom commands, comprehensive monitoring, and production-ready deployment capabilities.
+This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices. It includes an advanced **AI-Powered Code Review workflow system** with automated workflows, custom commands, comprehensive monitoring, and production-ready deployment capabilities.
 
 ## Structure
 
@@ -35,7 +35,7 @@ docs/
         ├── setup-guide-template.md   # Environment setup
         └── coding-standards-template.md # Code quality standards
 
-.claude/commands/                       # Enhanced Claude Code Review System
+.claude/commands/                       # AI-Powered Code Review System
 ├── architecture-review.md             # Comprehensive architecture analysis
 ├── security-scan.md                   # Security vulnerability assessment  
 ├── performance-check.md               # Performance optimization review
@@ -61,12 +61,12 @@ docs-site/                             # Interactive Documentation Website
 
 ## Quick Start
 
-### Enhanced Claude Code Review System
+### AI-Powered Code Review System
 
 **New in v1.2.0**: Complete automated code review workflow with AI-powered analysis.
 
 ```bash
-# Quick setup of Enhanced Claude workflow system
+# Quick setup of AI-Powered Code Review system
 ./setup-enhanced-workflow.sh
 
 # Configure ANTHROPIC_API_KEY
@@ -197,10 +197,10 @@ Comprehensive templates organized by category for consistent, professional docum
 ## Project Validation
 
 ### Enhanced Workflow System Validation
-The repository includes comprehensive validation tools and the new Enhanced Claude workflow system:
+The repository includes comprehensive validation tools and the new AI-Powered Code Review system:
 
 ```bash
-# Enhanced Claude workflow system validation
+# AI-Powered Code Review system validation
 npm run next-steps:all          # Complete system validation
 npm run workflow:test          # Test workflow system
 npm run workflow:monitor       # Monitor performance
@@ -230,7 +230,7 @@ npm run check:comprehensive    # Full validation with TypeScript
 - ✅ Dependency security audit
 - ✅ File system integrity
 
-See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for traditional validation and [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for Enhanced Claude workflow documentation.
+See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for traditional validation and [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for AI-Powered Code Review workflow documentation.
 
 ## Contributing
 

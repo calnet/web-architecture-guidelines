@@ -1,16 +1,16 @@
 # Claude Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.1
-**Last Updated**: 2025-09-06 @ 18:49
+**Instruction Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
 **Target AI**: Claude (All Levels - Foundation to Enterprise)
 
 ## Purpose
 
 This unified instruction file guides Claude in providing comprehensive, structured guidance for building well-architected web applications that are maintainable, secure, scalable, and follow industry best practices from conception to deployment and beyond.
 
-## Enhanced Claude Code Review Integration
+## AI-Powered Code Review Integration
 
-**New in v1.2.0**: This repository includes an Enhanced Claude Code Review workflow system that provides automated, intelligent code analysis and optimization recommendations.
+**New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system that provides automated, intelligent code analysis and optimization recommendations.
 
 ### Available Custom Commands
 When working with repositories that have this system implemented, you can use specialized commands for focused analysis:
@@ -22,7 +22,7 @@ When working with repositories that have this system implemented, you can use sp
 - `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
 
 ### Integration with Architecture Guidelines
-The Enhanced Claude workflow system enforces and validates the architecture principles outlined in these instructions through:
+The AI-Powered Code Review system enforces and validates the architecture principles outlined in these instructions through:
 
 - **Automated Analysis**: GitHub Actions workflows provide continuous review
 - **Standardized Metrics**: Consistent evaluation criteria across all projects
@@ -433,6 +433,40 @@ This instruction set can be adapted for any AI agent or LLM tool. To integrate w
 4. **Validation**: Test and verify implementation against success metrics
 5. **Optimization**: Continuously improve based on feedback and monitoring
 
+## Standard AI Agent Requirements
+
+**These requirements apply to ALL AI agents working with this repository:**
+
+### Documentation Update Requirements
+Every change you make MUST include:
+
+1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or structure
+4. **Integration Updates**: Update AI agent integration guides and instruction files
+5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+
+### Version Bump Evaluation Requirements
+For every change, evaluate if a version bump is required:
+
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+
+**Process**:
+- Use `npm run versions:validate` to check current version consistency
+- Use `npm run versions:bump-major|minor|patch` to update versions
+- Update CHANGELOG.md with detailed change descriptions
+- Ensure all 100+ files maintain version consistency
+
+### Quality Standards
+- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Documentation Currency**: Keep all documentation up-to-date and accurate
+- **Repository Compliance**: Ensure all changes pass repository validation checks
+
+These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
+
 ## Final Notes
 
 - **Stay Current**: Web development evolves rapidly; these guidelines should be updated regularly
@@ -445,6 +479,6 @@ This instruction set provides a comprehensive foundation for building modern web
 
 ---
 
-**Version**: 1.3.1
-**Last Updated**: September 2025
-**Instruction Version**: 1.3.1
+**Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
+**Instruction Version**: 1.3.2

@@ -1,4 +1,4 @@
-# Enhanced Claude Code Review Workflow
+# AI-Powered Code Review Workflow
 
 ## Quick Start
 
@@ -262,6 +262,6 @@ WORKFLOW_README.md                   # This usage guide
 
 ---
 
-- **Version**: 1.3.1
+- **Version**: 1.3.2
 - **Last Updated**: September 2025
-- **Template Version**: 1.3.1
+- **Template Version**: 1.3.2

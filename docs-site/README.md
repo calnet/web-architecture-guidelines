@@ -52,7 +52,7 @@ npm run copy-docs
 This copies:
 
 - `README.md`, `git-commands-and-setup.md`, `CLAUDE.md`, `LICENSE`
-- `IMPLEMENTATION_GUIDE.md`, `WORKFLOW_README.md`, `CHANGELOG.md` - Enhanced Claude workflow documentation
+- `IMPLEMENTATION_GUIDE.md`, `WORKFLOW_README.md`, `CHANGELOG.md` - AI-Powered Code Review workflow documentation
 - `docs/` - Complete documentation structure
 - `examples/` - Configuration examples  
 - `scripts/` - Validation and workflow management scripts
@@ -84,9 +84,9 @@ The site organizes documentation into logical sections:
 
 ### 🚀 Getting Started
 
-- README - Project overview and Enhanced Claude workflow system setup
+- README - Project overview and AI-Powered Code Review system setup
 - Git Commands - Version control setup guide
-- Implementation Guide - Complete Enhanced Claude workflow implementation
+- Implementation Guide - Complete AI-Powered Code Review workflow implementation
 - Workflow README - Usage and maintenance documentation
 
 ### 📋 Templates  

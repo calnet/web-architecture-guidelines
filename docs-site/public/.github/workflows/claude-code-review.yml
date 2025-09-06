@@ -1,4 +1,4 @@
-name: Enhanced Claude Code Review
+name: AI-Powered Code Review
 
 on:
   pull_request:
@@ -49,7 +49,7 @@ jobs:
         run: npm run lint:performance
         continue-on-error: true
         
-      - name: Enhanced Claude Code Review
+      - name: AI-Powered Code Review
         uses: anthropics/claude-code-action@v1
         with:
           anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}

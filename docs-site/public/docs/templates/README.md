@@ -1,6 +1,6 @@
 # Documentation Templates Index
 
-**Template Version**: 1.3.1
+**Template Version**: 1.3.2
 **Last Updated**: 2025-09-06 @ 18:49
 **Maintainer**: Documentation Team  
 

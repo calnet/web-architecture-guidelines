@@ -1,7 +1,7 @@
 # [Application Name] Administrator Manual
 
-**Template Version**: 1.3.1
-**Last Updated**: 2025-09-06 @ 18:49
+**Template Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
 **Target Audience**: System Administrators  
 
 ## Overview

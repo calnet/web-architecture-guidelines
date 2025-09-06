@@ -1,4 +1,4 @@
-# Enhanced Claude Code Review Workflow Implementation Guide
+# AI-Powered Code Review Workflow Implementation Guide
 
 ## Overview
 
@@ -331,7 +331,7 @@ Modify workflows in `.github/workflows/`:
 
 ```yaml
 # Adjust model or parameters
-- name: Enhanced Claude Code Review
+- name: AI-Powered Code Review
   uses: anthropics/claude-code-action@v1
   with:
     model: 'claude-3-5-sonnet-20241022'  # Change model
@@ -438,6 +438,6 @@ Track these metrics to measure system effectiveness:
 
 ---
 
-- **Version**: 1.3.1
+- **Version**: 1.3.2
 - **Last Updated**: September 2025
-- **Template Version**: 1.3.1
+- **Template Version**: 1.3.2

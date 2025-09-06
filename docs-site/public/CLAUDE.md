@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a documentation-only repository containing web application architecture guidelines optimized for AI agents and development teams. The repository focuses on providing comprehensive instruction sets for various AI agents and documentation templates for building high-quality web applications.
 
-## Enhanced Claude Code Review System
+## AI-Powered Code Review System
 
 This repository includes an advanced Claude Code Review workflow system with the following components:
 
@@ -118,7 +118,7 @@ docs/
     ├── user-guides/                   # User and admin manual templates
     └── development/                   # Setup guides and coding standards
 
-.github/workflows/                      # Enhanced Claude workflows
+.github/workflows/                      # AI-Powered Code Review workflows
 ├── claude-code-review.yml             # Main review workflow
 └── advanced-architecture-review.yml   # Advanced multi-stage workflow
 
@@ -150,7 +150,7 @@ This repository follows a documentation-first approach with these key principles
 
 ### Quality Assurance
 - **GitHub Actions workflow** (`.github/workflows/validate-docs.yml`) provides automated validation
-- **Enhanced Claude workflows** provide intelligent code review and analysis
+- **AI-Powered Code Review workflows** provide intelligent code review and analysis
 - **Link checking**: Validates all markdown links are accessible
 - **Markdown linting**: Ensures consistent formatting and style
 - **Structure validation**: Verifies required directories and files exist
@@ -278,6 +278,6 @@ This repository serves as a comprehensive foundation for web application archite
 
 ---
 
-- **Version**: 1.3.1
+- **Version**: 1.3.2
 - **Last Updated**: September 2025
-- **Template Version**: 1.3.1
+- **Template Version**: 1.3.2

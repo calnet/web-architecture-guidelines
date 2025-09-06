@@ -1,11 +1,11 @@
 # API Specification Template
 
-**Template Version**: 1.3.1
-**Last Updated**: 2025-09-06 @ 18:49
+**Template Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
 **Compliance Score**: Targeting 100%  
 
 ## Overview
-- **Version**: 1.3.1
+- **Version**: 1.3.2
 - **Base URL**: [API base URL]
 - **Protocol**: REST/GraphQL/gRPC
 - **Authentication**: [Auth method]
@@ -255,5 +255,5 @@ curl -X POST https://api.example.com/v1/users \
 See the `examples/` directory for complete request/response examples.
 
 ---
-*Template Version: 1.3.1***********  
+*Template Version: 1.3.2************  
 *Last Updated: [Date]*

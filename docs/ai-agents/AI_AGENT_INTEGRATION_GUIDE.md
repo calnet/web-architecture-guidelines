@@ -1,8 +1,8 @@
 # AI Agent Integration Guide
 
-**Version**: 1.3.1
-**Last Updated**: 2025-09-06 @ 18:49
-**Template Version**: 1.3.1
+**Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
+**Template Version**: 1.3.2
 
 ## Purpose
 
@@ -55,7 +55,7 @@ When providing architectural guidance, organize responses using this structure:
 **Integration Strategy**:
 - Leverage advanced reasoning for complex architectural trade-offs
 - Focus on comprehensive analysis and detailed implementation guidance
-- Utilize Enhanced Claude Code Review workflow system when available
+- Utilize AI-Powered Code Review workflow system when available
 - Emphasize safety and security considerations
 
 **Usage Example**:
@@ -145,8 +145,8 @@ response = client.messages.create(
 ```markdown
 # [AI Agent Name] Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.1
-**Last Updated**: [Date]
+**Instruction Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
 **Target AI**: [AI Agent Name]
 
 ## Agent-Specific Adaptations
@@ -233,7 +233,7 @@ All AI agents should provide:
 
 ### System Overview
 
-The Enhanced Claude Code Review workflow system (v1.2.0+) provides automated, intelligent code analysis and optimization recommendations. This system can be leveraged by all AI agents to provide consistent, validated architectural guidance.
+The AI-Powered Code Review workflow system (v1.2.0+) provides automated, intelligent code analysis and optimization recommendations. This system can be leveraged by all AI agents to provide consistent, validated architectural guidance.
 
 ### Core Components
 
@@ -256,7 +256,7 @@ The Enhanced Claude Code Review workflow system (v1.2.0+) provides automated, in
 
 ### Integration for All AI Agents
 
-When the Enhanced Claude workflow system is available, any AI agent should:
+When the AI-Powered Code Review system is available, any AI agent should:
 
 1. **Reference Existing Analysis**: Check for workflow outputs and build upon automated insights
 2. **Validate Recommendations**: Ensure suggestions align with automated quality gates
@@ -387,10 +387,44 @@ The workflow system provides:
 - Update instructions based on industry evolution
 - Maintain alignment with emerging best practices
 
+## Standard AI Agent Requirements
+
+**These requirements apply to ALL AI agents working with this repository:**
+
+### Documentation Update Requirements
+Every change you make MUST include:
+
+1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or structure
+4. **Integration Updates**: Update AI agent integration guides and instruction files
+5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+
+### Version Bump Evaluation Requirements
+For every change, evaluate if a version bump is required:
+
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+
+**Process**:
+- Use `npm run versions:validate` to check current version consistency
+- Use `npm run versions:bump-major|minor|patch` to update versions
+- Update CHANGELOG.md with detailed change descriptions
+- Ensure all 100+ files maintain version consistency
+
+### Quality Standards
+- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Documentation Currency**: Keep all documentation up-to-date and accurate
+- **Repository Compliance**: Ensure all changes pass repository validation checks
+
+These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
+
 ---
 
 This integration guide ensures consistent, high-quality architectural guidance across all AI agents while leveraging each agent's unique capabilities and strengths.
 
-**Version**: 1.3.1
-**Last Updated**: September 2025
-**Template Version**: 1.3.1
+**Version**: 1.3.2
+**Last Updated**: 2025-09-06 @ 22:12
+**Template Version**: 1.3.2
