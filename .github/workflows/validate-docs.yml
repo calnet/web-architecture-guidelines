@@ -22,6 +22,7 @@ jobs:
         with:
           use-quiet-mode: 'yes'
           use-verbose-mode: 'yes'
+          config-file: '.github/workflows/link-check-config.json'
 
   lint-markdown:
     runs-on: ubuntu-latest
