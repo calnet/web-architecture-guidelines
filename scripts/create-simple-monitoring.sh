@@ -1,5 +1,29 @@
 #!/bin/bash
 
+# Simple Monitoring Scripts Creation
+# Creates monitoring scripts for the enhanced Claude Code Review system
+
+set -e
+
+# Load common utilities
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/workflow-utils.sh"
+
+create_simple_monitor_script() {
+    local script_file="scripts/monitor-workflow.sh"
+    
+    print_header "📄 Creating simple monitoring script..."
+    
+    backup_file "$script_file"
+    
+    if is_dry_run; then
+        print_info "DRY RUN: Would create $script_file"
+        return 0
+    fi
+    
+    cat > "$script_file" << 'EOF'
+#!/bin/bash
+
 # Simple Workflow Monitoring Script
 # Basic health checks for the enhanced Claude Code Review system
 
@@ -70,3 +94,40 @@ echo "💡 Usage tips:"
 echo "  - Run this script regularly to check system health"
 echo "  - Use 'gh run list' to see detailed workflow history"
 echo "  - Check 'gh secret list' to verify API key configuration"
+EOF
+
+    chmod +x "$script_file"
+    validate_file_creation "$script_file" "Simple monitoring script"
+}
+
+main() {
+    print_header "🚀 Creating Simple Monitoring Scripts for Enhanced Claude Code Review System"
+    echo ""
+    
+    # Parse command line arguments
+    parse_common_args "$@"
+    
+    # Validate prerequisites
+    if ! validate_prerequisites "Simple Monitoring Scripts Creation"; then
+        exit 1
+    fi
+    
+    # Create simple monitoring script
+    create_simple_monitor_script
+    
+    echo ""
+    print_success "Simple monitoring script creation completed!"
+    
+    if ! is_dry_run; then
+        echo ""
+        print_info "Next steps:"
+        print_info "1. Test monitoring with: scripts/monitor-workflow.sh"
+        print_info "2. Set up regular monitoring (cron job or manual checks)"
+        print_info "3. Configure repository secrets for full functionality"
+    fi
+}
+
+# Execute main function if script is run directly
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi
