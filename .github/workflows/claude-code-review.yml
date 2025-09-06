@@ -31,6 +31,11 @@ jobs:
               with:
                   fetch-depth: 1
 
+            - name: Check Permissions for Human Users Only
+              if: ${{ github.actor != 'Copilot' && !startsWith(github.actor, 'github-actions[bot]') }}
+              run: |
+                gh api /repos/${{ github.repository }}/collaborators/${{ github.actor }}/permission
+
             - name: Run Claude Code Review
               id: claude-review
               uses: anthropics/claude-code-action@v1 # Use stable version instead of @beta
