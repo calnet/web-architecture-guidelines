@@ -250,3 +250,12 @@ The version management scripts are located in `./scripts/` and should be updated
 ---
 
 For additional support, refer to the main project documentation or create an issue in the repository.
+
+---
+
+**Document Information**:
+
+- **Version**: 1.1.0
+- **Last Updated**: January 2025
+- **Review Schedule**: Quarterly
+- **Maintained by**: Architecture Team

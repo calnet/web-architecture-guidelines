@@ -709,3 +709,12 @@ validate-versions:
 ```
 
 This integration guide ensures that projects can effectively utilize the organized template structure while maintaining consistency and contributing to continuous improvement across the organization. The categorized templates make it easier to find the right documentation format and maintain professional standards across all projects.
+
+---
+
+**Document Information**:
+
+- **Version**: 1.1.0
+- **Last Updated**: January 2025
+- **Review Schedule**: Quarterly
+- **Maintained by**: Architecture Team

@@ -54,9 +54,10 @@ done
 echo ""
 echo "📄 Checking document versions..."
 
-for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs-site/public/docs/architecture/system-architecture.md"; do
+for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs/integration-automation-script.md" "docs/project-integration-guide.md" "docs/version-management-guide.md" "docs-site/public/docs/architecture/system-architecture.md"; do
     if [ -f "$doc_file" ]; then
-        DOC_VERSION=$(grep -o "\*\*Version\*\*: [^*]*" "$doc_file" 2>/dev/null | sed 's/.*\*\*Version\*\*: //' || echo "NOT_FOUND")
+        # Look for version in Document Information section (use tail to get the last occurrence)
+        DOC_VERSION=$(grep "\*\*Version\*\*: [^*]*" "$doc_file" 2>/dev/null | tail -1 | sed 's/.*\*\*Version\*\*: //' | tr -d ' ' || echo "NOT_FOUND")
         if [ "$DOC_VERSION" = "$MAIN_VERSION" ]; then
             echo "✅ $doc_file: $DOC_VERSION"
         elif [ "$DOC_VERSION" = "NOT_FOUND" ]; then
