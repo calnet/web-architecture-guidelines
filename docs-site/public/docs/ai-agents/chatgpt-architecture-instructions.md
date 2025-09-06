@@ -1,6 +1,6 @@
 # ChatGPT Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.0
+**Instruction Version**: 1.3.1
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: ChatGPT
 

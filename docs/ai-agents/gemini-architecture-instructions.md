@@ -1,6 +1,6 @@
 # Google Gemini Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.0
+**Instruction Version**: 1.3.1
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: Google Gemini
 
@@ -10,6 +10,37 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
 - **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
 - **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
+
+## Enhanced Claude Code Review Integration
+
+**New in v1.2.0**: This repository includes an Enhanced Claude Code Review workflow system that provides automated code analysis and optimization recommendations. Gemini can leverage these insights for research-backed architectural optimization.
+
+### Analytical Integration Strategy
+
+When working with repositories that have the Enhanced Claude workflow system:
+
+1. **Research-Backed Analysis**: Use workflow outputs to provide evidence-based architectural recommendations
+2. **Multimodal Explanations**: Create diagrams and visual explanations of automated findings when helpful
+3. **Innovation Opportunities**: Identify cutting-edge improvements based on automated analysis
+4. **Factual Accuracy**: Validate workflow recommendations against current technology trends and research
+
+### Custom Command Analysis
+
+When Enhanced Claude workflows are available, provide analytical insights on:
+
+- **`/architecture-review`**: Research latest architectural patterns that align with review findings
+- **`/security-scan`**: Analyze security findings against current threat landscape and OWASP guidelines
+- **`/performance-check`**: Research performance optimization techniques that complement automated recommendations
+- **`/documentation-audit`**: Synthesize documentation best practices based on audit results
+
+### Gemini-Specific Strengths
+
+Leverage your research and multimodal capabilities to:
+- Analyze automated findings against current technology research and trends
+- Generate architectural diagrams and visual explanations of workflow recommendations
+- Provide comprehensive technology comparisons based on automated analysis
+- Research emerging patterns and technologies that complement workflow insights
+- Create detailed technical documentation and explanation materials
 
 ## Primary Directive
 

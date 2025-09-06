@@ -1,8 +1,8 @@
 # AI Agent Integration Guide
 
-**Version**: 1.3.0
+**Version**: 1.3.1
 **Last Updated**: 2025-09-06 @ 18:49
-**Template Version**: 1.3.0
+**Template Version**: 1.3.1
 
 ## Purpose
 
@@ -145,7 +145,7 @@ response = client.messages.create(
 ```markdown
 # [AI Agent Name] Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.0
+**Instruction Version**: 1.3.1
 **Last Updated**: [Date]
 **Target AI**: [AI Agent Name]
 
@@ -231,26 +231,72 @@ All AI agents should provide:
 
 ## Enhanced Claude Workflow Integration
 
-### Available for All Agents
+### System Overview
 
-When the Enhanced Claude Code Review workflow system is available, any AI agent can reference:
+The Enhanced Claude Code Review workflow system (v1.2.0+) provides automated, intelligent code analysis and optimization recommendations. This system can be leveraged by all AI agents to provide consistent, validated architectural guidance.
 
-- **Custom Commands**: Use `/architecture-review`, `/security-scan`, `/performance-check`, `/documentation-audit`, `/quick-fix`
-- **Automated Analysis**: Reference GitHub Actions workflow results
-- **Performance Metrics**: Utilize monitoring data for recommendations
-- **Quality Gates**: Align with automated validation standards
+### Core Components
 
-### Integration Example
+**GitHub Workflows**:
+- `claude-code-review.yml` - Main automated review workflow
+- `advanced-architecture-review.yml` - Multi-stage comprehensive analysis
+
+**Custom Commands Available**:
+- `/architecture-review` - Comprehensive architectural analysis focusing on Clean Architecture principles, design patterns, and component interactions
+- `/security-scan` - Security vulnerability assessment covering OWASP Top 10, authentication, authorization, and data protection
+- `/performance-check` - Performance optimization review analyzing frontend (Core Web Vitals), backend, and infrastructure performance
+- `/documentation-audit` - Documentation quality validation including template compliance and accessibility
+- `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
+
+**Automation Features**:
+- Automated GitHub Actions workflows provide continuous review
+- Real-time performance monitoring and optimization recommendations
+- API usage tracking (GitHub and Anthropic rate limits)
+- Comprehensive testing and validation framework
+
+### Integration for All AI Agents
+
+When the Enhanced Claude workflow system is available, any AI agent should:
+
+1. **Reference Existing Analysis**: Check for workflow outputs and build upon automated insights
+2. **Validate Recommendations**: Ensure suggestions align with automated quality gates
+3. **Leverage Metrics**: Use performance and quality metrics from the monitoring system
+4. **Complement Automation**: Provide human-readable explanations and context for automated findings
+
+### Agent-Specific Integration Strategies
+
+**Claude**: Direct integration with workflow system, can trigger and interpret custom commands
+**ChatGPT**: Reference workflow outputs in conversational guidance, explain automated recommendations
+**Gemini**: Analyze workflow data for research-backed optimization suggestions
+**Copilot**: Generate code that aligns with workflow validation criteria
+**Anthropic API**: Programmatically integrate with workflow system for automated architectural guidance
+
+### Workflow Integration Example
 
 ```markdown
-## Workflow Integration
+## Enhanced Claude Workflow Integration
 
-This project includes Enhanced Claude Code Review capabilities. Consider:
-- Running `/architecture-review` for comprehensive analysis
-- Using `/security-scan` for security validation
-- Implementing `/performance-check` recommendations
-- Following `/documentation-audit` guidelines
+This repository includes automated architectural analysis. When providing guidance:
+
+1. **Check Existing Analysis**: Review any existing `/architecture-review` or `/security-scan` outputs
+2. **Build Upon Automation**: Expand on automated findings with detailed explanations
+3. **Validate Alignment**: Ensure recommendations align with quality gates and performance metrics
+4. **Suggest Commands**: Recommend appropriate custom commands for specific analysis needs
+
+Example workflow usage:
+- Use `/architecture-review` for comprehensive system design validation
+- Run `/security-scan` before deployment recommendations
+- Apply `/performance-check` for optimization guidance
+- Execute `/documentation-audit` for completeness validation
 ```
+
+### Monitoring and Optimization
+
+The workflow system provides:
+- **Performance Analysis**: Duration tracking, success rates, optimization recommendations
+- **Health Monitoring**: System reliability and API usage monitoring
+- **Quality Metrics**: Automated validation results and trend analysis
+- **Alert System**: Issue detection and notification capabilities
 
 ## Common Patterns and Anti-Patterns
 
@@ -345,6 +391,6 @@ This project includes Enhanced Claude Code Review capabilities. Consider:
 
 This integration guide ensures consistent, high-quality architectural guidance across all AI agents while leveraging each agent's unique capabilities and strengths.
 
-**Version**: 1.3.0
+**Version**: 1.3.1
 **Last Updated**: September 2025
-**Template Version**: 1.3.0
+**Template Version**: 1.3.1

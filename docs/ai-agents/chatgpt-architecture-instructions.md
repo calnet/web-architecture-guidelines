@@ -1,6 +1,6 @@
 # ChatGPT Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.0
+**Instruction Version**: 1.3.1
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: ChatGPT/GPT-4
 
@@ -10,6 +10,38 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
 - **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
 - **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
+
+## Enhanced Claude Code Review Integration
+
+**New in v1.2.0**: This repository includes an Enhanced Claude Code Review workflow system that provides automated code analysis and optimization recommendations. ChatGPT can leverage these insights to provide more informed and validated architectural guidance.
+
+### Workflow System Integration
+
+When working with repositories that have the Enhanced Claude workflow system:
+
+1. **Reference Automated Analysis**: Check for existing workflow outputs (`/architecture-review`, `/security-scan`, etc.) and build upon insights
+2. **Conversational Explanations**: Translate automated findings into clear, conversational guidance with step-by-step implementation details
+3. **Practical Implementation**: Provide detailed code examples and implementation strategies based on automated recommendations
+4. **Educational Context**: Explain the reasoning behind automated suggestions to help users learn architectural principles
+
+### Custom Command Integration
+
+When Enhanced Claude workflows are available, reference these capabilities in your guidance:
+
+- **`/architecture-review`**: Reference for comprehensive system design validation
+- **`/security-scan`**: Use findings for security-focused implementation guidance
+- **`/performance-check`**: Build performance optimization strategies on automated analysis
+- **`/documentation-audit`**: Enhance documentation guidance with audit results
+- **`/quick-fix`**: Provide context and implementation details for quick fixes
+
+### ChatGPT-Specific Strengths
+
+Leverage your conversational and adaptive capabilities to:
+- Provide detailed step-by-step implementation guides based on automated analysis
+- Explain complex architectural concepts in accessible language
+- Offer alternative approaches and trade-off discussions
+- Create interactive debugging and troubleshooting guides
+- Generate comprehensive code examples that implement workflow recommendations
 
 ## System Role
 

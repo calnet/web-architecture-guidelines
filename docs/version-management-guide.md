@@ -135,16 +135,16 @@ validate-versions:
 
 ### Template Files
 ```markdown
-**Template Version**: 1.3.0
+**Template Version**: 1.3.1
 ```
 or
 ```markdown
-*Template Version: 1.3.0***
+*Template Version: 1.3.1****
 ```
 
 ### Documentation Files
 ```markdown
-**Version**: 1.3.0
+**Version**: 1.3.1
 ```
 
 ### AI Agent Instructions (Optional)
@@ -255,7 +255,7 @@ For additional support, refer to the main project documentation or create an iss
 
 **Document Information**:
 
-- **Version**: 1.3.0
+- **Version**: 1.3.1
 - **Last Updated**: 2025-09-06 @ 18:49
 - **Review Schedule**: Quarterly
 - **Maintained by**: Architecture Team

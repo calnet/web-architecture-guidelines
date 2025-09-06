@@ -1,6 +1,6 @@
 # Claude Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.0
+**Instruction Version**: 1.3.1
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: Claude (All Levels - Foundation to Enterprise)
 
@@ -445,6 +445,6 @@ This instruction set provides a comprehensive foundation for building modern web
 
 ---
 
-**Version**: 1.3.0
+**Version**: 1.3.1
 **Last Updated**: September 2025
-**Instruction Version**: 1.3.0
+**Instruction Version**: 1.3.1

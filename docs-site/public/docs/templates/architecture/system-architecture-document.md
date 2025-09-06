@@ -1,11 +1,11 @@
 # System Architecture Document Template
 
-**Template Version**: 1.3.0
+**Template Version**: 1.3.1
 **Last Updated**: 2025-09-06 @ 18:49
 **Compliance Score**: Targeting 100%  
 
 ## Document Information
-- **Version**: 1.3.0
+- **Version**: 1.3.1
 - **Last Updated**: 2025-09-06 @ 18:49
 - **Authors**: [Names]
 - **Status**: [Draft | Review | Approved]
@@ -181,5 +181,5 @@ Brief overview of the system and its architecture (2-3 paragraphs)
 [Link to related ADRs]
 
 ---
-*Template Version: 1.3.0**********  
+*Template Version: 1.3.1***********  
 *Last Updated: [Date]*
