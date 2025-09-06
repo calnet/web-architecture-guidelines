@@ -112,8 +112,8 @@ echo ""
 # TypeScript Compliance Check
 echo "📊 TEMPLATE COMPLIANCE ANALYSIS"
 echo "------------------------------"
-if [ -f "dist/template-compliance-checker.js" ]; then
-    node dist/template-compliance-checker.js . > /tmp/compliance.log 2>&1
+if [ -f "dist/tools/template-compliance-checker.js" ]; then
+    node dist/tools/template-compliance-checker.js . > /tmp/compliance.log 2>&1
     if grep -q "❌ NEEDS ATTENTION" /tmp/compliance.log; then
         echo "⚠️  Template compliance: NEEDS ATTENTION"
         grep "Overall Score:" /tmp/compliance.log | head -1
