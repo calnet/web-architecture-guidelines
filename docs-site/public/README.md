@@ -4,7 +4,7 @@ Comprehensive guidelines for building well-architected, secure, scalable, and ma
 
 ## Overview
 
-This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices.
+This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices. It includes an advanced **Enhanced Claude Code Review workflow system** with automated workflows, custom commands, comprehensive monitoring, and production-ready deployment capabilities.
 
 ## Structure
 
@@ -34,9 +34,65 @@ docs/
     └── development/                   # Development team templates
         ├── setup-guide-template.md   # Environment setup
         └── coding-standards-template.md # Code quality standards
+
+.claude/commands/                       # Enhanced Claude Code Review System
+├── architecture-review.md             # Comprehensive architecture analysis
+├── security-scan.md                   # Security vulnerability assessment  
+├── performance-check.md               # Performance optimization review
+├── documentation-audit.md             # Documentation quality validation
+└── quick-fix.md                       # Quick fix implementation
+
+.github/workflows/                      # Automated Review Workflows
+├── claude-code-review.yml             # Main automated review workflow
+└── advanced-architecture-review.yml   # Multi-stage comprehensive analysis
+
+scripts/                               # Enhanced Workflow Management
+├── setup-enhanced-workflow.sh         # Complete system setup
+├── test-workflow.sh                   # Comprehensive workflow testing
+├── monitor-workflow.sh                # Performance monitoring & optimization
+├── configure-anthropic-secret.sh      # ANTHROPIC_API_KEY configuration
+└── version management scripts/        # Automated version synchronization
+
+docs-site/                             # Interactive Documentation Website
+├── README.md                          # Site setup and features
+├── copy-docs.sh                       # Documentation sync script
+└── src/                              # React-based documentation site
 ```
 
 ## Quick Start
+
+### Enhanced Claude Code Review System
+
+**New in v1.2.0**: Complete automated code review workflow with AI-powered analysis.
+
+```bash
+# Quick setup of Enhanced Claude workflow system
+./setup-enhanced-workflow.sh
+
+# Configure ANTHROPIC_API_KEY
+npm run workflow:configure-secret
+
+# Test the workflow system
+npm run workflow:test
+
+# Monitor performance
+npm run workflow:monitor
+```
+
+**Features:**
+- 🤖 **Automated Code Reviews** - Intelligent PR analysis with custom Claude commands
+- 🔒 **Security Scanning** - OWASP Top 10 compliance and vulnerability assessment  
+- ⚡ **Performance Analysis** - Core Web Vitals and optimization recommendations
+- 📋 **Documentation Audits** - Quality validation and compliance checking
+- 🛠️ **Quick Fixes** - Automated resolution of common issues
+- 📊 **Performance Monitoring** - Real-time workflow health and optimization
+
+**Custom Commands Available:**
+- `/architecture-review` - Comprehensive architectural analysis
+- `/security-scan` - Security vulnerability assessment
+- `/performance-check` - Performance optimization review
+- `/documentation-audit` - Documentation quality validation
+- `/quick-fix` - Quick fix implementation
 
 ### For AI Agents
 1. Choose the appropriate instruction file for your AI agent
@@ -140,25 +196,31 @@ Comprehensive templates organized by category for consistent, professional docum
 
 ## Project Validation
 
-### Error Checking
-The repository includes comprehensive validation tools to ensure quality and consistency:
+### Enhanced Workflow System Validation
+The repository includes comprehensive validation tools and the new Enhanced Claude workflow system:
 
 ```bash
-# Run comprehensive project error check
-npm run check:errors
+# Enhanced Claude workflow system validation
+npm run next-steps:all          # Complete system validation
+npm run workflow:test          # Test workflow system
+npm run workflow:monitor       # Monitor performance
 
-# Run individual validation checks
-npm run lint:templates        # Validate template structure
-npm run lint:architecture     # Check architecture compliance  
-npm run lint:security         # Security compliance check
-npm run lint:performance      # Performance validation
-npm run lint:all             # Run all individual checks
-
-# Full validation with TypeScript compilation
-npm run check:comprehensive
+# Traditional validation (still available)
+npm run check:errors           # Comprehensive project error check
+npm run lint:templates         # Validate template structure
+npm run lint:architecture      # Check architecture compliance  
+npm run lint:security          # Security compliance check
+npm run lint:performance       # Performance validation
+npm run lint:all              # Run all individual checks
+npm run check:comprehensive    # Full validation with TypeScript
 ```
 
 ### Validation Coverage
+- ✅ **Enhanced Claude Workflow System** - Automated code review capabilities
+- ✅ **GitHub Actions Workflows** - claude-code-review.yml and advanced-architecture-review.yml
+- ✅ **Custom Claude Commands** - 5 specialized analysis commands
+- ✅ **Version Management** - Automated version synchronization across 77+ files
+- ✅ **Performance Monitoring** - Real-time workflow health and optimization
 - ✅ Documentation structure integrity
 - ✅ Architecture compliance (9 core principles)
 - ✅ Security best practices and vulnerability scanning
@@ -168,7 +230,7 @@ npm run check:comprehensive
 - ✅ Dependency security audit
 - ✅ File system integrity
 
-See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for detailed validation results.
+See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for traditional validation and [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for Enhanced Claude workflow documentation.
 
 ## Contributing
 
@@ -192,11 +254,49 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 ## Versioning
 
-This project follows semantic versioning. Major updates to guidelines warrant version increments.
+This project follows semantic versioning with centralized version management to ensure consistency across all documentation.
 
+### Version Schema
 - **Major**: Breaking changes to core principles
-- **Minor**: New guidelines or significant enhancements
+- **Minor**: New guidelines or significant enhancements  
 - **Patch**: Bug fixes and minor improvements
+
+### Enhanced Version Management System
+
+The repository includes a comprehensive, automated version management system that ensures consistency across all documentation, templates, and configuration files.
+
+```bash
+# Core version management commands
+npm run versions:validate        # Comprehensive validation of all version-managed files
+npm run versions:sync           # Automatically synchronize all versions to root VERSION
+npm run versions:list           # Show detailed inventory of all version-managed files
+
+# Advanced version management (direct script access)
+./scripts/discover-version-files.sh   # Discover all files with version information
+./scripts/maintain-versions.sh        # Add version info to files that should have it
+./scripts/enhance-version-management.sh # Upgrade the version management system
+```
+
+**Comprehensive Coverage**: The system automatically manages versions across:
+- **Root Documentation**: All major .md files (README.md, CLAUDE.md, etc.)
+- **Documentation Files**: All docs/ content with architecture, security, performance guides
+- **AI Agent Instructions**: Version-tagged instruction sets for different AI agents
+- **Template Files**: All documentation templates with template version tracking
+- **Package Files**: All package.json files across the repository
+- **Configuration**: Template version files and metadata
+
+**Key Features**:
+- **Automatic Discovery**: Finds all files with version patterns without manual configuration
+- **Multiple Version Types**: Supports **Version**, **Template Version**, **Instruction Version** patterns
+- **Comprehensive Validation**: Checks 77+ files for version consistency
+- **Enhanced Logging**: Detailed logs and performance tracking
+- **Zero Manual Maintenance**: Add new files and they're automatically included
+- Template version files and metadata
+- Documentation files with version headers
+- Individual template versions (28+ files)
+- AI agent instruction files (when versioned)
+
+For detailed guidance, see [Version Management Guide](docs/version-management-guide.md).
 
 ## License
 

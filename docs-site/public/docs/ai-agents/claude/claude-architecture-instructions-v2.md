@@ -1,8 +1,35 @@
 # Claude Web Application Architecture Instructions
 
+**Instruction Version**: 1.2.0
+**Last Updated**: 2025-09-06 @ 18:49
+**Target AI**: Claude (Advanced Level)
+
 ## Purpose
 
 This instruction file guides Claude in providing comprehensive, structured guidance for building well-architected web applications that are maintainable, secure, scalable, and follow industry best practices from conception to deployment and beyond.
+
+## Enhanced Claude Code Review Integration
+
+**New in v1.2.0**: This repository includes an Enhanced Claude Code Review workflow system that provides automated, intelligent code analysis and optimization recommendations.
+
+### Available Custom Commands
+When working with repositories that have this system implemented, you can use specialized commands for focused analysis:
+
+- `/architecture-review` - Comprehensive architectural analysis focusing on Clean Architecture principles, design patterns, and component interactions
+- `/security-scan` - Security vulnerability assessment covering OWASP Top 10, authentication, authorization, and data protection
+- `/performance-check` - Performance optimization review analyzing frontend (Core Web Vitals), backend, and infrastructure performance
+- `/documentation-audit` - Documentation quality validation including template compliance and accessibility
+- `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
+
+### Integration with Architecture Guidelines
+The Enhanced Claude workflow system enforces and validates the architecture principles outlined in these instructions through:
+
+- **Automated Analysis**: GitHub Actions workflows provide continuous review
+- **Standardized Metrics**: Consistent evaluation criteria across all projects
+- **Performance Monitoring**: Real-time tracking of implementation success
+- **Quality Gates**: Automated validation of security, performance, and maintainability standards
+
+Refer to the repository's IMPLEMENTATION_GUIDE.md for complete setup and usage instructions.
 
 ## Implementation Maturity Model
 

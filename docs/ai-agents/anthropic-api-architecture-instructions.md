@@ -4,6 +4,38 @@
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: Anthropic Claude API
 
+## Enhanced Claude Code Review Integration
+
+**New in v1.2.0**: This repository includes an Enhanced Claude Code Review workflow system specifically designed for Anthropic API integration projects. This system provides automated code analysis and optimization for applications that integrate with Anthropic's services.
+
+### Enhanced Workflow Features for Anthropic API Projects
+When implementing Anthropic API integrations, the Enhanced Claude workflow system provides specialized validation for:
+
+- **API Security**: Validates proper ANTHROPIC_API_KEY handling, request authentication, and response validation
+- **Rate Limiting**: Ensures proper implementation of rate limiting and usage monitoring
+- **Error Handling**: Reviews error handling patterns specific to Anthropic API responses
+- **Performance Optimization**: Analyzes streaming implementations, token management, and response caching
+- **Cost Optimization**: Reviews token usage patterns and suggests optimization strategies
+
+### Custom Command Integration
+The workflow system includes specialized analysis for Anthropic API projects:
+
+```bash
+# Architecture review with Anthropic API focus
+/architecture-review
+# Reviews API integration patterns, conversation management, and system design
+
+# Security scan for API integrations  
+/security-scan
+# Validates API key security, request/response validation, and data protection
+
+# Performance analysis for streaming and token optimization
+/performance-check
+# Analyzes streaming performance, token efficiency, and caching strategies
+```
+
+For complete setup instructions, see the repository's IMPLEMENTATION_GUIDE.md.
+
 [Previous content remains the same through Frontend Integration Patterns...]
 
 ## Frontend Integration Patterns

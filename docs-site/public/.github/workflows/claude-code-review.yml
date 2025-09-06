@@ -1,0 +1,174 @@
+name: Enhanced Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly comprehensive review on Mondays at 9 AM
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+jobs:
+  claude-review:
+    if: github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run security validation
+        run: npm run lint:security
+        continue-on-error: true
+        
+      - name: Run architecture validation
+        run: npm run lint:architecture
+        continue-on-error: true
+        
+      - name: Run performance validation
+        run: npm run lint:performance
+        continue-on-error: true
+        
+      - name: Enhanced Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          model: 'claude-3-5-sonnet-20241022'
+          max-tokens: 4000
+          system-prompt: |
+            You are an expert software architect and code reviewer specializing in web application development. 
+
+            ## Your Role
+            Provide comprehensive, actionable code reviews focusing on:
+            - Architecture compliance with established patterns
+            - Security best practices and vulnerability identification
+            - Performance optimization opportunities
+            - Code maintainability and readability
+            - Documentation quality and completeness
+
+            ## Review Standards
+            - Reference the project's Web Architecture Guidelines
+            - Identify deviations from documented standards
+            - Suggest specific improvements with examples
+            - Prioritize critical security and performance issues
+            - Provide constructive, educational feedback
+
+            ## Output Format
+            Structure your reviews with:
+            1. **Summary**: Brief overview of changes and overall assessment
+            2. **Critical Issues**: Security vulnerabilities, breaking changes
+            3. **Architecture**: Compliance with established patterns
+            4. **Performance**: Optimization opportunities
+            5. **Maintainability**: Code quality improvements
+            6. **Documentation**: Missing or inadequate documentation
+            7. **Recommendations**: Specific action items
+
+            Keep feedback concise, actionable, and focused on the most impactful improvements.
+          
+          include-file-context: true
+          review-changed-files-only: true
+          
+      - name: Custom Command Detection
+        if: github.event_name == 'issue_comment'
+        run: |
+          COMMENT_BODY="${{ github.event.comment.body }}"
+          
+          if echo "$COMMENT_BODY" | grep -q "/architecture-review"; then
+            echo "CUSTOM_COMMAND=architecture-review" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/security-scan"; then
+            echo "CUSTOM_COMMAND=security-scan" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/performance-check"; then
+            echo "CUSTOM_COMMAND=performance-check" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/documentation-audit"; then
+            echo "CUSTOM_COMMAND=documentation-audit" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/quick-fix"; then
+            echo "CUSTOM_COMMAND=quick-fix" >> $GITHUB_ENV
+          fi
+          
+      - name: Execute Custom Command
+        if: env.CUSTOM_COMMAND != ''
+        run: |
+          if [ -f ".claude/commands/${CUSTOM_COMMAND}.md" ]; then
+            echo "Executing custom command: $CUSTOM_COMMAND"
+            cat .claude/commands/${CUSTOM_COMMAND}.md
+          fi
+
+  comprehensive-audit:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      issues: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run comprehensive validation
+        run: npm run validate:all
+        
+      - name: Weekly Architecture Audit
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          model: 'claude-3-5-sonnet-20241022'
+          max-tokens: 8000
+          system-prompt: |
+            Perform a comprehensive weekly audit of the codebase focusing on:
+            
+            ## Architecture Evolution
+            - Identify architectural drift from documented patterns
+            - Assess technical debt accumulation
+            - Review consistency across modules
+            
+            ## Security Posture
+            - Comprehensive security vulnerability assessment
+            - Review of security controls and configurations
+            - Assessment of dependency security status
+            
+            ## Performance Trends
+            - Identify performance degradation patterns
+            - Review optimization opportunities
+            - Assess scalability considerations
+            
+            ## Documentation Currency
+            - Validate documentation accuracy
+            - Identify documentation gaps
+            - Assess template compliance
+            
+            Create a detailed issue with findings and recommendations for the development team.
+          
+          create-issue: true
+          issue-title: "Weekly Architecture and Security Audit - $(date '+%Y-%m-%d')"

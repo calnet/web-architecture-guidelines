@@ -367,7 +367,7 @@ Process order checkout with payment integration
 ## Template Compliance
 **Based on**: [Base Setup Guide Template v1.0]
 **Project Extensions**: E-commerce specific services
-**Last Updated**: [Date]
+**Last Updated**: 2025-09-06 @ 18:49
 
 ## Prerequisites
 Before starting, complete the [Base Development Environment Setup](../git-commands-and-setup.md).
@@ -637,6 +637,49 @@ export async function generateComplianceReport(
 - **Migration guides** for breaking changes
 - **Backward compatibility** when possible
 - **Support period** for legacy templates
+
+### Centralized Version Management
+
+**Version Synchronization:**
+
+The repository includes automated tools to maintain version consistency across all documentation:
+
+```bash
+# Validate all versions are aligned
+npm run versions:validate
+
+# Synchronize all versions to match the root VERSION file
+npm run versions:sync
+```
+
+**Version Files Managed:**
+- Root `VERSION` file (source of truth)
+- `package.json` version
+- Template version files (`docs/.template-version`, `docs/templates/VERSION`)
+- Document metadata versions (architecture, security, performance docs)
+- Individual template versions
+
+**CI/CD Integration:**
+
+The validation workflow includes version consistency checks:
+
+```yaml
+# .github/workflows/validate-docs.yml
+validate-versions:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: Validate version consistency
+      run: |
+        chmod +x ./scripts/validate-versions.sh
+        ./scripts/validate-versions.sh
+```
+
+**Best Practices:**
+- Update the root `VERSION` file when making significant changes
+- Run `npm run versions:sync` after version updates
+- Include version validation in local development workflow
+- All template and document versions should stay aligned
 ```
 
 ### 2. Metrics and Success Measurement
@@ -666,3 +709,12 @@ export async function generateComplianceReport(
 ```
 
 This integration guide ensures that projects can effectively utilize the organized template structure while maintaining consistency and contributing to continuous improvement across the organization. The categorized templates make it easier to find the right documentation format and maintain professional standards across all projects.
+
+---
+
+**Document Information**:
+
+- **Version**: 1.2.0
+- **Last Updated**: 2025-09-06 @ 18:49
+- **Review Schedule**: Quarterly
+- **Maintained by**: Architecture Team
