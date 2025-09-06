@@ -1,6 +1,6 @@
 # Gemini Web Application Architecture Instructions
 
-**Instruction Version**: 1.2.0
+**Instruction Version**: 1.3.0
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: Google Gemini
 

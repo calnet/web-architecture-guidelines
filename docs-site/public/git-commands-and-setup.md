@@ -282,8 +282,8 @@ web-architecture-guidelines/
 ├── docs/
 │   ├── ai-agents/
 │   │   ├── claude/
-│   │   │   ├── claude-architecture-instructions-v1.md
-│   │   │   └── claude-architecture-instructions-v2.md
+│   │   │   ├── claude-architecture-instructions.md
+│   │   │   └── AI_AGENT_INTEGRATION_GUIDE.md
 │   │   ├── chatgpt-architecture-instructions.md
 │   │   ├── copilot-architecture-instructions.md
 │   │   ├── gemini-architecture-instructions.md

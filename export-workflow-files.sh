@@ -819,7 +819,7 @@ jobs:
             5. **Architecture Compliance:** Validate against our guidelines in docs/ai-agents/
             
             ## Key Reference Files:
-            - docs/ai-agents/claude/claude-architecture-instructions-v2.md
+            - docs/ai-agents/claude/claude-architecture-instructions.md
             - docs/templates/ (all template files)
             - docs/external-documentation-links.md
             - docs/project-integration-guide.md
@@ -881,7 +881,7 @@ docs/
 5. **Code Standards:** Maintain consistency with established patterns
 
 ## Key Files to Always Consider
-- `docs/ai-agents/claude/claude-architecture-instructions-v2.md` - Latest Claude instructions
+- `docs/ai-agents/claude/claude-architecture-instructions.md` - Unified Claude instructions
 - `docs/templates/` - All professional documentation templates
 - `docs/external-documentation-links.md` - Curated external resources
 - `docs/project-integration-guide.md` - Integration methodology
@@ -1624,7 +1624,7 @@ jobs:
             ## Primary Review Objectives
             
             ### 1. Architecture Compliance Assessment
-            - **Reference Guidelines:** docs/ai-agents/claude/claude-architecture-instructions-v2.md
+            - **Reference Guidelines:** docs/ai-agents/claude/claude-architecture-instructions.md
             - **Template Usage:** Validate against docs/templates/ structures
             - **Integration Patterns:** Check docs/project-integration-guide.md compliance
             - **External Standards:** Reference docs/external-documentation-links.md

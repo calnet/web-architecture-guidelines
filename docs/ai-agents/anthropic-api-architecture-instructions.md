@@ -1,8 +1,15 @@
 # Anthropic API Web Application Architecture Instructions
 
-**Instruction Version**: 1.2.0
+**Instruction Version**: 1.3.0
 **Last Updated**: 2025-09-06 @ 18:49
-**Target AI**: Anthropic Claude API
+**Target AI**: Claude via Anthropic API
+
+## Integration Reference
+
+This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+- **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
+- **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
+- **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
 
 ## Enhanced Claude Code Review Integration
 

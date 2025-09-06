@@ -1,6 +1,6 @@
 # Development Environment Setup Guide Template
 
-**Template Version**: 1.2.0
+**Template Version**: 1.3.0
 **Last Updated**: 2025-09-06 @ 18:49
 **Target Audience**: Developers  
 
@@ -553,5 +553,5 @@ docker-compose ps        # List running services
 ```
 
 ---
-*Template Version: 1.2.0*********  
+*Template Version: 1.3.0**********  
 *Last Updated: [Date]*
