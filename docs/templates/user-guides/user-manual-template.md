@@ -1,7 +1,7 @@
 # [Application Name] User Manual
 
 **Template Version**: 1.1.0
-**Last Updated**: 2025-09-04  
+**Last Updated**: 2025-09-06 @ 17:03  
 **Target Audience**: End Users  
 
 ## Table of Contents
