@@ -1,16 +1,22 @@
 # Version Management Guide
 
-This document provides comprehensive guidance on the repository's centralized version management system.
+This document provides comprehensive guidance on the repository's centralized
+version management system.
 
 ## Overview
 
-The Web Architecture Guidelines repository uses a centralized version management system to ensure consistency across all documentation, templates, and configuration files. The system maintains synchronization between multiple package.json files, documentation sites, template versions, and metadata across the entire repository.
+The Web Architecture Guidelines repository uses a centralized version
+management system to ensure consistency across all documentation, templates,
+and configuration files. The system maintains synchronization between multiple
+package.json files, documentation sites, template versions, and metadata
+across the entire repository.
 
 ## Version Management Structure
 
 ### Source of Truth
 
-- **Root VERSION file**: Contains the authoritative version number for the entire repository
+- **Root VERSION file**: Contains the authoritative version number for the
+entire repository
 - Located at: `./VERSION`
 - Format: Semantic versioning (e.g., `1.1.0`)
 
