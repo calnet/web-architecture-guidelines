@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# List Version Files Script
-# This script provides a comprehensive list of all files that contain version information
+# Enhanced Version File Listing Script
+# This script provides a comprehensive, automated inventory of all version-managed files
 
 set -e
 
-echo "📋 Version-managed Files in Repository"
-echo "====================================="
+echo "📋 Enhanced Version-managed Files Inventory"
+echo "==========================================="
 echo ""
 
 # Get the main version
@@ -19,95 +19,181 @@ MAIN_VERSION=$(cat VERSION | tr -d '\n')
 echo "🔹 Source of Truth: VERSION file contains: $MAIN_VERSION"
 echo ""
 
-echo "📦 Package.json Files:"
-for package_file in "package.json" "examples/package.json" "docs-site/package.json" "docs-site/public/examples/package.json"; do
-    if [ -f "$package_file" ]; then
-        PACKAGE_VERSION=$(grep '"version":' "$package_file" | sed 's/.*"version": "\([^"]*\)".*/\1/')
-        echo "  ✓ $package_file: $PACKAGE_VERSION"
-    else
-        echo "  ⚠ $package_file: NOT FOUND"
-    fi
-done
+# Function to extract version safely
+extract_version_safe() {
+    local file="$1"
+    local pattern="$2"
+    local version=""
+    
+    case "$pattern" in
+        "**Version**:")
+            version=$(grep "\*\*Version\*\*:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*\*Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "**Template Version**:")
+            version=$(grep "\*\*Template Version\*\*:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*\*Template Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "*Template Version:")
+            version=$(grep "\*Template Version:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*Template Version: *//' | sed 's/\*.*$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "**Instruction Version**:")
+            version=$(grep "\*\*Instruction Version\*\*:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*\*Instruction Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "JSON_version")
+            version=$(grep '"version":' "$file" 2>/dev/null | head -1 | sed 's/.*"version": *"\([^"]*\)".*/\1/' || echo "NOT_FOUND")
+            ;;
+        "List_Version")
+            version=$(grep "\- \*\*Version\*\*:" "$file" 2>/dev/null | sed 's/.*\*\*Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+    esac
+    
+    echo "$version"
+}
 
+# Function to check version status
+check_version_status() {
+    local current_version="$1"
+    local expected_version="$2"
+    
+    if [[ "$current_version" == "NOT_FOUND" ]]; then
+        echo "❓"
+    elif [[ "$current_version" == "$expected_version" ]]; then
+        echo "✅"
+    else
+        echo "❌"
+    fi
+}
+
+# Arrays to hold categorized files
+declare -A categories
+categories["package"]="📦 Package Files"
+categories["template_version"]="📄 Template Version Files"
+categories["root_docs"]="🗂️  Root Documentation"
+categories["main_docs"]="📚 Main Documentation"
+categories["templates"]="📋 Template Files"
+categories["ai_agents"]="🤖 AI Agent Instructions"
+categories["scripts"]="🔧 Scripts"
+categories["workflows"]="🔄 Workflow Files"
+
+# Scan all files and categorize them
+declare -A file_lists
+
+echo "🔍 Scanning repository for version-managed files..."
 echo ""
-echo "📄 Template Version Files:"
+
+# Scan package.json files
+while IFS= read -r -d '' package_file; do
+    if [[ "$package_file" != *"node_modules"* ]] && [[ "$package_file" != *"/.git/"* ]]; then
+        version=$(extract_version_safe "$package_file" "JSON_version")
+        status=$(check_version_status "$version" "$MAIN_VERSION")
+        file_lists["package"]+="  $status $(basename "$(dirname "$package_file")")/$(basename "$package_file"): $version"$'\n'
+    fi
+done < <(find . -name "package.json" -type f -print0)
+
+# Template version files
 for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
     if [ -f "$version_file" ]; then
-        FILE_VERSION=$(cat "$version_file" | tr -d '\n')
-        echo "  ✓ $version_file: $FILE_VERSION"
-    else
-        echo "  ⚠ $version_file: NOT FOUND"
+        version=$(cat "$version_file" 2>/dev/null | tr -d '\n' || echo "NOT_FOUND")
+        status=$(check_version_status "$version" "$MAIN_VERSION")
+        file_lists["template_version"]+="  $status $version_file: $version"$'\n'
     fi
 done
 
-echo ""
-echo "📝 Documentation Files with Version Metadata:"
-for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs-site/public/docs/architecture/system-architecture.md"; do
-    if [ -f "$doc_file" ]; then
-        DOC_VERSION=$(grep -o "\*\*Version\*\*: [^*]*" "$doc_file" 2>/dev/null | sed 's/.*\*\*Version\*\*: //' || echo "NOT_FOUND")
-        echo "  ✓ $doc_file: $DOC_VERSION"
-    else
-        echo "  ⚠ $doc_file: NOT FOUND"
+# Scan markdown files
+while IFS= read -r -d '' md_file; do
+    if [[ "$md_file" != *"node_modules"* ]] && [[ "$md_file" != *"/.git/"* ]]; then
+        # Determine category
+        category=""
+        if [[ "$md_file" == ./*.md ]] && [[ "$md_file" != *"/"* ]]; then
+            category="root_docs"
+        elif [[ "$md_file" == ./docs/ai-agents/* ]]; then
+            category="ai_agents"
+        elif [[ "$md_file" == */templates/* ]]; then
+            category="templates"
+        elif [[ "$md_file" == ./docs/* ]]; then
+            category="main_docs"
+        fi
+        
+        # Check for version patterns and add to appropriate category
+        if [[ -n "$category" ]]; then
+            versions_found=""
+            
+            if grep -q "\*\*Version\*\*:" "$md_file" 2>/dev/null; then
+                version=$(extract_version_safe "$md_file" "**Version**:")
+                status=$(check_version_status "$version" "$MAIN_VERSION")
+                versions_found+="**Version**:$version "
+            fi
+            
+            if grep -q "\*\*Template Version\*\*:" "$md_file" 2>/dev/null; then
+                version=$(extract_version_safe "$md_file" "**Template Version**:")
+                status=$(check_version_status "$version" "$MAIN_VERSION")
+                versions_found+="**Template Version**:$version "
+            fi
+            
+            if grep -q "\*Template Version:" "$md_file" 2>/dev/null; then
+                version=$(extract_version_safe "$md_file" "*Template Version:")
+                status=$(check_version_status "$version" "$MAIN_VERSION")
+                versions_found+="*Template Version:$version "
+            fi
+            
+            if grep -q "\*\*Instruction Version\*\*:" "$md_file" 2>/dev/null; then
+                version=$(extract_version_safe "$md_file" "**Instruction Version**:")
+                status=$(check_version_status "$version" "$MAIN_VERSION")
+                versions_found+="**Instruction Version**:$version "
+            fi
+            
+            if grep -q "\- \*\*Version\*\*:" "$md_file" 2>/dev/null; then
+                version=$(extract_version_safe "$md_file" "List_Version")
+                status=$(check_version_status "$version" "$MAIN_VERSION")
+                versions_found+="List_Version:$version "
+            fi
+            
+            if [[ -n "$versions_found" ]]; then
+                # Use overall status (❌ if any version is wrong, ✅ if all correct)
+                overall_status="✅"
+                if [[ "$versions_found" == *"NOT_FOUND"* ]] || [[ "$versions_found" != *"$MAIN_VERSION"* ]]; then
+                    overall_status="❌"
+                fi
+                
+                file_lists["$category"]+="  $overall_status $md_file: $versions_found"$'\n'
+            fi
+        fi
+    fi
+done < <(find . -name "*.md" -type f -print0)
+
+# Display results
+for category in "package" "template_version" "root_docs" "main_docs" "templates" "ai_agents" "scripts" "workflows"; do
+    if [[ -n "${file_lists[$category]}" ]]; then
+        echo "${categories[$category]}:"
+        echo -e "${file_lists[$category]}"
+        echo ""
     fi
 done
 
-echo ""
-echo "📋 Template Files (docs/templates):"
-if [ -d "docs/templates" ]; then
-    find docs/templates -name "*.md" | while read template_file; do
-        TEMPLATE_VERSION=$(grep -o "\*\*Template Version\*\*: [^*]*" "$template_file" 2>/dev/null | sed 's/\*\*Template Version\*\*: //')
-        if [ -z "$TEMPLATE_VERSION" ]; then
-            TEMPLATE_VERSION=$(grep -o "\*Template Version: [^*]*" "$template_file" 2>/dev/null | sed 's/\*Template Version: //')
-        fi
-        if [ -z "$TEMPLATE_VERSION" ]; then
-            TEMPLATE_VERSION="NOT_FOUND"
-        fi
-        echo "  ✓ $template_file: $TEMPLATE_VERSION"
-    done
-else
-    echo "  ⚠ docs/templates directory not found"
-fi
+# Summary statistics
+total_files=0
+correct_files=0
+incorrect_files=0
 
-echo ""
-echo "📋 Documentation Site Template Files:"
-if [ -d "docs-site/public/docs/templates" ]; then
-    find docs-site/public/docs/templates -name "*.md" | while read template_file; do
-        TEMPLATE_VERSION=$(grep -o "\*\*Template Version\*\*: [^*]*" "$template_file" 2>/dev/null | sed 's/\*\*Template Version\*\*: //')
-        if [ -z "$TEMPLATE_VERSION" ]; then
-            TEMPLATE_VERSION=$(grep -o "\*Template Version: [^*]*" "$template_file" 2>/dev/null | sed 's/\*Template Version: //')
+for category in "${!file_lists[@]}"; do
+    while IFS= read -r line; do
+        if [[ -n "$line" ]]; then
+            total_files=$((total_files + 1))
+            if [[ "$line" == *"✅"* ]]; then
+                correct_files=$((correct_files + 1))
+            elif [[ "$line" == *"❌"* ]]; then
+                incorrect_files=$((incorrect_files + 1))
+            fi
         fi
-        if [ -z "$TEMPLATE_VERSION" ]; then
-            TEMPLATE_VERSION="NOT_FOUND"
-        fi
-        echo "  ✓ $template_file: $TEMPLATE_VERSION"
-    done
-else
-    echo "  ⚠ docs-site/public/docs/templates directory not found"
-fi
-
-echo ""
-echo "🤖 AI Agent Instruction Files:"
-AI_FILES_FOUND=0
-for ai_file in docs/ai-agents/claude/claude-architecture-instructions-v*.md docs/ai-agents/*.md docs-site/public/docs/ai-agents/claude/claude-architecture-instructions-v*.md docs-site/public/docs/ai-agents/*.md; do
-    if [ -f "$ai_file" ]; then
-        AI_FILES_FOUND=$((AI_FILES_FOUND + 1))
-        VERSION_MATCHES=$(grep -o "Version: [0-9][0-9.]*[0-9]" "$ai_file" 2>/dev/null || echo "NO_EXPLICIT_VERSION")
-        if [ "$VERSION_MATCHES" = "NO_EXPLICIT_VERSION" ]; then
-            echo "  ✓ $ai_file: (no explicit version markers)"
-        else
-            echo "  ✓ $ai_file: $VERSION_MATCHES"
-        fi
-    fi
+    done <<< "${file_lists[$category]}"
 done
 
-if [ $AI_FILES_FOUND -eq 0 ]; then
-    echo "  ⚠ No AI agent instruction files found"
-fi
-
+echo "📊 Summary Statistics:"
+echo "   Total version-managed files: $total_files"
+echo "   Correctly versioned: $correct_files"
+echo "   Incorrectly versioned: $incorrect_files"
+echo "   Missing versions: $((total_files - correct_files - incorrect_files))"
 echo ""
 echo "🔧 Available Commands:"
-echo "  npm run versions:validate  - Check version consistency"
-echo "  npm run versions:sync      - Synchronize all versions to root VERSION"
-echo "  ./scripts/list-version-files.sh - Show this summary"
-echo ""
-echo "📊 Total managed files: Check the output above for a complete count"
+echo "  ./scripts/sync-versions.sh     - Synchronize all versions to root VERSION"
+echo "  ./scripts/validate-versions.sh - Detailed version consistency check"
+echo "  ./scripts/discover-version-files.sh - Discover new version files"

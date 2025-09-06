@@ -199,22 +199,36 @@ This project follows semantic versioning with centralized version management to 
 - **Minor**: New guidelines or significant enhancements  
 - **Patch**: Bug fixes and minor improvements
 
-### Version Management Tools
+### Enhanced Version Management System
+
+The repository includes a comprehensive, automated version management system that ensures consistency across all documentation, templates, and configuration files.
 
 ```bash
-# Validate all versions are aligned
-npm run versions:validate
+# Core version management commands
+npm run versions:validate        # Comprehensive validation of all version-managed files
+npm run versions:sync           # Automatically synchronize all versions to root VERSION
+npm run versions:list           # Show detailed inventory of all version-managed files
 
-# Synchronize all versions to root VERSION file
-npm run versions:sync
-
-# List all version-managed files and their current status
-npm run versions:list
+# Advanced version management (direct script access)
+./scripts/discover-version-files.sh   # Discover all files with version information
+./scripts/maintain-versions.sh        # Add version info to files that should have it
+./scripts/enhance-version-management.sh # Upgrade the version management system
 ```
 
-The repository maintains version consistency across:
-- Root `VERSION` file (source of truth)
-- All package.json files (main, examples, docs-site)
+**Comprehensive Coverage**: The system automatically manages versions across:
+- **Root Documentation**: All major .md files (README.md, CLAUDE.md, etc.)
+- **Documentation Files**: All docs/ content with architecture, security, performance guides
+- **AI Agent Instructions**: Version-tagged instruction sets for different AI agents
+- **Template Files**: All documentation templates with template version tracking
+- **Package Files**: All package.json files across the repository
+- **Configuration**: Template version files and metadata
+
+**Key Features**:
+- **Automatic Discovery**: Finds all files with version patterns without manual configuration
+- **Multiple Version Types**: Supports **Version**, **Template Version**, **Instruction Version** patterns
+- **Comprehensive Validation**: Checks 77+ files for version consistency
+- **Enhanced Logging**: Detailed logs and performance tracking
+- **Zero Manual Maintenance**: Add new files and they're automatically included
 - Template version files and metadata
 - Documentation files with version headers
 - Individual template versions (28+ files)

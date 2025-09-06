@@ -5,7 +5,7 @@
 **Compliance Score**: Targeting 100%  
 
 ## Overview
-- **Version**: [Version number]
+- **Version**: 1.2.0
 - **Base URL**: [API base URL]
 - **Protocol**: REST/GraphQL/gRPC
 - **Authentication**: [Auth method]
@@ -255,5 +255,5 @@ curl -X POST https://api.example.com/v1/users \
 See the `examples/` directory for complete request/response examples.
 
 ---
-*Template Version: 1.2.0********  
+*Template Version: 1.2.0*********  
 *Last Updated: [Date]*

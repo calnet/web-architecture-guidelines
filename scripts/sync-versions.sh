@@ -1,85 +1,144 @@
 #!/bin/bash
 
-# Version Synchronization Script
-# This script ensures all version numbers across the repository are aligned
+# Enhanced Version Synchronization Script
+# This script automatically discovers and synchronizes all version numbers across the repository
 
 set -e
 
+# Performance and logging
+start_time=$(date +%s)
+SYNC_LOG="/tmp/version_sync_$(date +%Y%m%d_%H%M%S).log"
+
+echo "🔄 Enhanced Version Synchronization" | tee "$SYNC_LOG"
+echo "===================================" | tee -a "$SYNC_LOG"
+echo "" | tee -a "$SYNC_LOG"
+
 # Get the main version from the root VERSION file
 if [ ! -f "VERSION" ]; then
-    echo "❌ Root VERSION file not found!"
+    echo "❌ Root VERSION file not found!" | tee -a "$SYNC_LOG"
     exit 1
 fi
 
 MAIN_VERSION=$(cat VERSION | tr -d '\n')
-echo "🔄 Synchronizing all versions to: $MAIN_VERSION"
+echo "📋 Synchronizing all versions to: $MAIN_VERSION" | tee -a "$SYNC_LOG"
+echo "" | tee -a "$SYNC_LOG"
 
-# Update package.json files
-echo "📦 Updating package.json versions..."
-for package_file in "package.json" "examples/package.json" "docs-site/package.json" "docs-site/public/examples/package.json"; do
-    if [ -f "$package_file" ]; then
-        echo "📄 Updating $package_file..."
-        sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$MAIN_VERSION\"/" "$package_file"
-        echo "✅ $package_file updated"
+UPDATED_FILES=0
+SKIPPED_FILES=0
+ERROR_FILES=0
+
+# Function to update version in file
+update_version_in_file() {
+    local file="$1"
+    local pattern="$2"
+    local new_version="$3"
+    local backup_file="${file}.version_backup"
+    
+    # Create backup
+    cp "$file" "$backup_file"
+    
+    case "$pattern" in
+        "**Version**:")
+            sed -i "s/\*\*Version\*\*: [^*]*/\*\*Version\*\*: $new_version/" "$file"
+            ;;
+        "**Template Version**:")
+            sed -i "s/\*\*Template Version\*\*: [^*]*/\*\*Template Version\*\*: $new_version/" "$file"
+            ;;
+        "*Template Version:")
+            sed -i "s/\*Template Version: [^*]*/\*Template Version: $new_version\*/" "$file"
+            ;;
+        "**Instruction Version**:")
+            sed -i "s/\*\*Instruction Version\*\*: [^*]*/\*\*Instruction Version\*\*: $new_version/" "$file"
+            ;;
+        "JSON_version")
+            sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$new_version\"/" "$file"
+            ;;
+        "List_Version")
+            sed -i "s/\- \*\*Version\*\*: [^*]*/\- \*\*Version\*\*: $new_version/" "$file"
+            ;;
+    esac
+    
+    # Check if file was actually changed
+    if diff -q "$file" "$backup_file" >/dev/null 2>&1; then
+        echo "⚠️  No changes made to $file" | tee -a "$SYNC_LOG"
+        SKIPPED_FILES=$((SKIPPED_FILES + 1))
     else
-        echo "⚠️  $package_file not found, skipping"
+        echo "✅ Updated $file ($pattern)" | tee -a "$SYNC_LOG"
+        UPDATED_FILES=$((UPDATED_FILES + 1))
     fi
-done
+    
+    # Remove backup
+    rm "$backup_file"
+}
 
-# Update template version files
+# Discover and update all version files
+echo "🔍 Discovering version files..." | tee -a "$SYNC_LOG"
+
+# 1. Update package.json files
+echo "" | tee -a "$SYNC_LOG"
+echo "📦 Updating package.json files..." | tee -a "$SYNC_LOG"
+while IFS= read -r -d '' package_file; do
+    if [[ "$package_file" != *"node_modules"* ]] && [[ "$package_file" != *"/.git/"* ]]; then
+        echo "📄 Processing $package_file..." | tee -a "$SYNC_LOG"
+        update_version_in_file "$package_file" "JSON_version" "$MAIN_VERSION"
+    fi
+done < <(find . -name "package.json" -type f -print0)
+
+# 2. Update template version files
+echo "" | tee -a "$SYNC_LOG"
+echo "📄 Updating template version files..." | tee -a "$SYNC_LOG"
 for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
     if [ -f "$version_file" ]; then
-        echo "📄 Updating $version_file..."
+        echo "📄 Processing $version_file..." | tee -a "$SYNC_LOG"
         echo "$MAIN_VERSION" > "$version_file"
-        echo "✅ $version_file updated"
+        echo "✅ Updated $version_file" | tee -a "$SYNC_LOG"
+        UPDATED_FILES=$((UPDATED_FILES + 1))
     fi
 done
 
-# Update document versions in key files
-echo "📝 Updating document versions..."
+# 3. Update all markdown files with version patterns
+echo "" | tee -a "$SYNC_LOG"
+echo "📝 Updating markdown files with version patterns..." | tee -a "$SYNC_LOG"
 
-# Update main documentation files
-for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs-site/public/docs/architecture/system-architecture.md"; do
-    if [ -f "$doc_file" ]; then
-        sed -i "s/\*\*Version\*\*: [^*]*/\*\*Version\*\*: $MAIN_VERSION/" "$doc_file"
-        echo "✅ Updated version in $doc_file"
-    fi
-done
-
-# Update template versions
-echo "📋 Updating template versions..."
-find docs/templates -name "*.md" -exec sed -i "s/\*\*Template Version\*\*: [^*]*/\*\*Template Version\*\*: $MAIN_VERSION/" {} \;
-find docs/templates -name "*.md" -exec sed -i "s/\*Template Version: [^*]*/\*Template Version: $MAIN_VERSION\*/" {} \;
-echo "✅ All template versions updated"
-
-# Update documentation site templates if they exist
-if [ -d "docs-site/public/docs/templates" ]; then
-    echo "📋 Updating documentation site template versions..."
-    find docs-site/public/docs/templates -name "*.md" -exec sed -i "s/\*\*Template Version\*\*: [^*]*/\*\*Template Version\*\*: $MAIN_VERSION/" {} \; 2>/dev/null || true
-    find docs-site/public/docs/templates -name "*.md" -exec sed -i "s/\*Template Version: [^*]*/\*Template Version: $MAIN_VERSION\*/" {} \; 2>/dev/null || true
-    echo "✅ Documentation site template versions updated"
-fi
-
-# Update AI agent instruction versions (if they have version markers)
-echo "🤖 Updating AI agent instruction versions..."
-AI_AGENT_FILES_UPDATED=0
-for ai_file in docs/ai-agents/claude/claude-architecture-instructions-v*.md docs/ai-agents/*.md docs-site/public/docs/ai-agents/claude/claude-architecture-instructions-v*.md docs-site/public/docs/ai-agents/*.md; do
-    if [ -f "$ai_file" ]; then
-        # Update any explicit version references that match pattern "Version: X.X.X"
-        if grep -q "Version: [0-9]" "$ai_file" 2>/dev/null; then
-            sed -i "s/Version: [0-9][0-9.]*[0-9]/Version: $MAIN_VERSION/g" "$ai_file"
-            echo "✅ Updated version references in $ai_file"
-            AI_AGENT_FILES_UPDATED=$((AI_AGENT_FILES_UPDATED + 1))
+while IFS= read -r -d '' md_file; do
+    if [[ "$md_file" != *"node_modules"* ]] && [[ "$md_file" != *"/.git/"* ]]; then
+        # Check what patterns exist in this file
+        patterns_found=""
+        
+        if grep -q "\*\*Version\*\*:" "$md_file" 2>/dev/null; then
+            update_version_in_file "$md_file" "**Version**:" "$MAIN_VERSION"
+        fi
+        
+        if grep -q "\*\*Template Version\*\*:" "$md_file" 2>/dev/null; then
+            update_version_in_file "$md_file" "**Template Version**:" "$MAIN_VERSION"
+        fi
+        
+        if grep -q "\*Template Version:" "$md_file" 2>/dev/null; then
+            update_version_in_file "$md_file" "*Template Version:" "$MAIN_VERSION"
+        fi
+        
+        if grep -q "\*\*Instruction Version\*\*:" "$md_file" 2>/dev/null; then
+            update_version_in_file "$md_file" "**Instruction Version**:" "$MAIN_VERSION"
+        fi
+        
+        if grep -q "\- \*\*Version\*\*:" "$md_file" 2>/dev/null; then
+            update_version_in_file "$md_file" "List_Version" "$MAIN_VERSION"
         fi
     fi
-done
+done < <(find . -name "*.md" -type f -print0)
 
-if [ $AI_AGENT_FILES_UPDATED -eq 0 ]; then
-    echo "ℹ️  No AI agent instruction files found with explicit version markers"
-fi
+# Summary
+end_time=$(date +%s)
+duration=$((end_time - start_time))
 
-echo ""
-echo "🎉 Version synchronization completed!"
-echo "📊 All files now use version: $MAIN_VERSION"
-echo ""
-echo "🔍 To verify, run: ./scripts/validate-versions.sh"
+echo "" | tee -a "$SYNC_LOG"
+echo "🎉 Version synchronization completed!" | tee -a "$SYNC_LOG"
+echo "📊 Summary:" | tee -a "$SYNC_LOG"
+echo "   - Updated files: $UPDATED_FILES" | tee -a "$SYNC_LOG"
+echo "   - Skipped files: $SKIPPED_FILES" | tee -a "$SYNC_LOG"
+echo "   - Error files: $ERROR_FILES" | tee -a "$SYNC_LOG"
+echo "   - Duration: ${duration}s" | tee -a "$SYNC_LOG"
+echo "📋 Target version: $MAIN_VERSION" | tee -a "$SYNC_LOG"
+echo "" | tee -a "$SYNC_LOG"
+echo "📝 Full log saved to: $SYNC_LOG" | tee -a "$SYNC_LOG"
+echo "🔍 To verify, run: ./scripts/validate-versions.sh" | tee -a "$SYNC_LOG"

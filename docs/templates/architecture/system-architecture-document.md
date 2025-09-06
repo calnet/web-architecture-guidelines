@@ -5,7 +5,7 @@
 **Compliance Score**: Targeting 100%  
 
 ## Document Information
-- **Version**: 1.0
+- **Version**: 1.2.0
 - **Last Updated**: 2025-09-06 @ 18:49
 - **Authors**: [Names]
 - **Status**: [Draft | Review | Approved]
@@ -181,5 +181,5 @@ Brief overview of the system and its architecture (2-3 paragraphs)
 [Link to related ADRs]
 
 ---
-*Template Version: 1.2.0********  
+*Template Version: 1.2.0*********  
 *Last Updated: [Date]*

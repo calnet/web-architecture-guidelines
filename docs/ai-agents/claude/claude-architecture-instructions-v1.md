@@ -1,6 +1,6 @@
 # Claude Web Application Architecture Instructions V1
 
-**Instruction Version**: 1.2.0  
+**Instruction Version**: 1.2.0
 **Last Updated**: 2025-09-06 @ 18:49
 **Target AI**: Claude (Basic Level)
 

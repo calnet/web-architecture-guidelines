@@ -336,4 +336,4 @@ A: Refunds are available within 30 days of purchase. Contact support for assista
 ---
 *Last updated: [Date]*  
 *Version: [Version number]*  
-*Template Version: 1.2.0*******
+*Template Version: 1.2.0********

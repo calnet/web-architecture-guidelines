@@ -224,7 +224,7 @@ ETag: "abc123"
 
 **Document Information**:
 
-- **Version**: 1.0
+- **Version**: 1.2.0
 - **Last Updated**: September 2025
 - **Review Schedule**: Quarterly
 - **Maintained by**: Performance Team

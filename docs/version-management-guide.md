@@ -135,16 +135,16 @@ validate-versions:
 
 ### Template Files
 ```markdown
-**Template Version**: 1.1.0
+**Template Version**: 1.2.0
 ```
 or
 ```markdown
-*Template Version: 1.1.0*
+*Template Version: 1.2.0**
 ```
 
 ### Documentation Files
 ```markdown
-**Version**: 1.1.0
+**Version**: 1.2.0
 ```
 
 ### AI Agent Instructions (Optional)
