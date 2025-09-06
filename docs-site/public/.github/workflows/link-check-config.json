@@ -1,0 +1,321 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://example.com"
+    },
+    {
+      "pattern": "expressjs\\.com"
+    },
+    {
+      "pattern": "docs\\.nestjs\\.com"
+    },
+    {
+      "pattern": "fastify\\.io"
+    },
+    {
+      "pattern": "docs\\.djangoproject\\.com"
+    },
+    {
+      "pattern": "fastapi\\.tiangolo\\.com"
+    },
+    {
+      "pattern": "flask\\.palletsprojects\\.com"
+    },
+    {
+      "pattern": "docs\\.microsoft\\.com"
+    },
+    {
+      "pattern": "spring\\.io"
+    },
+    {
+      "pattern": "reactjs\\.org"
+    },
+    {
+      "pattern": "nextjs\\.org"
+    },
+    {
+      "pattern": "vuejs\\.org"
+    },
+    {
+      "pattern": "nuxtjs\\.org"
+    },
+    {
+      "pattern": "angular\\.io"
+    },
+    {
+      "pattern": "svelte\\.dev"
+    },
+    {
+      "pattern": "kit\\.svelte\\.dev"
+    },
+    {
+      "pattern": "postgresql\\.org"
+    },
+    {
+      "pattern": "docs\\.mongodb\\.com"
+    },
+    {
+      "pattern": "redis\\.io"
+    },
+    {
+      "pattern": "dev\\.mysql\\.com"
+    },
+    {
+      "pattern": "sqlite\\.org"
+    },
+    {
+      "pattern": "elastic\\.co"
+    },
+    {
+      "pattern": "jestjs\\.io"
+    },
+    {
+      "pattern": "vitest\\.dev"
+    },
+    {
+      "pattern": "docs\\.cypress\\.io"
+    },
+    {
+      "pattern": "playwright\\.dev"
+    },
+    {
+      "pattern": "testing-library\\.com"
+    },
+    {
+      "pattern": "docs\\.pytest\\.org"
+    },
+    {
+      "pattern": "junit\\.org"
+    },
+    {
+      "pattern": "mochajs\\.org"
+    },
+    {
+      "pattern": "eslint\\.org"
+    },
+    {
+      "pattern": "prettier\\.io"
+    },
+    {
+      "pattern": "docs\\.sonarqube\\.org"
+    },
+    {
+      "pattern": "docs\\.codeclimate\\.com"
+    },
+    {
+      "pattern": "typicode\\.github\\.io"
+    },
+    {
+      "pattern": "owasp\\.org"
+    },
+    {
+      "pattern": "nist\\.gov"
+    },
+    {
+      "pattern": "cisecurity\\.org"
+    },
+    {
+      "pattern": "oauth\\.net"
+    },
+    {
+      "pattern": "openid\\.net"
+    },
+    {
+      "pattern": "jwt\\.io"
+    },
+    {
+      "pattern": "auth0\\.com"
+    },
+    {
+      "pattern": "firebase\\.google\\.com"
+    },
+    {
+      "pattern": "docs\\.aws\\.amazon\\.com"
+    },
+    {
+      "pattern": "cloud\\.google\\.com"
+    },
+    {
+      "pattern": "vercel\\.com"
+    },
+    {
+      "pattern": "docs\\.netlify\\.com"
+    },
+    {
+      "pattern": "kubernetes\\.io"
+    },
+    {
+      "pattern": "helm\\.sh"
+    },
+    {
+      "pattern": "docs\\.github\\.com"
+    },
+    {
+      "pattern": "docs\\.gitlab\\.com"
+    },
+    {
+      "pattern": "jenkins\\.io"
+    },
+    {
+      "pattern": "terraform\\.io"
+    },
+    {
+      "pattern": "pulumi\\.com"
+    },
+    {
+      "pattern": "docs\\.ansible\\.com"
+    },
+    {
+      "pattern": "docs\\.newrelic\\.com"
+    },
+    {
+      "pattern": "docs\\.datadoghq\\.com"
+    },
+    {
+      "pattern": "docs\\.appdynamics\\.com"
+    },
+    {
+      "pattern": "dynatrace\\.com"
+    },
+    {
+      "pattern": "prometheus\\.io"
+    },
+    {
+      "pattern": "grafana\\.com"
+    },
+    {
+      "pattern": "jaegertracing\\.io"
+    },
+    {
+      "pattern": "opentelemetry\\.io"
+    },
+    {
+      "pattern": "w3\\.org"
+    },
+    {
+      "pattern": "section508\\.gov"
+    },
+    {
+      "pattern": "a11yproject\\.com"
+    },
+    {
+      "pattern": "material\\.io"
+    },
+    {
+      "pattern": "ant\\.design"
+    },
+    {
+      "pattern": "chakra-ui\\.com"
+    },
+    {
+      "pattern": "getbootstrap\\.com"
+    },
+    {
+      "pattern": "tailwindcss\\.com"
+    },
+    {
+      "pattern": "swagger\\.io"
+    },
+    {
+      "pattern": "graphql\\.org"
+    },
+    {
+      "pattern": "jsonapi\\.org"
+    },
+    {
+      "pattern": "restfulapi\\.net"
+    },
+    {
+      "pattern": "learning\\.postman\\.com"
+    },
+    {
+      "pattern": "docs\\.insomnia\\.rest"
+    },
+    {
+      "pattern": "web\\.dev"
+    },
+    {
+      "pattern": "developers\\.google\\.com"
+    },
+    {
+      "pattern": "wiki\\.postgresql\\.org"
+    },
+    {
+      "pattern": "gdpr\\.eu"
+    },
+    {
+      "pattern": "oag\\.ca\\.gov"
+    },
+    {
+      "pattern": "hhs\\.gov"
+    },
+    {
+      "pattern": "aicpa\\.org"
+    },
+    {
+      "pattern": "iso\\.org"
+    },
+    {
+      "pattern": "pcisecuritystandards\\.org"
+    },
+    {
+      "pattern": "platform\\.openai\\.com"
+    },
+    {
+      "pattern": "docs\\.anthropic\\.com"
+    },
+    {
+      "pattern": "ai\\.google\\.dev"
+    },
+    {
+      "pattern": "mlflow\\.org"
+    },
+    {
+      "pattern": "kubeflow\\.org"
+    },
+    {
+      "pattern": "dvc\\.org"
+    },
+    {
+      "pattern": "docs\\.wandb\\.ai"
+    },
+    {
+      "pattern": "agilemanifesto\\.org"
+    },
+    {
+      "pattern": "scrumguides\\.org"
+    },
+    {
+      "pattern": "kanbanize\\.com"
+    },
+    {
+      "pattern": "docs\\.gitbook\\.com"
+    },
+    {
+      "pattern": "notion\\.so"
+    },
+    {
+      "pattern": "confluence\\.atlassian\\.com"
+    },
+    {
+      "pattern": "docusaurus\\.io"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": ["https://"],
+      "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "User-Agent": "Mozilla/5.0 (compatible; markdown-link-check)"
+      }
+    }
+  ],
+  "timeout": "30s",
+  "retryOn429": true,
+  "retryCount": 2,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206, 301, 302, 303, 307, 308]
+}

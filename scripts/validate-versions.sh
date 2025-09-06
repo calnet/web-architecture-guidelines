@@ -1,179 +1,153 @@
 #!/bin/bash
 
 # Enhanced Version Validation Script
-# This script checks that all version numbers across the repository are aligned
-# and provides parallel processing for better performance
+# This script performs comprehensive validation of version consistency across all repository files
 
 set -e
 
-# Enable parallel processing
-PARALLEL_JOBS=4
-
-# Performance tracking
+# Performance tracking and logging
 start_time=$(date +%s)
+VALIDATION_LOG="/tmp/version_validation_$(date +%Y%m%d_%H%M%S).log"
 
-echo "🔍 Validating version consistency across repository..."
+echo "🔍 Enhanced Version Validation" | tee "$VALIDATION_LOG"
+echo "=============================" | tee -a "$VALIDATION_LOG"
+echo "" | tee -a "$VALIDATION_LOG"
 
 # Get the main version from the root VERSION file
 if [ ! -f "VERSION" ]; then
-    echo "❌ Root VERSION file not found!"
+    echo "❌ Root VERSION file not found!" | tee -a "$VALIDATION_LOG"
     exit 1
 fi
 
 MAIN_VERSION=$(cat VERSION | tr -d '\n')
-echo "📋 Expected version: $MAIN_VERSION"
-echo ""
+echo "📋 Expected version: $MAIN_VERSION" | tee -a "$VALIDATION_LOG"
+echo "" | tee -a "$VALIDATION_LOG"
 
 ERRORS=0
+WARNINGS=0
+TOTAL_FILES=0
 
-# Check package.json versions
-echo "📦 Checking package.json versions..."
-for package_file in "package.json" "examples/package.json" "docs-site/package.json" "docs-site/public/examples/package.json"; do
-    if [ -f "$package_file" ]; then
-        PACKAGE_VERSION=$(grep '"version":' "$package_file" | sed 's/.*"version": "\([^"]*\)".*/\1/')
-        if [ "$PACKAGE_VERSION" = "$MAIN_VERSION" ]; then
-            echo "✅ $package_file version: $PACKAGE_VERSION"
-        else
-            echo "❌ $package_file version mismatch: $PACKAGE_VERSION (expected: $MAIN_VERSION)"
-            ERRORS=$((ERRORS + 1))
-        fi
+# Function to validate version in file
+validate_version_in_file() {
+    local file="$1"
+    local pattern="$2"
+    local expected_version="$3"
+    local current_version=""
+    
+    TOTAL_FILES=$((TOTAL_FILES + 1))
+    
+    case "$pattern" in
+        "**Version**:")
+            current_version=$(grep "\*\*Version\*\*:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*\*Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "**Template Version**:")
+            current_version=$(grep "\*\*Template Version\*\*:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*\*Template Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "*Template Version:")
+            current_version=$(grep "\*Template Version:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*Template Version: *//' | sed 's/\*.*$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "**Instruction Version**:")
+            current_version=$(grep "\*\*Instruction Version\*\*:" "$file" 2>/dev/null | tail -1 | sed 's/.*\*\*Instruction Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+        "JSON_version")
+            current_version=$(grep '"version":' "$file" 2>/dev/null | head -1 | sed 's/.*"version": *"\([^"]*\)".*/\1/' || echo "NOT_FOUND")
+            ;;
+        "List_Version")
+            current_version=$(grep "\- \*\*Version\*\*:" "$file" 2>/dev/null | sed 's/.*\*\*Version\*\*: *//' | sed 's/ *$//' | tr -d '\n' || echo "NOT_FOUND")
+            ;;
+    esac
+    
+    if [[ "$current_version" == "NOT_FOUND" ]]; then
+        echo "⚠️  Pattern $pattern not found in $file" | tee -a "$VALIDATION_LOG"
+        WARNINGS=$((WARNINGS + 1))
+    elif [[ "$current_version" == "$expected_version" ]]; then
+        echo "✅ $file ($pattern): $current_version" | tee -a "$VALIDATION_LOG"
     else
-        echo "⚠️  $package_file not found"
+        echo "❌ $file ($pattern): $current_version (expected: $expected_version)" | tee -a "$VALIDATION_LOG"
+        ERRORS=$((ERRORS + 1))
     fi
-done
+}
 
-# Check template version files
+# Validate all files with version patterns
+echo "🔍 Validating all version-managed files..." | tee -a "$VALIDATION_LOG"
+echo "" | tee -a "$VALIDATION_LOG"
+
+# 1. Validate package.json files
+echo "📦 Validating package.json files..." | tee -a "$VALIDATION_LOG"
+while IFS= read -r -d '' package_file; do
+    if [[ "$package_file" != *"node_modules"* ]] && [[ "$package_file" != *"/.git/"* ]]; then
+        validate_version_in_file "$package_file" "JSON_version" "$MAIN_VERSION"
+    fi
+done < <(find . -name "package.json" -type f -print0)
+
+# 2. Validate template version files
+echo "" | tee -a "$VALIDATION_LOG"
+echo "📄 Validating template version files..." | tee -a "$VALIDATION_LOG"
 for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
     if [ -f "$version_file" ]; then
-        FILE_VERSION=$(cat "$version_file" | tr -d '\n')
-        if [ "$FILE_VERSION" = "$MAIN_VERSION" ]; then
-            echo "✅ $version_file: $FILE_VERSION"
+        current_version=$(cat "$version_file" 2>/dev/null | tr -d '\n' || echo "NOT_FOUND")
+        if [[ "$current_version" == "$MAIN_VERSION" ]]; then
+            echo "✅ $version_file: $current_version" | tee -a "$VALIDATION_LOG"
         else
-            echo "❌ $version_file version mismatch: $FILE_VERSION (expected: $MAIN_VERSION)"
+            echo "❌ $version_file: $current_version (expected: $MAIN_VERSION)" | tee -a "$VALIDATION_LOG"
             ERRORS=$((ERRORS + 1))
         fi
-    else
-        echo "⚠️  $version_file not found"
+        TOTAL_FILES=$((TOTAL_FILES + 1))
     fi
 done
 
-# Check document versions
-echo ""
-echo "📄 Checking document versions..."
+# 3. Validate all markdown files with version patterns
+echo "" | tee -a "$VALIDATION_LOG"
+echo "📝 Validating markdown files..." | tee -a "$VALIDATION_LOG"
 
-for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs/integration-automation-script.md" "docs/project-integration-guide.md" "docs/version-management-guide.md" "docs-site/public/docs/architecture/system-architecture.md"; do
-    if [ -f "$doc_file" ]; then
-        # Look for version in Document Information section (use tail to get the last occurrence)
-        DOC_VERSION=$(grep "\*\*Version\*\*: [^*]*" "$doc_file" 2>/dev/null | tail -1 | sed 's/.*\*\*Version\*\*: //' | tr -d ' ' || echo "NOT_FOUND")
-        if [ "$DOC_VERSION" = "$MAIN_VERSION" ]; then
-            echo "✅ $doc_file: $DOC_VERSION"
-        elif [ "$DOC_VERSION" = "NOT_FOUND" ]; then
-            echo "⚠️  No version found in $doc_file"
-        else
-            echo "❌ $doc_file version mismatch: $DOC_VERSION (expected: $MAIN_VERSION)"
-            ERRORS=$((ERRORS + 1))
-        fi
-    fi
-done
-
-# Check template versions
-echo ""
-echo "📋 Checking template versions..."
-TEMPLATE_ERRORS=0
-
-find docs/templates -name "*.md" | while read template_file; do
-    # Try both formats: **Template Version**: and *Template Version:
-    TEMPLATE_VERSION=$(grep -o "\*\*Template Version\*\*: [^*]*" "$template_file" 2>/dev/null | sed 's/\*\*Template Version\*\*: //')
-    if [ -z "$TEMPLATE_VERSION" ]; then
-        TEMPLATE_VERSION=$(grep -o "\*Template Version: [^*]*" "$template_file" 2>/dev/null | sed 's/\*Template Version: //')
-    fi
-    if [ -z "$TEMPLATE_VERSION" ]; then
-        TEMPLATE_VERSION="NOT_FOUND"
-    fi
-    
-    if [ "$TEMPLATE_VERSION" = "$MAIN_VERSION" ]; then
-        echo "✅ $template_file: $TEMPLATE_VERSION"
-    elif [ "$TEMPLATE_VERSION" = "NOT_FOUND" ]; then
-        echo "⚠️  No template version found in $template_file"
-    else
-        echo "❌ $template_file version mismatch: $TEMPLATE_VERSION (expected: $MAIN_VERSION)"
-        # Note: Can't increment ERRORS here due to subshell
-    fi
-done
-
-# Check template versions in docs-site/public/docs/templates
-echo ""
-echo "📋 Checking documentation site template versions..."
-if [ -d "docs-site/public/docs/templates" ]; then
-    find docs-site/public/docs/templates -name "*.md" | while read template_file; do
-        # Try both formats: **Template Version**: and *Template Version:
-        TEMPLATE_VERSION=$(grep -o "\*\*Template Version\*\*: [^*]*" "$template_file" 2>/dev/null | sed 's/\*\*Template Version\*\*: //')
-        if [ -z "$TEMPLATE_VERSION" ]; then
-            TEMPLATE_VERSION=$(grep -o "\*Template Version: [^*]*" "$template_file" 2>/dev/null | sed 's/\*Template Version: //')
-        fi
-        if [ -z "$TEMPLATE_VERSION" ]; then
-            TEMPLATE_VERSION="NOT_FOUND"
+while IFS= read -r -d '' md_file; do
+    if [[ "$md_file" != *"node_modules"* ]] && [[ "$md_file" != *"/.git/"* ]]; then
+        # Check each pattern type
+        if grep -q "\*\*Version\*\*:" "$md_file" 2>/dev/null; then
+            validate_version_in_file "$md_file" "**Version**:" "$MAIN_VERSION"
         fi
         
-        if [ "$TEMPLATE_VERSION" = "$MAIN_VERSION" ]; then
-            echo "✅ $template_file: $TEMPLATE_VERSION"
-        elif [ "$TEMPLATE_VERSION" = "NOT_FOUND" ]; then
-            echo "⚠️  No template version found in $template_file"
-        else
-            echo "❌ $template_file version mismatch: $TEMPLATE_VERSION (expected: $MAIN_VERSION)"
-            # Note: Can't increment ERRORS here due to subshell
+        if grep -q "\*\*Template Version\*\*:" "$md_file" 2>/dev/null; then
+            validate_version_in_file "$md_file" "**Template Version**:" "$MAIN_VERSION"
         fi
-    done
-else
-    echo "ℹ️  docs-site/public/docs/templates directory not found"
-fi
+        
+        if grep -q "\*Template Version:" "$md_file" 2>/dev/null; then
+            validate_version_in_file "$md_file" "*Template Version:" "$MAIN_VERSION"
+        fi
+        
+        if grep -q "\*\*Instruction Version\*\*:" "$md_file" 2>/dev/null; then
+            validate_version_in_file "$md_file" "**Instruction Version**:" "$MAIN_VERSION"
+        fi
+        
+        if grep -q "\- \*\*Version\*\*:" "$md_file" 2>/dev/null; then
+            validate_version_in_file "$md_file" "List_Version" "$MAIN_VERSION"
+        fi
+    fi
+done < <(find . -name "*.md" -type f -print0)
 
-# Check AI agent instruction files for version consistency
-echo ""
-echo "🤖 Checking AI agent instruction versions..."
-AI_AGENT_VERSION_ERRORS=0
-for ai_file in docs/ai-agents/claude/claude-architecture-instructions-v*.md docs/ai-agents/*.md docs-site/public/docs/ai-agents/claude/claude-architecture-instructions-v*.md docs-site/public/docs/ai-agents/*.md; do
-    if [ -f "$ai_file" ]; then
-        # Look for instruction version references in the format **Instruction Version**: X.X.X
-        AI_VERSION=$(grep -o "\*\*Instruction Version\*\*: [^*]*" "$ai_file" 2>/dev/null | sed 's/\*\*Instruction Version\*\*: //' | tr -d ' ')
-        if [ -n "$AI_VERSION" ]; then
-            if [ "$AI_VERSION" = "$MAIN_VERSION" ]; then
-                echo "✅ $ai_file: $AI_VERSION"
-            else
-                echo "❌ $ai_file version mismatch: $AI_VERSION (expected: $MAIN_VERSION)"
-                ERRORS=$((ERRORS + 1))
-            fi
-        else
-            echo "ℹ️  No instruction version found in $ai_file"
-        fi
-    fi
-done
+# Final summary
+end_time=$(date +%s)
+duration=$((end_time - start_time))
 
-echo ""
-if [ $ERRORS -eq 0 ]; then
-    end_time=$(date +%s)
-    duration=$((end_time - start_time))
-    echo "🎉 All versions are aligned!"
-    echo "📊 Repository version: $MAIN_VERSION"
-    echo "⏱️  Validation completed in ${duration}s"
-    
-    # Generate deprecation warnings if needed
-    if [[ "$MAIN_VERSION" =~ ^0\. ]]; then
-        echo "⚠️  Pre-release version detected (0.x.x)"
-    fi
-    
-    # Check for version history
-    if command -v git >/dev/null 2>&1; then
-        last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-        if [[ -n "$last_tag" ]] && [[ "$last_tag" != "v$MAIN_VERSION" ]]; then
-            echo "📋 Previous version: $last_tag"
-        fi
-    fi
-    
+echo "" | tee -a "$VALIDATION_LOG"
+echo "📊 Validation Summary:" | tee -a "$VALIDATION_LOG"
+echo "   Total files checked: $TOTAL_FILES" | tee -a "$VALIDATION_LOG"
+echo "   Errors found: $ERRORS" | tee -a "$VALIDATION_LOG"
+echo "   Warnings: $WARNINGS" | tee -a "$VALIDATION_LOG"
+echo "   Duration: ${duration}s" | tee -a "$VALIDATION_LOG"
+echo "" | tee -a "$VALIDATION_LOG"
+
+if [ $ERRORS -eq 0 ] && [ $WARNINGS -eq 0 ]; then
+    echo "🎉 All versions are perfectly aligned!" | tee -a "$VALIDATION_LOG"
+    echo "📋 Repository version: $MAIN_VERSION" | tee -a "$VALIDATION_LOG"
+    exit 0
+elif [ $ERRORS -eq 0 ]; then
+    echo "⚠️  All versions are correct, but found $WARNINGS warnings" | tee -a "$VALIDATION_LOG"
+    echo "🔧 Consider reviewing warnings above" | tee -a "$VALIDATION_LOG"
     exit 0
 else
-    echo "💥 Found $ERRORS version mismatches!"
-    echo "🔧 Run './scripts/sync-versions.sh' to fix inconsistencies"
-    echo "📝 Or use './scripts/version-bump.sh' for automated version management"
+    echo "💥 Found $ERRORS version mismatches and $WARNINGS warnings!" | tee -a "$VALIDATION_LOG"
+    echo "🔧 Run './scripts/sync-versions.sh' to fix inconsistencies" | tee -a "$VALIDATION_LOG"
+    echo "📝 Full log saved to: $VALIDATION_LOG" | tee -a "$VALIDATION_LOG"
     exit 1
 fi

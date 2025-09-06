@@ -22,7 +22,7 @@
 **Categories Fixed**:
 
 - **Architecture** (`/docs/architecture`) - Now defaults to system-architecture.md
-- **AI Agents** (`/docs/ai-agents`) - Now defaults to claude-architecture-instructions-v2.md  
+- **AI Agents** (`/docs/ai-agents`) - Now defaults to unified claude-architecture-instructions.md with AI_AGENT_INTEGRATION_GUIDE.md  
 - **Examples** (`/docs/examples`) - Now defaults to docker-compose.yml
 
 **Before**: Clicking main nav items would show "Document not found" error
@@ -45,8 +45,8 @@
 - ✅ `docs/ai-agents/chatgpt-architecture-instructions.md`
 - ✅ `docs/ai-agents/copilot-architecture-instructions.md`
 - ✅ `docs/ai-agents/gemini-architecture-instructions.md`
-- ✅ `docs/ai-agents/claude/claude-architecture-instructions-v1.md`
-- ✅ `docs/ai-agents/claude/claude-architecture-instructions-v2.md`
+- ✅ `docs/ai-agents/claude/claude-architecture-instructions.md` (unified)
+- ✅ `docs/ai-agents/AI_AGENT_INTEGRATION_GUIDE.md` (new)
 
 #### Templates ✅
 

@@ -41,8 +41,8 @@ check_file "docs/project-integration-guide.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/templates/README.md" || ERRORS=$((ERRORS + 1))
 
 # Check AI agent instruction files
-check_file "docs/ai-agents/claude/claude-architecture-instructions-v1.md" || ERRORS=$((ERRORS + 1))
-check_file "docs/ai-agents/claude/claude-architecture-instructions-v2.md" || ERRORS=$((ERRORS + 1))
+check_file "docs/ai-agents/claude/claude-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
+check_file "docs/ai-agents/AI_AGENT_INTEGRATION_GUIDE.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/chatgpt-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/copilot-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/gemini-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
