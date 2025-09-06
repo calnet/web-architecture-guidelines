@@ -29,7 +29,8 @@
     "compliance:validate": "npm run compliance:enhance && npm run compliance:report",
     "validate:all": "npm run lint:all && npm run check:cross-references",
     "versions:sync": "./scripts/sync-versions.sh",
-    "versions:validate": "./scripts/validate-versions.sh"
+    "versions:validate": "./scripts/validate-versions.sh",
+    "versions:list": "./scripts/list-version-files.sh"
   },
   "dependencies": {
     "typescript": "^5.9.2"

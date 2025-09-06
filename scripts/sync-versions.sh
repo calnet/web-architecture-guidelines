@@ -14,12 +14,17 @@ fi
 MAIN_VERSION=$(cat VERSION | tr -d '\n')
 echo "🔄 Synchronizing all versions to: $MAIN_VERSION"
 
-# Update package.json
-if [ -f "package.json" ]; then
-    echo "📦 Updating package.json version..."
-    sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$MAIN_VERSION\"/" package.json
-    echo "✅ package.json updated"
-fi
+# Update package.json files
+echo "📦 Updating package.json versions..."
+for package_file in "package.json" "examples/package.json" "docs-site/package.json" "docs-site/public/examples/package.json"; do
+    if [ -f "$package_file" ]; then
+        echo "📄 Updating $package_file..."
+        sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$MAIN_VERSION\"/" "$package_file"
+        echo "✅ $package_file updated"
+    else
+        echo "⚠️  $package_file not found, skipping"
+    fi
+done
 
 # Update template version files
 for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
@@ -49,8 +54,28 @@ echo "✅ All template versions updated"
 
 # Update documentation site templates if they exist
 if [ -d "docs-site/public/docs/templates" ]; then
+    echo "📋 Updating documentation site template versions..."
     find docs-site/public/docs/templates -name "*.md" -exec sed -i "s/\*\*Template Version\*\*: [^*]*/\*\*Template Version\*\*: $MAIN_VERSION/" {} \; 2>/dev/null || true
+    find docs-site/public/docs/templates -name "*.md" -exec sed -i "s/\*Template Version: [^*]*/\*Template Version: $MAIN_VERSION\*/" {} \; 2>/dev/null || true
     echo "✅ Documentation site template versions updated"
+fi
+
+# Update AI agent instruction versions (if they have version markers)
+echo "🤖 Updating AI agent instruction versions..."
+AI_AGENT_FILES_UPDATED=0
+for ai_file in docs/ai-agents/claude/claude-architecture-instructions-v*.md docs/ai-agents/*.md docs-site/public/docs/ai-agents/claude/claude-architecture-instructions-v*.md docs-site/public/docs/ai-agents/*.md; do
+    if [ -f "$ai_file" ]; then
+        # Update any explicit version references that match pattern "Version: X.X.X"
+        if grep -q "Version: [0-9]" "$ai_file" 2>/dev/null; then
+            sed -i "s/Version: [0-9][0-9.]*[0-9]/Version: $MAIN_VERSION/g" "$ai_file"
+            echo "✅ Updated version references in $ai_file"
+            AI_AGENT_FILES_UPDATED=$((AI_AGENT_FILES_UPDATED + 1))
+        fi
+    fi
+done
+
+if [ $AI_AGENT_FILES_UPDATED -eq 0 ]; then
+    echo "ℹ️  No AI agent instruction files found with explicit version markers"
 fi
 
 echo ""
