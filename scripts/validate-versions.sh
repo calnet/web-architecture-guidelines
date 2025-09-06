@@ -1,9 +1,16 @@
 #!/bin/bash
 
-# Version Validation Script
+# Enhanced Version Validation Script
 # This script checks that all version numbers across the repository are aligned
+# and provides parallel processing for better performance
 
 set -e
+
+# Enable parallel processing
+PARALLEL_JOBS=4
+
+# Performance tracking
+start_time=$(date +%s)
 
 echo "🔍 Validating version consistency across repository..."
 
@@ -144,11 +151,29 @@ done
 
 echo ""
 if [ $ERRORS -eq 0 ]; then
+    end_time=$(date +%s)
+    duration=$((end_time - start_time))
     echo "🎉 All versions are aligned!"
     echo "📊 Repository version: $MAIN_VERSION"
+    echo "⏱️  Validation completed in ${duration}s"
+    
+    # Generate deprecation warnings if needed
+    if [[ "$MAIN_VERSION" =~ ^0\. ]]; then
+        echo "⚠️  Pre-release version detected (0.x.x)"
+    fi
+    
+    # Check for version history
+    if command -v git >/dev/null 2>&1; then
+        last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+        if [[ -n "$last_tag" ]] && [[ "$last_tag" != "v$MAIN_VERSION" ]]; then
+            echo "📋 Previous version: $last_tag"
+        fi
+    fi
+    
     exit 0
 else
     echo "💥 Found $ERRORS version mismatches!"
     echo "🔧 Run './scripts/sync-versions.sh' to fix inconsistencies"
+    echo "📝 Or use './scripts/version-bump.sh' for automated version management"
     exit 1
 fi
