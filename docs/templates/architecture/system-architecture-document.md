@@ -181,5 +181,5 @@ Brief overview of the system and its architecture (2-3 paragraphs)
 [Link to related ADRs]
 
 ---
-*Template Version: 1.0*  
+*Template Version: 1.1.0**  
 *Last Updated: [Date]*
