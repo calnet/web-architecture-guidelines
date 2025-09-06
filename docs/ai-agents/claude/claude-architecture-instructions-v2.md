@@ -1,5 +1,9 @@
 # Claude Web Application Architecture Instructions
 
+**Instruction Version**: 1.1.0  
+**Last Updated**: 2025-01-11  
+**Target AI**: Claude (Advanced Level)
+
 ## Purpose
 
 This instruction file guides Claude in providing comprehensive, structured guidance for building well-architected web applications that are maintainable, secure, scalable, and follow industry best practices from conception to deployment and beyond.

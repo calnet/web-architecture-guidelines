@@ -126,20 +126,17 @@ echo "🤖 Checking AI agent instruction versions..."
 AI_AGENT_VERSION_ERRORS=0
 for ai_file in docs/ai-agents/claude/claude-architecture-instructions-v*.md docs/ai-agents/*.md docs-site/public/docs/ai-agents/claude/claude-architecture-instructions-v*.md docs-site/public/docs/ai-agents/*.md; do
     if [ -f "$ai_file" ]; then
-        # Look for explicit version references
-        VERSION_MATCHES=$(grep -o "Version: [0-9][0-9.]*[0-9]" "$ai_file" 2>/dev/null || true)
-        if [ -n "$VERSION_MATCHES" ]; then
-            echo "$VERSION_MATCHES" | while read -r version_line; do
-                AI_VERSION=$(echo "$version_line" | sed 's/Version: //')
-                if [ "$AI_VERSION" = "$MAIN_VERSION" ]; then
-                    echo "✅ $ai_file version reference: $AI_VERSION"
-                else
-                    echo "❌ $ai_file version mismatch: $AI_VERSION (expected: $MAIN_VERSION)"
-                    # Note: Can't increment ERRORS here due to subshell
-                fi
-            done
+        # Look for instruction version references in the format **Instruction Version**: X.X.X
+        AI_VERSION=$(grep -o "\*\*Instruction Version\*\*: [^*]*" "$ai_file" 2>/dev/null | sed 's/\*\*Instruction Version\*\*: //' | tr -d ' ')
+        if [ -n "$AI_VERSION" ]; then
+            if [ "$AI_VERSION" = "$MAIN_VERSION" ]; then
+                echo "✅ $ai_file: $AI_VERSION"
+            else
+                echo "❌ $ai_file version mismatch: $AI_VERSION (expected: $MAIN_VERSION)"
+                ERRORS=$((ERRORS + 1))
+            fi
         else
-            echo "ℹ️  No explicit version references found in $ai_file"
+            echo "ℹ️  No instruction version found in $ai_file"
         fi
     fi
 done

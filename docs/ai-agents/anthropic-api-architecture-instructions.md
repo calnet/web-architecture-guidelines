@@ -1,5 +1,9 @@
 # Anthropic API Web Application Architecture Instructions
 
+**Instruction Version**: 1.1.0  
+**Last Updated**: 2025-01-11  
+**Target AI**: Anthropic Claude API
+
 [Previous content remains the same through Frontend Integration Patterns...]
 
 ## Frontend Integration Patterns
