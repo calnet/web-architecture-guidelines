@@ -49,7 +49,21 @@
     "changelog:generate": "./scripts/generate-changelog.sh",
     "templates:compatibility": "./scripts/generate-template-compatibility.sh",
     "templates:compatibility-json": "./scripts/generate-template-compatibility.sh docs/TEMPLATE_COMPATIBILITY.json json",
-    "templates:compatibility-csv": "./scripts/generate-template-compatibility.sh docs/TEMPLATE_COMPATIBILITY.csv csv"
+    "templates:compatibility-csv": "./scripts/generate-template-compatibility.sh docs/TEMPLATE_COMPATIBILITY.csv csv",
+    "workflow:configure-secret": "./scripts/configure-anthropic-secret.sh",
+    "workflow:validate-secret": "./scripts/configure-anthropic-secret.sh --validate",
+    "workflow:test": "./scripts/test-workflow.sh",
+    "workflow:test-dry": "./scripts/test-workflow.sh --dry-run",
+    "workflow:test-secret": "./scripts/test-workflow.sh --validate-secret --dry-run",
+    "workflow:monitor": "./scripts/monitor-workflow.sh",
+    "workflow:monitor-report": "./scripts/monitor-workflow.sh --report",
+    "workflow:monitor-performance": "./scripts/monitor-workflow.sh --performance",
+    "workflow:monitor-dashboard": "./scripts/monitor-workflow.sh --dashboard",
+    "workflow:optimize": "./scripts/monitor-workflow.sh --optimize",
+    "next-steps:all": "npm run workflow:validate-secret && npm run workflow:test-dry && npm run workflow:monitor",
+    "next-steps:configure": "npm run workflow:configure-secret",
+    "next-steps:test": "npm run workflow:test",
+    "next-steps:monitor": "npm run workflow:monitor-report"
   },
   "dependencies": {
     "typescript": "^5.9.2"
