@@ -207,14 +207,20 @@ npm run versions:validate
 
 # Synchronize all versions to root VERSION file
 npm run versions:sync
+
+# List all version-managed files and their current status
+npm run versions:list
 ```
 
 The repository maintains version consistency across:
 - Root `VERSION` file (source of truth)
-- Package.json version
-- Template versions
-- Document metadata
-- CI/CD workflows
+- All package.json files (main, examples, docs-site)
+- Template version files and metadata
+- Documentation files with version headers
+- Individual template versions (28+ files)
+- AI agent instruction files (when versioned)
+
+For detailed guidance, see [Version Management Guide](docs/version-management-guide.md).
 
 ## License
 
