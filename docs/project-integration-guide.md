@@ -714,7 +714,7 @@ This integration guide ensures that projects can effectively utilize the organiz
 
 **Document Information**:
 
-- **Version**: 1.3.2
+- **Version**: 1.3.3
 - **Last Updated**: 2025-09-06 @ 22:12
 - **Review Schedule**: Quarterly
 - **Maintained by**: Architecture Team

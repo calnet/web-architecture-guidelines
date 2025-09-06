@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2024-09-06
+
+### Security
+- **CRITICAL**: Fixed code injection vulnerability in AI-Powered Code Review workflow
+  - Resolved direct interpolation of `github.event.comment.body` in shell commands
+  - Implemented secure environment variable-based input handling
+  - Added security comments to prevent future regressions
+  - All user input now properly sanitized to prevent command injection attacks
+
+### Technical Improvements
+- Fixed YAML formatting issues in workflow files (line length, trailing spaces)
+- Enhanced workflow security with proper input validation
+- Updated workflow execution to follow security best practices
+
 ## [1.3.2] - 2025-09-06
 
 ### ✨ Features

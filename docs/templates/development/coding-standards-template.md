@@ -1,6 +1,6 @@
 # Coding Standards Template
 
-**Template Version**: 1.3.2
+**Template Version**: 1.3.3
 **Last Updated**: 2025-09-06 @ 22:12
 **Target Audience**: Development Team  
 

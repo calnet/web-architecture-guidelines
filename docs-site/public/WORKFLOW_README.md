@@ -262,6 +262,6 @@ WORKFLOW_README.md                   # This usage guide
 
 ---
 
-- **Version**: 1.3.2
+- **Version**: 1.3.3
 - **Last Updated**: September 2025
-- **Template Version**: 1.3.2
+- **Template Version**: 1.3.3
