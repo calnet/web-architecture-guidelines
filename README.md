@@ -192,11 +192,29 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 ## Versioning
 
-This project follows semantic versioning. Major updates to guidelines warrant version increments.
+This project follows semantic versioning with centralized version management to ensure consistency across all documentation.
 
+### Version Schema
 - **Major**: Breaking changes to core principles
-- **Minor**: New guidelines or significant enhancements
+- **Minor**: New guidelines or significant enhancements  
 - **Patch**: Bug fixes and minor improvements
+
+### Version Management Tools
+
+```bash
+# Validate all versions are aligned
+npm run versions:validate
+
+# Synchronize all versions to root VERSION file
+npm run versions:sync
+```
+
+The repository maintains version consistency across:
+- Root `VERSION` file (source of truth)
+- Package.json version
+- Template versions
+- Document metadata
+- CI/CD workflows
 
 ## License
 
