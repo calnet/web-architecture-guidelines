@@ -1,5 +1,5 @@
-import { readFile, readdir, stat } from 'fs/promises';
-import { join, relative } from 'path';
+import * as fs from 'fs/promises';
+import * as path from 'path';
 
 interface TemplateCompliance {
   templateName: string;
@@ -90,7 +90,7 @@ class TemplateComplianceChecker {
     ];
 
     for (const dir of templateDirs) {
-      const fullPath = join(this.projectPath, dir);
+      const fullPath = path.join(this.projectPath, dir);
       try {
         const files = await this.scanDirectory(fullPath);
         templatePaths.push(...files.filter(f => f.endsWith('.md')));
@@ -107,11 +107,11 @@ class TemplateComplianceChecker {
     const files: string[] = [];
     
     try {
-      const entries = await readdir(dirPath);
+      const entries = await fs.readdir(dirPath);
       
       for (const entry of entries) {
-        const fullPath = join(dirPath, entry);
-        const stats = await stat(fullPath);
+        const fullPath = path.join(dirPath, entry);
+        const stats = await fs.stat(fullPath);
         
         if (stats.isDirectory()) {
           const subFiles = await this.scanDirectory(fullPath);
@@ -128,7 +128,7 @@ class TemplateComplianceChecker {
   }
 
   async analyzeTemplate(templatePath: string): Promise<TemplateCompliance> {
-    const content = await readFile(templatePath, 'utf-8');
+    const content = await fs.readFile(templatePath, 'utf-8');
     const fileName = templatePath.split('/').pop() || '';
     const templateDef = this.findTemplateDefinition(fileName);
     
@@ -140,7 +140,7 @@ class TemplateComplianceChecker {
         complianceScore: 0,
         missingRequiredSections: [],
         customizations: [],
-        filePath: relative(this.projectPath, templatePath)
+        filePath: path.relative(this.projectPath, templatePath)
       };
     }
 
@@ -154,7 +154,7 @@ class TemplateComplianceChecker {
       complianceScore,
       missingRequiredSections,
       customizations,
-      filePath: relative(this.projectPath, templatePath)
+      filePath: path.relative(this.projectPath, templatePath)
     };
   }
 
@@ -284,16 +284,15 @@ export async function generateComplianceReport(projectPath: string): Promise<voi
   const htmlReport = generateHTMLReport(report);
   
   // Save reports
-  const { writeFile, mkdir } = await import('fs/promises');
-  await mkdir(join(projectPath, 'reports'), { recursive: true });
+  await fs.mkdir(path.join(projectPath, 'reports'), { recursive: true });
   
-  await writeFile(
-    join(projectPath, 'reports', 'compliance-report.json'),
+  await fs.writeFile(
+    path.join(projectPath, 'reports', 'compliance-report.json'),
     JSON.stringify(report, null, 2)
   );
   
-  await writeFile(
-    join(projectPath, 'reports', 'compliance-report.html'),
+  await fs.writeFile(
+    path.join(projectPath, 'reports', 'compliance-report.html'),
     htmlReport
   );
 
@@ -382,7 +381,8 @@ function generateHTMLReport(report: ComplianceReport): string {
 export { TemplateComplianceChecker, TemplateCompliance };
 
 // CLI entry point
-if (require.main === module) {
+const isMainModule = typeof require !== 'undefined' && require.main === module;
+if (isMainModule) {
   const projectPath = process.argv[2] || process.cwd();
   generateComplianceReport(projectPath).catch(console.error);
 }
