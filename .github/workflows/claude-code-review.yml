@@ -12,6 +12,9 @@ on:
 
 jobs:
     claude-review:
+        # Skip for bot actors to avoid permission check failures
+        if: github.actor != 'Copilot' && !contains(github.actor, '[bot]')
+        
         # Optional: Filter by PR author
         # if: |
         #   github.event.pull_request.user.login == 'external-contributor' ||
