@@ -1,0 +1,16 @@
+{
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "password123"
+  },
+  "api": {
+    "rate_limit": 1000,
+    "timeout": 30
+  },
+  "security": {
+    "enable_https": true,
+    "jwt_secret": "super_secret_key"
+  }
+}

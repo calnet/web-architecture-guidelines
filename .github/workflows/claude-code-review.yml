@@ -1,89 +1,174 @@
-name: Claude Code Review
+name: Enhanced Claude Code Review
 
 on:
-    pull_request:
-        types: [opened, synchronize]
-        # Optional: Only run on specific file changes
-        # paths:
-        #   - "src/**/*.ts"
-        #   - "src/**/*.tsx"
-        #   - "src/**/*.js"
-        #   - "src/**/*.jsx"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly comprehensive review on Mondays at 9 AM
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
 jobs:
-    claude-review:
-        # Skip for bot actors to avoid permission check failures
-        if: github.actor != 'Copilot' && !contains(github.actor, '[bot]')
+  claude-review:
+    if: github.event_name == 'pull_request' || (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
         
-        # Optional: Filter by PR author
-        # if: |
-        #   github.event.pull_request.user.login == 'external-contributor' ||
-        #   github.event.pull_request.user.login == 'new-developer' ||
-        #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
+      - name: Run security validation
+        run: npm run lint:security
+        continue-on-error: true
+        
+      - name: Run architecture validation
+        run: npm run lint:architecture
+        continue-on-error: true
+        
+      - name: Run performance validation
+        run: npm run lint:performance
+        continue-on-error: true
+        
+      - name: Enhanced Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          model: 'claude-3-5-sonnet-20241022'
+          max-tokens: 4000
+          system-prompt: |
+            You are an expert software architect and code reviewer specializing in web application development. 
 
-        runs-on: ubuntu-latest
-        permissions:
-            contents: read
-            pull-requests: write # Changed from 'read' to 'write'
-            issues: write # Changed from 'read' to 'write'
-            id-token: write
+            ## Your Role
+            Provide comprehensive, actionable code reviews focusing on:
+            - Architecture compliance with established patterns
+            - Security best practices and vulnerability identification
+            - Performance optimization opportunities
+            - Code maintainability and readability
+            - Documentation quality and completeness
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 1
+            ## Review Standards
+            - Reference the project's Web Architecture Guidelines
+            - Identify deviations from documented standards
+            - Suggest specific improvements with examples
+            - Prioritize critical security and performance issues
+            - Provide constructive, educational feedback
 
-            - name: Run Claude Code Review
-              id: claude-review
-              uses: anthropics/claude-code-action@v1 # Use stable version instead of @beta
-              with:
-                  # Use GitHub token for authentication
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  
-                  # Add your Anthropic API key
-                  anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+            ## Output Format
+            Structure your reviews with:
+            1. **Summary**: Brief overview of changes and overall assessment
+            2. **Critical Issues**: Security vulnerabilities, breaking changes
+            3. **Architecture**: Compliance with established patterns
+            4. **Performance**: Optimization opportunities
+            5. **Maintainability**: Code quality improvements
+            6. **Documentation**: Missing or inadequate documentation
+            7. **Recommendations**: Specific action items
 
-                  # Optional: Use OAuth token if you have it set up
-                  claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+            Keep feedback concise, actionable, and focused on the most impactful improvements.
+          
+          include-file-context: true
+          review-changed-files-only: true
+          
+      - name: Custom Command Detection
+        if: github.event_name == 'issue_comment'
+        run: |
+          COMMENT_BODY="${{ github.event.comment.body }}"
+          
+          if echo "$COMMENT_BODY" | grep -q "/architecture-review"; then
+            echo "CUSTOM_COMMAND=architecture-review" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/security-scan"; then
+            echo "CUSTOM_COMMAND=security-scan" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/performance-check"; then
+            echo "CUSTOM_COMMAND=performance-check" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/documentation-audit"; then
+            echo "CUSTOM_COMMAND=documentation-audit" >> $GITHUB_ENV
+          elif echo "$COMMENT_BODY" | grep -q "/quick-fix"; then
+            echo "CUSTOM_COMMAND=quick-fix" >> $GITHUB_ENV
+          fi
+          
+      - name: Execute Custom Command
+        if: env.CUSTOM_COMMAND != ''
+        run: |
+          if [ -f ".claude/commands/${CUSTOM_COMMAND}.md" ]; then
+            echo "Executing custom command: $CUSTOM_COMMAND"
+            cat .claude/commands/${CUSTOM_COMMAND}.md
+          fi
 
-                  # Optional: Specify model (defaults to Claude Sonnet 4, uncomment for Claude Opus 4.1)
-                  # model: "claude-opus-4-1-20250805"
-
-                  # Prompt for automated review (correct parameter name)
-                  prompt: |
-                      Please review this pull request and provide feedback on:
-                      - Code quality and best practices
-                      - Potential bugs or issues
-                      - Performance considerations
-                      - Security considerations
-                      - Documentation alignment
-                      - Consistency with project guidelines
-                      - Test coverage
-
-                      Be constructive and helpful in your feedback.
-
-                  # Optional: Use sticky comments to make Claude reuse the same comment on subsequent pushes to the same PR
-                  use_sticky_comment: true
-
-                  # Optional: Customize review based on file types
-                  # prompt: |
-                  #   Review this PR focusing on:
-                  #   - For TypeScript files: Type safety and proper interface usage
-                  #   - For API endpoints: Security, input validation, and error handling
-                  #   - For React components: Performance, accessibility, and best practices
-                  #   - For tests: Coverage, edge cases, and test quality
-
-                  # Optional: Different prompts for different authors
-                  # prompt: |
-                  #   ${{ github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR' &&
-                  #   'Welcome! Please review this PR from a first-time contributor. Be encouraging and provide detailed explanations for any suggestions.' ||
-                  #   'Please provide a thorough code review focusing on our coding standards and best practices.' }}
-
-                  # Optional: Add specific tools for running tests or linting
-                  # allowed_tools: "Bash(npm run lint:all),Bash(npm run check:errors),Bash(npm run compliance:validate)"
-
-                  # Optional: Skip review for certain conditions
-                  # if: |
-                  #   !contains(github.event.pull_request.title, '[skip-review]') &&
-                  #   !contains(github.event.pull_request.title, '[WIP]')
+  comprehensive-audit:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      issues: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run comprehensive validation
+        run: npm run validate:all
+        
+      - name: Weekly Architecture Audit
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          model: 'claude-3-5-sonnet-20241022'
+          max-tokens: 8000
+          system-prompt: |
+            Perform a comprehensive weekly audit of the codebase focusing on:
+            
+            ## Architecture Evolution
+            - Identify architectural drift from documented patterns
+            - Assess technical debt accumulation
+            - Review consistency across modules
+            
+            ## Security Posture
+            - Comprehensive security vulnerability assessment
+            - Review of security controls and configurations
+            - Assessment of dependency security status
+            
+            ## Performance Trends
+            - Identify performance degradation patterns
+            - Review optimization opportunities
+            - Assess scalability considerations
+            
+            ## Documentation Currency
+            - Validate documentation accuracy
+            - Identify documentation gaps
+            - Assess template compliance
+            
+            Create a detailed issue with findings and recommendations for the development team.
+          
+          create-issue: true
+          issue-title: "Weekly Architecture and Security Audit - $(date '+%Y-%m-%d')"

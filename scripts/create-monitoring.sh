@@ -37,7 +37,7 @@ create_monitor_workflow_script() {
         return 0
     fi
     
-    cat > "$script_file" << 'EOF'
+    cat > "$script_file" << 'MONITOR_EOF'
 #!/bin/bash
 
 # Workflow Monitoring Script
@@ -361,7 +361,7 @@ case "${1:-}" in
         monitor_main "$@"
         ;;
 esac
-EOF
+MONITOR_EOF
 
     chmod +x "$script_file"
     validate_file_creation "$script_file" "Workflow monitoring script"
@@ -379,7 +379,7 @@ create_test_workflow_script() {
         return 0
     fi
     
-    cat > "$script_file" << 'EOF'
+    cat > "$script_file" << 'TEST_EOF'
 #!/bin/bash
 
 # Workflow Testing Script
@@ -711,6 +711,7 @@ if [[ "$CLEANUP_ON_SUCCESS" != "true" ]]; then
     echo "gh pr close $PR_URL"
 fi
 EOF
+TEST_EOF
 
     chmod +x "$script_file"
     validate_file_creation "$script_file" "Workflow testing script"
@@ -728,7 +729,7 @@ create_setup_script() {
         return 0
     fi
     
-    cat > "$script_file" << 'EOF'
+    cat > "$script_file" << 'SETUP_EOF'
 #!/bin/bash
 
 # Enhanced Workflow Setup Script
@@ -944,7 +945,7 @@ echo "- Test with a small PR first to validate functionality"
 
 echo ""
 echo -e "${GREEN}🎉 Enhanced Claude Code Review System setup completed!${NC}"
-EOF
+SETUP_EOF
 
     chmod +x "$script_file"
     validate_file_creation "$script_file" "Complete setup script"
