@@ -37,7 +37,7 @@ jobs:
               with:
                   # Use GitHub token for authentication
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-
+                  
                   # Add your Anthropic API key
                   anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
@@ -78,7 +78,7 @@ jobs:
                   #   'Please provide a thorough code review focusing on our coding standards and best practices.' }}
 
                   # Optional: Add specific tools for running tests or linting
-                  # allowed_tools: "Bash(npm run test),Bash(npm run lint),Bash(npm run typecheck)"
+                  # allowed_tools: "Bash(npm run lint:all),Bash(npm run check:errors),Bash(npm run compliance:validate)"
 
                   # Optional: Skip review for certain conditions
                   # if: |
