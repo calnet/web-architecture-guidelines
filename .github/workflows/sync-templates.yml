@@ -16,6 +16,8 @@ jobs:
       
       - name: Check for template updates
         id: check
+        env:
+          BASE_REPO: "https://github.com/calnet/web-architecture-guidelines"
         run: |
           # Download latest templates from base repository
           echo "Downloading latest templates from $BASE_REPO"

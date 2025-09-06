@@ -1,6 +1,6 @@
 # API Specification Template
 
-**Template Version**: 1.0  
+**Template Version**: 1.1.0
 **Last Updated**: 2025-09-04  
 **Compliance Score**: Targeting 100%  
 
