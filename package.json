@@ -27,7 +27,7 @@
     "compliance:enhance": "./scripts/enhance-template-compliance.sh",
     "compliance:report": "./scripts/generate-compliance-report.sh",
     "compliance:validate": "npm run compliance:enhance && npm run compliance:report",
-    "validate:all": "npm run lint:all && npm run check:cross-references"
+    "validate:all": "npm run lint:all && npm run check:cross-references",
     "versions:sync": "./scripts/sync-versions.sh",
     "versions:validate": "./scripts/validate-versions.sh"
   },
