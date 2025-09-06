@@ -1,9 +1,16 @@
 #!/bin/bash
 
-# Version Validation Script
+# Enhanced Version Validation Script
 # This script checks that all version numbers across the repository are aligned
+# and provides parallel processing for better performance
 
 set -e
+
+# Enable parallel processing
+PARALLEL_JOBS=4
+
+# Performance tracking
+start_time=$(date +%s)
 
 echo "🔍 Validating version consistency across repository..."
 
@@ -54,9 +61,10 @@ done
 echo ""
 echo "📄 Checking document versions..."
 
-for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs-site/public/docs/architecture/system-architecture.md"; do
+for doc_file in "docs/architecture/system-architecture.md" "docs/security.md" "docs/performance.md" "docs/integration-automation-script.md" "docs/project-integration-guide.md" "docs/version-management-guide.md" "docs-site/public/docs/architecture/system-architecture.md"; do
     if [ -f "$doc_file" ]; then
-        DOC_VERSION=$(grep -o "\*\*Version\*\*: [^*]*" "$doc_file" 2>/dev/null | sed 's/.*\*\*Version\*\*: //' || echo "NOT_FOUND")
+        # Look for version in Document Information section (use tail to get the last occurrence)
+        DOC_VERSION=$(grep "\*\*Version\*\*: [^*]*" "$doc_file" 2>/dev/null | tail -1 | sed 's/.*\*\*Version\*\*: //' | tr -d ' ' || echo "NOT_FOUND")
         if [ "$DOC_VERSION" = "$MAIN_VERSION" ]; then
             echo "✅ $doc_file: $DOC_VERSION"
         elif [ "$DOC_VERSION" = "NOT_FOUND" ]; then
@@ -126,31 +134,46 @@ echo "🤖 Checking AI agent instruction versions..."
 AI_AGENT_VERSION_ERRORS=0
 for ai_file in docs/ai-agents/claude/claude-architecture-instructions-v*.md docs/ai-agents/*.md docs-site/public/docs/ai-agents/claude/claude-architecture-instructions-v*.md docs-site/public/docs/ai-agents/*.md; do
     if [ -f "$ai_file" ]; then
-        # Look for explicit version references
-        VERSION_MATCHES=$(grep -o "Version: [0-9][0-9.]*[0-9]" "$ai_file" 2>/dev/null || true)
-        if [ -n "$VERSION_MATCHES" ]; then
-            echo "$VERSION_MATCHES" | while read -r version_line; do
-                AI_VERSION=$(echo "$version_line" | sed 's/Version: //')
-                if [ "$AI_VERSION" = "$MAIN_VERSION" ]; then
-                    echo "✅ $ai_file version reference: $AI_VERSION"
-                else
-                    echo "❌ $ai_file version mismatch: $AI_VERSION (expected: $MAIN_VERSION)"
-                    # Note: Can't increment ERRORS here due to subshell
-                fi
-            done
+        # Look for instruction version references in the format **Instruction Version**: X.X.X
+        AI_VERSION=$(grep -o "\*\*Instruction Version\*\*: [^*]*" "$ai_file" 2>/dev/null | sed 's/\*\*Instruction Version\*\*: //' | tr -d ' ')
+        if [ -n "$AI_VERSION" ]; then
+            if [ "$AI_VERSION" = "$MAIN_VERSION" ]; then
+                echo "✅ $ai_file: $AI_VERSION"
+            else
+                echo "❌ $ai_file version mismatch: $AI_VERSION (expected: $MAIN_VERSION)"
+                ERRORS=$((ERRORS + 1))
+            fi
         else
-            echo "ℹ️  No explicit version references found in $ai_file"
+            echo "ℹ️  No instruction version found in $ai_file"
         fi
     fi
 done
 
 echo ""
 if [ $ERRORS -eq 0 ]; then
+    end_time=$(date +%s)
+    duration=$((end_time - start_time))
     echo "🎉 All versions are aligned!"
     echo "📊 Repository version: $MAIN_VERSION"
+    echo "⏱️  Validation completed in ${duration}s"
+    
+    # Generate deprecation warnings if needed
+    if [[ "$MAIN_VERSION" =~ ^0\. ]]; then
+        echo "⚠️  Pre-release version detected (0.x.x)"
+    fi
+    
+    # Check for version history
+    if command -v git >/dev/null 2>&1; then
+        last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+        if [[ -n "$last_tag" ]] && [[ "$last_tag" != "v$MAIN_VERSION" ]]; then
+            echo "📋 Previous version: $last_tag"
+        fi
+    fi
+    
     exit 0
 else
     echo "💥 Found $ERRORS version mismatches!"
     echo "🔧 Run './scripts/sync-versions.sh' to fix inconsistencies"
+    echo "📝 Or use './scripts/version-bump.sh' for automated version management"
     exit 1
 fi

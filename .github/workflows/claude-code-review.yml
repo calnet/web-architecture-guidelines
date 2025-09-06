@@ -12,6 +12,9 @@ on:
 
 jobs:
     claude-review:
+        # Skip for bot actors to avoid permission check failures
+        if: github.actor != 'Copilot' && !contains(github.actor, '[bot]')
+        
         # Optional: Filter by PR author
         # if: |
         #   github.event.pull_request.user.login == 'external-contributor' ||
@@ -31,11 +34,6 @@ jobs:
               with:
                   fetch-depth: 1
 
-            - name: Check Permissions for Human Users Only
-              if: ${{ github.actor != 'Copilot' && !startsWith(github.actor, 'github-actions[bot]') }}
-              run: |
-                gh api /repos/${{ github.repository }}/collaborators/${{ github.actor }}/permission
-
             - name: Run Claude Code Review
               id: claude-review
               uses: anthropics/claude-code-action@v1 # Use stable version instead of @beta
@@ -52,8 +50,8 @@ jobs:
                   # Optional: Specify model (defaults to Claude Sonnet 4, uncomment for Claude Opus 4.1)
                   # model: "claude-opus-4-1-20250805"
 
-                  # Direct prompt for automated review (no @claude mention needed)
-                  direct_prompt: |
+                  # Prompt for automated review (correct parameter name)
+                  prompt: |
                       Please review this pull request and provide feedback on:
                       - Code quality and best practices
                       - Potential bugs or issues
@@ -69,7 +67,7 @@ jobs:
                   use_sticky_comment: true
 
                   # Optional: Customize review based on file types
-                  # direct_prompt: |
+                  # prompt: |
                   #   Review this PR focusing on:
                   #   - For TypeScript files: Type safety and proper interface usage
                   #   - For API endpoints: Security, input validation, and error handling
@@ -77,7 +75,7 @@ jobs:
                   #   - For tests: Coverage, edge cases, and test quality
 
                   # Optional: Different prompts for different authors
-                  # direct_prompt: |
+                  # prompt: |
                   #   ${{ github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR' &&
                   #   'Welcome! Please review this PR from a first-time contributor. Be encouraging and provide detailed explanations for any suggestions.' ||
                   #   'Please provide a thorough code review focusing on our coding standards and best practices.' }}

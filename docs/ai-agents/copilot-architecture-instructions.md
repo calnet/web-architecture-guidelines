@@ -1,5 +1,9 @@
 # GitHub Copilot Web Application Architecture Instructions
 
+**Instruction Version**: 1.1.0  
+**Last Updated**: 2025-09-06 @ 17:03  
+**Target AI**: GitHub Copilot
+
 ## Code Generation Philosophy
 
 When generating code suggestions for web applications, prioritize clean, maintainable, and secure patterns. Always suggest industry best practices and include relevant comments explaining architectural decisions.
