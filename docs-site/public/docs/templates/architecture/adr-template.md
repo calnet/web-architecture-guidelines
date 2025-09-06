@@ -67,5 +67,5 @@ How will we know this decision is working?
 Additional context, discussions, or references
 
 ---
-*Template Version: 1.1.0****  
+*Template Version: 1.1.0*****  
 *Last Updated: [Date]*

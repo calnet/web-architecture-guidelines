@@ -553,5 +553,5 @@ docker-compose ps        # List running services
 ```
 
 ---
-*Template Version: 1.1.0*****  
+*Template Version: 1.1.0******  
 *Last Updated: [Date]*
