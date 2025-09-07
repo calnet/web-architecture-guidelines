@@ -12,144 +12,21 @@ on:
 
 jobs:
   automated-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
-    
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
       issues: write
-      id-token: write
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-
-      - name: Setup Node.js for code analysis
-        uses: actions/setup-node@v4
+          fetch-depth: 0
+      
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@v1
         with:
-          node-version: '18'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci || echo "No package.json found, skipping npm install"
-      
-      - name: Run code quality checks
-        id: quality-check
-        run: |
-          echo "🔍 Running code quality analysis for PR #${{ github.event.pull_request.number }}"
-          
-          # Check for markdown files and run markdownlint
-          if find . -name "*.md" -not -path "./node_modules/*" | head -1 | grep -q .; then
-            echo "📝 Found markdown files, running markdownlint..."
-            if command -v markdownlint-cli2 &> /dev/null; then
-              markdownlint-cli2 "**/*.md" || echo "❌ Markdownlint found issues"
-            else
-              echo "ℹ️ markdownlint-cli2 not installed, skipping markdown validation"
-            fi
-          fi
-          
-          # Check for TypeScript/JavaScript files
-          if find . -name "*.ts" -o -name "*.js" -o -name "*.tsx" -o -name "*.jsx" -not -path "./node_modules/*" | head -1 | grep -q .; then
-            echo "🔧 Found TypeScript/JavaScript files..."
-            if [ -f "package.json" ]; then
-              npm run lint 2>/dev/null || echo "ℹ️ No lint script found"
-              npm run type-check 2>/dev/null || echo "ℹ️ No type-check script found"
-            fi
-          fi
-          
-          # Check for common issues
-          echo "🔍 Checking for common issues..."
-          
-          # Check for large files
-          find . -type f -size +1M -not -path "./node_modules/*" -not -path "./.git/*" | while read file; do
-            echo "⚠️ Large file detected: $file"
-          done
-          
-          # Check for potential secrets (basic patterns)
-          if grep -r -i "password\|secret\|token\|key" --include="*.js" --include="*.ts" --include="*.jsx" --include="*.tsx" --include="*.md" . 2>/dev/null | grep -v "example\|template\|placeholder" | head -5; then
-            echo "⚠️ Potential secrets detected - please review"
-          fi
-          
-          echo "✅ Code quality analysis completed"
-      
-      - name: Create review summary
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            
-            // Get PR information
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
-            
-            // Get changed files
-            const { data: files } = await github.rest.pulls.listFiles({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
-            
-            let summary = `## 🤖 Automated Code Review Summary\n\n`;
-            summary += `**PR:** ${pr.title}\n`;
-            summary += `**Files changed:** ${files.length}\n`;
-            summary += `**Lines added:** ${pr.additions}\n`;
-            summary += `**Lines deleted:** ${pr.deletions}\n\n`;
-            
-            // Analyze file types
-            const fileTypes = {};
-            files.forEach(file => {
-              const ext = file.filename.split('.').pop();
-              fileTypes[ext] = (fileTypes[ext] || 0) + 1;
-            });
-            
-            if (Object.keys(fileTypes).length > 0) {
-              summary += `### 📁 File Types:\n`;
-              Object.entries(fileTypes).forEach(([ext, count]) => {
-                summary += `- \`.${ext}\`: ${count} file(s)\n`;
-              });
-              summary += `\n`;
-            }
-            
-            // Basic recommendations based on file types and changes
-            summary += `### 🔍 Automated Analysis:\n`;
-            
-            if (fileTypes.md && fileTypes.md > 0) {
-              summary += `- ✅ Documentation changes detected - ensure markdownlint compliance\n`;
-            }
-            
-            if (fileTypes.yml || fileTypes.yaml) {
-              summary += `- ⚠️ Workflow changes detected - verify GitHub Actions syntax\n`;
-            }
-            
-            if (pr.additions > 500) {
-              summary += `- ℹ️ Large PR (${pr.additions} additions) - consider breaking into smaller changes\n`;
-            }
-            
-            if (files.some(f => f.filename.includes('package.json') || f.filename.includes('package-lock.json'))) {
-              summary += `- 🔒 Dependency changes detected - review for security implications\n`;
-            }
-            
-            summary += `\n### 📋 Recommendations:\n`;
-            summary += `- Ensure all tests pass before merging\n`;
-            summary += `- Verify documentation is updated for any new features\n`;
-            summary += `- Check that breaking changes are properly documented\n`;
-            summary += `\n---\n*This review was generated automatically. For detailed feedback, request a manual review.*`;
-            
-            // Post comment
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              body: summary
-            });
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          claude-api-key: ${{ secrets.CLAUDE_API_KEY }}
 
