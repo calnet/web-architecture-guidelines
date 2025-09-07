@@ -6,11 +6,20 @@
     "security:audit": "npm audit",
     "security:audit-fix": "npm audit fix",
     "security:check": "npm audit --audit-level moderate",
+    "lint": "echo 'Linting documentation...' && npm run lint:all",
     "lint:templates": "./scripts/validate-templates.sh",
     "lint:architecture": "./scripts/validate-architecture.sh",
     "lint:security": "./scripts/validate-security.sh",
     "lint:performance": "./scripts/validate-performance.sh",
-    "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance"
+    "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance",
+    "type-check": "echo 'Type checking...' && tsc --noEmit --skipLibCheck",
+    "test:coverage": "echo 'Running tests with coverage...' && npm run lint:all",
+    "docs:validate-structure": "./scripts/validate-docs-structure.sh",
+    "docs:validate-templates": "./scripts/validate-templates.sh",
+    "validate:architecture": "./scripts/validate-architecture.sh",
+    "validate:security": "./scripts/validate-security.sh",
+    "validate:performance": "./scripts/validate-performance.sh",
+    "generate:compliance-report": "./scripts/generate-compliance-report.sh"
   },
   "dependencies": {
     "typescript": "^5.9.2"

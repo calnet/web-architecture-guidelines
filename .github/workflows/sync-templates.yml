@@ -9,7 +9,7 @@ jobs:
   sync-templates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Check for template updates
         id: check
@@ -24,7 +24,7 @@ jobs:
       
       - name: Create update PR
         if: steps.check.outputs.templates_updated == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           title: 'docs: update documentation templates'
           body: |
