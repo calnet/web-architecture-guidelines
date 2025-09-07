@@ -19,7 +19,11 @@ jobs:
   automated-review:
     runs-on: ubuntu-latest
     # Only run if not triggered by bots that cause permission issues
-    if: github.actor != 'dependabot[bot]'
+    if: >
+      github.actor != 'dependabot[bot]' &&
+      github.actor != 'Copilot' &&
+      github.actor != 'copilot-swe-agent[bot]' &&
+      !startsWith(github.actor, 'github-actions')
     
     steps:
       - name: Checkout repository
