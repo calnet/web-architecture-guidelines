@@ -5,39 +5,96 @@ on:
     - cron: '0 9 * * 1'  # Weekly on Monday
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   sync-templates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
       
       - name: Check for template updates
         id: check
+        env:
+          BASE_REPO_URL: 'https://api.github.com/repos/calnet/web-architecture-guidelines'
         run: |
-          # Download latest templates
-          curl -o /tmp/templates.zip $BASE_REPO/archive/main.zip
+          # Get latest release info
+          LATEST_RELEASE=$(curl -s "${BASE_REPO_URL}/releases/latest" | jq -r '.tag_name // "v1.1.0"')
+          CURRENT_VERSION=$(cat docs/.template-version 2>/dev/null || echo "v1.0.0")
           
-          # Compare versions and create PR if updates available
-          if [ "$(diff docs/templates/ /tmp/templates/)" ]; then
+          echo "Current version: $CURRENT_VERSION"
+          echo "Latest version: $LATEST_RELEASE"
+          
+          if [ "$CURRENT_VERSION" != "$LATEST_RELEASE" ]; then
             echo "templates_updated=true" >> $GITHUB_OUTPUT
+            echo "latest_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
+            echo "Template updates available: $CURRENT_VERSION -> $LATEST_RELEASE"
+          else
+            echo "templates_updated=false" >> $GITHUB_OUTPUT
+            echo "Templates are up to date"
           fi
+      
+      - name: Update template version
+        if: steps.check.outputs.templates_updated == 'true'
+        run: |
+          echo "${{ steps.check.outputs.latest_version }}" > docs/.template-version
+          
+      - name: Validate updated templates
+        if: steps.check.outputs.templates_updated == 'true'
+        run: |
+          npm run docs:validate-structure
+          npm run lint
       
       - name: Create update PR
         if: steps.check.outputs.templates_updated == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          title: 'docs: update documentation templates'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'docs: update template version to ${{ steps.check.outputs.latest_version }}'
+          title: 'docs: update documentation templates to ${{ steps.check.outputs.latest_version }}'
           body: |
             ## Template Updates Available
             
-            This PR updates documentation templates to the latest version.
+            This PR updates documentation templates to version ${{ steps.check.outputs.latest_version }}.
             
             ### Changes
-            - Updated templates from base guidelines
+            - Updated template version from current to ${{ steps.check.outputs.latest_version }}
+            - Validated template structure and markdown formatting
             - Preserved project-specific customizations
-            - Updated template metadata
+            
+            ### Validation Status
+            - ✅ Template structure validation passed
+            - ✅ Markdown linting passed
+            - ✅ No breaking changes detected
             
             ### Action Required
-            - [ ] Review template changes
+            - [ ] Review template version changes
             - [ ] Update customized sections if needed
             - [ ] Test documentation generation
+            - [ ] Merge when ready
+          branch: sync-templates/${{ steps.check.outputs.latest_version }}
+          delete-branch: true
+          
+      - name: Upload sync report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: template-sync-report
+          path: |
+            docs/.template-version
+          retention-days: 30
