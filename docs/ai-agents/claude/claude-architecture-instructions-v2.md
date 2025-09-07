@@ -2,7 +2,10 @@
 
 ## Purpose
 
-This instruction file guides Claude in providing comprehensive, structured guidance for building well-architected web applications that are maintainable, secure, scalable, and follow industry best practices from conception to deployment and beyond.
+This instruction file guides Claude in providing comprehensive, structured
+guidance for building well-architected web applications that are maintainable,
+secure, scalable, and follow industry best practices from conception to
+deployment and beyond.
 
 ## Implementation Maturity Model
 
@@ -38,24 +41,33 @@ Organize recommendations using this staged approach:
 
 ## Core Principles
 
-When discussing web application architecture, always emphasize these foundational principles:
+When discussing web application architecture, always emphasize these
+foundational principles:
 
 ### Code Quality Standards
 
-- **DRY (Don't Repeat Yourself)**: Eliminate code duplication through abstraction and reusable components
-- **Clean Code**: Write self-documenting, readable code with clear naming conventions
-- **SOLID Principles**: Single responsibility, open/closed, Liskov substitution, interface segregation, dependency inversion
+- **DRY (Don't Repeat Yourself)**: Eliminate code duplication through
+  abstraction and reusable components
+- **Clean Code**: Write self-documenting, readable code with clear naming
+  conventions
+- **SOLID Principles**: Single responsibility, open/closed, Liskov
+  substitution, interface segregation, dependency inversion
 - **Type Safety**: Implement comprehensive type validation and checking
 - **Maintainability**: Design for long-term evolution and team collaboration
-- **No Nonessential Duplication**: Ruthlessly eliminate redundant code, documentation, and processes
+- **No Nonessential Duplication**: Ruthlessly eliminate redundant code,
+  documentation, and processes
 
 ### Architecture Patterns
 
-- **Separation of Concerns**: Clear boundaries between different application layers
-- **Dependency Inversion**: High-level modules should not depend on low-level modules
-- **Configuration over Convention**: Make applications configurable and adaptable
+- **Separation of Concerns**: Clear boundaries between different application
+  layers
+- **Dependency Inversion**: High-level modules should not depend on
+  low-level modules
+- **Configuration over Convention**: Make applications configurable and
+  adaptable
 - **Database Agnostic**: Abstract data access to support multiple database types
-- **Component Integration**: Seamless module and component integration with clear interfaces
+- **Component Integration**: Seamless module and component integration with
+  clear interfaces
 
 ### Quality Assurance
 
@@ -63,7 +75,8 @@ When discussing web application architecture, always emphasize these foundationa
 - **Comprehensive Testing**: Unit, integration, and end-to-end test coverage
 - **Security by Design**: Implement security considerations from the ground up
 - **Accessibility**: Build inclusive applications following WCAG guidelines
-- **User and Developer Friendly**: Optimize for both end-user experience and developer productivity
+- **User and Developer Friendly**: Optimize for both end-user experience and
+  developer productivity
 
 ## Cross-Reference Integration Map
 
@@ -99,11 +112,12 @@ Understanding how different architectural components interconnect:
 
 ## Response Structure
 
-When providing architectural guidance, organize responses using this comprehensive structure:
+When providing architectural guidance, organize responses using this
+comprehensive structure:
 
 ### 1. Resource Constraint Guidance & Decision Trees
 
-**Team Size Considerations**
+#### Team Size Considerations
 
 - **Small Teams (1-3 developers)**
   - Monolithic architecture with modular design
@@ -123,13 +137,13 @@ When providing architectural guidance, organize responses using this comprehensi
   - Dedicated platform teams
   - Enterprise-grade tooling and processes
 
-**Budget Considerations**
+#### Budget Considerations
 
 - **Startup/Low Budget**: Open source tools, cloud services, managed solutions
 - **Growth Stage**: Hybrid approach, selective premium tools, optimization focus
 - **Enterprise**: Best-in-class tools, custom solutions, compliance requirements
 
-**Project Type Decision Trees**
+#### Project Type Decision Trees
 
 - **Greenfield vs Brownfield**: Migration strategies, modernization approaches
 - **Time-to-Market vs Long-term**: Technical debt trade-offs, MVP strategies
@@ -137,7 +151,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 2. Type Validation & Data Integrity
 
-**Type Systems**
+#### Type Systems
 
 - **TypeScript**: Static typing for JavaScript applications
 - **Python**: Type hints with mypy validation
@@ -147,9 +161,8 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Database Constraints**: Foreign keys, check constraints, data types
 - **API Validation**: Request/response schema validation
 
-**Implementation Strategy**
+#### Type Validation Implementation Strategy
 
-- Schema-first development approach
 - Automated type generation from schemas
 - Runtime validation at API boundaries
 - Type-safe database queries
@@ -157,7 +170,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 3. Technical Design Documentation & Decision Making
 
-**System Architecture Documents**
+#### System Architecture Documents
 
 - High-level system overview and component interactions
 - Technology stack rationale and decision documentation
@@ -165,7 +178,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - Security architecture and threat modeling
 - Integration patterns and external dependencies
 
-**Decision Framework**
+#### Decision Framework
 
 - **Weighted Scoring Matrix**: Criteria importance and option evaluation
 - **SWOT Analysis**: Strengths, weaknesses, opportunities, threats
@@ -173,7 +186,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Risk Assessment Matrix**: Probability vs impact evaluation
 - **Technology Comparison**: Feature matrices and trade-off analysis
 
-**Technical Debt Management**
+#### Technical Debt Management
 
 - Debt identification and classification strategies
 - Refactoring planning and prioritization
@@ -183,7 +196,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 4. Data Diagrams & Storage Schema
 
-**Diagram Types**
+#### Diagram Types
 
 - **Entity Relationship Diagrams (ERD)**: Database relationships and constraints
 - **UML Diagrams**: Class, sequence, activity, and deployment diagrams
@@ -191,7 +204,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Data Flow Diagrams**: Information flow through system components
 - **Storage Schema**: Physical data storage structure and optimization
 
-**Tools and Standards**
+#### Tools and Standards
 
 - Lucidchart, Draw.io, Mermaid for diagramming
 - Database design tools (MySQL Workbench, pgModeler)
@@ -201,7 +214,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 5. Performance Budgets & SLAs
 
-**Performance Framework**
+#### Performance Framework
 
 - **Performance Budgets**: Size, timing, and rendering budgets
 - **Core Web Vitals**: LCP, FID, CLS optimization
@@ -209,9 +222,8 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Service Level Indicators (SLIs)**: Measurable performance metrics
 - **Performance Regression Detection**: Automated testing and alerts
 
-**Implementation Strategy**
+#### Performance Implementation Strategy
 
-- Performance monitoring in CI/CD pipelines
 - Real User Monitoring (RUM) implementation
 - Synthetic performance testing
 - Performance optimization prioritization
@@ -219,7 +231,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 6. Site Reliability Engineering (SRE) & Operations
 
-**SRE Principles**
+#### SRE Principles
 
 - **Error Budgets**: Reliability targets and risk management
 - **Chaos Engineering**: Resilience testing and failure simulation
@@ -227,7 +239,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Toil Reduction**: Automation and process improvement
 - **Reliability Engineering**: Proactive system design for uptime
 
-**Observability Beyond Monitoring**
+#### Observability Beyond Monitoring
 
 - **Distributed Tracing**: Request flow across services
 - **Structured Logging**: Correlation IDs and searchable logs
@@ -237,7 +249,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 7. Real-time & Background Processing
 
-**Real-time Systems**
+#### Real-time Systems
 
 - **WebSocket Implementation**: Bidirectional communication
 - **Server-Sent Events**: One-way real-time updates
@@ -245,7 +257,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Event Streaming**: Apache Kafka, Redis Streams
 - **Message Brokers**: RabbitMQ, AWS SQS, Google Pub/Sub
 
-**Background Processing**
+#### Background Processing
 
 - **Job Queues**: Celery, Bull, Sidekiq implementation
 - **Scheduled Tasks**: Cron jobs, recurring processes
@@ -255,7 +267,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 8. Business Intelligence & Analytics
 
-**User Analytics**
+#### User Analytics
 
 - **User Behavior Tracking**: Event tracking, user journeys
 - **A/B Testing Infrastructure**: Feature flagging, statistical analysis
@@ -263,7 +275,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Business Metrics**: Revenue, engagement, retention tracking
 - **Data Privacy**: GDPR-compliant analytics implementation
 
-**Technical Analytics**
+#### Technical Analytics
 
 - **Application Performance**: Response times, error rates, throughput
 - **Infrastructure Metrics**: Resource utilization, cost optimization
@@ -272,7 +284,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 9. Architectural Patterns & Migration Strategies
 
-**Core Patterns**
+#### Core Patterns
 
 - **Clean Architecture / Hexagonal Architecture**: Domain-centric design
 - **Domain-Driven Design (DDD)**: Business domain modeling
@@ -280,7 +292,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Event Sourcing**: Audit trail and state reconstruction
 - **Microservices vs Modular Monolith**: Scale-appropriate choices
 
-**Migration & Integration Strategies**
+#### Migration & Integration Strategies
 
 - **Legacy System Integration**: API wrapping, data synchronization
 - **Database Migration**: Zero-downtime migration strategies
@@ -290,7 +302,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 10. Test-Driven Development (TDD) & Quality Assurance
 
-**TDD Methodology**
+#### TDD Methodology
 
 - Red-Green-Refactor cycle implementation
 - Test pyramid strategy (unit, integration, E2E)
@@ -298,7 +310,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - Property-based testing for edge cases
 - Mutation testing for test quality validation
 
-**Quality Framework**
+#### Quality Framework
 
 - **Code Quality Metrics**: Coverage, complexity, maintainability index
 - **Automated Quality Gates**: CI/CD pipeline integration
@@ -308,7 +320,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 11. Development Workflow & Team Collaboration
 
-**Git Workflow Standards**
+#### Git Workflow Standards
 
 - **Git Flow**: Feature branches, release branches, hotfixes
 - **GitHub Flow**: Simplified branching for continuous deployment
@@ -316,7 +328,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Conventional Commits**: Standardized commit message format
 - **Branch Protection**: Required reviews, status checks
 
-**Team Productivity & Collaboration**
+#### Team Productivity & Collaboration
 
 - **Cross-Functional Collaboration**: Designer-developer handoff
 - **Knowledge Management**: Technical knowledge base organization
@@ -326,7 +338,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 12. Comprehensive Documentation Strategy
 
-**Documentation Architecture**
+#### Documentation Architecture
 
 - **User Documentation**: End-user guides and tutorials
 - **Admin Documentation**: System administration procedures
@@ -334,7 +346,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Technical Documentation**: Architecture and design documents
 - **Process Documentation**: Workflows and procedures
 
-**Documentation Tools & Platforms**
+#### Documentation Tools & Platforms
 
 - **Static Site Generators**: GitBook, Docusaurus, VuePress, Hugo
 - **Wiki Platforms**: Confluence, Notion, MediaWiki
@@ -342,7 +354,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Code Documentation**: JSDoc, Sphinx, Doxygen
 - **Interactive Documentation**: Jupyter notebooks, Observable
 
-**Living Documentation Strategy**
+#### Living Documentation Strategy
 
 - **Automated Generation**: Code-to-docs synchronization
 - **Documentation Testing**: Validation and accuracy checks
@@ -352,7 +364,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 13. Enhanced UI/UX & User Experience
 
-**Excellent UI/UX Principles**
+#### Excellent UI/UX Principles
 
 - **User-Centered Design**: Personas, user research, usability testing
 - **Design Systems**: Consistent component libraries and style guides
@@ -360,7 +372,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Performance Optimization**: Core Web Vitals, progressive loading
 - **Mobile-First Design**: Responsive layouts, touch-friendly interfaces
 
-**Advanced UX Patterns**
+#### Advanced UX Patterns
 
 - **Micro-interactions**: Subtle animations and feedback
 - **Progressive Web App**: Offline functionality, push notifications
@@ -368,7 +380,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Dark Mode**: Theme switching and user preferences
 - **Personalization**: Adaptive interfaces and user customization
 
-**User Experience Measurement**
+#### User Experience Measurement
 
 - **User Testing Framework**: Usability testing, user interviews
 - **Analytics Implementation**: User behavior tracking and insights
@@ -378,7 +390,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 14. GitOps & Advanced CI/CD
 
-**GitOps Implementation**
+#### GitOps Implementation
 
 - **Infrastructure as Code**: Terraform, CloudFormation, Pulumi
 - **Configuration Management**: Git-based configuration workflows
@@ -386,7 +398,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Environment Parity**: Consistent environments across stages
 - **Infrastructure Drift Detection**: Configuration compliance monitoring
 
-**Progressive Deployment Strategies**
+#### Progressive Deployment Strategies
 
 - **Blue-Green Deployment**: Zero-downtime deployments
 - **Canary Releases**: Gradual feature rollouts with monitoring
@@ -396,7 +408,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 15. Infrastructure Planning to Deployment
 
-**Cloud-Native Architecture**
+#### Cloud-Native Architecture
 
 - **Cloud Platforms**: AWS, Azure, Google Cloud Platform strategies
 - **Containerization**: Docker, Kubernetes, container orchestration
@@ -404,7 +416,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Edge Computing**: CDN strategies, edge function deployment
 - **Multi-Cloud Strategy**: Vendor diversification and cost optimization
 
-**Scalability & High Availability**
+#### Scalability & High Availability
 
 - **Auto-scaling**: Horizontal and vertical scaling strategies
 - **Load Balancing**: Application and network load balancer configuration
@@ -414,7 +426,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 16. Data and Site Backup Strategy
 
-**Backup Architecture**
+#### Backup Architecture
 
 - **Database Backups**: Full, incremental, and differential strategies
 - **File System Backups**: Application files, uploaded content, logs
@@ -422,7 +434,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Configuration Backups**: Environment settings, secrets management
 - **Cross-Regional Replication**: Geographic distribution for disaster recovery
 
-**Backup Implementation**
+#### Backup Implementation
 
 - **Automated Scheduling**: Regular backup intervals and retention policies
 - **Backup Validation**: Integrity checks and restoration testing
@@ -432,7 +444,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 17. Highly Secure Application Development
 
-**Security Framework**
+#### Security Framework
 
 - **Zero Trust Architecture**: Never trust, always verify
 - **Defense in Depth**: Multiple security layers
@@ -440,7 +452,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Security by Design**: Built-in security from conception
 - **Continuous Security**: Ongoing monitoring and improvement
 
-**Security Implementation**
+#### Security Implementation
 
 - **Authentication**: Multi-factor authentication, SSO integration
 - **Authorization**: RBAC, ABAC, fine-grained permissions
@@ -449,7 +461,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Secure Communications**: HTTPS, certificate management
 - **Security Headers**: HSTS, CSP, X-Frame-Options
 
-**Vulnerability Management**
+#### Vulnerability Management
 
 - **Security Scanning**: SAST, DAST, dependency scanning
 - **Penetration Testing**: Regular security assessments
@@ -459,7 +471,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 18. Cost Optimization & Financial Management
 
-**FinOps Implementation**
+#### FinOps Implementation
 
 - **Cost Monitoring**: Real-time cost tracking and alerting
 - **Resource Right-sizing**: Optimal instance and service sizing
@@ -467,7 +479,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Spot Instances**: Fault-tolerant workload cost reduction
 - **Multi-Cloud Arbitrage**: Cost comparison and optimization
 
-**Total Cost of Ownership (TCO)**
+#### Total Cost of Ownership (TCO)
 
 - **Infrastructure Costs**: Compute, storage, network, licensing
 - **Operational Costs**: Support, maintenance, training
@@ -477,7 +489,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 19. Compliance & Regulatory Framework
 
-**Regulatory Compliance**
+#### Regulatory Compliance
 
 - **GDPR Compliance**: Data protection, privacy by design
 - **HIPAA Compliance**: Healthcare data protection
@@ -485,7 +497,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **ISO 27001**: Information security management
 - **PCI DSS**: Payment card data security
 
-**Compliance Implementation**
+#### Compliance Implementation
 
 - **Data Classification**: Sensitivity levels and handling procedures
 - **Audit Trails**: Comprehensive logging and monitoring
@@ -495,7 +507,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 20. Innovation & Experimentation Strategy
 
-**Innovation Framework**
+#### Innovation Framework
 
 - **Innovation Time**: 20% time, hackathons, innovation sprints
 - **Technology Radar**: Emerging technology evaluation
@@ -503,7 +515,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Feature Experimentation**: A/B testing, feature flags
 - **Research Partnerships**: University and industry collaboration
 
-**Adoption Lifecycle**
+#### Adoption Lifecycle
 
 - **Technology Assessment**: Evaluation criteria and processes
 - **Pilot Projects**: Limited scope technology trials
@@ -513,7 +525,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 21. Community & Open Source Strategy
 
-**Open Source Engagement**
+#### Open Source Engagement
 
 - **Contribution Guidelines**: Code contribution standards
 - **License Management**: Open source license compliance
@@ -521,7 +533,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **Inner Source**: Internal open source practices
 - **External Partnerships**: Strategic technology partnerships
 
-**Sustainability & Green Computing**
+#### Sustainability & Green Computing
 
 - **Energy Efficiency**: Architecture patterns for reduced energy consumption
 - **Carbon Footprint**: Measurement and optimization strategies
@@ -531,7 +543,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 ### 22. AI/ML Integration & Modern Technologies
 
-**AI/ML Integration**
+#### AI/ML Integration
 
 - **Model Deployment**: MLOps practices and model versioning
 - **AI Service Integration**: Third-party AI service integration
@@ -539,7 +551,7 @@ When providing architectural guidance, organize responses using this comprehensi
 - **AI-Assisted Development**: Code generation and review tools
 - **Data Pipeline**: ML data processing and feature engineering
 
-**Emerging Technologies**
+#### Emerging Technologies
 
 - **Edge Computing**: Distributed computing and low-latency processing
 - **Blockchain Integration**: Decentralized application patterns

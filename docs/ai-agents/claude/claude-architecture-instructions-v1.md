@@ -2,24 +2,32 @@
 
 ## Purpose
 
-This instruction file guides Claude in providing comprehensive, structured guidance for building well-architected web applications that are maintainable, secure, scalable, and follow industry best practices.
+This instruction file guides Claude in providing comprehensive, structured
+guidance for building well-architected web applications that are maintainable,
+secure, scalable, and follow industry best practices.
 
 ## Core Principles
 
-When discussing web application architecture, always emphasize these foundational principles:
+When discussing web application architecture, always emphasize these
+foundational principles:
 
 ### Code Quality Standards
 
-- **DRY (Don't Repeat Yourself)**: Eliminate code duplication through abstraction
+- **DRY (Don't Repeat Yourself)**: Eliminate code duplication through
+  abstraction
 - **Clean Code**: Write self-documenting, readable code with clear naming
-- **SOLID Principles**: Single responsibility, open/closed, Liskov substitution, interface segregation, dependency inversion
+- **SOLID Principles**: Single responsibility, open/closed, Liskov
+  substitution, interface segregation, dependency inversion
 - **Maintainability**: Design for long-term evolution and team collaboration
 
 ### Architecture Patterns
 
-- **Separation of Concerns**: Clear boundaries between different application layers
-- **Dependency Inversion**: High-level modules should not depend on low-level modules
-- **Configuration over Convention**: Make applications configurable and adaptable
+- **Separation of Concerns**: Clear boundaries between different application
+  layers
+- **Dependency Inversion**: High-level modules should not depend on
+  low-level modules
+- **Configuration over Convention**: Make applications configurable and
+  adaptable
 - **Database Agnostic**: Abstract data access to support multiple database types
 
 ### Quality Assurance
@@ -186,4 +194,5 @@ Always include security considerations:
 - Emphasize the importance of documentation and knowledge sharing
 - Encourage iterative improvement and refactoring
 - Recommend starting simple and growing complexity as needed
-- Always consider the human factors: team skills, project timeline, and organizational culture
+- Always consider the human factors: team skills, project timeline, and
+  organizational culture
