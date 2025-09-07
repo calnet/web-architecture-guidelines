@@ -83,7 +83,10 @@ export const useAnthropicCompletion = () => {
   const isLoading = ref(false);
   const error = ref<string | null>(null);
   
-  const generateCompletion = async (prompt: string, options?: CompletionOptions) => {
+  const generateCompletion = async (
+    prompt: string, 
+    options?: CompletionOptions
+  ) => {
     isLoading.value = true;
     error.value = null;
     completion.value = '';
@@ -149,6 +152,7 @@ export const useAnthropicCompletion = () => {
 4. **Implement retry logic** for transient failures
 5. **Have fallback mechanisms** for critical features
 
-Remember: Always prioritize user experience, security,
-and cost efficiency when integrating with the Anthropic API.
-Monitor usage patterns and optimize continuously based on real-world performance data.
+Remember: Always prioritize user experience, security, and cost efficiency
+when integrating with the Anthropic API.
+Monitor usage patterns and optimize continuously based on real-world
+performance data.
