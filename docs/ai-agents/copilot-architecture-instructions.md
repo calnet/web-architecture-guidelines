@@ -2,7 +2,9 @@
 
 ## Code Generation Philosophy
 
-When generating code suggestions for web applications, prioritize clean, maintainable, and secure patterns. Always suggest industry best practices and include relevant comments explaining architectural decisions.
+When generating code suggestions for web applications, prioritize clean,
+maintainable, and secure patterns. Always suggest industry best practices and
+include relevant comments explaining architectural decisions.
 
 ## Architecture Pattern Recognition
 
@@ -89,7 +91,8 @@ class AuthService {
     
     // Secure password verification
     const user = await this.userRepository.findByEmail(validatedInput.email);
-    const isValid = await bcrypt.compare(validatedInput.password, user.hashedPassword);
+    const isValid = await bcrypt.compare(validatedInput.password,
+                                        user.hashedPassword);
     
     if (!isValid) {
       await this.rateLimiter.recordFailedAttempt(validatedInput.email);
@@ -101,7 +104,8 @@ class AuthService {
     const accessToken = this.jwtService.sign(payload, { expiresIn: '15m' });
     const refreshToken = this.jwtService.sign(payload, { expiresIn: '7d' });
     
-    return { accessToken, refreshToken, user: this.userService.toSafeDto(user) };
+    return { accessToken, refreshToken,
+             user: this.userService.toSafeDto(user) };
   }
 }
 ```
@@ -216,7 +220,8 @@ describe('UserService', () => {
   describe('createUser', () => {
     it('should create user with valid data', async () => {
       // Arrange
-      const userData = { email: 'test@example.com', password: 'SecurePass123!' };
+      const userData = { email: 'test@example.com',
+                         password: 'SecurePass123!' };
       const expectedUser = { id: '123', ...userData };
       mockRepository.save.mockResolvedValue(expectedUser);
 
@@ -367,7 +372,8 @@ async processPayment(
   await this.validatePaymentData(paymentData);
   
   // Check for fraudulent activity patterns
-  const fraudScore = await this.fraudService.analyzePayment(paymentData, userId);
+  const fraudScore = await this.fraudService.analyzePayment(paymentData,
+                                                            userId);
   if (fraudScore > FRAUD_THRESHOLD) {
     throw new FraudDetectedError('Suspicious payment pattern detected');
   }
@@ -456,4 +462,6 @@ export const config = (): AppConfig => ({
 - Use HTTPS in production
 - Implement security headers (CSP, HSTS, etc.)
 
-Remember: Always consider the specific context of the project and suggest patterns that align with the existing codebase architecture and team conventions.
+Remember: Always consider the specific context of the project and suggest
+patterns that align with the existing codebase architecture and team
+conventions.

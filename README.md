@@ -2,6 +2,8 @@
 
 Comprehensive guidelines for building well-architected, secure, scalable, and maintainable web applications.
 
+*Version 1.1.0 - Enhanced documentation quality with improved markdownlint compliance*
+
 ## Overview
 
 This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices.
@@ -12,8 +14,7 @@ This repository contains architecture guidelines and instructions optimized for 
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
 │   ├── claude/                         # Claude-specific instructions
-│   │   ├── claude-architecture-instructions-v1.md
-│   │   └── claude-architecture-instructions-v2.md
+│   ├── claude-architecture-instructions.md
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md
@@ -47,6 +48,12 @@ docs/
 1. Use the [Integration Automation Script](docs/integration-automation-script.md) for automated setup
 2. Review the [Project Integration Guide](docs/project-integration-guide.md) for manual integration
 3. Use [documentation templates](docs/templates/) for your project
+
+### GitHub Actions Setup
+For automated code review and CI/CD workflows:
+1. Follow the [GitHub Actions Secrets Setup Guide](docs/github-actions-secrets-setup.md)
+2. Configure required API keys and secrets
+3. Enable automated workflows for continuous quality assurance
 4. Reference [external documentation](docs/external-documentation-links.md) as needed
 
 ### For Project-Specific Implementation

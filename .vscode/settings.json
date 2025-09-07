@@ -1,0 +1,91 @@
+{
+  // Markdown specific settings
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "editor.rulers": [80],
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": "explicit"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true
+  },
+  
+  // General editor settings for consistent formatting
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  
+  // Markdownlint configuration
+  "markdownlint.config": {
+    "MD013": {
+      "line_length": 80,
+      "code_blocks": false,
+      "tables": false,
+      "headings": false
+    },
+    "MD024": {
+      "siblings_only": true
+    },
+    "MD033": false,
+    "MD041": false
+  },
+  
+  // File associations
+  "files.associations": {
+    "*.md": "markdown"
+  },
+  
+  // Auto-save settings
+  "files.autoSave": "onFocusChange",
+  
+  // Git settings
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.showInlineOpenFileAction": false,
+  
+  // Explorer settings for better navigation
+  "explorer.sortOrder": "type",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.md": "${capture}.backup.md"
+  },
+  
+  // Search settings to exclude common non-essential directories
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.git": true,
+    "**/tmp": true
+  },
+  
+  // Recommended extensions for this repository
+  "extensions.recommendations": [
+    "DavidAnson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-preview-github-styles",
+    "shd101wyy.markdown-preview-enhanced"
+  ],
+  
+  // Workspace specific spelling settings
+  "cSpell.words": [
+    "markdownlint",
+    "calnet",
+    "claude",
+    "chatgpt",
+    "gemini",
+    "anthropic",
+    "vscode",
+    "copilot",
+    "gitignore",
+    "dockerfile",
+    "yaml",
+    "json",
+    "README"
+  ]
+}

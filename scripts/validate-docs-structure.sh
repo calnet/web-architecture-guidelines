@@ -28,7 +28,6 @@ check_file() {
 ERRORS=0
 
 check_directory "docs/ai-agents" || ERRORS=$((ERRORS + 1))
-check_directory "docs/ai-agents/claude" || ERRORS=$((ERRORS + 1))
 check_directory "docs/templates" || ERRORS=$((ERRORS + 1))
 check_directory "docs/templates/architecture" || ERRORS=$((ERRORS + 1))
 check_directory "docs/templates/api" || ERRORS=$((ERRORS + 1))
@@ -41,8 +40,7 @@ check_file "docs/project-integration-guide.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/templates/README.md" || ERRORS=$((ERRORS + 1))
 
 # Check AI agent instruction files
-check_file "docs/ai-agents/claude/claude-architecture-instructions-v1.md" || ERRORS=$((ERRORS + 1))
-check_file "docs/ai-agents/claude/claude-architecture-instructions-v2.md" || ERRORS=$((ERRORS + 1))
+check_file "docs/ai-agents/claude-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/chatgpt-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/copilot-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/gemini-architecture-instructions.md" || ERRORS=$((ERRORS + 1))

@@ -61,8 +61,7 @@ Added the following documents to the documentation site sidebar and routing:
 - ✅ `docs/ai-agents/chatgpt-architecture-instructions.md`
 - ✅ `docs/ai-agents/copilot-architecture-instructions.md`
 - ✅ `docs/ai-agents/gemini-architecture-instructions.md`
-- ✅ `docs/ai-agents/claude/claude-architecture-instructions-v1.md`
-- ✅ `docs/ai-agents/claude/claude-architecture-instructions-v2.md`
+- ✅ `docs/ai-agents/claude-architecture-instructions.md`
 
 ### Templates
 
