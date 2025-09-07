@@ -14,8 +14,7 @@ This repository contains architecture guidelines and instructions optimized for 
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
 │   ├── claude/                         # Claude-specific instructions
-│   │   ├── claude-architecture-instructions-v1.md
-│   │   └── claude-architecture-instructions-v2.md
+│   ├── claude-architecture-instructions.md
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md

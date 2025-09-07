@@ -155,7 +155,7 @@ function DocumentationPage() {
                             } else if (slug === 'gemini') {
                                 filePath = '/docs/ai-agents/gemini-architecture-instructions.md'
                             } else if (slug === 'claude') {
-                                filePath = '/docs/ai-agents/claude/claude-architecture-instructions-v2.md'
+                                filePath = '/docs/ai-agents/claude-architecture-instructions.md'
                             }
                             break
                         case 'examples':
