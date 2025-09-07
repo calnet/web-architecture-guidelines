@@ -48,6 +48,12 @@ docs/
 1. Use the [Integration Automation Script](docs/integration-automation-script.md) for automated setup
 2. Review the [Project Integration Guide](docs/project-integration-guide.md) for manual integration
 3. Use [documentation templates](docs/templates/) for your project
+
+### GitHub Actions Setup
+For automated code review and CI/CD workflows:
+1. Follow the [GitHub Actions Secrets Setup Guide](docs/github-actions-secrets-setup.md)
+2. Configure required API keys and secrets
+3. Enable automated workflows for continuous quality assurance
 4. Reference [external documentation](docs/external-documentation-links.md) as needed
 
 ### For Project-Specific Implementation
