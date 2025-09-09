@@ -87,7 +87,7 @@ and `develop` branch.
 # Accept develop version
 git checkout --theirs <file>
 
-# Accept current branch version  
+# Accept current branch version
 git checkout --ours <file>
 
 # Manual merge required
@@ -106,5 +106,5 @@ git add <file>
 
 ---
 
-*Generated: 2025-09-08*  
+*Generated: 2025-09-08*
 *Analysis based on git merge conflict detection*
