@@ -1,5 +1,9 @@
 # [Application Name] User Manual
 
+**Template Version**: 1.3.3
+**Last Updated**: 2025-09-06 @ 22:12
+**Target Audience**: End Users  
+
 ## Table of Contents
 1. [Getting Started](#getting-started)
 2. [Basic Features](#basic-features)
@@ -332,4 +336,4 @@ A: Refunds are available within 30 days of purchase. Contact support for assista
 ---
 *Last updated: [Date]*  
 *Version: [Version number]*  
-*Template Version: 1.0*
+*Template Version: 1.3.3**************

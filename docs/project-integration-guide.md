@@ -1,17 +1,20 @@
 # Project Integration Guide
 
 ## Overview
+
 This guide explains how to extend the base architecture guidelines for specific projects while maintaining separation and consistency across your organization.
 
 ## Architecture Philosophy
 
 ### Base Guidelines Principle
+
 - **Universal Standards**: Core principles that apply to all projects
 - **Project Extensions**: Specific adaptations for individual project needs
 - **Clean Separation**: Project-specific guidelines reference but don't modify base guidelines
 - **Collaborative Evolution**: Feedback from projects improves base guidelines over time
 
 ### Integration Strategy
+
 ```
 Base Guidelines (This Repository)
 ├── Core Principles & Patterns
@@ -65,18 +68,18 @@ We use the standardized template structure from the base guidelines:
 
 ### 📁 Documentation Organization
 ```
+
 docs/
 ├── architecture/           # Technical architecture (using base templates)
 ├── api/                   # API documentation (using base templates)
 ├── user-guides/           # User documentation (using base templates)
 └── development/           # Development guides (using base templates)
+
 ```
 
 ## Project-Specific Extensions
 - [Technology Stack Decisions](#technology-stack)
-- [Performance Requirements](#performance)
-- [Security Considerations](#security)
-- [Deployment Strategy](#deployment)
+- [Deviations from Base Guidelines](#deviations-from-base-guidelines)
 
 ## Technology Stack
 Based on the base guidelines, this project uses:
@@ -165,6 +168,7 @@ docs/
 ### 3. Technology Integration
 
 **Package.json Extension Example:**
+
 ```json
 {
   "name": "project-name",
@@ -185,6 +189,7 @@ docs/
 ### 4. Quality Gates Integration
 
 **Create `.github/workflows/base-compliance.yml`:**
+
 ```yaml
 name: Base Guidelines Compliance
 
@@ -239,6 +244,7 @@ jobs:
 ### 1. Architecture Documentation Extensions
 
 **Pattern: Extended ADR Template**
+
 ```markdown
 # ADR-001: Database Technology Selection
 
@@ -274,6 +280,7 @@ Based on base guidelines recommendation for PostgreSQL, with project-specific ex
 ```
 
 **Pattern: System Architecture with Template Structure**
+
 ```markdown
 # E-commerce Platform System Architecture
 
@@ -303,6 +310,7 @@ Based on base guidelines recommendation for PostgreSQL, with project-specific ex
 ### 2. API Documentation Extensions
 
 **Pattern: Extended API Specification**
+
 ```markdown
 # E-commerce API Specification
 
@@ -332,6 +340,7 @@ Process order checkout with payment integration
 ```
 
 **Response**:
+
 ```json
 {
   "orderId": "string",
@@ -341,10 +350,12 @@ Process order checkout with payment integration
 ```
 
 ## Base Compliance
+
 ✅ Follows base error format specification
 ✅ Uses base authentication patterns
 ✅ Implements base rate limiting approach
 ✅ Includes base pagination structure
+
 ```
 
 ### 3. Development Guide Extensions
@@ -356,10 +367,10 @@ Process order checkout with payment integration
 ## Template Compliance
 **Based on**: [Base Setup Guide Template v1.0]
 **Project Extensions**: E-commerce specific services
-**Last Updated**: [Date]
+**Last Updated**: 2025-09-06 @ 22:12
 
 ## Prerequisites
-Before starting, complete the [Base Development Environment Setup](link-to-base-setup).
+Before starting, complete the [Base Development Environment Setup](../git-commands-and-setup.md).
 
 ## Base Setup Compliance
 ✅ Node.js 18+ (base requirement)
@@ -380,7 +391,9 @@ docker-compose up -d mailhog        # Email testing
 ```
 
 ### Environment Variables
+
 Extends base `.env.local` with:
+
 ```env
 # Base variables (from base template)
 DATABASE_URL="postgresql://..."
@@ -393,12 +406,15 @@ EMAIL_SERVICE="mailhog"
 ```
 
 ### Verification Steps
+
 After completing base setup:
+
 1. ✅ Base application loads (base verification)
 2. ✅ Database connects (base verification)
 3. 🆕 Product search works (project-specific)
 4. 🆕 Payment processing works (project-specific)
 5. 🆕 Email notifications work (project-specific)
+
 ```
 
 ## Documentation Template Integration
@@ -418,6 +434,7 @@ After completing base setup:
 ```
 
 **Update Notification Process:**
+
 ```bash
 # Script to check for template updates
 #!/bin/bash
@@ -438,6 +455,7 @@ fi
 ### 2. Automated Template Synchronization
 
 **Template Update Workflow:**
+
 ```yaml
 # .github/workflows/sync-templates.yml
 name: Sync Documentation Templates
@@ -489,6 +507,7 @@ jobs:
 ### 1. Feedback Loop to Base Guidelines
 
 **Monthly Architecture Reviews:**
+
 ```markdown
 ## Architecture Review Process
 
@@ -515,6 +534,7 @@ jobs:
 ### 2. Cross-Project Knowledge Sharing
 
 **Template Improvement Framework:**
+
 ```markdown
 ## Template Knowledge Sharing
 
@@ -540,6 +560,7 @@ jobs:
 ### 3. Template Compliance Monitoring
 
 **Automated Template Validation:**
+
 ```typescript
 // template-compliance-checker.ts
 interface TemplateCompliance {
@@ -594,6 +615,7 @@ export async function generateComplianceReport(
 ### 1. Template Evolution
 
 **Template Lifecycle Management:**
+
 ```markdown
 ## Template Version Control
 
@@ -615,11 +637,55 @@ export async function generateComplianceReport(
 - **Migration guides** for breaking changes
 - **Backward compatibility** when possible
 - **Support period** for legacy templates
+
+### Centralized Version Management
+
+**Version Synchronization:**
+
+The repository includes automated tools to maintain version consistency across all documentation:
+
+```bash
+# Validate all versions are aligned
+npm run versions:validate
+
+# Synchronize all versions to match the root VERSION file
+npm run versions:sync
+```
+
+**Version Files Managed:**
+- Root `VERSION` file (source of truth)
+- `package.json` version
+- Template version files (`docs/.template-version`, `docs/templates/VERSION`)
+- Document metadata versions (architecture, security, performance docs)
+- Individual template versions
+
+**CI/CD Integration:**
+
+The validation workflow includes version consistency checks:
+
+```yaml
+# .github/workflows/validate-docs.yml
+validate-versions:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: Validate version consistency
+      run: |
+        chmod +x ./scripts/validate-versions.sh
+        ./scripts/validate-versions.sh
+```
+
+**Best Practices:**
+- Update the root `VERSION` file when making significant changes
+- Run `npm run versions:sync` after version updates
+- Include version validation in local development workflow
+- All template and document versions should stay aligned
 ```
 
 ### 2. Metrics and Success Measurement
 
 **Template Effectiveness Metrics:**
+
 ```markdown
 ## Template Success Metrics
 
@@ -643,3 +709,12 @@ export async function generateComplianceReport(
 ```
 
 This integration guide ensures that projects can effectively utilize the organized template structure while maintaining consistency and contributing to continuous improvement across the organization. The categorized templates make it easier to find the right documentation format and maintain professional standards across all projects.
+
+---
+
+**Document Information**:
+
+- **Version**: 1.3.3
+- **Last Updated**: 2025-09-06 @ 22:12
+- **Review Schedule**: Quarterly
+- **Maintained by**: Architecture Team

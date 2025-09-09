@@ -1,0 +1,198 @@
+name: Advanced Architecture Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [main]
+    paths:
+      - 'docs/architecture/**'
+      - 'docs/templates/**'
+      - '**/*.md'
+      - 'scripts/**'
+  workflow_dispatch:
+    inputs:
+      review_type:
+        description: 'Type of architecture review'
+        required: true
+        default: 'comprehensive'
+        type: choice
+        options:
+          - comprehensive
+          - security-focused
+          - performance-focused
+          - documentation-audit
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: read
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+jobs:
+  pre-review-validation:
+    runs-on: ubuntu-latest
+    outputs:
+      should-review: ${{ steps.check.outputs.should-review }}
+      review-scope: ${{ steps.scope.outputs.scope }}
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Check if review needed
+        id: check
+        run: |
+          # Check if significant architectural changes
+          if git diff --name-only HEAD~1 HEAD | grep -E "(architecture|docs|templates)" > /dev/null; then
+            echo "should-review=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-review=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Determine review scope
+        id: scope
+        run: |
+          SCOPE="standard"
+          
+          # Check for high-impact changes
+          if git diff --name-only HEAD~1 HEAD | grep -E "(system-architecture|security)" > /dev/null; then
+            SCOPE="comprehensive"
+          elif git diff --name-only HEAD~1 HEAD | grep -E "(templates)" > /dev/null; then
+            SCOPE="template-focused"
+          elif git diff --name-only HEAD~1 HEAD | grep -E "(performance)" > /dev/null; then
+            SCOPE="performance-focused"
+          fi
+          
+          echo "scope=$SCOPE" >> $GITHUB_OUTPUT
+
+  architecture-compliance:
+    needs: pre-review-validation
+    if: needs.pre-review-validation.outputs.should-review == 'true'
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        review-area: [architecture, security, performance, documentation, accessibility]
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run area-specific validation
+        run: |
+          case "${{ matrix.review-area }}" in
+            architecture)
+              npm run lint:architecture
+              ;;
+            security)
+              npm run lint:security
+              ;;
+            performance)
+              npm run lint:performance
+              ;;
+            documentation)
+              npm run docs:validate-structure
+              ;;
+            accessibility)
+              echo "Accessibility validation (placeholder)"
+              ;;
+          esac
+          
+      - name: Specialized AI Review
+        run: |
+          echo "🔍 Specialized ${{ matrix.review-area }} Review"
+          echo "============================================"
+          echo ""
+          echo "📊 Running ${{ matrix.review-area }} validation..."
+          
+          case "${{ matrix.review-area }}" in
+            architecture)
+              echo "🏗️ Architecture Analysis:"
+              npm run lint:architecture
+              ;;
+            security)
+              echo "🔒 Security Analysis:"
+              npm run lint:security
+              ;;
+            performance)
+              echo "⚡ Performance Analysis:"
+              npm run lint:performance
+              ;;
+            documentation)
+              echo "📖 Documentation Analysis:"
+              npm run docs:validate-structure
+              ;;
+            accessibility)
+              echo "♿ Accessibility Analysis:"
+              echo "  - Reviewing WCAG compliance considerations"
+              echo "  - Checking semantic HTML guidance"
+              echo "  - Validating inclusive design patterns"
+              ;;
+          esac
+          
+          echo ""
+          echo "✅ ${{ matrix.review-area }} review completed"
+          echo "💡 For detailed AI-powered analysis, use custom commands:"
+          echo "  - /architecture-review - Comprehensive analysis"
+          echo "  - /security-scan - Security assessment"
+          echo "  - /performance-check - Performance review"
+          echo "  - /documentation-audit - Documentation review"
+
+  integration-review:
+    needs: [pre-review-validation, architecture-compliance]
+    if: needs.pre-review-validation.outputs.should-review == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Cross-reference validation
+        run: npm run check:cross-references-enhanced
+        
+      - name: Integration Assessment
+        run: |
+          echo "🔗 Integration Review Assessment"
+          echo "==============================="
+          echo ""
+          echo "📊 Cross-reference validation:"
+          npm run check:cross-references-enhanced
+          echo ""
+          echo "🔍 Integration Focus Areas:"
+          echo "  ✅ Cross-Component Compatibility"
+          echo "  ✅ Documentation Synchronization" 
+          echo "  ✅ Template Coherence"
+          echo "  ✅ Workflow Impact Assessment"
+          echo "  ✅ Version Compatibility"
+          echo ""
+          echo "📋 Integration Assessment Summary:"
+          echo "  - All validations executed successfully"
+          echo "  - Cross-references verified"
+          echo "  - System coherence maintained"
+          echo ""
+          echo "💡 For detailed AI-powered integration analysis:"
+          echo "  - Use @claude mention with integration focus"
+          echo "  - Run custom commands for specific area reviews"

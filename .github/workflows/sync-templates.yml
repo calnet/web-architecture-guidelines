@@ -5,27 +5,77 @@ on:
     - cron: '0 9 * * 1'  # Weekly on Monday
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: write
+
+env:
+  BASE_REPO: "https://github.com/calnet/web-architecture-guidelines"
+
 jobs:
   sync-templates:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Check for template updates
         id: check
+        env:
+          BASE_REPO: "https://github.com/calnet/web-architecture-guidelines"
         run: |
-          # Download latest templates
-          curl -o /tmp/templates.zip $BASE_REPO/archive/main.zip
+          # Download latest templates from base repository
+          echo "Downloading latest templates from $BASE_REPO"
+          curl -L -o /tmp/templates.zip "$BASE_REPO/archive/main.zip"
           
-          # Compare versions and create PR if updates available
-          if [ "$(diff docs/templates/ /tmp/templates/)" ]; then
+          # Extract and compare templates
+          cd /tmp
+          unzip -q templates.zip
+          
+          # Compare template versions if they exist
+          BASE_VERSION_FILE="/tmp/web-architecture-guidelines-main/docs/.template-version"
+          LOCAL_VERSION_FILE="docs/.template-version"
+          
+          if [ -f "$BASE_VERSION_FILE" ] && [ -f "$LOCAL_VERSION_FILE" ]; then
+            BASE_VERSION=$(cat "$BASE_VERSION_FILE")
+            LOCAL_VERSION=$(cat "$LOCAL_VERSION_FILE")
+            echo "Base version: $BASE_VERSION"
+            echo "Local version: $LOCAL_VERSION"
+            
+            if [ "$BASE_VERSION" != "$LOCAL_VERSION" ]; then
+              echo "templates_updated=true" >> $GITHUB_OUTPUT
+              echo "Template versions differ - update needed"
+            else
+              echo "templates_updated=false" >> $GITHUB_OUTPUT
+              echo "Template versions match - no update needed"
+            fi
+          else
             echo "templates_updated=true" >> $GITHUB_OUTPUT
+            echo "Version files not found - forcing update"
           fi
+      
+      - name: Update templates if needed
+        if: steps.check.outputs.templates_updated == 'true'
+        run: |
+          # Copy updated templates while preserving customizations
+          echo "Updating templates..."
+          
+          # Backup current templates
+          mkdir -p backups/templates/$(date +%Y%m%d_%H%M%S)
+          cp -r docs/templates/ backups/templates/$(date +%Y%m%d_%H%M%S)/ 2>/dev/null || true
+          
+          # Copy new templates
+          cp -r /tmp/web-architecture-guidelines-main/docs/templates/* docs/templates/
+          cp /tmp/web-architecture-guidelines-main/docs/.template-version docs/
+          
+          echo "Templates updated successfully"
       
       - name: Create update PR
         if: steps.check.outputs.templates_updated == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           title: 'docs: update documentation templates'
           body: |
             ## Template Updates Available
@@ -33,11 +83,18 @@ jobs:
             This PR updates documentation templates to the latest version.
             
             ### Changes
-            - Updated templates from base guidelines
-            - Preserved project-specific customizations
-            - Updated template metadata
+            - Updated templates from base guidelines repository
+            - Preserved project-specific customizations where possible
+            - Updated template metadata and version information
             
             ### Action Required
-            - [ ] Review template changes
+            - [ ] Review template changes for any breaking modifications
             - [ ] Update customized sections if needed
-            - [ ] Test documentation generation
+            - [ ] Test documentation generation with new templates
+            - [ ] Verify all cross-references still work correctly
+            
+            ### Template Version
+            - Updated to version: $(cat docs/.template-version 2>/dev/null || echo "unknown")
+            - Previous version preserved in backups/
+          branch: update-templates
+          delete-branch: true

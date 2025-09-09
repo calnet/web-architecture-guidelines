@@ -1,4 +1,46 @@
-# Gemini Web Application Architecture Instructions
+# Google Gemini Web Application Architecture Instructions
+
+**Instruction Version**: 1.3.3
+**Last Updated**: 2025-09-06 @ 22:12
+**Target AI**: Google Gemini
+
+## Integration Reference
+
+This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+- **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
+- **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
+- **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
+
+## AI-Powered Code Review Integration
+
+**New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system that provides automated code analysis and optimization recommendations. Gemini can leverage these insights for research-backed architectural optimization.
+
+### Analytical Integration Strategy
+
+When working with repositories that have the AI-Powered Code Review system:
+
+1. **Research-Backed Analysis**: Use workflow outputs to provide evidence-based architectural recommendations
+2. **Multimodal Explanations**: Create diagrams and visual explanations of automated findings when helpful
+3. **Innovation Opportunities**: Identify cutting-edge improvements based on automated analysis
+4. **Factual Accuracy**: Validate workflow recommendations against current technology trends and research
+
+### Custom Command Analysis
+
+When AI-Powered Code Review workflows are available, provide analytical insights on:
+
+- **`/architecture-review`**: Research latest architectural patterns that align with review findings
+- **`/security-scan`**: Analyze security findings against current threat landscape and OWASP guidelines
+- **`/performance-check`**: Research performance optimization techniques that complement automated recommendations
+- **`/documentation-audit`**: Synthesize documentation best practices based on audit results
+
+### Gemini-Specific Strengths
+
+Leverage your research and multimodal capabilities to:
+- Analyze automated findings against current technology research and trends
+- Generate architectural diagrams and visual explanations of workflow recommendations
+- Provide comprehensive technology comparisons based on automated analysis
+- Research emerging patterns and technologies that complement workflow insights
+- Create detailed technical documentation and explanation materials
 
 ## Primary Directive
 
@@ -733,3 +775,37 @@ class SustainableComputingService {
    - Maintenance and upgrade paths
 
 Remember: Always provide concrete, actionable recommendations with real-world examples. Consider the broader ecosystem impact and long-term sustainability of architectural decisions. Balance innovation with proven reliability.
+
+## Standard AI Agent Requirements
+
+**These requirements apply to ALL AI agents working with this repository:**
+
+### Documentation Update Requirements
+Every change you make MUST include:
+
+1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or structure
+4. **Integration Updates**: Update AI agent integration guides and instruction files
+5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+
+### Version Bump Evaluation Requirements
+For every change, evaluate if a version bump is required:
+
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+
+**Process**:
+- Use `npm run versions:validate` to check current version consistency
+- Use `npm run versions:bump-major|minor|patch` to update versions
+- Update CHANGELOG.md with detailed change descriptions
+- Ensure all 100+ files maintain version consistency
+
+### Quality Standards
+- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Documentation Currency**: Keep all documentation up-to-date and accurate
+- **Repository Compliance**: Ensure all changes pass repository validation checks
+
+These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
