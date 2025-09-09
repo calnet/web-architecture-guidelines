@@ -104,7 +104,7 @@ When conducting code reviews, follow these enhanced standards:
 ```
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
-│   ├── claude/                         # Claude-specific instructions (V1 and V2)
+│   ├── claude-architecture-instructions.md # Claude-specific instructions
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md
@@ -144,7 +144,6 @@ This repository follows a documentation-first approach with these key principles
 
 ### Content Organization
 - **Separation of concerns**: AI agent instructions are separate from generic templates
-- **Versioning**: Multiple versions of instructions (e.g., Claude V1/V2) for different complexity needs
 - **Categorization**: Templates organized by functional area (architecture, API, user guides, development)
 - **Modularity**: Workflow system broken into focused, manageable components
 

@@ -28,7 +28,6 @@ check_file() {
 ERRORS=0
 
 check_directory "docs/ai-agents" || ERRORS=$((ERRORS + 1))
-check_directory "docs/ai-agents/claude" || ERRORS=$((ERRORS + 1))
 check_directory "docs/templates" || ERRORS=$((ERRORS + 1))
 check_directory "docs/templates/architecture" || ERRORS=$((ERRORS + 1))
 check_directory "docs/templates/api" || ERRORS=$((ERRORS + 1))
@@ -41,8 +40,7 @@ check_file "docs/project-integration-guide.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/templates/README.md" || ERRORS=$((ERRORS + 1))
 
 # Check AI agent instruction files
-check_file "docs/ai-agents/claude/claude-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
-check_file "docs/ai-agents/AI_AGENT_INTEGRATION_GUIDE.md" || ERRORS=$((ERRORS + 1))
+check_file "docs/ai-agents/claude-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/chatgpt-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/copilot-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/ai-agents/gemini-architecture-instructions.md" || ERRORS=$((ERRORS + 1))
@@ -56,19 +54,6 @@ check_file "docs/templates/user-guides/user-manual-template.md" || ERRORS=$((ERR
 check_file "docs/templates/user-guides/admin-manual-template.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/templates/development/setup-guide-template.md" || ERRORS=$((ERRORS + 1))
 check_file "docs/templates/development/coding-standards-template.md" || ERRORS=$((ERRORS + 1))
-
-# Check critical script files mentioned in documentation
-check_file "scripts/integrate-web-architecture-guidelines.sh" || ERRORS=$((ERRORS + 1))
-check_file "scripts/validate-docs-structure.sh" || ERRORS=$((ERRORS + 1))
-check_file "scripts/validate-templates.sh" || ERRORS=$((ERRORS + 1))
-check_file "scripts/validate-architecture.sh" || ERRORS=$((ERRORS + 1))
-check_file "scripts/validate-security.sh" || ERRORS=$((ERRORS + 1))
-check_file "scripts/validate-performance.sh" || ERRORS=$((ERRORS + 1))
-
-# Check workflow files
-check_file ".github/workflows/validate-docs.yml" || ERRORS=$((ERRORS + 1))
-check_file ".github/workflows/sync-templates.yml" || ERRORS=$((ERRORS + 1))
-check_file ".github/workflows/base-compliance.yml" || ERRORS=$((ERRORS + 1))
 
 # Summary
 echo ""

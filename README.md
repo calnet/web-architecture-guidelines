@@ -2,6 +2,8 @@
 
 Comprehensive guidelines for building well-architected, secure, scalable, and maintainable web applications.
 
+*Version 1.1.0 - Enhanced documentation quality with improved markdownlint compliance*
+
 ## Overview
 
 This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices. It includes an advanced **AI-Powered Code Review workflow system** with automated workflows, custom commands, comprehensive monitoring, and production-ready deployment capabilities.
@@ -11,9 +13,7 @@ This repository contains architecture guidelines and instructions optimized for 
 ```
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
-│   ├── claude/                         # Claude-specific instructions
-│   │   ├── claude-architecture-instructions.md    # Unified Claude instructions (all levels)
-│   │   └── AI_AGENT_INTEGRATION_GUIDE.md         # Universal AI agent integration guide
+│   ├── claude-architecture-instructions.md        # Unified Claude instructions (all levels)
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md
@@ -103,6 +103,12 @@ npm run workflow:monitor
 1. Use the [Integration Automation Script](docs/integration-automation-script.md) for automated setup
 2. Review the [Project Integration Guide](docs/project-integration-guide.md) for manual integration
 3. Use [documentation templates](docs/templates/) for your project
+
+### GitHub Actions Setup
+For automated code review and CI/CD workflows:
+1. Follow the [GitHub Actions Secrets Setup Guide](docs/github-actions-secrets-setup.md)
+2. Configure required API keys and secrets
+3. Enable automated workflows for continuous quality assurance
 4. Reference [external documentation](docs/external-documentation-links.md) as needed
 
 ### For Project-Specific Implementation

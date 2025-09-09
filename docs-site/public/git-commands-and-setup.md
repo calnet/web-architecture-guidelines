@@ -76,7 +76,7 @@ git add .
 # Initial commit
 git commit -m "feat: initial repository setup with comprehensive architecture guidelines
 
-- Complete AI agent instruction set (Claude V1/V2, ChatGPT, Copilot, Gemini, Anthropic API)
+- Complete AI agent instruction set (Claude, ChatGPT, Copilot, Gemini, Anthropic API)
 - Comprehensive documentation templates for all project types
 - Project integration guide with extension patterns
 - External documentation links and references
@@ -281,9 +281,7 @@ web-architecture-guidelines/
 ├── .gitignore
 ├── docs/
 │   ├── ai-agents/
-│   │   ├── claude/
-│   │   │   ├── claude-architecture-instructions.md
-│   │   │   └── AI_AGENT_INTEGRATION_GUIDE.md
+│   │   ├── claude-architecture-instructions.md
 │   │   ├── chatgpt-architecture-instructions.md
 │   │   ├── copilot-architecture-instructions.md
 │   │   ├── gemini-architecture-instructions.md
@@ -345,7 +343,7 @@ git push origin update/external-links-2024-q4
 # For minor updates (new content, improvements)
 git tag -a v1.1.0 -m "feat: enhanced AI agent instructions
 
-- Improved Claude V2 with additional patterns
+- Comprehensive Claude architecture instructions with advanced patterns
 - Added new template examples
 - Updated external documentation links
 - Enhanced project integration examples"
