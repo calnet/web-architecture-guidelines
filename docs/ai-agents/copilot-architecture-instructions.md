@@ -13,7 +13,7 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 
 ## Enhanced Claude Integration
 
-**New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system that complements GitHub Copilot's code generation capabilities with comprehensive automated analysis and optimization recommendations.
+**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system that complements GitHub Copilot's code generation capabilities with comprehensive automated analysis and complete architecture documentation.
 
 ### AI Tool Collaboration Strategy
 When working with repositories that have the AI-Powered Code Review system:

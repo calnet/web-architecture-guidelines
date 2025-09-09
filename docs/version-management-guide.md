@@ -139,7 +139,7 @@ validate-versions:
 ```
 or
 ```markdown
-*Template Version: 1.3.3*******
+*Template Version: 1.3.3********
 ```
 
 ### Documentation Files
