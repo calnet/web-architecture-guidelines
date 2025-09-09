@@ -2,7 +2,7 @@
 
 This document provides a comprehensive overview of template compatibility, dependencies, and version requirements across the web architecture guidelines repository.
 
-**Generated:** 2025-09-06 17:36:01
+**Generated:** 2025-09-09 19:02:47
 
 ## Overview
 
@@ -14,46 +14,42 @@ The template compatibility matrix helps developers understand:
 
 ## Template Categories
 
-### [Date]
-
-
 ### api
 
-- **api-specification** (v1.1.0) - 
+- **api-specification** (v1.3.3) - 
 
 ### architecture
 
-- **system-architecture-document** (v1.1.0) - 
+- **system-architecture-document** (v1.3.3) - 
 - **adr-template** (v) - 
 
 ### development
 
-- **coding-standards-template** (v1.1.0) - Development Team  
-- **setup-guide-template** (v1.1.0) - Developers  
+- **coding-standards-template** (v1.3.3) - Development Team  
+- **setup-guide-template** (v1.3.3) - Developers  
 
 ### templates
 
-- **README** (v1.1.0) - 
+- **README** (v1.3.3) - 
 
 ### user-guides
 
-- **admin-manual-template** (v1.1.0) - System Administrators  
-- **user-manual-template** (v1.1.0) - End Users  
+- **admin-manual-template** (v1.3.3) - System Administrators  
+- **user-manual-template** (v1.3.3) - End Users  
 
 
 ## Compatibility Matrix
 
 | Template | Version | Category | Target Audience | Frameworks | Dependencies | Last Updated |
 |----------|---------|----------|-----------------|------------|--------------|--------------|
-| [Date] |  |  |  |  |  |  |
-| api-specification | 1.1.0 | api |  |  |  | 2025-09-06 @ 17:03   |
+| api-specification | 1.3.3 | api |  |  |  | 2025-09-06 @ 22:12 |
 | adr-template |  | architecture |  |  |  |  |
-| system-architecture-document | 1.1.0 | architecture |  |  |  | 2025-09-06 @ 17:03   |
-| coding-standards-template | 1.1.0 | development | Development Team   | React, Express |  | 2025-09-06 @ 17:03   |
-| setup-guide-template | 1.1.0 | development | Developers   | Docker |  | 2025-09-06 @ 17:03   |
-| README | 1.1.0 | templates |  |  | architecture/adr-template, docs/decisions/adr-001-database-choice.md | 2025-09-06 @ 17:03   |
-| admin-manual-template | 1.1.0 | user-guides | System Administrators   |  |  | 2025-09-06 @ 17:03   |
-| user-manual-template | 1.1.0 | user-guides | End Users   |  |  | 2025-09-06 @ 17:03   |
+| system-architecture-document | 1.3.3 | architecture |  |  |  | 2025-09-06 @ 22:12 |
+| coding-standards-template | 1.3.3 | development | Development Team   | React, Express |  | 2025-09-06 @ 22:12 |
+| setup-guide-template | 1.3.3 | development | Developers   | Docker |  | 2025-09-06 @ 22:12 |
+| README | 1.3.3 | templates |  |  | architecture/adr-template, docs/decisions/adr-001-database-choice.md | 2025-09-06 @ 22:12 |
+| admin-manual-template | 1.3.3 | user-guides | System Administrators   |  |  | 2025-09-06 @ 22:12 |
+| user-manual-template | 1.3.3 | user-guides | End Users   |  |  | 2025-09-06 @ 22:12 |
 
 ## Framework Compatibility
 
@@ -62,32 +58,20 @@ The template compatibility matrix helps developers understand:
 - **Docker**: 1 templates
 - **Express**: 1 templates
 - **React**: 1 templates
-- **[Date]**: 8 templates
 
 ### Framework-Specific Templates
 
 #### Docker
 
-- setup-guide-template (v1.1.0) - development
+- setup-guide-template (v1.3.3) - development
 
 #### Express
 
-- coding-standards-template (v1.1.0) - development
+- coding-standards-template (v1.3.3) - development
 
 #### React
 
-- coding-standards-template (v1.1.0) - development
-
-#### [Date]
-
-- coding-standards-template (v1.1.0) - development
-- setup-guide-template (v1.1.0) - development
-- README (v1.1.0) - templates
-- system-architecture-document (v1.1.0) - architecture
-- adr-template (v) - architecture
-- admin-manual-template (v1.1.0) - user-guides
-- user-manual-template (v1.1.0) - user-guides
-- api-specification (v1.1.0) - api
+- coding-standards-template (v1.3.3) - development
 
 
 ## Dependency Graph
@@ -150,4 +134,4 @@ This compatibility matrix is automatically generated and should be updated:
 - During major repository releases
 - Quarterly as part of regular maintenance
 
-**Last Generated:** 2025-09-06 17:36:01
+**Last Generated:** 2025-09-09 19:02:47

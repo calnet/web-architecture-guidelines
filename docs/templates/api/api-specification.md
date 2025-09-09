@@ -255,5 +255,5 @@ curl -X POST https://api.example.com/v1/users \
 See the `examples/` directory for complete request/response examples.
 
 ---
-*Template Version: 1.3.3**************  
+*Template Version: 1.3.3***************  
 *Last Updated: [Date]*

@@ -11,7 +11,7 @@ The Web Architecture Guidelines repository uses a centralized version management
 ### Source of Truth
 - **Root VERSION file**: Contains the authoritative version number for the entire repository
 - Located at: `./VERSION`
-- Format: Semantic versioning (e.g., `1.1.0`)
+- Format: Semantic versioning (e.g., `1.3.3`)
 
 ### Managed Files
 
@@ -40,7 +40,7 @@ All `.md` files in:
 
 #### AI Agent Instruction Files (Optional)
 - Files in `docs/ai-agents/` and `docs-site/public/docs/ai-agents/`
-- Only synchronized if they contain explicit version markers (e.g., "Version: 1.1.0")
+- Only synchronized if they contain explicit version markers (e.g., "Version: 1.3.3")
 
 ## Commands
 
@@ -78,7 +78,7 @@ When updating the repository version:
 
 1. **Update the root VERSION file**:
    ```bash
-   echo "1.2.0" > VERSION
+   echo "1.3.3" > VERSION
    ```
 
 2. **Synchronize all files**:
@@ -94,7 +94,7 @@ When updating the repository version:
 4. **Commit changes**:
    ```bash
    git add .
-   git commit -m "chore: update version to 1.2.0"
+   git commit -m "chore: update version to 1.3.3"
    ```
 
 ### 2. Development Workflow Integration
@@ -129,7 +129,7 @@ validate-versions:
 ### Package.json Files
 ```json
 {
-  "version": "1.1.0"
+  "version": "1.3.3"
 }
 ```
 
@@ -139,7 +139,7 @@ validate-versions:
 ```
 or
 ```markdown
-*Template Version: 1.3.3*******
+*Template Version: 1.3.3********
 ```
 
 ### Documentation Files
@@ -149,7 +149,7 @@ or
 
 ### AI Agent Instructions (Optional)
 ```markdown
-Version: 1.1.0
+Version: 1.3.3
 ```
 
 ## Error Handling

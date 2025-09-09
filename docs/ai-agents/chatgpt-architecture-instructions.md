@@ -13,7 +13,7 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 
 ## AI-Powered Code Review Integration
 
-**New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system that provides automated code analysis and optimization recommendations. ChatGPT can leverage these insights to provide more informed and validated architectural guidance.
+**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system that provides automated code analysis and optimization recommendations with comprehensive architecture documentation. ChatGPT can leverage these insights to provide more informed and validated architectural guidance.
 
 ### Workflow System Integration
 

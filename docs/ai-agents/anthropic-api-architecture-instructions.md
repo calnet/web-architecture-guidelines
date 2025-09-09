@@ -13,7 +13,7 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 
 ## AI-Powered Code Review Integration
 
-**New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system specifically designed for Anthropic API integration projects. This system provides automated code analysis and optimization for applications that integrate with Anthropic's services.
+**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system specifically designed for Anthropic API integration projects with complete architecture documentation. This system provides automated code analysis and optimization for applications that integrate with Anthropic's services.
 
 ### Enhanced Workflow Features for Anthropic API Projects
 When implementing Anthropic API integrations, the AI-Powered Code Review system provides specialized validation for:
