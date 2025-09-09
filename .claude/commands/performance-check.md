@@ -3,12 +3,15 @@
 **Usage**: `/performance-check "Performance focus area"`
 
 ## Purpose
+
 Analyze application performance characteristics and identify optimization opportunities across all layers of the system.
 
 ## Command Behavior
+
 When triggered, this command instructs Claude to conduct comprehensive performance analysis:
 
 ### 1. Frontend Performance
+
 - **Core Web Vitals**
   - Largest Contentful Paint (LCP)
   - First Input Delay (FID)
@@ -27,6 +30,7 @@ When triggered, this command instructs Claude to conduct comprehensive performan
   - Event handling efficiency
 
 ### 2. Backend Performance
+
 - **API Performance**
   - Response time optimization
   - Throughput analysis
@@ -46,6 +50,7 @@ When triggered, this command instructs Claude to conduct comprehensive performan
   - Application-level caching
 
 ### 3. Infrastructure Performance
+
 - **Resource Utilization**
   - CPU usage patterns
   - Memory consumption
@@ -59,6 +64,7 @@ When triggered, this command instructs Claude to conduct comprehensive performan
   - Performance under load
 
 ### 4. Monitoring & Observability
+
 - Performance metrics collection
 - Application Performance Monitoring (APM)
 - Real User Monitoring (RUM)
@@ -113,22 +119,27 @@ When triggered, this command instructs Claude to conduct comprehensive performan
 ## Usage Examples
 
 ### General Performance Review
+
 ```
 /performance-check "Analyze overall application performance and identify bottlenecks"
 ```
 
 ### Database Performance Focus
+
 ```
 /performance-check "Review database query performance and optimization opportunities"
 ```
 
 ### Frontend Performance Analysis
+
 ```
 /performance-check "Evaluate Core Web Vitals and frontend loading performance"
 ```
 
 ## Performance Standards
+
 This command evaluates against:
+
 - Google Core Web Vitals thresholds
 - Industry standard response time benchmarks
 - Accessibility performance guidelines
@@ -136,7 +147,9 @@ This command evaluates against:
 - Progressive Web App performance criteria
 
 ## Tools Integration
+
 Compatible with performance monitoring tools:
+
 - Google PageSpeed Insights
 - Lighthouse CI
 - WebPageTest
@@ -144,6 +157,7 @@ Compatible with performance monitoring tools:
 - Synthetic monitoring services
 
 ## Performance Budget Guidelines
+
 - Page load time: < 3 seconds
 - API response time: < 200ms (95th percentile)
 - Database queries: < 100ms average
@@ -152,6 +166,7 @@ Compatible with performance monitoring tools:
 - Fonts: preloaded, font-display: swap
 
 ## Success Criteria
+
 - ✅ Identifies performance bottlenecks
 - ✅ Provides specific optimization recommendations
 - ✅ Includes measurable performance targets

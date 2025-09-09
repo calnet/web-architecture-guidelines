@@ -53,12 +53,14 @@ When providing architectural guidance, organize responses using this structure:
 **Primary Instruction File**: `docs/ai-agents/claude/claude-architecture-instructions.md`
 
 **Integration Strategy**:
+
 - Leverage advanced reasoning for complex architectural trade-offs
 - Focus on comprehensive analysis and detailed implementation guidance
 - Utilize AI-Powered Code Review workflow system when available
 - Emphasize safety and security considerations
 
 **Usage Example**:
+
 ```
 You are an expert web application architect. Follow the guidelines in claude-architecture-instructions.md to provide comprehensive, security-focused architectural guidance. Use the maturity model to tailor recommendations to the team's context.
 ```
@@ -68,12 +70,14 @@ You are an expert web application architect. Follow the guidelines in claude-arc
 **Primary Instruction File**: `docs/ai-agents/chatgpt-architecture-instructions.md`
 
 **Integration Strategy**:
+
 - Focus on detailed step-by-step implementation guides
 - Emphasize practical code examples and demonstrations
 - Provide specific prompting strategies for complex decisions
 - Include debugging and troubleshooting guidance
 
 **Usage Example**:
+
 ```
 Act as a senior software architect. Use the guidelines in chatgpt-architecture-instructions.md to provide detailed, practical architectural guidance with code examples. Focus on step-by-step implementation plans.
 ```
@@ -83,12 +87,14 @@ Act as a senior software architect. Use the guidelines in chatgpt-architecture-i
 **Primary Instruction File**: `docs/ai-agents/copilot-architecture-instructions.md`
 
 **Integration Strategy**:
+
 - Integrate with IDE workflows and code completion
 - Focus on inline documentation and code comments
 - Emphasize pair programming and code review assistance
 - Provide contextual architectural suggestions during development
 
 **Usage Example**:
+
 ```
 // Follow copilot-architecture-instructions.md for architectural guidance
 // Provide inline suggestions that align with clean architecture principles
@@ -100,12 +106,14 @@ Act as a senior software architect. Use the guidelines in chatgpt-architecture-i
 **Primary Instruction File**: `docs/ai-agents/gemini-architecture-instructions.md`
 
 **Integration Strategy**:
+
 - Leverage multimodal capabilities for diagram generation
 - Focus on research and documentation synthesis
 - Emphasize factual accuracy and current technology trends
 - Utilize advanced reasoning for complex system design
 
 **Usage Example**:
+
 ```
 You are a software architecture consultant. Follow gemini-architecture-instructions.md to provide research-backed architectural recommendations. Use your multimodal capabilities to create diagrams and visual explanations when helpful.
 ```
@@ -115,12 +123,14 @@ You are a software architecture consultant. Follow gemini-architecture-instructi
 **Primary Instruction File**: `docs/ai-agents/anthropic-api-architecture-instructions.md`
 
 **Integration Strategy**:
+
 - Designed for programmatic API integration
 - Focus on structured outputs and consistent formatting
 - Emphasize safety and reliability in automated systems
 - Include error handling and validation strategies
 
 **Usage Example**:
+
 ```python
 # API integration following anthropic-api-architecture-instructions.md
 response = client.messages.create(
@@ -175,6 +185,7 @@ response = client.messages.create(
 ### 1. Assessment Phase
 
 **For any AI agent**:
+
 - Analyze current project architecture and requirements
 - Identify team size, experience level, and constraints
 - Determine appropriate maturity level (Foundation, Professional, Enterprise, Innovation)
@@ -182,6 +193,7 @@ response = client.messages.create(
 ### 2. Planning Phase
 
 **Recommendations should include**:
+
 - Architectural patterns suited to the context
 - Technology stack recommendations
 - Implementation timeline and milestones
@@ -190,6 +202,7 @@ response = client.messages.create(
 ### 3. Implementation Phase
 
 **Guidance should cover**:
+
 - Step-by-step implementation instructions
 - Code examples and best practices
 - Testing and validation strategies
@@ -198,6 +211,7 @@ response = client.messages.create(
 ### 4. Validation Phase
 
 **Success criteria should include**:
+
 - Performance benchmarks
 - Security validation
 - Accessibility compliance
@@ -206,6 +220,7 @@ response = client.messages.create(
 ### 5. Optimization Phase
 
 **Continuous improvement through**:
+
 - Performance monitoring
 - User feedback integration
 - Technology updates and migrations
@@ -216,6 +231,7 @@ response = client.messages.create(
 ### Consistency Checks
 
 All AI agents should provide:
+
 - **Coherent Recommendations**: Ensure all suggestions work together
 - **Technology Compatibility**: Verify recommended technologies integrate well
 - **Scalability Considerations**: Address future growth requirements
@@ -238,10 +254,12 @@ The AI-Powered Code Review workflow system (v1.3.3+) provides automated, intelli
 ### Core Components
 
 **GitHub Workflows**:
+
 - `claude-code-review.yml` - Main automated review workflow
 - `advanced-architecture-review.yml` - Multi-stage comprehensive analysis
 
 **Custom Commands Available**:
+
 - `/architecture-review` - Comprehensive architectural analysis focusing on Clean Architecture principles, design patterns, and component interactions
 - `/security-scan` - Security vulnerability assessment covering OWASP Top 10, authentication, authorization, and data protection
 - `/performance-check` - Performance optimization review analyzing frontend (Core Web Vitals), backend, and infrastructure performance
@@ -249,6 +267,7 @@ The AI-Powered Code Review workflow system (v1.3.3+) provides automated, intelli
 - `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
 
 **Automation Features**:
+
 - Automated GitHub Actions workflows provide continuous review
 - Real-time performance monitoring and optimization recommendations
 - API usage tracking (GitHub and Anthropic rate limits)
@@ -293,6 +312,7 @@ Example workflow usage:
 ### Monitoring and Optimization
 
 The workflow system provides:
+
 - **Performance Analysis**: Duration tracking, success rates, optimization recommendations
 - **Health Monitoring**: System reliability and API usage monitoring
 - **Quality Metrics**: Automated validation results and trend analysis
@@ -392,6 +412,7 @@ The workflow system provides:
 **These requirements apply to ALL AI agents working with this repository:**
 
 ### Documentation Update Requirements
+
 Every change you make MUST include:
 
 1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
@@ -401,6 +422,7 @@ Every change you make MUST include:
 5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
 
 ### Version Bump Evaluation Requirements
+
 For every change, evaluate if a version bump is required:
 
 1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
@@ -408,12 +430,14 @@ For every change, evaluate if a version bump is required:
 3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
 
 **Process**:
+
 - Use `npm run versions:validate` to check current version consistency
 - Use `npm run versions:bump-major|minor|patch` to update versions
 - Update CHANGELOG.md with detailed change descriptions
 - Ensure all 100+ files maintain version consistency
 
 ### Quality Standards
+
 - **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
 - **Comprehensive Testing**: Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate

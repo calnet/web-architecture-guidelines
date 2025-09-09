@@ -243,7 +243,7 @@ jobs:
 
 ### 1. Architecture Documentation Extensions
 
-**Pattern: Extended ADR Template**
+#### Pattern: Extended ADR Template
 
 ```markdown
 # ADR-001: Database Technology Selection
@@ -279,7 +279,7 @@ Based on base guidelines recommendation for PostgreSQL, with project-specific ex
 - [x] Base guideline alignment verified
 ```
 
-**Pattern: System Architecture with Template Structure**
+#### Pattern: System Architecture with Template Structure
 
 ```markdown
 # E-commerce Platform System Architecture
@@ -309,7 +309,7 @@ Based on base guidelines recommendation for PostgreSQL, with project-specific ex
 
 ### 2. API Documentation Extensions
 
-**Pattern: Extended API Specification**
+#### Pattern: Extended API Specification
 
 ```markdown
 # E-commerce API Specification
@@ -653,6 +653,7 @@ npm run versions:sync
 ```
 
 **Version Files Managed:**
+
 - Root `VERSION` file (source of truth)
 - `package.json` version
 - Template version files (`docs/.template-version`, `docs/templates/VERSION`)
@@ -676,10 +677,12 @@ validate-versions:
 ```
 
 **Best Practices:**
+
 - Update the root `VERSION` file when making significant changes
 - Run `npm run versions:sync` after version updates
 - Include version validation in local development workflow
 - All template and document versions should stay aligned
+
 ```
 
 ### 2. Metrics and Success Measurement

@@ -7,6 +7,7 @@
 ## Integration Reference
 
 This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
 - **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
 - **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
@@ -16,6 +17,7 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 **New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system specifically designed for Anthropic API integration projects with complete architecture documentation. This system provides automated code analysis and optimization for applications that integrate with Anthropic's services.
 
 ### Enhanced Workflow Features for Anthropic API Projects
+
 When implementing Anthropic API integrations, the AI-Powered Code Review system provides specialized validation for:
 
 - **API Security**: Validates proper ANTHROPIC_API_KEY handling, request authentication, and response validation
@@ -25,6 +27,7 @@ When implementing Anthropic API integrations, the AI-Powered Code Review system 
 - **Cost Optimization**: Reviews token usage patterns and suggests optimization strategies
 
 ### Custom Command Integration
+
 The workflow system includes specialized analysis for Anthropic API projects:
 
 ```bash
@@ -201,6 +204,7 @@ Monitor usage patterns and optimize continuously based on real-world performance
 **These requirements apply to ALL AI agents working with this repository:**
 
 ### Documentation Update Requirements
+
 Every change you make MUST include:
 
 1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
@@ -210,6 +214,7 @@ Every change you make MUST include:
 5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
 
 ### Version Bump Evaluation Requirements
+
 For every change, evaluate if a version bump is required:
 
 1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
@@ -217,12 +222,14 @@ For every change, evaluate if a version bump is required:
 3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
 
 **Process**:
+
 - Use `npm run versions:validate` to check current version consistency
 - Use `npm run versions:bump-major|minor|patch` to update versions
 - Update CHANGELOG.md with detailed change descriptions
 - Ensure all 100+ files maintain version consistency
 
 ### Quality Standards
+
 - **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
 - **Comprehensive Testing**: Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate

@@ -166,6 +166,7 @@ const authenticateJWT = (requiredPermissions?: string[]) => {
 ## Monitoring and Review
 
 This decision will be reviewed:
+
 - After security incidents or vulnerabilities
 - Quarterly security reviews
 - When adding new client applications

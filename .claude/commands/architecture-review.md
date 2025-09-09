@@ -3,12 +3,15 @@
 **Usage**: `/architecture-review "Review description"`
 
 ## Purpose
+
 Perform comprehensive architectural analysis focusing on system design, patterns, and compliance with established guidelines.
 
 ## Command Behavior
+
 When triggered, this command instructs Claude to conduct a thorough architectural review with the following focus areas:
 
 ### 1. Architectural Pattern Compliance
+
 - Clean Architecture principles
 - Layered architecture implementation
 - Hexagonal architecture patterns
@@ -16,6 +19,7 @@ When triggered, this command instructs Claude to conduct a thorough architectura
 - Domain-driven design adherence
 
 ### 2. System Design Analysis
+
 - Component interaction and dependencies
 - Data flow and information architecture
 - Integration patterns and APIs
@@ -23,6 +27,7 @@ When triggered, this command instructs Claude to conduct a thorough architectura
 - Separation of concerns evaluation
 
 ### 3. Code Organization Review
+
 - Module structure and organization
 - Package and namespace design
 - File and directory organization
@@ -30,6 +35,7 @@ When triggered, this command instructs Claude to conduct a thorough architectura
 - Dependency injection patterns
 
 ### 4. Quality Attributes Assessment
+
 - Maintainability metrics
 - Testability evaluation
 - Performance implications
@@ -37,6 +43,7 @@ When triggered, this command instructs Claude to conduct a thorough architectura
 - Reliability and fault tolerance
 
 ### 5. Documentation Alignment
+
 - Architecture Decision Records (ADRs)
 - System architecture documentation
 - API documentation completeness
@@ -77,28 +84,34 @@ When triggered, this command instructs Claude to conduct a thorough architectura
 ## Usage Examples
 
 ### Basic Architecture Review
+
 ```
 /architecture-review "Review the new user authentication module"
 ```
 
 ### Focused Component Review
+
 ```
 /architecture-review "Analyze the data access layer architecture and patterns"
 ```
 
 ### Integration Review
+
 ```
 /architecture-review "Evaluate the API gateway integration architecture"
 ```
 
 ## Integration with Guidelines
+
 This command specifically references and validates against:
+
 - Web Architecture Guidelines established patterns
 - Project-specific architectural decisions
 - Industry best practices and standards
 - Team coding standards and conventions
 
 ## Success Criteria
+
 - ✅ Identifies architectural deviations
 - ✅ Provides specific improvement recommendations
 - ✅ References relevant documentation

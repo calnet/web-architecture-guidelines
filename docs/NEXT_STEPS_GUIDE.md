@@ -5,6 +5,7 @@ This guide provides detailed instructions for completing the remaining "Next Ste
 ## Overview
 
 The AI-Powered Code Review system v1.3.3 has been successfully implemented with:
+
 - ✅ GitHub workflows (claude-code-review.yml, advanced-architecture-review.yml)
 - ✅ Custom Claude commands (5 specialized commands)
 - ✅ Comprehensive monitoring and testing scripts
@@ -138,17 +139,20 @@ Add to crontab for regular monitoring:
 ### Immediate Actions (Required)
 
 - [ ] **Configure ANTHROPIC_API_KEY secret**
+
   ```bash
   gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
   ./scripts/configure-anthropic-secret.sh --validate
   ```
 
 - [ ] **Run initial system validation**
+
   ```bash
   ./scripts/test-workflow.sh --dry-run
   ```
 
 - [ ] **Verify all components are working**
+
   ```bash
   npm run validate:all
   ./scripts/monitor-workflow.sh
@@ -157,6 +161,7 @@ Add to crontab for regular monitoring:
 ### Testing Phase (Recommended)
 
 - [ ] **Create test PR for workflow validation**
+
   ```bash
   ./scripts/test-workflow.sh
   ```
@@ -173,11 +178,13 @@ Add to crontab for regular monitoring:
 ### Optimization Phase (Ongoing)
 
 - [ ] **Set up performance monitoring**
+
   ```bash
   ./scripts/monitor-workflow.sh --report
   ```
 
 - [ ] **Implement optimization recommendations**
+
   ```bash
   ./scripts/monitor-workflow.sh --optimize
   ```
@@ -189,18 +196,21 @@ Add to crontab for regular monitoring:
 ## Success Criteria
 
 ### Phase 1: Configuration Complete
+
 - ✅ ANTHROPIC_API_KEY secret configured and validated
 - ✅ All workflow files syntax validated
 - ✅ Custom commands accessible
 - ✅ NPM scripts functional
 
 ### Phase 2: Testing Complete
+
 - ✅ Test PR created and processed successfully
 - ✅ Claude automatically reviews test PR
 - ✅ Custom commands respond appropriately
 - ✅ All GitHub Actions workflows execute without errors
 
 ### Phase 3: Monitoring Active
+
 - ✅ Performance metrics being collected
 - ✅ Success rate > 90%
 - ✅ Average workflow duration < 10 minutes
@@ -210,6 +220,7 @@ Add to crontab for regular monitoring:
 ## Performance Benchmarks
 
 ### Target Metrics
+
 - **Success Rate**: > 95%
 - **Average Duration**: < 10 minutes
 - **API Response Time**: < 30 seconds
@@ -217,6 +228,7 @@ Add to crontab for regular monitoring:
 - **Error Rate**: < 5%
 
 ### Optimization Opportunities
+
 - **Workflow Caching**: Reduce setup time by 30-50%
 - **Parallel Processing**: Execute multiple checks simultaneously
 - **Smart Triggers**: Avoid unnecessary workflow runs
@@ -227,24 +239,28 @@ Add to crontab for regular monitoring:
 ### Common Issues
 
 1. **Secret Not Found Error**
+
    ```bash
    # Validate secret configuration
    ./scripts/configure-anthropic-secret.sh --validate
    ```
 
 2. **Workflow Fails to Trigger**
+
    ```bash
    # Check workflow file syntax
    yamllint .github/workflows/*.yml
    ```
 
 3. **Custom Commands Not Working**
+
    ```bash
    # Verify command files exist
    ./scripts/test-workflow.sh --dry-run
    ```
 
 4. **Performance Issues**
+
    ```bash
    # Analyze and get recommendations
    ./scripts/monitor-workflow.sh --performance --optimize

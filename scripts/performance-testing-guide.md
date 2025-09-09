@@ -9,11 +9,13 @@ This guide provides documentation for performance testing approaches that can be
 ### 1. Frontend Performance Testing
 
 **Core Web Vitals Testing:**
+
 - **Largest Contentful Paint (LCP)**: < 2.5 seconds
 - **First Input Delay (FID)**: < 100 milliseconds  
 - **Cumulative Layout Shift (CLS)**: < 0.1
 
 **Tools:**
+
 - Lighthouse CI for automated testing
 - WebPageTest for detailed analysis
 - Chrome DevTools Performance tab
@@ -21,11 +23,13 @@ This guide provides documentation for performance testing approaches that can be
 ### 2. Backend Performance Testing
 
 **API Performance Testing:**
+
 - Response time targets: < 200ms for 95th percentile
 - Throughput targets: Based on expected load
 - Error rate: < 0.1% under normal load
 
 **Database Performance Testing:**
+
 - Query performance monitoring
 - Connection pool efficiency
 - Index optimization validation
@@ -33,11 +37,13 @@ This guide provides documentation for performance testing approaches that can be
 ### 3. Load Testing
 
 **Recommended Tools:**
+
 - k6 for modern load testing
 - Artillery for API load testing
 - Apache JMeter for comprehensive testing
 
 **Test Scenarios:**
+
 - Normal load: Expected concurrent users
 - Stress load: 2x normal load
 - Spike load: Sudden traffic increases

@@ -7,6 +7,7 @@
 ## Integration Reference
 
 This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
 - **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
 - **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
@@ -36,6 +37,7 @@ When AI-Powered Code Review workflows are available, provide analytical insights
 ### Gemini-Specific Strengths
 
 Leverage your research and multimodal capabilities to:
+
 - Analyze automated findings against current technology research and trends
 - Generate architectural diagrams and visual explanations of workflow recommendations
 - Provide comprehensive technology comparisons based on automated analysis
@@ -781,6 +783,7 @@ Remember: Always provide concrete, actionable recommendations with real-world ex
 **These requirements apply to ALL AI agents working with this repository:**
 
 ### Documentation Update Requirements
+
 Every change you make MUST include:
 
 1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
@@ -790,6 +793,7 @@ Every change you make MUST include:
 5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
 
 ### Version Bump Evaluation Requirements
+
 For every change, evaluate if a version bump is required:
 
 1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
@@ -797,12 +801,14 @@ For every change, evaluate if a version bump is required:
 3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
 
 **Process**:
+
 - Use `npm run versions:validate` to check current version consistency
 - Use `npm run versions:bump-major|minor|patch` to update versions
 - Update CHANGELOG.md with detailed change descriptions
 - Ensure all 100+ files maintain version consistency
 
 ### Quality Standards
+
 - **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
 - **Comprehensive Testing**: Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate

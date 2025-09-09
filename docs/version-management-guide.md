@@ -9,6 +9,7 @@ The Web Architecture Guidelines repository uses a centralized version management
 ## Version Management Structure
 
 ### Source of Truth
+
 - **Root VERSION file**: Contains the authoritative version number for the entire repository
 - Located at: `./VERSION`
 - Format: Semantic versioning (e.g., `1.3.3`)
@@ -16,29 +17,35 @@ The Web Architecture Guidelines repository uses a centralized version management
 ### Managed Files
 
 #### Package Files
+
 - `package.json` - Main repository package file
 - `examples/package.json` - Example project configuration
 - `docs-site/package.json` - Documentation site package file
 - `docs-site/public/examples/package.json` - Public example project configuration
 
 #### Template Version Files
+
 - `docs/.template-version` - Main templates version marker
 - `docs/templates/VERSION` - Templates directory version
 - `docs-site/public/docs/.template-version` - Public templates version marker
 - `docs-site/public/docs/templates/VERSION` - Public templates directory version
 
 #### Documentation Files with Version Metadata
+
 - `docs/architecture/system-architecture.md`
 - `docs/security.md`
 - `docs/performance.md`
 - `docs-site/public/docs/architecture/system-architecture.md`
 
 #### Template Files
+
 All `.md` files in:
+
 - `docs/templates/` (and subdirectories)
 - `docs-site/public/docs/templates/` (and subdirectories)
 
 #### AI Agent Instruction Files (Optional)
+
 - Files in `docs/ai-agents/` and `docs-site/public/docs/ai-agents/`
 - Only synchronized if they contain explicit version markers (e.g., "Version: 1.3.3")
 
@@ -77,21 +84,25 @@ npm run versions:list
 When updating the repository version:
 
 1. **Update the root VERSION file**:
+
    ```bash
    echo "1.3.3" > VERSION
    ```
 
 2. **Synchronize all files**:
+
    ```bash
    npm run versions:sync
    ```
 
 3. **Validate consistency**:
+
    ```bash
    npm run versions:validate
    ```
 
 4. **Commit changes**:
+
    ```bash
    git add .
    git commit -m "chore: update version to 1.3.3"
@@ -100,6 +111,7 @@ When updating the repository version:
 ### 2. Development Workflow Integration
 
 Before committing changes:
+
 ```bash
 # Check for version inconsistencies
 npm run versions:validate
@@ -127,6 +139,7 @@ validate-versions:
 ## Supported Version Formats
 
 ### Package.json Files
+
 ```json
 {
   "version": "1.3.3"
@@ -134,20 +147,25 @@ validate-versions:
 ```
 
 ### Template Files
+
 ```markdown
 **Template Version**: 1.3.3
 ```
+
 or
+
 ```markdown
 *Template Version: 1.3.3********
 ```
 
 ### Documentation Files
+
 ```markdown
 **Version**: 1.3.3
 ```
 
 ### AI Agent Instructions (Optional)
+
 ```markdown
 Version: 1.3.3
 ```
@@ -157,16 +175,20 @@ Version: 1.3.3
 ### Common Issues and Solutions
 
 #### Version Mismatch
+
 **Problem**: `validate-versions.sh` reports version mismatches
 **Solution**: Run `npm run versions:sync` to align all versions
 
 #### Missing Files
+
 **Problem**: Warning messages about missing version files
 **Solution**: Files may not exist in all environments (e.g., docs-site may not be present in all setups)
 
 #### Permission Errors
+
 **Problem**: Scripts fail with permission denied
-**Solution**: 
+**Solution**:
+
 ```bash
 chmod +x ./scripts/validate-versions.sh
 chmod +x ./scripts/sync-versions.sh
@@ -185,16 +207,19 @@ chmod +x ./scripts/list-version-files.sh
 ### Debugging Version Issues
 
 1. **List all version-managed files**:
+
    ```bash
    npm run versions:list
    ```
 
 2. **Check specific file**:
+
    ```bash
    grep -r "version" package.json
    ```
 
 3. **Manual validation**:
+
    ```bash
    cat VERSION
    grep '"version":' package.json
@@ -203,6 +228,7 @@ chmod +x ./scripts/list-version-files.sh
 ### Advanced Usage
 
 #### Exclude Specific Files
+
 To temporarily exclude files from version management, modify the scripts to skip certain patterns:
 
 ```bash
@@ -211,6 +237,7 @@ To temporarily exclude files from version management, modify the scripts to skip
 ```
 
 #### Custom Version Patterns
+
 For AI agent instructions or other files, add custom patterns to the scripts:
 
 ```bash
@@ -229,6 +256,7 @@ sed -i "s/Custom Version: [0-9][0-9.]*[0-9]/Custom Version: $MAIN_VERSION/g" "$f
 ## Integration with Project Workflow
 
 The version management system integrates with:
+
 - **Git workflows**: Pre-commit hooks can include version validation
 - **Release processes**: Automated version bumping during releases
 - **Documentation generation**: Template versions for generated documentation
@@ -237,12 +265,15 @@ The version management system integrates with:
 ## Maintenance
 
 ### Regular Tasks
+
 - **Monthly**: Review and validate version consistency
 - **Before releases**: Ensure all versions are synchronized
 - **After major changes**: Validate version alignment
 
 ### Script Maintenance
+
 The version management scripts are located in `./scripts/` and should be updated when:
+
 - New version-managed files are added
 - File path structures change
 - New version format patterns are introduced

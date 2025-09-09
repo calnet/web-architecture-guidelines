@@ -3,10 +3,12 @@
 ## Branch Structure
 
 ### Main Branches
+
 - `main` - Production-ready code
 - `develop` - Integration branch for features
 
 ### Feature Branches
+
 - `feature/docs-site-*` - Documentation site features
 - `feature/templates-*` - Template improvements
 - `feature/validation-*` - Validation and quality tools
@@ -14,6 +16,7 @@
 - `feature/ai-agents-*` - AI agent configurations
 
 ### Support Branches
+
 - `hotfix/` - Critical production fixes
 - `release/` - Release preparation
 - `chore/` - Maintenance tasks
@@ -52,4 +55,3 @@ style(css): improve responsive design
 refactor(components): restructure sidebar logic
 test(validation): add template compliance tests
 ```
-

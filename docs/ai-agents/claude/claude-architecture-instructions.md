@@ -13,6 +13,7 @@ This unified instruction file guides Claude in providing comprehensive, structur
 **New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system that provides automated, intelligent code analysis and optimization recommendations with complete architecture documentation.
 
 ### Available Custom Commands
+
 When working with repositories that have this system implemented, you can use specialized commands for focused analysis:
 
 - `/architecture-review` - Comprehensive architectural analysis focusing on Clean Architecture principles, design patterns, and component interactions
@@ -22,6 +23,7 @@ When working with repositories that have this system implemented, you can use sp
 - `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
 
 ### Integration with Architecture Guidelines
+
 The AI-Powered Code Review system enforces and validates the architecture principles outlined in these instructions through:
 
 - **Automated Analysis**: GitHub Actions workflows provide continuous review
@@ -38,6 +40,7 @@ Organize recommendations using this staged approach based on team size, complexi
 ### Level 1 (Foundation) - Essential Practices
 
 **Target**: Small teams (1-3 developers), MVP projects, learning environments
+
 - Basic security, testing, and documentation
 - Core development workflow and version control
 - Fundamental performance and accessibility requirements
@@ -48,6 +51,7 @@ Organize recommendations using this staged approach based on team size, complexi
 ### Level 2 (Professional) - Production Ready
 
 **Target**: Medium teams (4-10 developers), production applications
+
 - Comprehensive CI/CD pipeline
 - Advanced security measures and compliance
 - Performance optimization and monitoring
@@ -58,6 +62,7 @@ Organize recommendations using this staged approach based on team size, complexi
 ### Level 3 (Enterprise) - Large-Scale Systems
 
 **Target**: Large teams (10+ developers), enterprise applications
+
 - Microservices architecture with proper boundaries
 - Advanced monitoring, alerting, and incident response
 - Comprehensive compliance and audit capabilities
@@ -68,6 +73,7 @@ Organize recommendations using this staged approach based on team size, complexi
 ### Level 4 (Innovation) - Cutting-Edge Practices
 
 **Target**: Innovation teams, research projects, bleeding-edge requirements
+
 - Experimental technologies and patterns
 - Advanced AI/ML integration capabilities
 - Edge computing and distributed architectures
@@ -141,6 +147,7 @@ When providing architectural guidance, organize responses using this comprehensi
 ### 1. Resource Constraint Guidance & Decision Trees
 
 #### Tier 1: Small Teams (1-3 developers)
+
 **Foundation Level - Startup & MVP Focus**
 
 - Monolithic architecture with modular design
@@ -149,7 +156,8 @@ When providing architectural guidance, organize responses using this comprehensi
 - Focus on rapid iteration and learning
 
 #### Tier 2: Medium Teams (4-10 developers)
-**Professional Level - Production Ready**
+
+#### Professional Level - Production Ready
 
 - Modular monolith with clear boundaries
 - Microservices for specific domains
@@ -157,7 +165,8 @@ When providing architectural guidance, organize responses using this comprehensi
 - Formal code review processes
 
 #### Tier 3: Large Teams (10+ developers)
-**Enterprise Level - Large-Scale Systems**
+
+#### Enterprise Level - Large-Scale Systems
 
 - Microservices architecture
 - Advanced CI/CD and automation
@@ -227,6 +236,7 @@ Recommend appropriate patterns based on complexity and requirements:
 ### 10. Technology Recommendations
 
 Provide specific framework and tool recommendations based on:
+
 - Team experience and preferences
 - Project requirements and constraints
 - Long-term maintenance considerations
@@ -236,12 +246,14 @@ Provide specific framework and tool recommendations based on:
 
 ### Backend Frameworks
 
-**Node.js Ecosystem**
+#### Node.js Ecosystem
+
 - **Express.js + TypeScript**: Mature, flexible, large ecosystem
 - **Fastify**: High-performance alternative to Express
 - **NestJS**: Enterprise-grade, Angular-inspired structure
 
-**Other Languages**
+#### Other Languages
+
 - **Python**: Django (full-featured), FastAPI (modern, fast)
 - **Java**: Spring Boot (enterprise), Quarkus (cloud-native)
 - **C#**: ASP.NET Core (cross-platform, high-performance)
@@ -250,46 +262,54 @@ Provide specific framework and tool recommendations based on:
 
 ### Frontend Frameworks
 
-**React Ecosystem**
+#### React Ecosystem
+
 - **Next.js**: Full-stack React with SSR/SSG
 - **Vite + React**: Fast development experience
 - **Remix**: Modern full-stack React framework
 
-**Vue Ecosystem**
+#### Vue Ecosystem
+
 - **Nuxt.js**: Full-stack Vue with SSR/SSG
 - **Vite + Vue**: Lightweight, progressive
 
-**Other Options**
+#### Other Options
+
 - **Angular**: Enterprise applications, TypeScript-first
 - **Svelte/SvelteKit**: Compile-time optimizations
 - **Solid.js**: Fine-grained reactivity
 
 ### Database Options
 
-**Relational Databases**
+#### Relational Databases
+
 - **PostgreSQL**: Feature-rich, standards-compliant
 - **MySQL**: Widely adopted, good performance
 - **SQLite**: Simple, serverless for smaller applications
 
-**NoSQL Databases**
+#### NoSQL Databases
+
 - **MongoDB**: Document-based, flexible schema
 - **Redis**: In-memory, caching and sessions
 - **Elasticsearch**: Search and analytics
 
-**Cloud Databases**
+#### Cloud Databases
+
 - **Amazon RDS, Aurora**: Managed relational databases
 - **Google Cloud Firestore**: Serverless NoSQL
 - **Azure Cosmos DB**: Multi-model database
 
 ### Developer Tools & Quality Assurance
 
-**Code Quality**
+#### Code Quality
+
 - **ESLint**: JavaScript/TypeScript linting
 - **Prettier**: Code formatting
 - **Husky**: Git hooks for quality checks
 - **SonarQube**: Comprehensive code analysis
 
-**Testing**
+#### Testing
+
 - **Jest**: JavaScript testing framework
 - **Playwright**: End-to-end testing
 - **Cypress**: User-focused testing
@@ -339,19 +359,22 @@ Provide specific framework and tool recommendations based on:
 
 Tailor recommendations based on:
 
-**Project Context**
+#### Project Context
+
 - Startup vs enterprise requirements
 - Green field vs legacy system modernization
 - Team size and experience level
 - Budget and timeline constraints
 
-**Technical Constraints**
+#### Technical Constraints
+
 - Existing technology stack
 - Performance requirements
 - Security and compliance needs
 - Scalability expectations
 
-**Organizational Factors**
+#### Organizational Factors
+
 - Company culture and practices
 - Available resources and expertise
 - Risk tolerance
@@ -388,39 +411,46 @@ This instruction set can be adapted for any AI agent or LLM tool. To integrate w
 
 #### 1. Core Instruction Adaptation
 
-**For ChatGPT/GPT-4**
+#### For ChatGPT/GPT-4
+
 - Focus on detailed step-by-step implementation guides
 - Emphasize code examples and practical demonstrations
 - Include specific prompting strategies for complex architectural decisions
 
-**For GitHub Copilot**
+#### For GitHub Copilot
+
 - Integrate with IDE workflows and code completion
 - Focus on inline documentation and code comments
 - Emphasize pair programming and code review assistance
 
-**For Google Gemini**
+#### For Google Gemini
+
 - Leverage multimodal capabilities for diagram generation
 - Focus on research and documentation synthesis
 - Emphasize factual accuracy and current technology trends
 
-**For Anthropic API Integration**
+#### For Anthropic API Integration
+
 - Utilize advanced reasoning for complex architectural decisions
 - Focus on safety and security considerations
 - Emphasize thoughtful analysis of trade-offs
 
 #### 2. Tool-Specific Customization
 
-**Code Generation Tools**
+#### Code Generation Tools
+
 - Include specific syntax and framework patterns
 - Focus on best practices and common patterns
 - Provide error handling and edge case guidance
 
-**Documentation Tools**
+#### Documentation Tools
+
 - Emphasize clear, structured documentation
 - Include templates and standardized formats
 - Focus on maintainability and updates
 
-**Analysis Tools**
+#### Analysis Tools
+
 - Provide frameworks for architectural assessment
 - Include metrics and evaluation criteria
 - Focus on continuous improvement processes
@@ -438,6 +468,7 @@ This instruction set can be adapted for any AI agent or LLM tool. To integrate w
 **These requirements apply to ALL AI agents working with this repository:**
 
 ### Documentation Update Requirements
+
 Every change you make MUST include:
 
 1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
@@ -447,6 +478,7 @@ Every change you make MUST include:
 5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
 
 ### Version Bump Evaluation Requirements
+
 For every change, evaluate if a version bump is required:
 
 1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
@@ -454,12 +486,14 @@ For every change, evaluate if a version bump is required:
 3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
 
 **Process**:
+
 - Use `npm run versions:validate` to check current version consistency
 - Use `npm run versions:bump-major|minor|patch` to update versions
 - Update CHANGELOG.md with detailed change descriptions
 - Ensure all 100+ files maintain version consistency
 
 ### Quality Standards
+
 - **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
 - **Comprehensive Testing**: Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate

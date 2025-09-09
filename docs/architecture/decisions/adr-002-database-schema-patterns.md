@@ -130,6 +130,7 @@ CREATE INDEX idx_entity_name_active ON entity_name(id) WHERE deleted_at IS NULL;
 ## Monitoring and Review
 
 This decision will be reviewed:
+
 - After each major project implementation
 - Quarterly architecture reviews
 - When performance issues arise

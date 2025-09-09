@@ -3,12 +3,15 @@
 **Usage**: `/quick-fix "Issue description"`
 
 ## Purpose
+
 Provide immediate, actionable fixes for common code quality, formatting, and minor functionality issues.
 
 ## Command Behavior
+
 When triggered, this command instructs Claude to identify and provide quick fixes for:
 
 ### 1. Code Quality Issues
+
 - **Formatting Problems**
   - Inconsistent indentation
   - Missing semicolons or proper syntax
@@ -22,6 +25,7 @@ When triggered, this command instructs Claude to identify and provide quick fixe
   - Variable naming improvements
 
 ### 2. Documentation Fixes
+
 - **Inline Documentation**
   - Missing or incorrect comments
   - JSDoc/docstring improvements
@@ -35,6 +39,7 @@ When triggered, this command instructs Claude to identify and provide quick fixe
   - Example code updates
 
 ### 3. Configuration Issues
+
 - **Build Configuration**
   - Package.json script fixes
   - Basic webpack/build config issues
@@ -48,6 +53,7 @@ When triggered, this command instructs Claude to identify and provide quick fixe
   - Git hooks setup
 
 ### 4. Minor Security & Performance
+
 - **Low-Risk Security Fixes**
   - Basic input validation
   - Simple XSS prevention
@@ -77,52 +83,67 @@ When triggered, this command instructs Claude to identify and provide quick fixe
    // After  
    [fixed code]
    ```
+
    **Impact**: [Brief explanation of improvement]
 
 2. **[Issue Type]**: [Description]
    [Similar format for each fix]
 
 ### File-by-File Changes
+
 #### `filename.ext`
+
 ```diff
 - [lines to remove]
 + [lines to add]
 ```
 
 ### Applied Standards
+
 - [List of coding standards applied]
 - [List of best practices implemented]
 
 ### Verification Steps
+
 1. [Steps to verify fixes work]
 2. [Commands to run for testing]
 3. [Expected outcomes]
 
 ### Additional Recommendations
+
 - [Suggestions for further improvements]
 - [Related issues that might need attention]
+
 ```
 
 ## Usage Examples
 
 ### Code Quality Fix
 ```
+
 /quick-fix "Fix formatting and style issues in the user service module"
+
 ```
 
 ### Documentation Update
 ```
+
 /quick-fix "Update inline documentation and fix typos in README"
+
 ```
 
 ### Configuration Correction
 ```
+
 /quick-fix "Fix package.json scripts and dependency issues"
+
 ```
 
 ### Security Enhancement
 ```
+
 /quick-fix "Add basic input validation to API endpoints"
+
 ```
 
 ## Fix Categories

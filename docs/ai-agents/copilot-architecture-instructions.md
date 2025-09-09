@@ -7,6 +7,7 @@
 ## Integration Reference
 
 This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
 - **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
 - **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
@@ -16,6 +17,7 @@ This instruction file is part of a comprehensive AI agent integration system. Fo
 **New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system that complements GitHub Copilot's code generation capabilities with comprehensive automated analysis and complete architecture documentation.
 
 ### AI Tool Collaboration Strategy
+
 When working with repositories that have the AI-Powered Code Review system:
 
 1. **Code Generation** (GitHub Copilot): Generate clean, maintainable code following architectural patterns
@@ -23,12 +25,14 @@ When working with repositories that have the AI-Powered Code Review system:
 3. **Optimization** (Both): Iterative improvement based on automated feedback and suggestions
 
 ### Integration Benefits
+
 - **Consistent Quality**: Copilot suggestions validated against established architecture principles
 - **Security Validation**: Generated code automatically scanned for security vulnerabilities
 - **Performance Optimization**: Real-time analysis of performance implications
 - **Documentation Quality**: Automated validation of code comments and documentation
 
 ### Workflow Integration
+
 ```typescript
 // GitHub Copilot generates code following patterns like this:
 // Claude Enhanced workflow validates against security, performance, and architecture standards
@@ -517,6 +521,7 @@ Remember: Always consider the specific context of the project and suggest patter
 **These requirements apply to ALL AI agents working with this repository:**
 
 ### Documentation Update Requirements
+
 Every change you make MUST include:
 
 1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
@@ -526,6 +531,7 @@ Every change you make MUST include:
 5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
 
 ### Version Bump Evaluation Requirements
+
 For every change, evaluate if a version bump is required:
 
 1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
@@ -533,12 +539,14 @@ For every change, evaluate if a version bump is required:
 3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
 
 **Process**:
+
 - Use `npm run versions:validate` to check current version consistency
 - Use `npm run versions:bump-major|minor|patch` to update versions
 - Update CHANGELOG.md with detailed change descriptions
 - Ensure all 100+ files maintain version consistency
 
 ### Quality Standards
+
 - **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
 - **Comprehensive Testing**: Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate

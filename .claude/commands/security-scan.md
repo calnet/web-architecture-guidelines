@@ -3,12 +3,15 @@
 **Usage**: `/security-scan "Security focus area"`
 
 ## Purpose
+
 Conduct comprehensive security vulnerability assessment and compliance validation against established security standards.
 
 ## Command Behavior
+
 When triggered, this command instructs Claude to perform a thorough security analysis covering:
 
 ### 1. OWASP Top 10 Compliance
+
 - **A01: Broken Access Control**
   - Authentication and authorization mechanisms
   - Role-based access control implementation
@@ -30,6 +33,7 @@ When triggered, this command instructs Claude to perform a thorough security ana
   - Secure development lifecycle
 
 ### 2. Security Controls Assessment
+
 - Input validation and sanitization
 - Output encoding and escaping
 - Security headers configuration
@@ -37,6 +41,7 @@ When triggered, this command instructs Claude to perform a thorough security ana
 - Rate limiting and DoS protection
 
 ### 3. Authentication & Authorization
+
 - Multi-factor authentication support
 - Password policy enforcement
 - JWT token security
@@ -44,6 +49,7 @@ When triggered, this command instructs Claude to perform a thorough security ana
 - Privilege escalation prevention
 
 ### 4. Data Protection
+
 - Personal data handling (GDPR/CCPA compliance)
 - Data classification and labeling
 - Secure data storage practices
@@ -51,6 +57,7 @@ When triggered, this command instructs Claude to perform a thorough security ana
 - Backup and recovery security
 
 ### 5. Infrastructure Security
+
 - Container security (if applicable)
 - Cloud security configuration
 - Network security controls
@@ -106,22 +113,27 @@ When triggered, this command instructs Claude to perform a thorough security ana
 ## Usage Examples
 
 ### General Security Review
+
 ```
 /security-scan "Comprehensive security assessment of the user management system"
 ```
 
 ### Focused Vulnerability Assessment
+
 ```
 /security-scan "Check the API endpoints for injection vulnerabilities"
 ```
 
 ### Compliance Review
+
 ```
 /security-scan "OWASP Top 10 compliance validation for the payment module"
 ```
 
 ## Security Standards Reference
+
 This command validates against:
+
 - OWASP Application Security Verification Standard (ASVS)
 - NIST Cybersecurity Framework
 - ISO 27001 security controls
@@ -130,6 +142,7 @@ This command validates against:
 - SOC 2 Type II requirements
 
 ## Integration Points
+
 - Automated security testing tools
 - Dependency vulnerability scanning
 - Static Application Security Testing (SAST)
@@ -137,6 +150,7 @@ This command validates against:
 - Infrastructure as Code security scanning
 
 ## Success Criteria
+
 - ✅ Identifies security vulnerabilities
 - ✅ Provides OWASP compliance assessment
 - ✅ Offers specific remediation steps

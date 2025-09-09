@@ -13,6 +13,7 @@ A clear and concise description of what the problem is.
 A clear and concise description of what you want to happen.
 
 **Which area would this impact?**
+
 - [ ] AI Agent Instructions
 - [ ] Documentation Templates
 - [ ] Integration Guidelines

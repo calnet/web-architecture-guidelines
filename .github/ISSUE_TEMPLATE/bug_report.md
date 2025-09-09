@@ -11,6 +11,7 @@ A clear and concise description of what the bug is.
 
 **Documentation Section**
 Which part of the documentation has the issue?
+
 - [ ] AI Agent Instructions
 - [ ] Templates
 - [ ] Integration Guide

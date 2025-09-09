@@ -5,7 +5,9 @@
 **Target Audience**: Developers  
 
 ## Prerequisites
+
 Before starting, ensure you have the following installed:
+
 - **Node.js**: Version 18.x or higher
 - **Git**: Latest version  
 - **Code Editor**: VS Code (recommended) or your preferred editor
@@ -15,6 +17,7 @@ Before starting, ensure you have the following installed:
 ## Quick Start
 
 ### 1. Repository Setup
+
 ```bash
 # Clone the repository
 git clone [repository-url]
@@ -28,7 +31,9 @@ cp .env.example .env.local
 ```
 
 ### 2. Environment Configuration
+
 Edit `.env.local` with your local settings:
+
 ```env
 # Database
 DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
@@ -43,6 +48,7 @@ LOG_LEVEL="debug"
 ```
 
 ### 3. Database Setup
+
 ```bash
 # Start local database (Docker)
 docker-compose up -d postgres
@@ -55,6 +61,7 @@ npm run db:seed
 ```
 
 ### 4. Start Development Server
+
 ```bash
 # Start the development server
 npm run dev
@@ -64,6 +71,7 @@ npm run dev:debug
 ```
 
 ### 5. Verify Installation
+
 - Navigate to `http://localhost:3000`
 - You should see the application homepage
 - Check that all features are working correctly
@@ -73,7 +81,9 @@ npm run dev:debug
 ### IDE Configuration
 
 #### VS Code Setup
+
 **Install recommended extensions:**
+
 ```bash
 code --install-extension esbenp.prettier-vscode
 code --install-extension bradlc.vscode-tailwindcss
@@ -83,6 +93,7 @@ code --install-extension GitLens.gitlens
 ```
 
 **Workspace settings (`.vscode/settings.json`):**
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -99,6 +110,7 @@ code --install-extension GitLens.gitlens
 ```
 
 #### IntelliJ IDEA Setup
+
 1. **Import project**
    - Open IntelliJ IDEA
    - Import project as existing source
@@ -116,6 +128,7 @@ code --install-extension GitLens.gitlens
    - GitToolBox
 
 ### Git Configuration
+
 ```bash
 # Set up Git hooks
 npm run prepare
@@ -134,7 +147,9 @@ git config alias.logs "log --oneline --graph --decorate"
 ### Development Services
 
 #### Docker Services
+
 **docker-compose.yml:**
+
 ```yaml
 version: '3.8'
 services:
@@ -167,6 +182,7 @@ volumes:
 ```
 
 **Start services:**
+
 ```bash
 docker-compose up -d
 ```
@@ -174,6 +190,7 @@ docker-compose up -d
 ### Testing Setup
 
 #### Test Configuration
+
 ```bash
 # Run all tests
 npm test
@@ -192,7 +209,9 @@ npm test -- user.test.ts
 ```
 
 #### Test Environment Variables
+
 Create `.env.test`:
+
 ```env
 NODE_ENV=test
 DATABASE_URL="postgresql://user:password@localhost:5432/testdb"
@@ -203,6 +222,7 @@ LOG_LEVEL="error"
 ## Development Workflow
 
 ### Branch Strategy
+
 ```
 main              ← Production-ready code
 ├── develop       ← Integration branch
@@ -212,7 +232,9 @@ main              ← Production-ready code
 ```
 
 ### Feature Development Process
+
 1. **Create feature branch**
+
    ```bash
    git checkout develop
    git pull origin develop
@@ -226,6 +248,7 @@ main              ← Production-ready code
    - Commit frequently with meaningful messages
 
 3. **Pre-pull request checklist**
+
    ```bash
    # Run quality checks
    npm run lint
@@ -241,7 +264,9 @@ main              ← Production-ready code
    - Request appropriate reviewers
 
 ### Commit Guidelines
+
 **Conventional commit format:**
+
 ```
 type(scope): description
 
@@ -251,6 +276,7 @@ type(scope): description
 ```
 
 **Examples:**
+
 ```bash
 feat(auth): add OAuth2 integration
 fix(api): resolve user creation bug
@@ -260,6 +286,7 @@ refactor(db): optimize query performance
 ```
 
 **Commit types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -269,6 +296,7 @@ refactor(db): optimize query performance
 - `chore`: Maintenance tasks
 
 ### Code Review Process
+
 1. **Create feature branch** from `develop`
 2. **Implement changes** with tests
 3. **Run quality checks** locally
@@ -281,7 +309,9 @@ refactor(db): optimize query performance
 ### Automated Quality Gates
 
 #### Pre-commit Hooks
+
 Automated checks run before each commit:
+
 - **Code formatting** (Prettier)
 - **Linting** (ESLint)
 - **Type checking** (TypeScript)
@@ -289,6 +319,7 @@ Automated checks run before each commit:
 - **Security scanning** (npm audit)
 
 #### CI/CD Pipeline Checks
+
 - **Build verification**
 - **Full test suite**
 - **Code coverage thresholds**
@@ -296,6 +327,7 @@ Automated checks run before each commit:
 - **Performance regression tests**
 
 ### Manual Quality Checks
+
 ```bash
 # Lint code
 npm run lint
@@ -320,6 +352,7 @@ npm run build
 ```
 
 ### Code Quality Metrics
+
 - **Test Coverage**: Minimum 80% line coverage
 - **TypeScript**: Strict mode enabled
 - **ESLint**: Zero warnings in production code
@@ -331,9 +364,11 @@ npm run build
 ### Common Issues
 
 #### Node.js Version Mismatch
+
 **Error**: `The engine "node" is incompatible with this module`
 
-**Solution**: 
+**Solution**:
+
 ```bash
 # Using Node Version Manager (nvm)
 nvm install 18
@@ -348,9 +383,11 @@ node --version
 ```
 
 #### Port Already in Use
+
 **Error**: `Port 3000 is already in use`
 
 **Solutions**:
+
 ```bash
 # Option 1: Kill process using port
 lsof -ti:3000 | xargs kill -9
@@ -364,16 +401,20 @@ kill -9 [process-id]
 ```
 
 #### Database Connection Failed
+
 **Error**: `Connection refused` or `ECONNREFUSED`
 
 **Solutions**:
+
 1. **Ensure Docker is running**
+
    ```bash
    docker --version
    docker ps
    ```
 
 2. **Start database service**
+
    ```bash
    docker-compose up -d postgres
    ```
@@ -383,6 +424,7 @@ kill -9 [process-id]
    - Ensure credentials match docker-compose.yml
 
 4. **Reset database**
+
    ```bash
    docker-compose down
    docker-compose up -d postgres
@@ -390,9 +432,11 @@ kill -9 [process-id]
    ```
 
 #### Module Not Found
+
 **Error**: `Cannot find module` or `Module not found`
 
 **Solutions**:
+
 ```bash
 # Clear node modules and reinstall
 rm -rf node_modules package-lock.json
@@ -406,9 +450,11 @@ npm cache clean --force
 ```
 
 #### TypeScript Compilation Errors
+
 **Error**: Various TypeScript compilation issues
 
 **Solutions**:
+
 ```bash
 # Clear TypeScript cache
 npx tsc --build --clean
@@ -424,9 +470,11 @@ npm update typescript @types/node
 ```
 
 #### Docker Issues
+
 **Error**: Docker service won't start
 
 **Solutions**:
+
 ```bash
 # Check Docker daemon status
 docker info
@@ -446,10 +494,13 @@ docker system prune -a --volumes
 ### Performance Issues
 
 #### Slow Development Server
+
 **Symptoms**: Long startup times, slow hot reload
 
 **Solutions**:
+
 - **Exclude unnecessary files** from watching
+
   ```javascript
   // webpack.config.js or vite.config.js
   watchOptions: {
@@ -458,6 +509,7 @@ docker system prune -a --volumes
   ```
 
 - **Increase Node.js memory**
+
   ```bash
   export NODE_OPTIONS="--max-old-space-size=8192"
   npm run dev
@@ -467,9 +519,11 @@ docker system prune -a --volumes
 - **Close unnecessary applications** to free up resources
 
 #### Large Bundle Size
+
 **Symptoms**: Slow page loads, large JavaScript bundles
 
 **Solutions**:
+
 ```bash
 # Analyze bundle size
 npm run analyze
@@ -487,18 +541,21 @@ npx depcheck
 ### Getting Help
 
 #### Self-Service Resources
+
 - **Documentation**: Check project README and docs/
 - **Issue Tracker**: Search existing GitHub issues
 - **Stack Overflow**: Search for similar problems
 - **Official Documentation**: Framework and library docs
 
 #### Team Support
+
 - **Team Chat**: [Slack/Discord channel]
 - **Code Review**: Ask for help in pull requests
 - **Pair Programming**: Schedule sessions with team members
 - **Office Hours**: Regular help sessions with senior developers
 
 #### External Resources
+
 - **Community Forums**: Framework-specific communities
 - **GitHub Discussions**: Project-specific discussions
 - **Technical Blogs**: Industry best practices and solutions
@@ -507,12 +564,14 @@ npx depcheck
 ## Additional Resources
 
 ### Development Tools
+
 - **API Testing**: Postman, Insomnia, REST Client
 - **Database Tools**: pgAdmin, MongoDB Compass, Redis CLI
 - **Debugging**: Browser DevTools, Node.js debugger, VS Code debugger
 - **Performance**: Lighthouse, WebPageTest, Chrome DevTools
 
 ### Learning Resources
+
 - **Style Guide**: [Link to coding standards]
 - **API Documentation**: [Link to API docs]
 - **Architecture Overview**: [Link to architecture docs]
@@ -520,6 +579,7 @@ npx depcheck
 - **Team Onboarding**: [Link to team-specific documentation]
 
 ### Useful Commands Reference
+
 ```bash
 # Development
 npm run dev              # Start development server
