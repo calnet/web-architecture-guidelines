@@ -1,5 +1,7 @@
 # ADR-001: Technology Stack Selection
 
+## Status
+
 **Status**: Accepted  
 **Date**: 2025-09-03  
 **Deciders**: Architecture Team, Development Team  

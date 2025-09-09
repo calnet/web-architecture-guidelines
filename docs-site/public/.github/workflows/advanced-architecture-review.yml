@@ -1,0 +1,201 @@
+name: Advanced Architecture Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [main]
+    paths:
+      - 'docs/architecture/**'
+      - 'docs/templates/**'
+      - '**/*.md'
+      - 'scripts/**'
+  workflow_dispatch:
+    inputs:
+      review_type:
+        description: 'Type of architecture review'
+        required: true
+        default: 'comprehensive'
+        type: choice
+        options:
+          - comprehensive
+          - security-focused
+          - performance-focused
+          - documentation-audit
+
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+jobs:
+  pre-review-validation:
+    runs-on: ubuntu-latest
+    outputs:
+      should-review: ${{ steps.check.outputs.should-review }}
+      review-scope: ${{ steps.scope.outputs.scope }}
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Check if review needed
+        id: check
+        run: |
+          # Check if significant architectural changes
+          if git diff --name-only HEAD~1 HEAD | grep -E "(architecture|docs|templates)" > /dev/null; then
+            echo "should-review=true" >> $GITHUB_OUTPUT
+          else
+            echo "should-review=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Determine review scope
+        id: scope
+        run: |
+          SCOPE="standard"
+          
+          # Check for high-impact changes
+          if git diff --name-only HEAD~1 HEAD | grep -E "(system-architecture|security)" > /dev/null; then
+            SCOPE="comprehensive"
+          elif git diff --name-only HEAD~1 HEAD | grep -E "(templates)" > /dev/null; then
+            SCOPE="template-focused"
+          elif git diff --name-only HEAD~1 HEAD | grep -E "(performance)" > /dev/null; then
+            SCOPE="performance-focused"
+          fi
+          
+          echo "scope=$SCOPE" >> $GITHUB_OUTPUT
+
+  architecture-compliance:
+    needs: pre-review-validation
+    if: needs.pre-review-validation.outputs.should-review == 'true'
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        review-area: [architecture, security, performance, documentation, accessibility]
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run area-specific validation
+        run: |
+          case "${{ matrix.review-area }}" in
+            architecture)
+              npm run lint:architecture
+              ;;
+            security)
+              npm run lint:security
+              ;;
+            performance)
+              npm run lint:performance
+              ;;
+            documentation)
+              npm run docs:validate-structure
+              ;;
+            accessibility)
+              echo "Accessibility validation (placeholder)"
+              ;;
+          esac
+          
+      - name: Specialized Claude Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          model: 'claude-3-5-sonnet-20241022'
+          max-tokens: 6000
+          system-prompt: |
+            You are conducting a specialized ${{ matrix.review-area }} review for a web architecture guidelines repository.
+
+            ## Focus Area: ${{ matrix.review-area }}
+            
+            ### 1. Architecture Compliance Assessment
+            - Evaluate adherence to documented architectural patterns
+            - Identify deviations from established guidelines
+            - Assess impact on overall system architecture
+            
+            ### 2. Security-First Analysis
+            - Comprehensive security vulnerability assessment
+            - Review security controls and configurations
+            - Evaluate compliance with security best practices
+            
+            ### 3. Performance Optimization Review
+            - Identify performance optimization opportunities
+            - Assess scalability implications
+            - Review resource utilization patterns
+            
+            ### 4. Developer Experience Validation
+            - Evaluate documentation clarity and completeness
+            - Assess ease of implementation and maintenance
+            - Review template usability and effectiveness
+            
+            ### 5. Accessibility & Inclusivity
+            - Validate accessibility compliance considerations
+            - Review inclusive design principles
+            - Assess barrier-free implementation patterns
+            
+            ## Review Guidelines
+            - Provide specific, actionable recommendations
+            - Reference relevant sections of architecture guidelines
+            - Prioritize critical issues that could impact system stability
+            - Include code examples where appropriate
+            - Focus on maintainability and long-term sustainability
+            
+            Generate a detailed review focusing specifically on ${{ matrix.review-area }} aspects.
+
+  integration-review:
+    needs: [pre-review-validation, architecture-compliance]
+    if: needs.pre-review-validation.outputs.should-review == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Cross-reference validation
+        run: npm run check:cross-references-enhanced
+        
+      - name: Integration Assessment
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          model: 'claude-3-5-sonnet-20241022'
+          max-tokens: 4000
+          system-prompt: |
+            Conduct a final integration review to ensure all components work together cohesively.
+            
+            ## Integration Focus Areas
+            1. **Cross-Component Compatibility**: Ensure changes don't break existing integrations
+            2. **Documentation Synchronization**: Verify all references are updated consistently
+            3. **Template Coherence**: Ensure template changes maintain consistency across the system
+            4. **Workflow Impact**: Assess impact on existing development workflows
+            5. **Version Compatibility**: Verify backward compatibility and migration paths
+            
+            ## Deliverables
+            - Summary of integration risks and mitigations
+            - Recommendations for deployment strategy
+            - Identification of any required follow-up tasks
+            - Assessment of overall change impact
+            
+            Provide a comprehensive integration assessment with specific recommendations.
+          
+          create-issue: false

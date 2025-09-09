@@ -139,3 +139,12 @@ bash scripts/integrate-web-architecture-guidelines.sh \
 ## Contributing
 
 Improvements and feedback for the integration automation script are welcome. Please refer to the main repository guidelines for contribution processes and standards.
+
+---
+
+**Document Information**:
+
+- **Version**: 1.3.3
+- **Last Updated**: 2025-09-06 @ 18:49
+- **Review Schedule**: Quarterly
+- **Maintained by**: Architecture Team

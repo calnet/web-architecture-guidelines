@@ -10,6 +10,8 @@ An interactive React-based documentation website for the Web Architecture Guidel
 - 🔍 **Easy Navigation** - Sidebar navigation and breadcrumb routing
 - ⚡ **Fast Loading** - Optimized build with code splitting
 - 🛠️ **Live Updates** - Automatically syncs with documentation changes
+- 🤖 **Enhanced Claude Integration** - Complete workflow system documentation
+- 📊 **Performance Monitoring** - Real-time workflow health and optimization guides
 
 ## Quick Start
 
@@ -50,10 +52,13 @@ npm run copy-docs
 This copies:
 
 - `README.md`, `git-commands-and-setup.md`, `CLAUDE.md`, `LICENSE`
+- `IMPLEMENTATION_GUIDE.md`, `WORKFLOW_README.md`, `CHANGELOG.md` - AI-Powered Code Review workflow documentation
 - `docs/` - Complete documentation structure
 - `examples/` - Configuration examples  
-- `scripts/` - Validation scripts
+- `scripts/` - Validation and workflow management scripts
 - `tools/` - Compliance checker
+- `.claude/commands/` - Custom Claude commands for automated reviews
+- `.github/workflows/` - GitHub Actions workflows for automated analysis
 
 ## Project Structure
 
@@ -79,8 +84,10 @@ The site organizes documentation into logical sections:
 
 ### 🚀 Getting Started
 
-- README - Project overview and setup
+- README - Project overview and AI-Powered Code Review system setup
 - Git Commands - Version control setup guide
+- Implementation Guide - Complete AI-Powered Code Review workflow implementation
+- Workflow README - Usage and maintenance documentation
 
 ### 📋 Templates  
 
@@ -96,13 +103,19 @@ The site organizes documentation into logical sections:
 - Performance Guidelines - Optimization strategies
 - ADR Examples - Architecture decision records
 
-### 🤖 AI Agents
+### 🤖 AI Agents & Enhanced Claude System
 
 - Anthropic API - Claude integration instructions
 - ChatGPT - OpenAI integration patterns
 - GitHub Copilot - VS Code integration setup
 - Gemini - Google AI integration guide
 - Claude - Advanced Claude configurations
+- **Enhanced Claude Commands** - 5 custom commands for automated code reviews:
+  - `/architecture-review` - Comprehensive architectural analysis
+  - `/security-scan` - Security vulnerability assessment
+  - `/performance-check` - Performance optimization review
+  - `/documentation-audit` - Documentation quality validation
+  - `/quick-fix` - Quick fix implementation
 
 ### 💻 Examples
 
@@ -113,7 +126,17 @@ The site organizes documentation into logical sections:
 ### 🛠️ Scripts & Tools
 
 - Validation Scripts - Quality assurance automation
+- **Enhanced Workflow Scripts** - Complete workflow management system:
+  - setup-enhanced-workflow.sh - Complete system setup
+  - test-workflow.sh - Comprehensive workflow testing
+  - monitor-workflow.sh - Performance monitoring & optimization
+  - configure-anthropic-secret.sh - ANTHROPIC_API_KEY configuration
 - Template Compliance Checker - Documentation validation
+
+### ⚙️ GitHub Workflows
+
+- **claude-code-review.yml** - Main automated review workflow
+- **advanced-architecture-review.yml** - Multi-stage comprehensive analysis
 
 ## Technology Stack
 

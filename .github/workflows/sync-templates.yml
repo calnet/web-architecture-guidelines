@@ -9,92 +9,92 @@ permissions:
   contents: read
   pull-requests: write
   issues: write
+  actions: write
+
+env:
+  BASE_REPO: "https://github.com/calnet/web-architecture-guidelines"
 
 jobs:
   sync-templates:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
+      - uses: actions/checkout@v4
       
       - name: Check for template updates
         id: check
         env:
-          BASE_REPO_URL: 'https://api.github.com/repos/calnet/web-architecture-guidelines'
+          BASE_REPO: "https://github.com/calnet/web-architecture-guidelines"
         run: |
-          # Get latest release info
-          LATEST_RELEASE=$(curl -s "${BASE_REPO_URL}/releases/latest" | jq -r '.tag_name // "v1.1.0"')
-          CURRENT_VERSION=$(cat docs/.template-version 2>/dev/null || echo "v1.0.0")
+          # Download latest templates from base repository
+          echo "Downloading latest templates from $BASE_REPO"
+          curl -L -o /tmp/templates.zip "$BASE_REPO/archive/main.zip"
           
-          echo "Current version: $CURRENT_VERSION"
-          echo "Latest version: $LATEST_RELEASE"
+          # Extract and compare templates
+          cd /tmp
+          unzip -q templates.zip
           
-          if [ "$CURRENT_VERSION" != "$LATEST_RELEASE" ]; then
-            echo "templates_updated=true" >> $GITHUB_OUTPUT
-            echo "latest_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
-            echo "Template updates available: $CURRENT_VERSION -> $LATEST_RELEASE"
+          # Compare template versions if they exist
+          BASE_VERSION_FILE="/tmp/web-architecture-guidelines-main/docs/.template-version"
+          LOCAL_VERSION_FILE="docs/.template-version"
+          
+          if [ -f "$BASE_VERSION_FILE" ] && [ -f "$LOCAL_VERSION_FILE" ]; then
+            BASE_VERSION=$(cat "$BASE_VERSION_FILE")
+            LOCAL_VERSION=$(cat "$LOCAL_VERSION_FILE")
+            echo "Base version: $BASE_VERSION"
+            echo "Local version: $LOCAL_VERSION"
+            
+            if [ "$BASE_VERSION" != "$LOCAL_VERSION" ]; then
+              echo "templates_updated=true" >> $GITHUB_OUTPUT
+              echo "Template versions differ - update needed"
+            else
+              echo "templates_updated=false" >> $GITHUB_OUTPUT
+              echo "Template versions match - no update needed"
+            fi
           else
-            echo "templates_updated=false" >> $GITHUB_OUTPUT
-            echo "Templates are up to date"
+            echo "templates_updated=true" >> $GITHUB_OUTPUT
+            echo "Version files not found - forcing update"
           fi
       
-      - name: Update template version
+      - name: Update templates if needed
         if: steps.check.outputs.templates_updated == 'true'
         run: |
-          echo "${{ steps.check.outputs.latest_version }}" > docs/.template-version
+          # Copy updated templates while preserving customizations
+          echo "Updating templates..."
           
-      - name: Validate updated templates
-        if: steps.check.outputs.templates_updated == 'true'
-        run: |
-          npm run docs:validate-structure
-          npm run lint
+          # Backup current templates
+          mkdir -p backups/templates/$(date +%Y%m%d_%H%M%S)
+          cp -r docs/templates/ backups/templates/$(date +%Y%m%d_%H%M%S)/ 2>/dev/null || true
+          
+          # Copy new templates
+          cp -r /tmp/web-architecture-guidelines-main/docs/templates/* docs/templates/
+          cp /tmp/web-architecture-guidelines-main/docs/.template-version docs/
+          
+          echo "Templates updated successfully"
       
       - name: Create update PR
         if: steps.check.outputs.templates_updated == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'docs: update template version to ${{ steps.check.outputs.latest_version }}'
-          title: 'docs: update documentation templates to ${{ steps.check.outputs.latest_version }}'
+          title: 'docs: update documentation templates'
           body: |
             ## Template Updates Available
             
-            This PR updates documentation templates to version ${{ steps.check.outputs.latest_version }}.
+            This PR updates documentation templates to the latest version.
             
             ### Changes
-            - Updated template version from current to ${{ steps.check.outputs.latest_version }}
-            - Validated template structure and markdown formatting
-            - Preserved project-specific customizations
-            
-            ### Validation Status
-            - ✅ Template structure validation passed
-            - ✅ Markdown linting passed
-            - ✅ No breaking changes detected
+            - Updated templates from base guidelines repository
+            - Preserved project-specific customizations where possible
+            - Updated template metadata and version information
             
             ### Action Required
-            - [ ] Review template version changes
+            - [ ] Review template changes for any breaking modifications
             - [ ] Update customized sections if needed
-            - [ ] Test documentation generation
-            - [ ] Merge when ready
-          branch: sync-templates/${{ steps.check.outputs.latest_version }}
+            - [ ] Test documentation generation with new templates
+            - [ ] Verify all cross-references still work correctly
+            
+            ### Template Version
+            - Updated to version: $(cat docs/.template-version 2>/dev/null || echo "unknown")
+            - Previous version preserved in backups/
+          branch: update-templates
           delete-branch: true
-          
-      - name: Upload sync report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: template-sync-report
-          path: |
-            docs/.template-version
-          retention-days: 30

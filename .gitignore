@@ -24,6 +24,7 @@ build/
 
 # Reports
 reports/
+.compliance_reports/
 coverage/
 
 # Dependencies
@@ -52,3 +53,13 @@ coverage/
 
 # Claude Code local settings and chat history
 .claude/
+# But include Claude commands
+!.claude/commands/
+
+# Build artifacts
+dist/
+/tmp/
+
+# Backup files
+*.backup
+*.backup-*

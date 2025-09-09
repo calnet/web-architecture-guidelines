@@ -2,10 +2,7 @@
 
 ## Overview
 
-This documentation outlines the architectural principles, technology stack, and
-deployment strategies for web applications built using these guidelines. It
-serves as a reference for development teams and stakeholders to understand
-system design decisions and technical implementation approaches.
+This documentation outlines the architectural principles, technology stack, and deployment strategies for web applications built using these guidelines. It serves as a reference for development teams and stakeholders to understand system design decisions and technical implementation approaches.
 
 ## Architecture
 
@@ -15,8 +12,7 @@ system design decisions and technical implementation approaches.
 
 - Separation of concerns with clear layer boundaries
 - Dependency inversion: higher-level modules don't depend on lower-level modules
-- Business logic remains independent of frameworks, databases, and external
-  services
+- Business logic remains independent of frameworks, databases, and external services
 - Testable architecture with mockable dependencies
 
 #### Layered Architecture Structure
@@ -513,9 +509,7 @@ groups:
   - name: application.rules
     rules:
       - alert: HighErrorRate
-        expr: >
-          sum(rate(http_requests_total{status=~"5.."}[5m])) /
-          sum(rate(http_requests_total[5m])) > 0.05
+        expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) > 0.05
         for: 5m
         labels:
           severity: critical
@@ -535,12 +529,9 @@ groups:
 
 **Document Information**:
 
-- **Version**: 1.1.0
-- **Last Updated**: September 2025
+- **Version**: 1.3.3
+- **Last Updated**: 2025-09-06 @ 22:12
 - **Review Schedule**: Quarterly
 - **Maintained by**: Architecture Team
 
-This architecture documentation provides a comprehensive foundation for
-building scalable, secure, and maintainable web applications. Teams should
-adapt these guidelines based on specific project requirements, compliance
-needs, and organizational constraints.
+This architecture documentation provides a comprehensive foundation for building scalable, secure, and maintainable web applications. Teams should adapt these guidelines based on specific project requirements, compliance needs, and organizational constraints.

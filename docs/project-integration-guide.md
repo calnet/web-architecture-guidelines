@@ -2,25 +2,20 @@
 
 ## Overview
 
-This guide explains how to extend the base architecture guidelines for
-specific projects while maintaining separation and consistency across your
-organization.
+This guide explains how to extend the base architecture guidelines for specific projects while maintaining separation and consistency across your organization.
 
 ## Architecture Philosophy
 
 ### Base Guidelines Principle
 
 - **Universal Standards**: Core principles that apply to all projects
-- **Project Extensions**: Specific adaptations for individual project
-  needs
-- **Clean Separation**: Project-specific guidelines reference but don't
-  modify base guidelines
-- **Collaborative Evolution**: Feedback from projects improves base
-  guidelines over time
+- **Project Extensions**: Specific adaptations for individual project needs
+- **Clean Separation**: Project-specific guidelines reference but don't modify base guidelines
+- **Collaborative Evolution**: Feedback from projects improves base guidelines over time
 
 ### Integration Strategy
 
-```text
+```
 Base Guidelines (This Repository)
 ├── Core Principles & Patterns
 ├── Technology Recommendations
@@ -80,7 +75,7 @@ docs/
 ├── user-guides/           # User documentation (using base templates)
 └── development/           # Development guides (using base templates)
 
-```text
+```
 
 ## Project-Specific Extensions
 - [Technology Stack Decisions](#technology-stack)
@@ -99,12 +94,11 @@ Based on the base guidelines, this project uses:
   - Extension: Added Read replicas for analytics queries
 
 ## Deviations from Base Guidelines
-| Guideline | Base | Project | Rationale |
-|-----------|------|---------|-----------|
-| Testing | Jest | Vitest | Faster, better TS support |
-| State Mgmt | Redux Toolkit | Zustand | Simpler for use case |
-
-```text
+| Guideline | Base Recommendation | Project Choice | Rationale |
+|-----------|-------------------|----------------|-----------|
+| Testing Framework | Jest | Vitest | Faster execution, better TypeScript support |
+| State Management | Redux Toolkit | Zustand | Simpler for our use case |
+```
 
 ### 2. Implement Template Structure
 
@@ -139,7 +133,7 @@ cp base-guidelines/docs/templates/development/coding-standards-template.md \
 
 **Create Project-Specific Documentation Structure:**
 
-```text
+```
 docs/
 ├── README.md                          # Project documentation index
 ├── architecture/
@@ -249,7 +243,7 @@ jobs:
 
 ### 1. Architecture Documentation Extensions
 
-#### Pattern: Extended ADR Template
+**Pattern: Extended ADR Template**
 
 ```markdown
 # ADR-001: Database Technology Selection
@@ -285,7 +279,7 @@ Based on base guidelines recommendation for PostgreSQL, with project-specific ex
 - [x] Base guideline alignment verified
 ```
 
-#### Pattern: System Architecture with Template Structure
+**Pattern: System Architecture with Template Structure**
 
 ```markdown
 # E-commerce Platform System Architecture
@@ -315,7 +309,7 @@ Based on base guidelines recommendation for PostgreSQL, with project-specific ex
 
 ### 2. API Documentation Extensions
 
-#### Pattern: Extended API Specification
+**Pattern: Extended API Specification**
 
 ```markdown
 # E-commerce API Specification
@@ -362,7 +356,7 @@ Process order checkout with payment integration
 ✅ Implements base rate limiting approach
 ✅ Includes base pagination structure
 
-```text
+```
 
 ### 3. Development Guide Extensions
 
@@ -373,7 +367,7 @@ Process order checkout with payment integration
 ## Template Compliance
 **Based on**: [Base Setup Guide Template v1.0]
 **Project Extensions**: E-commerce specific services
-**Last Updated**: [Date]
+**Last Updated**: 2025-09-06 @ 22:12
 
 ## Prerequisites
 Before starting, complete the [Base Development Environment Setup](../git-commands-and-setup.md).
@@ -421,7 +415,7 @@ After completing base setup:
 4. 🆕 Payment processing works (project-specific)
 5. 🆕 Email notifications work (project-specific)
 
-```text
+```
 
 ## Documentation Template Integration
 
@@ -431,12 +425,12 @@ After completing base setup:
 ```markdown
 ## Documentation Metadata
 
-| Document | Template | Ver | Updated | Custom |
-|----------|----------|-----|---------|--------|
-| System Arch | system-arch-doc.md | v1.0 | 01-15 | E-comm sections |
-| API Spec | api-spec.md | v1.0 | 01-10 | Payment endpoints |
-| User Manual | user-manual.md | v1.0 | 01-05 | Checkout workflow |
-| Setup Guide | setup-guide.md | v1.0 | 01-01 | E-comm services |
+| Document | Base Template | Version | Last Updated | Customizations |
+|----------|---------------|---------|--------------|----------------|
+| System Architecture | system-architecture-document.md | v1.0 | 2024-01-15 | Added e-commerce sections |
+| API Specification | api-specification.md | v1.0 | 2024-01-10 | Added payment endpoints |
+| User Manual | user-manual-template.md | v1.0 | 2024-01-05 | Added checkout workflow |
+| Setup Guide | setup-guide-template.md | v1.0 | 2024-01-01 | Added e-commerce services |
 ```
 
 **Update Notification Process:**
@@ -643,6 +637,49 @@ export async function generateComplianceReport(
 - **Migration guides** for breaking changes
 - **Backward compatibility** when possible
 - **Support period** for legacy templates
+
+### Centralized Version Management
+
+**Version Synchronization:**
+
+The repository includes automated tools to maintain version consistency across all documentation:
+
+```bash
+# Validate all versions are aligned
+npm run versions:validate
+
+# Synchronize all versions to match the root VERSION file
+npm run versions:sync
+```
+
+**Version Files Managed:**
+- Root `VERSION` file (source of truth)
+- `package.json` version
+- Template version files (`docs/.template-version`, `docs/templates/VERSION`)
+- Document metadata versions (architecture, security, performance docs)
+- Individual template versions
+
+**CI/CD Integration:**
+
+The validation workflow includes version consistency checks:
+
+```yaml
+# .github/workflows/validate-docs.yml
+validate-versions:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: Validate version consistency
+      run: |
+        chmod +x ./scripts/validate-versions.sh
+        ./scripts/validate-versions.sh
+```
+
+**Best Practices:**
+- Update the root `VERSION` file when making significant changes
+- Run `npm run versions:sync` after version updates
+- Include version validation in local development workflow
+- All template and document versions should stay aligned
 ```
 
 ### 2. Metrics and Success Measurement
@@ -671,8 +708,13 @@ export async function generateComplianceReport(
 - **Knowledge Retention**: Reduced impact of team member turnover
 ```
 
-This integration guide ensures that projects can effectively utilize the
-organized template structure while maintaining consistency and contributing
-to continuous improvement across the organization. The categorized templates
-make it easier to find the right documentation format and maintain
-professional standards across all projects.
+This integration guide ensures that projects can effectively utilize the organized template structure while maintaining consistency and contributing to continuous improvement across the organization. The categorized templates make it easier to find the right documentation format and maintain professional standards across all projects.
+
+---
+
+**Document Information**:
+
+- **Version**: 1.3.3
+- **Last Updated**: 2025-09-06 @ 22:12
+- **Review Schedule**: Quarterly
+- **Maintained by**: Architecture Team
