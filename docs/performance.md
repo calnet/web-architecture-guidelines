@@ -42,7 +42,7 @@ This document provides performance optimization guidelines and best practices fo
 - Use dynamic imports for conditional features
 - Analyze bundle size with webpack-bundle-analyzer
 
-#### Caching Strategies
+#### Frontend Caching Strategies
 
 - Implement service workers for offline functionality
 - Use browser caching with appropriate cache headers

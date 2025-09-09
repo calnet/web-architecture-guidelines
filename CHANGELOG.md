@@ -79,7 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Enhanced Maturity Model**: Comprehensive implementation maturity model covering Foundation to Innovation levels
 - **Universal Response Structure**: Standardized architectural guidance format across all AI agents
 
-### Changed
+### Changed (v1.3.1)
 
 - **Streamlined File Structure**: Removed versioned Claude instruction files in favor of unified approach
 - **Enhanced AI Agent Instructions**: Updated all AI agent files (ChatGPT, Gemini, Copilot, Anthropic API) with integration references
@@ -106,7 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2025-09-06
 
-### ✨ Features
+### ✨ Features (v1.2.0)
 
 - feat: complete enhanced Claude Code Review workflow system implementation
 - feat: implement modular Claude workflow scripts

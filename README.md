@@ -6,7 +6,11 @@ Comprehensive guidelines for building well-architected, secure, scalable, and ma
 
 ## Overview
 
-This repository contains architecture guidelines and instructions optimized for AI agents and development teams to build high-quality web applications following industry best practices. It includes an advanced **AI-Powered Code Review workflow system** with automated workflows, custom commands, comprehensive monitoring, and production-ready deployment capabilities.
+This repository contains architecture guidelines and instructions optimized for
+AI agents and development teams to build high-quality web applications following
+industry best practices. It includes an advanced **AI-Powered Code Review
+workflow system** with automated workflows, custom commands, comprehensive
+monitoring, and production-ready deployment capabilities.
 
 ## Structure
 
