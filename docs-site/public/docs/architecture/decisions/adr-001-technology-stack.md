@@ -132,4 +132,4 @@ This decision will be reviewed quarterly and may be revised based on:
 
 ---
 
-*Last updated: September 3, 2025*
+**Last updated**: September 3, 2025

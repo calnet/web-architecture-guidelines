@@ -47,7 +47,7 @@ The enhanced workflow system consists of four main components:
    
    # Authenticate
    gh auth login
-   ```
+   ```text
 
 2. **Repository Access**: Ensure you have admin access to configure secrets
 
@@ -64,7 +64,7 @@ cd web-architecture-guidelines
 
 # Run the complete setup
 ./setup-enhanced-workflow.sh
-```
+```text
 
 ### Manual Setup
 
@@ -74,25 +74,25 @@ If you prefer manual installation or need to set up components individually:
 
 ```bash
 scripts/create-workflows.sh
-```
+```text
 
 #### Step 2: Create Custom Commands
 
 ```bash
 scripts/create-commands.sh
-```
+```text
 
 #### Step 3: Create Monitoring Scripts
 
 ```bash
 scripts/create-monitoring.sh
-```
+```text
 
 #### Step 4: Create Documentation
 
 ```bash
 scripts/create-docs.sh
-```
+```text
 
 #### Step 5: Configure Repository Secrets
 
@@ -102,7 +102,7 @@ gh secret set ANTHROPIC_API_KEY --body "your-anthropic-api-key-here"
 
 # Verify secret is set
 gh secret list
-```
+```text
 
 ### Verification
 
@@ -114,7 +114,7 @@ scripts/test-workflow.sh
 
 # Check system health
 scripts/monitor-workflow.sh --report
-```
+```text
 
 ## Configuration
 
@@ -135,7 +135,7 @@ gh secret set ANTHROPIC_API_KEY --body "your-api-key"
 
 # Via GitHub UI
 # Settings > Secrets and variables > Actions > New repository secret
-```
+```text
 
 ### Workflow Configuration
 
@@ -165,7 +165,7 @@ vi .claude/commands/security-scan.md
 
 # Test command after changes
 gh pr comment [PR-URL] --body "/security-scan Test the updated command"
-```
+```text
 
 ## Usage
 
@@ -189,7 +189,7 @@ Trigger reviews manually by commenting on PRs or issues:
 
 # With specific focus
 @claude Please review this PR focusing on security
-```
+```text
 
 ### Custom Commands
 
@@ -199,31 +199,31 @@ Use specialized commands for focused analysis:
 
 ```bash
 /architecture-review "Review the new user authentication module"
-```
+```text
 
 #### Security Scan
 
 ```bash  
 /security-scan "Check the API endpoints for OWASP compliance"
-```
+```text
 
 #### Performance Check
 
 ```bash
 /performance-check "Analyze database query optimizations"
-```
+```text
 
 #### Documentation Audit
 
 ```bash
 /documentation-audit "Review API documentation completeness"
-```
+```text
 
 #### Quick Fix
 
 ```bash
 /quick-fix "Fix formatting and style issues in user service"
-```
+```text
 
 ### Scheduled Reviews
 
@@ -246,7 +246,7 @@ scripts/monitor-workflow.sh
 
 # Detailed health report
 scripts/monitor-workflow.sh --report
-```
+```text
 
 ### Performance Metrics
 
@@ -265,7 +265,7 @@ Set up monitoring alerts:
 # Add to crontab for regular monitoring
 crontab -e
 # Add: 0 */6 * * * /path/to/scripts/monitor-workflow.sh --report
-```
+```text
 
 ## Troubleshooting
 
@@ -282,7 +282,7 @@ gh auth login
 
 # Verify API key secret
 gh secret list | grep ANTHROPIC_API_KEY
-```
+```text
 
 #### Workflow Not Triggering
 
@@ -295,7 +295,7 @@ gh workflow list
 
 # Check recent runs
 gh run list --limit 10
-```
+```text
 
 #### Custom Commands Not Working
 
@@ -308,7 +308,7 @@ cat .claude/commands/architecture-review.md
 
 # Test with manual trigger
 gh pr comment [PR-URL] --body "@claude /architecture-review test"
-```
+```text
 
 #### Poor Performance
 
@@ -321,7 +321,7 @@ scripts/monitor-workflow.sh
 
 # Review workflow logs
 gh run view [RUN-ID] --log
-```
+```text
 
 ### Debugging
 
@@ -337,7 +337,7 @@ scripts/monitor-workflow.sh --report
 
 # Run comprehensive test
 scripts/test-workflow.sh
-```
+```text
 
 ### Support
 
@@ -361,7 +361,7 @@ Modify workflows in `.github/workflows/`:
   with:
     model: 'claude-3-5-sonnet-20241022'  # Change model
     max-tokens: 4000                      # Adjust token limit
-```
+```text
 
 ### Command Customization
 
@@ -374,7 +374,7 @@ Edit command files in `.claude/commands/`:
 
 ## Command Behavior
 [Updated behavior specification]
-```
+```text
 
 ### Monitoring Customization
 
@@ -383,7 +383,7 @@ Adjust monitoring thresholds in `scripts/monitor-workflow.sh`:
 ```bash
 # Change failure rate threshold
 if [[ $failed_count -gt 3 ]]; then  # Adjust from 3 to your preference
-```
+```text
 
 ## Best Practices
 

@@ -62,7 +62,7 @@ This copies:
 
 ## Project Structure
 
-```
+```text
 docs-site/
 ├── public/              # Static files (auto-synced docs)
 ├── src/

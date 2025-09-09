@@ -1,10 +1,14 @@
-# Coding Standards Template
+# [Project Name] Coding Standards
+
+<!-- Template Version: 1.3.3 -->
+<!-- Last Updated: 2025-09-06 @ 22:12 -->
+<!-- Target Audience: Development Team -->
+
+## Template Metadata
 
 **Template Version**: 1.3.3
-**Last Updated**: 2025-09-06 @ 18:49
-**Target Audience**: Development Team  
-
-# [Project Name] Coding Standards
+**Last Updated**: 2025-09-06 @ 22:12
+**Target Audience**: Development Team
 
 This document defines the coding standards and best practices for [Project Name]. Following these standards ensures code consistency, maintainability, and collaboration effectiveness across the development team.
 
@@ -34,7 +38,7 @@ const config = {
     timeout: 5000,
     retries: 3,
 };
-```
+```text
 
 **CSS/SCSS**:
 
@@ -53,7 +57,7 @@ const config = {
     font-size: 1rem;
     padding: 0.5rem 1rem;
 }
-```
+```text
 
 ### Naming Conventions
 
@@ -72,7 +76,7 @@ const isUserAuthenticated = true;
 function calculateTotalPrice(items: CartItem[]): number {
     return items.reduce((total, item) => total + item.price, 0);
 }
-```
+```text
 
 **Constants**:
 
@@ -93,7 +97,7 @@ enum UserRole {
     USER = "user",
     GUEST = "guest",
 }
-```
+```text
 
 ## Best Practices
 
@@ -101,7 +105,7 @@ enum UserRole {
 
 **Project Structure**:
 
-```
+```text
 src/
 ├── components/          # Reusable UI components
 │   ├── common/         # Shared components
@@ -113,7 +117,7 @@ src/
 ├── constants/          # Application constants
 ├── assets/             # Static assets (images, fonts)
 └── styles/             # Global styles and themes
-```
+```text
 
 ### Function and Method Design
 
@@ -138,7 +142,7 @@ function formatCurrency(amount: number, currency = "USD"): string {
         currency,
     }).format(amount);
 }
-```
+```text
 
 ### Error Handling
 
@@ -164,7 +168,7 @@ async function fetchUserData(userId: string): Promise<User> {
         throw new UserDataFetchError("Unable to retrieve user information");
     }
 }
-```
+```text
 
 ## Testing
 
@@ -205,7 +209,7 @@ describe("UserService", () => {
         });
     });
 });
-```
+```text
 
 ## Performance Guidelines
 
@@ -232,7 +236,7 @@ function findUsersByRole(users: User[], targetRole: string): User[] {
 
     return roleMap.get(targetRole) || [];
 }
-```
+```text
 
 ### Frontend Performance
 
@@ -257,7 +261,7 @@ const handleItemClick = useCallback(
     },
     [onItemSelect]
 );
-```
+```text
 
 ### Backend Performance
 
@@ -270,7 +274,7 @@ const users = await userRepository.find({
     select: ["id", "name", "email"], // Only select needed columns
     take: 20, // Limit results
 });
-```
+```text
 
 ---
 
@@ -326,7 +330,7 @@ async function getPaginatedUsers({ page, limit }: PaginationOptions) {
         },
     };
 }
-```
+```text
 
 ## Security Guidelines
 
@@ -376,7 +380,7 @@ function validateFileUpload(file: Express.Multer.File): void {
         throw new ValidationError("File too large");
     }
 }
-```
+```text
 
 ### Secure Coding Practices
 
@@ -443,7 +447,7 @@ function checkRateLimit(
     record.count++;
     return true;
 }
-```
+```text
 
 ## Error Handling Patterns
 
@@ -524,7 +528,7 @@ function asyncHandler<T extends any[], R>(
         }
     };
 }
-```
+```text
 
 ## Code Quality Checklist
 
@@ -614,7 +618,7 @@ Before submitting code, ensure:
         "max-lines-per-function": ["warn", 50]
     }
 }
-```
+```text
 
 #### TypeScript Configuration
 
@@ -629,7 +633,7 @@ Before submitting code, ensure:
         "noUnusedParameters": true
     }
 }
-```
+```text
 
 #### Test Coverage Requirements
 
@@ -646,7 +650,7 @@ Before submitting code, ensure:
         }
     }
 }
-```
+```text
 
 ## Tools and Automation
 
@@ -673,7 +677,7 @@ Before submitting code, ensure:
         "*.{js,jsx}": ["eslint --fix", "prettier --write", "git add"]
     }
 }
-```
+```text
 
 ### CI/CD Quality Gates
 
@@ -704,7 +708,7 @@ class User:
     name: str
     email: str
     is_active: bool = True
-```
+```text
 
 ### Java (if applicable)
 
@@ -718,7 +722,7 @@ public class UserService {
         // Implementation
     }
 }
-```
+```text
 
 ### C# (if applicable)
 
@@ -734,7 +738,7 @@ public class UserService
         // Implementation
     }
 }
-```
+```text
 
 ## Maintenance and Evolution
 

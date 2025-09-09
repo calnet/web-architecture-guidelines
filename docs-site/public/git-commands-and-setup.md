@@ -21,7 +21,7 @@ git remote add origin https://github.com/yourusername/web-architecture-guideline
 
 # Set default branch to main
 git branch -M main
-```
+```text
 
 ### Option 2: Clone Existing Repository
 
@@ -35,7 +35,7 @@ mkdir -p docs/ai-agents/claude
 mkdir -p docs/guidelines
 mkdir -p docs/templates
 mkdir -p docs/examples
-```
+```text
 
 ### Option 3: Add to Existing Repository
 
@@ -51,7 +51,7 @@ mkdir -p docs/examples
 
 # Create feature branch for documentation
 git checkout -b feature/architecture-guidelines
-```
+```text
 
 ## Complete File Creation and Commit Strategy
 
@@ -80,7 +80,7 @@ git add .
 # Initial commit
 git commit -m "feat: initial repository setup with comprehensive architecture guidelines
 
-- Complete AI agent instruction set (Claude, ChatGPT, Copilot, Gemini, Anthropic API)
+- Complete AI agent instruction set (Claude V1/V2, ChatGPT, Copilot, Gemini, Anthropic API)
 - Comprehensive documentation templates for all project types
 - Project integration guide with extension patterns
 - External documentation links and references
@@ -91,7 +91,7 @@ This establishes a complete foundation for web application architecture guidance
 # Add remote and push (replace with your repository URL)
 git remote add origin https://github.com/yourusername/web-architecture-guidelines.git
 git push -u origin main
-```
+```text
 
 ### Phase 2: Create Release Tags
 
@@ -110,7 +110,7 @@ This release provides a complete foundation for building enterprise-grade web ap
 
 # Push the tag
 git push origin v1.0.0
-```
+```text
 
 ### Phase 3: GitHub Configuration (Optional)
 
@@ -275,19 +275,21 @@ git commit -m "ci: add GitHub workflows and templates
 Purpose: Ensure documentation quality and standardize contributions"
 
 git push
-```
+```text
 
 ## Repository Structure Verification
 
 After setting up, your repository should have this complete structure:
 
-```
+```text
 web-architecture-guidelines/
 ├── README.md
 ├── .gitignore
 ├── docs/
 │   ├── ai-agents/
-│   │   ├── claude-architecture-instructions.md
+│   │   ├── claude/
+│   │   │   ├── claude-architecture-instructions.md
+│   │   │   └── AI_AGENT_INTEGRATION_GUIDE.md
 │   │   ├── chatgpt-architecture-instructions.md
 │   │   ├── copilot-architecture-instructions.md
 │   │   ├── gemini-architecture-instructions.md
@@ -303,7 +305,7 @@ web-architecture-guidelines/
     │   ├── bug_report.md
     │   └── feature_request.md
     └── PULL_REQUEST_TEMPLATE.md
-```
+```text
 
 ## Usage Instructions
 
@@ -346,7 +348,7 @@ git commit -m "docs: update external documentation links for Q4 2024
 - Added emerging technology references"
 git push origin update/external-links-2024-q4
 # Create PR for review
-```
+```text
 
 ### Version Management
 
@@ -354,7 +356,7 @@ git push origin update/external-links-2024-q4
 # For minor updates (new content, improvements)
 git tag -a v1.1.0 -m "feat: enhanced AI agent instructions
 
-- Comprehensive Claude architecture instructions with advanced patterns
+- Improved Claude V2 with additional patterns
 - Added new template examples
 - Updated external documentation links
 - Enhanced project integration examples"
@@ -373,6 +375,6 @@ NEW FEATURES:
 - Comprehensive cost optimization strategies"
 
 git push origin v1.1.0
-```
+```text
 
 This repository now provides a complete, professional foundation for web application architecture guidance that can evolve with your organization's needs and industry best practices.

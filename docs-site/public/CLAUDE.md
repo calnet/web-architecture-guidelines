@@ -119,7 +119,7 @@ When conducting code reviews, follow these enhanced standards:
 
 ## Repository Structure
 
-```
+```text
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
 │   ├── claude-architecture-instructions.md # Claude-specific instructions
@@ -154,7 +154,7 @@ scripts/                               # Workflow management scripts
 ├── create-docs.sh                     # Documentation creation script
 ├── monitor-workflow.sh                # Health monitoring script
 └── test-workflow.sh                   # Comprehensive testing script
-```
+```text
 
 ## Core Architecture
 
@@ -195,7 +195,7 @@ scripts/monitor-workflow.sh --report
 
 # Comprehensive testing:
 scripts/test-workflow.sh
-```
+```text
 
 ### Enhanced Code Review Process
 

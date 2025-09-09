@@ -10,7 +10,7 @@ gh secret set ANTHROPIC_API_KEY --body "your-api-key"
 
 # Test the system  
 scripts/test-workflow.sh
-```
+```text
 
 ### 2. Test the Implementation
 
@@ -24,7 +24,7 @@ gh pr create --title "Test PR" --body "Testing workflow"
 
 # Monitor results
 scripts/monitor-workflow.sh
-```
+```text
 
 ### 3. Daily Usage
 
@@ -42,7 +42,7 @@ scripts/monitor-workflow.sh
 
 # With specific focus
 @claude Please review focusing on security and performance
-```
+```text
 
 #### Custom Commands
 
@@ -61,7 +61,7 @@ scripts/monitor-workflow.sh
 
 # Quick fixes
 /quick-fix "Fix code style and minor issues"
-```
+```text
 
 ## System Components
 
@@ -103,31 +103,31 @@ Located in `scripts/`:
 ```bash
 # In PR comment or Claude Code terminal
 /architecture-review "Review the new user authentication module for compliance with Clean Architecture principles"
-```
+```text
 
 #### Security Scan
 
 ```bash
 /security-scan "Perform OWASP Top 10 assessment on the API endpoints and check for injection vulnerabilities"
-```
+```text
 
 #### Performance Check
 
 ```bash  
 /performance-check "Analyze the database queries and API response times for optimization opportunities"
-```
+```text
 
 #### Documentation Audit
 
 ```bash
 /documentation-audit "Review the API documentation for completeness and accuracy against OpenAPI standards"
-```
+```text
 
 #### Quick Fix
 
 ```bash
 /quick-fix "Fix code formatting, style issues, and simple optimizations in the user service"
-```
+```text
 
 ### Monitoring and Maintenance
 
@@ -142,7 +142,7 @@ gh run list --repo calnet/web-architecture-guidelines --status failure --limit 5
 
 # View detailed logs for failed runs  
 gh run view [RUN_ID] --log
-```
+```text
 
 #### Weekly Maintenance
 
@@ -155,7 +155,7 @@ gh secret list --repo calnet/web-architecture-guidelines
 
 # Update dependencies if needed
 # Check https://github.com/anthropics/claude-code-action/releases
-```
+```text
 
 #### Monthly Optimization
 
@@ -167,7 +167,7 @@ gh secret list --repo calnet/web-architecture-guidelines
 
 ## File Structure
 
-```
+```text
 .github/workflows/
 ├── claude-code-review.yml           # Main workflow
 └── advanced-architecture-review.yml # Advanced multi-stage workflow
@@ -190,7 +190,7 @@ scripts/
 CLAUDE.md                            # Enhanced Claude instructions
 IMPLEMENTATION_GUIDE.md              # Complete implementation guide
 WORKFLOW_README.md                   # This usage guide
-```
+```text
 
 ## Success Metrics
 

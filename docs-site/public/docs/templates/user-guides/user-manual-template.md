@@ -1,7 +1,7 @@
 # [Application Name] User Manual
 
 **Template Version**: 1.3.3
-**Last Updated**: 2025-09-06 @ 18:49
+**Last Updated**: 2025-09-06 @ 22:12
 **Target Audience**: End Users  
 
 ## Table of Contents
@@ -163,7 +163,7 @@
 
 2. **Design your workflow**
 
-   ```
+   ```text
    Trigger → Action → Condition → Action → End
    ```
 
