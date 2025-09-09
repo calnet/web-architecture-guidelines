@@ -27,7 +27,7 @@ This documentation outlines the architectural principles, technology stack, and 
 ├─────────────────────────────────────┤
 │          Infrastructure Layer       │ ← Database, External APIs, File System
 └─────────────────────────────────────┘
-```
+```text
 
 #### Domain-Driven Design (DDD)
 
@@ -104,7 +104,7 @@ src/
 ├── stores/                  # State management
 ├── utils/                   # Pure utility functions
 └── types/                   # TypeScript type definitions
-```
+```text
 
 **Component Design Principles**:
 
@@ -134,7 +134,7 @@ src/
 ├── validators/              # Input validation schemas
 ├── utils/                   # Utility functions
 └── config/                  # Configuration management
-```
+```text
 
 **Service Design Patterns**:
 
@@ -203,7 +203,7 @@ function createUser(input: unknown) {
   const validatedData = userSchema.parse(input);
   // Process validated data
 }
-```
+```text
 
 **Security Headers and Policies**:
 
@@ -224,7 +224,7 @@ app.use(helmet({
     preload: true,
   },
 }));
-```
+```text
 
 ### Threat Modeling and Mitigation
 
@@ -273,7 +273,7 @@ const ExpensiveList = memo(({ items, onSelect }) => {
     </Suspense>
   );
 });
-```
+```text
 
 **Backend Performance**:
 
@@ -299,7 +299,7 @@ class UserService {
     return user;
   }
 }
-```
+```text
 
 ### Scalability Considerations
 
@@ -358,7 +358,7 @@ class PerformanceMonitor {
     }
   }
 }
-```
+```text
 
 ## Deployment Strategy
 
@@ -407,7 +407,7 @@ function loadConfig(): AppConfig {
     },
   };
 }
-```
+```text
 
 ### Containerization and Orchestration
 
@@ -429,7 +429,7 @@ COPY . .
 USER nextjs
 EXPOSE 3000
 CMD ["npm", "start"]
-```
+```text
 
 **Kubernetes Deployment**:
 
@@ -483,7 +483,7 @@ jobs:
       - run: docker build -t app:${{ github.sha }} .
       - run: docker push registry/app:${{ github.sha }}
       - run: kubectl set image deployment/app app=registry/app:${{ github.sha }}
-```
+```text
 
 **Deployment Strategies**:
 
@@ -523,7 +523,7 @@ groups:
           severity: critical
         annotations:
           summary: Database connection failure
-```
+```text
 
 ---
 

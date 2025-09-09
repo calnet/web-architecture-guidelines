@@ -25,7 +25,7 @@ npm run versions:validate
 
 # Run comprehensive error check
 npm run check:errors
-```
+```text
 
 ### 2. Review Current Branch Strategy
 
@@ -40,7 +40,7 @@ git pull origin develop
 
 # Create feature branch for new work
 git checkout -b feature/[scope]-[description]
-```
+```text
 
 ### 3. Commit Message Standards
 
@@ -55,7 +55,7 @@ git commit -m "chore(deps): update TypeScript to v5.9.2"
 git commit -m "style(templates): improve markdown formatting"
 git commit -m "refactor(scripts): restructure validation logic"
 git commit -m "test(validation): add template compliance tests"
-```
+```text
 
 ## Common Commit Types
 
@@ -99,7 +99,7 @@ git commit -m "feat(templates): enhance API specification template
 
 # 5. Push to your feature branch
 git push -u origin feature/templates-api-enhancement
-```
+```text
 
 ## Repository Health Check Results
 

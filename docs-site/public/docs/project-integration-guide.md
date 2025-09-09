@@ -653,6 +653,7 @@ npm run versions:sync
 ```
 
 **Version Files Managed:**
+
 - Root `VERSION` file (source of truth)
 - `package.json` version
 - Template version files (`docs/.template-version`, `docs/templates/VERSION`)
@@ -676,10 +677,12 @@ validate-versions:
 ```
 
 **Best Practices:**
+
 - Update the root `VERSION` file when making significant changes
 - Run `npm run versions:sync` after version updates
 - Include version validation in local development workflow
 - All template and document versions should stay aligned
+
 ```
 
 ### 2. Metrics and Success Measurement

@@ -74,7 +74,7 @@ When approached with architectural questions, employ this systematic analysis:
 
 **Scalability Architecture:**
 
-```
+```yaml
 Horizontal Scaling Patterns:
 - Microservices with API gateways
 - Event-driven architecture with message queues
@@ -88,11 +88,11 @@ Vertical Optimization:
 - Caching strategies (L1, L2, distributed)
 - Asynchronous processing patterns
 - Resource pooling and connection management
-```
+```text
 
 **Security-by-Design Framework:**
 
-```
+```yaml
 Zero Trust Architecture:
 - Identity and access management (IAM)
 - Network segmentation and micro-segmentation
@@ -106,11 +106,11 @@ Data Protection Layers:
 - Data classification and handling
 - Privacy-preserving techniques (anonymization, pseudonymization)
 - Audit trails and compliance monitoring
-```
+```text
 
 **Resilience & Reliability Patterns:**
 
-```
+```yaml
 Fault Tolerance:
 - Circuit breaker patterns
 - Bulkhead isolation
@@ -124,7 +124,7 @@ Disaster Recovery:
 - Infrastructure as Code (IaC)
 - Chaos engineering practices
 - Business continuity planning
-```
+```text
 
 ### 3. Technology Ecosystem Recommendations
 
@@ -132,7 +132,7 @@ Disaster Recovery:
 
 **Backend Ecosystem:**
 
-```
+```yaml
 High-Performance APIs:
 - Node.js: Express.js, Fastify, NestJS
 - Python: FastAPI, Django, Flask
@@ -148,11 +148,11 @@ Data Layer:
 - Elasticsearch (search, analytics)
 - Apache Kafka (event streaming)
 - GraphQL (flexible data fetching)
-```
+```text
 
 **Frontend Architecture:**
 
-```
+```yaml
 Framework Selection:
 - React + Next.js (SSR, SSG, edge functions)
 - Vue 3 + Nuxt 3 (developer experience, performance)
@@ -166,11 +166,11 @@ State Management Evolution:
 - Jotai (atomic state management)
 - Valtio (proxy-based state)
 - TanStack Query (server state)
-```
+```text
 
 **DevOps & Infrastructure:**
 
-```
+```yaml
 Cloud-Native Platforms:
 - Kubernetes + Helm (container orchestration)
 - Docker + Docker Compose (development)
@@ -184,7 +184,7 @@ Monitoring & Observability:
 - ELK Stack or Loki (logging)
 - OpenTelemetry (observability standards)
 - DataDog or New Relic (APM)
-```
+```text
 
 ### 4. Advanced Architectural Patterns
 
@@ -228,7 +228,7 @@ interface OrderCommandHandler {
 interface OrderQueryHandler {
   handle(query: GetOrderDetailsQuery): Promise<OrderDetailsView>;
 }
-```
+```text
 
 **Microservices Communication Patterns:**
 
@@ -264,7 +264,7 @@ class OrderSaga {
     }
   }
 }
-```
+```text
 
 ### 5. Performance & Optimization Strategy
 
@@ -326,7 +326,7 @@ class OptimizedRepository {
     `, [filters.email, filters.since, filters.limit, filters.offset]);
   }
 }
-```
+```text
 
 **Frontend Performance Optimization:**
 
@@ -379,7 +379,7 @@ const OptimizedDataGrid = memo(({ data, onSelectionChange }: Props) => {
     </div>
   );
 });
-```
+```text
 
 ### 6. Security Architecture Deep Dive
 
@@ -470,7 +470,7 @@ class PermissionService {
       false;
   }
 }
-```
+```text
 
 ### 7. Testing & Quality Assurance Strategy
 
@@ -562,7 +562,7 @@ describe('Resilience Testing', () => {
     await chaosMonkey.restoreDatabaseConnections();
   });
 });
-```
+```text
 
 ### 8. Documentation & Knowledge Management
 
@@ -637,7 +637,7 @@ Negative:
 - Set up streaming replication for read replicas
 - Monitor performance with pg_stat_statements
 */
-```
+```text
 
 ### 9. Emerging Technology Integration
 
@@ -709,7 +709,7 @@ class EdgeComputeService {
     });
   }
 }
-```
+```text
 
 ### 10. Sustainability & Green Computing
 
@@ -746,7 +746,7 @@ class SustainableComputingService {
     return dataCenters[carbonData.indexOf(Math.min(...carbonData))];
   }
 }
-```
+```text
 
 ## Response Framework
 

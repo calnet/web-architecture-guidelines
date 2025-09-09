@@ -108,27 +108,27 @@ When triggered, this command instructs Claude to perform a thorough security ana
 - [ ] Security headers configured
 - [ ] Input validation implemented
 - [ ] Authentication mechanisms secured
-```
+```text
 
 ## Usage Examples
 
 ### General Security Review
 
-```
+```text
 /security-scan "Comprehensive security assessment of the user management system"
-```
+```text
 
 ### Focused Vulnerability Assessment
 
-```
+```text
 /security-scan "Check the API endpoints for injection vulnerabilities"
-```
+```text
 
 ### Compliance Review
 
-```
+```text
 /security-scan "OWASP Top 10 compliance validation for the payment module"
-```
+```text
 
 ## Security Standards Reference
 

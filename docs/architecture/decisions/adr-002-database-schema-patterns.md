@@ -83,7 +83,7 @@ CREATE TABLE entity_name (
 CREATE INDEX idx_entity_name_created_at ON entity_name(created_at);
 CREATE INDEX idx_entity_name_updated_at ON entity_name(updated_at);
 CREATE INDEX idx_entity_name_active ON entity_name(id) WHERE deleted_at IS NULL;
-```
+```text
 
 ## Rationale
 

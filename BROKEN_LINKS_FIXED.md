@@ -76,7 +76,7 @@
 
 **Navigation Structure**:
 
-```
+```yaml
 Main Navigation:
 ├── Home (/) ✅
 ├── Templates (/docs/templates) ✅ → defaults to templates/README.md
@@ -91,7 +91,7 @@ Sidebar Navigation:
 ├── AI Agents (5 items) ✅
 ├── Examples (3 items) ✅
 └── Scripts & Tools (2 items) ✅
-```
+```text
 
 ### 5. **Validation Results**
 

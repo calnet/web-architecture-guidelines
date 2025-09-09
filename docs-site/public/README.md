@@ -38,17 +38,20 @@ docs/
 ## Quick Start
 
 ### For AI Agents
+
 1. Choose the appropriate instruction file for your AI agent
 2. Use it as a system prompt or reference guide
 3. Adapt recommendations based on project context
 
 ### For Development Teams
+
 1. Use the [Integration Automation Script](docs/integration-automation-script.md) for automated setup
 2. Review the [Project Integration Guide](docs/project-integration-guide.md) for manual integration
 3. Use [documentation templates](docs/templates/) for your project
 4. Reference [external documentation](docs/external-documentation-links.md) as needed
 
 ### For Project-Specific Implementation
+
 1. Fork or reference this repository
 2. Follow the integration guide to extend guidelines for your project
 3. Maintain separation between base and project-specific guidelines
@@ -56,42 +59,53 @@ docs/
 ## AI Agent Instructions
 
 ### [Claude](docs/ai-agents/claude/)
+
 - **V1**: Foundational architecture guidance
 - **V2**: Enhanced with advanced patterns, performance optimization, and modern practices
 
 ### [ChatGPT](docs/ai-agents/chatgpt-architecture-instructions.md)
+
 System role optimized for ChatGPT's interaction patterns with comprehensive technology recommendations.
 
 ### [GitHub Copilot](docs/ai-agents/copilot-architecture-instructions.md)
+
 Code generation focused guidelines with security-first patterns and framework integration examples.
 
 ### [Gemini](docs/ai-agents/gemini-architecture-instructions.md)
+
 Advanced analytical approach with multi-dimensional architecture strategy and emerging technology integration.
 
 ### [Anthropic API](docs/ai-agents/anthropic-api-architecture-instructions.md)
+
 Specialized guidance for building applications that integrate with Anthropic's API services.
 
 ## Documentation Templates
 
 ### [Template Index](docs/templates/)
+
 Comprehensive templates organized by category for consistent, professional documentation across all projects.
 
 #### 🏗️ **Architecture Templates**
+
 - **[ADR Template](docs/templates/architecture/adr-template.md)** - Architecture Decision Records
 - **[System Architecture](docs/templates/architecture/system-architecture-document.md)** - Complete system documentation
 
 #### 🔌 **API Templates**
+
 - **[API Specification](docs/templates/api/api-specification.md)** - REST API documentation with examples
 
 #### 👥 **User Guide Templates**
+
 - **[User Manual](docs/templates/user-guides/user-manual-template.md)** - End-user documentation
 - **[Admin Manual](docs/templates/user-guides/admin-manual-template.md)** - Administrator documentation
 
 #### 💻 **Development Templates**
+
 - **[Setup Guide](docs/templates/development/setup-guide-template.md)** - Development environment setup
 - **[Coding Standards](docs/templates/development/coding-standards-template.md)** - Code quality guidelines
 
 ### Template Features
+
 - **Complete structure** with comprehensive sections
 - **Placeholder text** showing what content to include
 - **Real examples** demonstrating best practices
@@ -110,21 +124,25 @@ Comprehensive templates organized by category for consistent, professional docum
 ## Technology Stack Coverage
 
 ### Backend
+
 - Node.js, Python, C#, Java, Go, Rust
 - REST APIs, GraphQL, gRPC
 - Microservices and monolithic architectures
 
 ### Frontend
+
 - React, Vue.js, Angular, Svelte
 - Progressive Web Apps (PWA)
 - Mobile-first responsive design
 
 ### Infrastructure
+
 - Cloud platforms (AWS, Azure, GCP)
 - Containerization (Docker, Kubernetes)
 - CI/CD pipelines and GitOps
 
 ### Databases
+
 - PostgreSQL, MongoDB, Redis
 - Database optimization and scaling
 - Data modeling and migrations
@@ -146,6 +164,7 @@ Comprehensive templates organized by category for consistent, professional docum
 5. Submit a pull request
 
 ### Commit Message Format
+
 ```
 type(scope): description
 
@@ -177,6 +196,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 Built on industry best practices and lessons learned from:
+
 - Clean Architecture principles
 - Domain-Driven Design (DDD)
 - Twelve-Factor App methodology

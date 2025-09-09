@@ -40,11 +40,11 @@ git push -u origin feature/docs-site-sidebar-enhancement
 # After review and merge, delete feature branch
 git branch -d feature/docs-site-sidebar-enhancement
 git push origin --delete feature/docs-site-sidebar-enhancement
-```
+```text
 
 ## Commit Message Convention
 
-```
+```yaml
 type(scope): description
 
 feat(docs-site): add new navigation component

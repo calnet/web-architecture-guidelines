@@ -9,6 +9,7 @@
 **New in v1.2.0**: This repository includes an AI-Powered Code Review workflow system specifically designed for Anthropic API integration projects. This system provides automated code analysis and optimization for applications that integrate with Anthropic's services.
 
 ### Enhanced Workflow Features for Anthropic API Projects
+
 When implementing Anthropic API integrations, the AI-Powered Code Review system provides specialized validation for:
 
 - **API Security**: Validates proper ANTHROPIC_API_KEY handling, request authentication, and response validation
@@ -18,6 +19,7 @@ When implementing Anthropic API integrations, the AI-Powered Code Review system 
 - **Cost Optimization**: Reviews token usage patterns and suggests optimization strategies
 
 ### Custom Command Integration
+
 The workflow system includes specialized analysis for Anthropic API projects:
 
 ```bash

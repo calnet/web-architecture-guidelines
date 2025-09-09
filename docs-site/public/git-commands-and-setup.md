@@ -3,6 +3,7 @@
 ## Repository Initialization Options
 
 ### Option 1: New Repository from Scratch
+
 ```bash
 # Create new directory and initialize git
 mkdir web-architecture-guidelines
@@ -23,6 +24,7 @@ git branch -M main
 ```
 
 ### Option 2: Clone Existing Repository
+
 ```bash
 # Clone your existing repository
 git clone https://github.com/yourusername/web-architecture-guidelines.git
@@ -36,6 +38,7 @@ mkdir -p docs/examples
 ```
 
 ### Option 3: Add to Existing Repository
+
 ```bash
 # Navigate to your existing repository
 cd your-existing-repo
@@ -55,6 +58,7 @@ git checkout -b feature/architecture-guidelines
 All files have been saved to your local filesystem. Now you can commit them systematically:
 
 ### Phase 1: Initial Repository Setup
+
 ```bash
 # Navigate to the directory
 cd C:\Users\calnet\Documents\Projects\Claude\web-architecture-guidelines
@@ -90,6 +94,7 @@ git push -u origin main
 ```
 
 ### Phase 2: Create Release Tags
+
 ```bash
 # Tag the initial release
 git tag -a v1.0.0 -m "Initial release: Comprehensive Web Architecture Guidelines
@@ -108,6 +113,7 @@ git push origin v1.0.0
 ```
 
 ### Phase 3: GitHub Configuration (Optional)
+
 ```bash
 # Create GitHub configuration files
 mkdir -p .github/workflows
@@ -302,16 +308,19 @@ web-architecture-guidelines/
 ## Usage Instructions
 
 ### For Development Teams
+
 1. **Reference the guidelines**: Use as organizational standards
 2. **Extend for projects**: Follow the integration guide
 3. **Contribute improvements**: Submit PRs with lessons learned
 
 ### For AI Agent Integration
+
 1. **Copy instruction files**: Use appropriate agent instructions as system prompts
 2. **Customize for context**: Adapt based on specific project needs
 3. **Update regularly**: Keep synchronized with guideline updates
 
 ### For Documentation
+
 1. **Use templates**: Copy and customize for your projects
 2. **Follow standards**: Maintain consistency across projects
 3. **Reference external links**: Use curated resources for deep dives
@@ -319,6 +328,7 @@ web-architecture-guidelines/
 ## Maintenance
 
 ### Regular Updates
+
 ```bash
 # Monthly: Update external links
 # Quarterly: Review AI agent instructions for new capabilities
@@ -339,6 +349,7 @@ git push origin update/external-links-2024-q4
 ```
 
 ### Version Management
+
 ```bash
 # For minor updates (new content, improvements)
 git tag -a v1.1.0 -m "feat: enhanced AI agent instructions

@@ -120,27 +120,27 @@ When triggered, this command instructs Claude to perform comprehensive documenta
 - [ ] Link validation automation
 - [ ] Documentation testing integration
 - [ ] Version synchronization automation
-```
+```text
 
 ## Usage Examples
 
 ### Comprehensive Documentation Review
 
-```
+```text
 /documentation-audit "Complete review of all project documentation for accuracy and completeness"
-```
+```text
 
 ### API Documentation Focus
 
-```
+```text
 /documentation-audit "Audit API documentation for completeness and developer experience"
-```
+```text
 
 ### Template Compliance Check
 
-```
+```text
 /documentation-audit "Validate compliance with established documentation templates"
-```
+```text
 
 ## Documentation Standards
 

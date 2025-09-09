@@ -62,12 +62,12 @@ This document outlines security best practices and guidelines for web applicatio
 
 ### Content Security Policy (CSP)
 
-```
+```yaml
 Content-Security-Policy: default-src 'self'; 
   script-src 'self' 'unsafe-inline'; 
   style-src 'self' 'unsafe-inline'; 
   img-src 'self' data: https:;
-```
+```text
 
 ### Additional Security Headers
 

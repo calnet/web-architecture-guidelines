@@ -31,7 +31,7 @@ npm run versions:bump-patch    # Bug fixes
 # Advanced options
 ./scripts/version-bump.sh --type minor --dry-run
 ./scripts/version-bump.sh --type major --no-tag --no-changelog
-```
+```text
 
 **Features:**
 
@@ -51,7 +51,7 @@ npm run changelog:generate 1.2.0 HEAD~5..HEAD
 
 # Automatic generation (called by version-bump)
 ./scripts/generate-changelog.sh
-```
+```text
 
 **Generated Structure:**
 
@@ -73,7 +73,7 @@ npm run versions:validate
 
 # Parallel processing for better performance
 # Automatically detects CPU cores and optimizes
-```
+```text
 
 **Improvements:**
 
@@ -98,7 +98,7 @@ npm run check:cross-references-enhanced
 # - Code example references
 # - Section anchors
 # - Relative path contexts
-```
+```text
 
 **Features:**
 
@@ -135,7 +135,7 @@ npm run release:list
 
 # Rollback to previous version
 npm run release:rollback 1.1.0
-```
+```text
 
 **Release Process:**
 
@@ -160,7 +160,7 @@ npm run check:breaking-changes
 # Different output formats
 ./scripts/detect-breaking-changes.sh HEAD~1 markdown
 ./scripts/detect-breaking-changes.sh HEAD~1 json
-```
+```text
 
 **Analysis Areas:**
 
@@ -183,7 +183,7 @@ npm run templates:compatibility-json
 
 # Generate CSV format  
 npm run templates:compatibility-csv
-```
+```text
 
 **Generated Content:**
 
@@ -203,19 +203,19 @@ npm run templates:compatibility-csv
    ```bash
    npm run release:status
    npm run versions:validate
-   ```
+   ```text
 
 2. **Check compatibility**:
 
    ```bash
    npm run templates:compatibility
-   ```
+   ```text
 
 3. **Validate setup**:
 
    ```bash
    npm run validate:all
-   ```
+   ```text
 
 ### For Existing Projects
 
@@ -223,21 +223,21 @@ npm run templates:compatibility-csv
 
    ```bash
    npm run check:breaking-changes
-   ```
+   ```text
 
 2. **Update incrementally**:
 
    ```bash
    npm run versions:bump-patch  # Safe updates
    npm run release:validate
-   ```
+   ```text
 
 3. **Full validation**:
 
    ```bash
    npm run validate:all
    npm run check:cross-references-enhanced
-   ```
+   ```text
 
 ### For Maintainers
 
@@ -247,7 +247,7 @@ npm run templates:compatibility-csv
    npm run versions:validate
    npm run templates:compatibility
    npm run check:breaking-changes
-   ```
+   ```text
 
 2. **Release preparation**:
 
@@ -255,13 +255,13 @@ npm run templates:compatibility-csv
    npm run release:prepare X.Y.Z
    npm run release:validate
    npm run release:publish
-   ```
+   ```text
 
 3. **Emergency rollback**:
 
    ```bash
    npm run release:rollback X.Y.Z
-   ```
+   ```text
 
 ## Semantic Versioning Rules
 
@@ -285,7 +285,7 @@ fix: bug fix               → patch bump
 BREAKING CHANGE: ...       → major bump
 docs: documentation        → patch bump
 chore: maintenance         → patch bump
-```
+```text
 
 ## Integration with CI/CD
 
@@ -303,7 +303,7 @@ The version management system integrates with existing GitHub Actions:
 
 - name: Generate Compatibility Matrix
   run: npm run templates:compatibility
-```
+```text
 
 ### Pre-commit Hooks
 
@@ -314,7 +314,7 @@ Recommended pre-commit validation:
 npm run versions:validate
 npm run check:cross-references-enhanced
 npm run lint:all
-```
+```text
 
 ## Automation Features
 
@@ -375,7 +375,7 @@ npm run versions:sync
 
 # Comprehensive validation
 npm run validate:all
-```
+```text
 
 ### Rollback Procedures
 
@@ -416,26 +416,26 @@ npm run validate:all
    ```bash
    npm run versions:validate
    npm run check:breaking-changes
-   ```
+   ```text
 
 2. **Sync Versions**:
 
    ```bash
    npm run versions:sync
-   ```
+   ```text
 
 3. **Generate Documentation**:
 
    ```bash
    npm run templates:compatibility
    npm run changelog:generate
-   ```
+   ```text
 
 4. **Validate Setup**:
 
    ```bash
    npm run release:validate
-   ```
+   ```text
 
 ### Tool Integration
 
@@ -453,27 +453,27 @@ npm run validate:all
    ```bash
    npm run versions:sync
    npm run versions:validate
-   ```
+   ```text
 
 2. **Cross-Reference Errors**:
 
    ```bash
    npm run check:cross-references-enhanced
-   ```
+   ```text
 
 3. **Breaking Changes**:
 
    ```bash
    npm run check:breaking-changes
    ./scripts/detect-breaking-changes.sh HEAD~5 markdown
-   ```
+   ```text
 
 4. **Release Issues**:
 
    ```bash
    npm run release:status
    npm run release:rollback X.Y.Z
-   ```
+   ```text
 
 ### Debug Mode
 
@@ -483,7 +483,7 @@ Most scripts support verbose output:
 ./scripts/version-bump.sh --dry-run
 ./scripts/release-manager.sh prepare 1.2.0 --force
 ./scripts/detect-breaking-changes.sh HEAD~1 json
-```
+```text
 
 ## Future Enhancements
 

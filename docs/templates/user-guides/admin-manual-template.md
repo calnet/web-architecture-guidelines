@@ -98,7 +98,7 @@ health and performance.
     email,first_name,last_name,role,department
     john.doe@company.com,John,Doe,user,engineering
     jane.smith@company.com,Jane,Smith,admin,hr
-    ```
+    ```text
 
 2. **Import process**
 
@@ -253,7 +253,7 @@ Minimum Requirements:
 - History: Cannot reuse last 5 passwords
 - Expiration: 90 days (configurable)
 - Lockout: 5 failed attempts, 30-minute lockout
-```
+```text
 
 **Multi-Factor Authentication (2FA)**:
 
@@ -300,7 +300,7 @@ SMTP Settings:
 - Port: 587 (TLS) or 465 (SSL)
 - Authentication: Username/Password
 - Encryption: TLS/SSL required
-```
+```text
 
 **API Integrations**:
 

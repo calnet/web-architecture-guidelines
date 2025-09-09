@@ -86,7 +86,7 @@ Added the following documents to the documentation site sidebar and routing:
 
 ### Improved Navigation Structure
 
-```
+```text
 Getting Started
 ├── README
 ├── Git Commands
@@ -123,7 +123,7 @@ Examples
 Scripts & Tools
 ├── Validation Scripts
 └── Template Tools
-```
+```text
 
 ### Fixed File Serving
 

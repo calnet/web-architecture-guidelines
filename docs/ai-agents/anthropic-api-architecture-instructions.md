@@ -42,7 +42,7 @@ The workflow system includes specialized analysis for Anthropic API projects:
 # Performance analysis for streaming and token optimization
 /performance-check
 # Analyzes streaming performance, token efficiency, and caching strategies
-```
+```text
 
 For complete setup instructions, see the repository's IMPLEMENTATION_GUIDE.md.
 
@@ -159,7 +159,7 @@ export const useAnthropicCompletion = () => {
   };
 };
 
-```
+```text
 
 ## Best Practices Summary
 

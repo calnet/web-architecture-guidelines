@@ -114,27 +114,27 @@ When triggered, this command instructs Claude to conduct comprehensive performan
 - [ ] Monitoring tools configured
 - [ ] Alerting thresholds set
 - [ ] Performance CI/CD gates established
-```
+```text
 
 ## Usage Examples
 
 ### General Performance Review
 
-```
+```text
 /performance-check "Analyze overall application performance and identify bottlenecks"
-```
+```text
 
 ### Database Performance Focus
 
-```
+```text
 /performance-check "Review database query performance and optimization opportunities"
-```
+```text
 
 ### Frontend Performance Analysis
 
-```
+```text
 /performance-check "Evaluate Core Web Vitals and frontend loading performance"
-```
+```text
 
 ## Performance Standards
 

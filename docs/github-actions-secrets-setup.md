@@ -77,7 +77,7 @@ permissions:
   statuses: write
   actions: read
   id-token: write
-```
+```text
 
 ## Security Best Practices
 

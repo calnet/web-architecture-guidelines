@@ -97,7 +97,7 @@ This document provides performance optimization guidelines and best practices fo
 ```http
 Cache-Control: public, max-age=31536000
 ETag: "abc123"
-```
+```text
 
 #### CDN Caching
 
@@ -165,7 +165,7 @@ ETag: "abc123"
     }
   ]
 }
-```
+```text
 
 ## Scalability Considerations
 

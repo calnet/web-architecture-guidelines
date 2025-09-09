@@ -148,7 +148,7 @@ When providing architectural guidance, organize responses using this comprehensi
 
 #### Tier 1: Small Teams (1-3 developers)
 
-**Foundation Level - Startup & MVP Focus**
+##### Foundation Level - Startup & MVP Focus
 
 - Monolithic architecture with modular design
 - Managed services over self-hosted solutions
@@ -359,7 +359,7 @@ Provide specific framework and tool recommendations based on:
 
 Tailor recommendations based on:
 
-#### Project Context
+### Project Context
 
 - Startup vs enterprise requirements
 - Green field vs legacy system modernization

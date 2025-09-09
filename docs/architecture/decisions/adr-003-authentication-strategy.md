@@ -82,7 +82,7 @@ interface JWTPayload {
   roles: string[];          // User roles
   permissions: string[];    // Specific permissions
 }
-```
+```text
 
 ### Security Standards
 
@@ -149,7 +149,7 @@ const authenticateJWT = (requiredPermissions?: string[]) => {
     // JWT verification and permission checking logic
   };
 };
-```
+```text
 
 ## Related Decisions
 

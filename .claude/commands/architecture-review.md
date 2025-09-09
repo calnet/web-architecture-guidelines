@@ -79,27 +79,27 @@ When triggered, this command instructs Claude to conduct a thorough architectura
 - [ ] Update ADR for [specific decision]
 - [ ] Enhance API documentation for [component]
 - [ ] Create diagram for [system interaction]
-```
+```text
 
 ## Usage Examples
 
 ### Basic Architecture Review
 
-```
+```text
 /architecture-review "Review the new user authentication module"
-```
+```text
 
 ### Focused Component Review
 
-```
+```text
 /architecture-review "Analyze the data access layer architecture and patterns"
-```
+```text
 
 ### Integration Review
 
-```
+```text
 /architecture-review "Evaluate the API gateway integration architecture"
-```
+```text
 
 ## Integration with Guidelines
 

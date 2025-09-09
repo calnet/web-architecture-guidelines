@@ -93,7 +93,7 @@ git checkout --ours <file>
 # Manual merge required
 # Edit file manually, then:
 git add <file>
-```
+```text
 
 ## Validation Checklist After Resolution
 

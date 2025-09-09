@@ -28,7 +28,7 @@ npm install
 
 # Copy environment configuration
 cp .env.example .env.local
-```
+```text
 
 ### 2. Environment Configuration
 
@@ -45,7 +45,7 @@ JWT_SECRET="your-jwt-secret"
 # Development settings
 NODE_ENV="development"
 LOG_LEVEL="debug"
-```
+```text
 
 ### 3. Database Setup
 
@@ -58,7 +58,7 @@ npm run db:migrate
 
 # Seed development data
 npm run db:seed
-```
+```text
 
 ### 4. Start Development Server
 
@@ -68,7 +68,7 @@ npm run dev
 
 # Or start with debugging
 npm run dev:debug
-```
+```text
 
 ### 5. Verify Installation
 
@@ -90,7 +90,7 @@ code --install-extension bradlc.vscode-tailwindcss
 code --install-extension ms-vscode.vscode-typescript-next
 code --install-extension ms-vscode.vscode-eslint
 code --install-extension GitLens.gitlens
-```
+```text
 
 **Workspace settings (`.vscode/settings.json`):**
 
@@ -107,7 +107,7 @@ code --install-extension GitLens.gitlens
     "**/.git": true
   }
 }
-```
+```text
 
 #### IntelliJ IDEA Setup
 
@@ -142,7 +142,7 @@ git config alias.br branch
 git config alias.ci commit
 git config alias.st status
 git config alias.logs "log --oneline --graph --decorate"
-```
+```text
 
 ### Development Services
 
@@ -179,13 +179,13 @@ services:
 
 volumes:
   postgres_data:
-```
+```text
 
 **Start services:**
 
 ```bash
 docker-compose up -d
-```
+```text
 
 ### Testing Setup
 
@@ -206,7 +206,7 @@ npm run test:e2e
 
 # Run specific test file
 npm test -- user.test.ts
-```
+```text
 
 #### Test Environment Variables
 
@@ -217,19 +217,19 @@ NODE_ENV=test
 DATABASE_URL="postgresql://user:password@localhost:5432/testdb"
 JWT_SECRET="test-jwt-secret"
 LOG_LEVEL="error"
-```
+```text
 
 ## Development Workflow
 
 ### Branch Strategy
 
-```
+```text
 main              ← Production-ready code
 ├── develop       ← Integration branch
     ├── feature/  ← Feature branches
     ├── bugfix/   ← Bug fix branches
     └── hotfix/   ← Emergency fixes
-```
+```text
 
 ### Feature Development Process
 
@@ -239,7 +239,7 @@ main              ← Production-ready code
    git checkout develop
    git pull origin develop
    git checkout -b feature/user-authentication
-   ```
+   ```text
 
 2. **Implement changes**
    - Write code following coding standards
@@ -255,7 +255,7 @@ main              ← Production-ready code
    npm run type-check
    npm run test
    npm run build
-   ```
+   ```text
 
 4. **Create pull request**
    - Use PR template
@@ -267,13 +267,13 @@ main              ← Production-ready code
 
 **Conventional commit format:**
 
-```
+```yaml
 type(scope): description
 
 [optional body]
 
 [optional footer]
-```
+```text
 
 **Examples:**
 
@@ -283,7 +283,7 @@ fix(api): resolve user creation bug
 docs(readme): update setup instructions
 test(user): add unit tests for user service
 refactor(db): optimize query performance
-```
+```text
 
 **Commit types:**
 
@@ -349,7 +349,7 @@ npm run analyze
 
 # Build verification
 npm run build
-```
+```text
 
 ### Code Quality Metrics
 
@@ -380,7 +380,7 @@ fnm use 18
 
 # Verify version
 node --version
-```
+```text
 
 #### Port Already in Use
 
@@ -398,7 +398,7 @@ PORT=3001 npm run dev
 # Option 3: Find and kill specific process
 ps aux | grep node
 kill -9 [process-id]
-```
+```text
 
 #### Database Connection Failed
 
@@ -411,13 +411,13 @@ kill -9 [process-id]
    ```bash
    docker --version
    docker ps
-   ```
+   ```text
 
 2. **Start database service**
 
    ```bash
    docker-compose up -d postgres
-   ```
+   ```text
 
 3. **Check connection string**
    - Verify `.env.local` database URL
@@ -429,7 +429,7 @@ kill -9 [process-id]
    docker-compose down
    docker-compose up -d postgres
    npm run db:migrate
-   ```
+   ```text
 
 #### Module Not Found
 
@@ -447,7 +447,7 @@ npm cache clean --force
 
 # Check for case sensitivity issues (especially on Windows)
 # Ensure import paths match actual file names exactly
-```
+```text
 
 #### TypeScript Compilation Errors
 
@@ -467,7 +467,7 @@ npx tsc --build --clean
 
 # Update TypeScript and related packages
 npm update typescript @types/node
-```
+```text
 
 #### Docker Issues
 
@@ -489,7 +489,7 @@ docker system prune -a
 
 # Reset Docker completely (last resort)
 docker system prune -a --volumes
-```
+```text
 
 ### Performance Issues
 
@@ -506,14 +506,14 @@ docker system prune -a --volumes
   watchOptions: {
     ignored: /node_modules/
   }
-  ```
+  ```text
 
 - **Increase Node.js memory**
 
   ```bash
   export NODE_OPTIONS="--max-old-space-size=8192"
   npm run dev
-  ```
+  ```text
 
 - **Use SSD storage** for better I/O performance
 - **Close unnecessary applications** to free up resources
@@ -536,7 +536,7 @@ npm run analyze
 
 # Remove unused dependencies
 npx depcheck
-```
+```text
 
 ### Getting Help
 
@@ -610,7 +610,7 @@ docker-compose up -d     # Start services
 docker-compose down      # Stop services
 docker-compose logs      # View logs
 docker-compose ps        # List running services
-```
+```text
 
 ---
 *Template Version: 1.3.3***************  

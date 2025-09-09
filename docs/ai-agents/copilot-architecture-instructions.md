@@ -54,7 +54,7 @@ const ApiClient = {
     }).then(handleResponse);
   }
 };
-```
+```text
 
 For complete AI-Powered Code Review workflow setup, see the repository's IMPLEMENTATION_GUIDE.md.
 
@@ -100,7 +100,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId }) => {
     </div>
   );
 };
-```
+```text
 
 **For Backend API Design:**
 
@@ -129,7 +129,7 @@ export class UserController {
     return this.userService.toDto(user);
   }
 }
-```
+```text
 
 ## Security-First Code Suggestions
 
@@ -162,7 +162,7 @@ class AuthService {
     return { accessToken, refreshToken, user: this.userService.toSafeDto(user) };
   }
 }
-```
+```text
 
 ### Input Validation & Sanitization
 
@@ -189,7 +189,7 @@ export class CreateUserDto {
   @Sanitize()
   lastName: string;
 }
-```
+```text
 
 ## Performance-Optimized Patterns
 
@@ -218,7 +218,7 @@ export class User {
       .groupBy('user.id');
   }
 }
-```
+```text
 
 ### Frontend Performance
 
@@ -247,7 +247,7 @@ const ExpensiveComponent: React.FC<Props> = memo(({ data, onUpdate }) => {
     />
   );
 });
-```
+```text
 
 ## Testing Patterns
 
@@ -301,7 +301,7 @@ describe('UserService', () => {
     });
   });
 });
-```
+```text
 
 ### Integration Testing
 
@@ -340,7 +340,7 @@ describe('UserController (e2e)', () => {
       });
   });
 });
-```
+```text
 
 ## Error Handling & Logging
 
@@ -401,7 +401,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     });
   }
 }
-```
+```text
 
 ## Code Comments & Documentation
 
@@ -436,7 +436,7 @@ async processPayment(
     { maxAttempts: 3, backoffMs: 1000 }
   );
 }
-```
+```text
 
 ## Configuration & Environment Management
 
@@ -483,7 +483,7 @@ export const config = (): AppConfig => ({
     port: parseInt(process.env.REDIS_PORT || '6379', 10)
   }
 });
-```
+```text
 
 ## Code Quality Guidelines
 

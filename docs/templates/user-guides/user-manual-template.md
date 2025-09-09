@@ -163,7 +163,7 @@
 
 2. **Design your workflow**
 
-   ```
+   ```text
    Trigger → Action → Condition → Action → End
    ```
 

@@ -62,7 +62,7 @@ npm run versions:sync
 
 # List all version-managed files and their current versions
 npm run versions:list
-```
+```text
 
 ### Direct Script Execution
 
@@ -75,7 +75,7 @@ npm run versions:list
 
 # File listing
 ./scripts/list-version-files.sh
-```
+```text
 
 ## Usage Workflows
 
@@ -87,26 +87,26 @@ When updating the repository version:
 
    ```bash
    echo "1.3.3" > VERSION
-   ```
+   ```text
 
 2. **Synchronize all files**:
 
    ```bash
    npm run versions:sync
-   ```
+   ```text
 
 3. **Validate consistency**:
 
    ```bash
    npm run versions:validate
-   ```
+   ```text
 
 4. **Commit changes**:
 
    ```bash
    git add .
    git commit -m "chore: update version to 1.3.3"
-   ```
+   ```text
 
 ### 2. Development Workflow Integration
 
@@ -118,7 +118,7 @@ npm run versions:validate
 
 # If inconsistencies found, sync versions
 npm run versions:sync
-```
+```text
 
 ### 3. CI/CD Integration
 
@@ -134,7 +134,7 @@ validate-versions:
       run: |
         chmod +x ./scripts/validate-versions.sh
         ./scripts/validate-versions.sh
-```
+```text
 
 ## Supported Version Formats
 
@@ -144,31 +144,31 @@ validate-versions:
 {
   "version": "1.3.3"
 }
-```
+```text
 
 ### Template Files
 
 ```markdown
 **Template Version**: 1.3.3
-```
+```text
 
 or
 
 ```markdown
 *Template Version: 1.3.3********
-```
+```text
 
 ### Documentation Files
 
 ```markdown
 **Version**: 1.3.3
-```
+```text
 
 ### AI Agent Instructions (Optional)
 
 ```markdown
 Version: 1.3.3
-```
+```text
 
 ## Error Handling
 
@@ -193,7 +193,7 @@ Version: 1.3.3
 chmod +x ./scripts/validate-versions.sh
 chmod +x ./scripts/sync-versions.sh
 chmod +x ./scripts/list-version-files.sh
-```
+```text
 
 ### Script Safety Features
 
@@ -210,20 +210,20 @@ chmod +x ./scripts/list-version-files.sh
 
    ```bash
    npm run versions:list
-   ```
+   ```text
 
 2. **Check specific file**:
 
    ```bash
    grep -r "version" package.json
-   ```
+   ```text
 
 3. **Manual validation**:
 
    ```bash
    cat VERSION
    grep '"version":' package.json
-   ```
+   ```text
 
 ### Advanced Usage
 
@@ -234,7 +234,7 @@ To temporarily exclude files from version management, modify the scripts to skip
 ```bash
 # In sync-versions.sh, comment out specific file patterns
 # for package_file in "package.json" "examples/package.json"...
-```
+```text
 
 #### Custom Version Patterns
 
@@ -243,7 +243,7 @@ For AI agent instructions or other files, add custom patterns to the scripts:
 ```bash
 # In sync-versions.sh, add new sed patterns
 sed -i "s/Custom Version: [0-9][0-9.]*[0-9]/Custom Version: $MAIN_VERSION/g" "$file"
-```
+```text
 
 ## Best Practices
 

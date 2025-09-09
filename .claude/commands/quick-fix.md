@@ -82,11 +82,11 @@ When triggered, this command instructs Claude to identify and provide quick fixe
    
    // After  
    [fixed code]
-   ```
+   ```text
 
    **Impact**: [Brief explanation of improvement]
 
-2. **[Issue Type]**: [Description]
+1. **[Issue Type]**: [Description]
    [Similar format for each fix]
 
 ### File-by-File Changes
@@ -96,7 +96,7 @@ When triggered, this command instructs Claude to identify and provide quick fixe
 ```diff
 - [lines to remove]
 + [lines to add]
-```
+```text
 
 ### Applied Standards
 
@@ -114,37 +114,37 @@ When triggered, this command instructs Claude to identify and provide quick fixe
 - [Suggestions for further improvements]
 - [Related issues that might need attention]
 
-```
+```text
 
 ## Usage Examples
 
 ### Code Quality Fix
-```
+```text
 
 /quick-fix "Fix formatting and style issues in the user service module"
 
-```
+```text
 
 ### Documentation Update
-```
+```text
 
 /quick-fix "Update inline documentation and fix typos in README"
 
-```
+```text
 
 ### Configuration Correction
-```
+```text
 
 /quick-fix "Fix package.json scripts and dependency issues"
 
-```
+```text
 
 ### Security Enhancement
-```
+```text
 
 /quick-fix "Add basic input validation to API endpoints"
 
-```
+```text
 
 ## Fix Categories
 

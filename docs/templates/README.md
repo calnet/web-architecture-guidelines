@@ -65,7 +65,7 @@ cp docs/templates/architecture/adr-template.md docs/decisions/adr-001-database-c
 # Customize the content for your specific needs
 # Replace all placeholder text [like this]
 # Add your specific requirements and details
-```
+```text
 
 ### 3. Maintain Consistency
 
@@ -209,7 +209,7 @@ Templates are designed to be:
 
 ## File Structure Reference
 
-```
+```text
 docs/templates/
 ├── README.md                                    # This index file
 ├── architecture/
@@ -223,7 +223,7 @@ docs/templates/
 └── development/
     ├── setup-guide-template.md                # Development Setup
     └── coding-standards-template.md           # Coding Standards
-```
+```text
 
 *All templates are actively maintained and regularly updated based on project feedback and industry best practices.*
 

@@ -10,7 +10,7 @@ This repository contains architecture guidelines and instructions optimized for 
 
 ## Structure
 
-```
+```text
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
 │   ├── claude-architecture-instructions.md        # Unified Claude instructions (all levels)
@@ -57,7 +57,7 @@ docs-site/                             # Interactive Documentation Website
 ├── README.md                          # Site setup and features
 ├── copy-docs.sh                       # Documentation sync script
 └── src/                              # React-based documentation site
-```
+```text
 
 ## Quick Start
 
@@ -77,7 +77,7 @@ npm run workflow:test
 
 # Monitor performance
 npm run workflow:monitor
-```
+```text
 
 **Features:**
 
@@ -242,7 +242,7 @@ npm run lint:security          # Security compliance check
 npm run lint:performance       # Performance validation
 npm run lint:all              # Run all individual checks
 npm run check:comprehensive    # Full validation with TypeScript
-```
+```text
 
 ### Validation Coverage
 
@@ -273,13 +273,13 @@ See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for traditional validation an
 
 ### Commit Message Format
 
-```
+```yaml
 type(scope): description
 
 [optional body]
 
 [optional footer]
-```
+```text
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
@@ -307,7 +307,7 @@ npm run versions:list           # Show detailed inventory of all version-managed
 ./scripts/discover-version-files.sh   # Discover all files with version information
 ./scripts/maintain-versions.sh        # Add version info to files that should have it
 ./scripts/enhance-version-management.sh # Upgrade the version management system
-```
+```text
 
 **Comprehensive Coverage**: The system automatically manages versions across:
 

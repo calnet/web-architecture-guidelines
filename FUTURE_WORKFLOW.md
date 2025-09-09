@@ -13,7 +13,7 @@
 ```bash
 git checkout develop
 git pull origin develop  # Ensure you have latest changes
-```
+```text
 
 ### 2. Create Feature Branch
 
@@ -32,7 +32,7 @@ git checkout -b feature/architecture-[section-name]
 
 # For maintenance:
 git checkout -b chore/[task-name]
-```
+```text
 
 ### 3. Work and Commit with Proper Messages
 
@@ -44,14 +44,14 @@ git commit -m "style(scope): improve formatting"
 git commit -m "refactor(scope): restructure code"
 git commit -m "test(scope): add test coverage"
 git commit -m "chore(scope): maintenance task"
-```
+```text
 
 ### 4. Push and Create Pull Request
 
 ```bash
 git push -u origin feature/branch-name
 # Then create PR through GitHub interface
-```
+```text
 
 ### 5. After Merge, Clean Up
 
@@ -60,7 +60,7 @@ git checkout develop
 git pull origin develop
 git branch -d feature/branch-name
 git remote prune origin  # Clean up remote tracking branches
-```
+```text
 
 ## Benefits of This Approach
 

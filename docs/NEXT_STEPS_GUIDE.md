@@ -29,7 +29,7 @@ gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
 
 # 3. Validate the secret configuration
 ./scripts/configure-anthropic-secret.sh --validate
-```
+```text
 
 #### Alternative: Web Interface Setup
 
@@ -47,7 +47,7 @@ gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
 
 # Test workflow access to secret
 ./scripts/test-workflow.sh --validate-secret --dry-run
-```
+```text
 
 ### 2. Test Workflow System with Sample PR
 
@@ -69,7 +69,7 @@ gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
 
 # Validate secret configuration during testing
 ./scripts/test-workflow.sh --validate-secret
-```
+```text
 
 #### Manual Testing Scenarios
 
@@ -120,7 +120,7 @@ After running the test script, you can manually test:
 
 # Export metrics for analysis
 ./scripts/monitor-workflow.sh --export-metrics
-```
+```text
 
 #### Automated Monitoring Setup
 
@@ -132,7 +132,7 @@ Add to crontab for regular monitoring:
 
 # Weekly performance analysis on Sundays
 0 10 * * 0 cd /path/to/repo && ./scripts/monitor-workflow.sh --performance
-```
+```text
 
 ## Implementation Checklist
 
@@ -143,20 +143,20 @@ Add to crontab for regular monitoring:
   ```bash
   gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
   ./scripts/configure-anthropic-secret.sh --validate
-  ```
+  ```text
 
 - [ ] **Run initial system validation**
 
   ```bash
   ./scripts/test-workflow.sh --dry-run
-  ```
+  ```text
 
 - [ ] **Verify all components are working**
 
   ```bash
   npm run validate:all
   ./scripts/monitor-workflow.sh
-  ```
+  ```text
 
 ### Testing Phase (Recommended)
 
@@ -164,7 +164,7 @@ Add to crontab for regular monitoring:
 
   ```bash
   ./scripts/test-workflow.sh
-  ```
+  ```text
 
 - [ ] **Test custom commands**
   - Comment on test PR with each `/command`
@@ -181,13 +181,13 @@ Add to crontab for regular monitoring:
 
   ```bash
   ./scripts/monitor-workflow.sh --report
-  ```
+  ```text
 
 - [ ] **Implement optimization recommendations**
 
   ```bash
   ./scripts/monitor-workflow.sh --optimize
-  ```
+  ```text
 
 - [ ] **Schedule regular health checks**
   - Add monitoring to crontab
@@ -243,28 +243,28 @@ Add to crontab for regular monitoring:
    ```bash
    # Validate secret configuration
    ./scripts/configure-anthropic-secret.sh --validate
-   ```
+   ```text
 
 2. **Workflow Fails to Trigger**
 
    ```bash
    # Check workflow file syntax
    yamllint .github/workflows/*.yml
-   ```
+   ```text
 
 3. **Custom Commands Not Working**
 
    ```bash
    # Verify command files exist
    ./scripts/test-workflow.sh --dry-run
-   ```
+   ```text
 
 4. **Performance Issues**
 
    ```bash
    # Analyze and get recommendations
    ./scripts/monitor-workflow.sh --performance --optimize
-   ```
+   ```text
 
 ### Getting Help
 

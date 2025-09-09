@@ -17,14 +17,14 @@
 
 ```http
 Authorization: Bearer <token>
-```
+```text
 
 **Example:**
 
 ```bash
 curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
      https://api.example.com/v1/users
-```
+```text
 
 ## Endpoints
 
@@ -59,7 +59,7 @@ Retrieve a list of [resources]
     "offset": 0
   }
 }
-```
+```text
 
 **Status Codes:**
 
@@ -80,7 +80,7 @@ Create a new [resource]
   "name": "string",
   "description": "string"
 }
-```
+```text
 
 **Response:**
 
@@ -91,7 +91,7 @@ Create a new [resource]
   "description": "string",
   "created_at": "2023-01-01T00:00:00Z"
 }
-```
+```text
 
 #### PUT /[resource]/{id}
 
@@ -110,7 +110,7 @@ Update an existing [resource]
   "name": "string",
   "description": "string"
 }
-```
+```text
 
 **Response:**
 
@@ -121,7 +121,7 @@ Update an existing [resource]
   "description": "string",
   "updated_at": "2023-01-01T00:00:00Z"
 }
-```
+```text
 
 #### DELETE /[resource]/{id}
 
@@ -139,7 +139,7 @@ Delete a [resource]
 {
   "message": "Resource deleted successfully"
 }
-```
+```text
 
 ## Error Handling
 
@@ -153,7 +153,7 @@ All errors follow this format:
     "details": {}
   }
 }
-```
+```text
 
 ### Error Codes
 
@@ -176,7 +176,7 @@ All errors follow this format:
 X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 999
 X-RateLimit-Reset: 1640995200
-```
+```text
 
 ## Pagination
 
@@ -199,7 +199,7 @@ For endpoints that return multiple items, pagination is implemented using offset
     "has_more": true
   }
 }
-```
+```text
 
 ## Examples
 
@@ -219,7 +219,7 @@ curl -X POST https://api.example.com/v1/users \
   "email": "john@example.com",
   "created_at": "2023-01-01T00:00:00Z"
 }
-```
+```text
 
 ### Error Example
 
@@ -240,7 +240,7 @@ curl -X POST https://api.example.com/v1/users \
     }
   }
 }
-```
+```text
 
 ## SDKs and Libraries
 

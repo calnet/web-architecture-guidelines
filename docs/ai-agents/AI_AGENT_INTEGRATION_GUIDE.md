@@ -44,7 +44,7 @@ When providing architectural guidance, organize responses using this structure:
 - Documentation references
 - Learning materials
 - Community resources
-```
+```text
 
 ## Agent-Specific Integration Instructions
 
@@ -61,9 +61,9 @@ When providing architectural guidance, organize responses using this structure:
 
 **Usage Example**:
 
-```
+```text
 You are an expert web application architect. Follow the guidelines in claude-architecture-instructions.md to provide comprehensive, security-focused architectural guidance. Use the maturity model to tailor recommendations to the team's context.
-```
+```text
 
 ### ChatGPT/GPT-4 (OpenAI)
 
@@ -78,9 +78,9 @@ You are an expert web application architect. Follow the guidelines in claude-arc
 
 **Usage Example**:
 
-```
+```text
 Act as a senior software architect. Use the guidelines in chatgpt-architecture-instructions.md to provide detailed, practical architectural guidance with code examples. Focus on step-by-step implementation plans.
-```
+```text
 
 ### GitHub Copilot (Microsoft)
 
@@ -95,11 +95,11 @@ Act as a senior software architect. Use the guidelines in chatgpt-architecture-i
 
 **Usage Example**:
 
-```
+```text
 // Follow copilot-architecture-instructions.md for architectural guidance
 // Provide inline suggestions that align with clean architecture principles
 // Focus on maintainable, testable code patterns
-```
+```text
 
 ### Google Gemini (Google)
 
@@ -114,9 +114,9 @@ Act as a senior software architect. Use the guidelines in chatgpt-architecture-i
 
 **Usage Example**:
 
-```
+```text
 You are a software architecture consultant. Follow gemini-architecture-instructions.md to provide research-backed architectural recommendations. Use your multimodal capabilities to create diagrams and visual explanations when helpful.
-```
+```text
 
 ### Anthropic API Integration
 
@@ -139,7 +139,7 @@ response = client.messages.create(
     system="Follow the architectural guidelines in anthropic-api-architecture-instructions.md to provide structured, safe architectural recommendations for web applications.",
     messages=[{"role": "user", "content": user_query}]
 )
-```
+```text
 
 ## Custom AI Agent Integration
 
@@ -178,7 +178,7 @@ response = client.messages.create(
 ## Integration Notes
 
 [Specific guidance for using this agent effectively]
-```
+```text
 
 ## Implementation Workflow
 
@@ -307,7 +307,7 @@ Example workflow usage:
 - Run `/security-scan` before deployment recommendations
 - Apply `/performance-check` for optimization guidance
 - Execute `/documentation-audit` for completeness validation
-```
+```text
 
 ### Monitoring and Optimization
 

@@ -94,7 +94,7 @@ Other Recommendations:
 - ASP.NET Core (C# enterprise)
 - Spring Boot (Java enterprise)
 - Go with Gin/Echo (performance)
-```
+```text
 
 **Frontend Frameworks:**
 
@@ -110,7 +110,7 @@ State Management:
 - Pinia (Vue)
 - Zustand (lightweight)
 - Context API (simple cases)
-```
+```text
 
 **Database Selection:**
 
@@ -130,7 +130,7 @@ ORM/Database Tools:
 - TypeORM (TypeScript)
 - Sequelize (Node.js)
 - SQLAlchemy (Python)
-```
+```text
 
 ### 4. Security Implementation
 
@@ -148,7 +148,7 @@ Authorization Patterns:
 - Attribute-Based Access Control (ABAC)
 - Permission-based systems
 - API key management
-```
+```text
 
 **Security Best Practices:**
 
@@ -182,7 +182,7 @@ End-to-End Tests (10%):
 - Cross-browser compatibility
 - Performance testing
 - Accessibility testing
-```
+```text
 
 **Testing Tools:**
 
@@ -232,7 +232,7 @@ Deployment:
 - Infrastructure as Code (Terraform)
 - Environment-specific configurations
 - Automated rollback capabilities
-```
+```text
 
 **Infrastructure Options:**
 
