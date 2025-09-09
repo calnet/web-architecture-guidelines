@@ -91,7 +91,8 @@ Located in `scripts/`:
 
 ### Basic Workflow Usage
 
-1. **Automatic Triggers:** Workflow runs on PR creation, updates, and issue comments
+1. **Automatic Triggers:** Workflow runs on PR creation, updates, and issue
+comments
 2. **Manual Triggers:** Comment `@claude` in PRs or issues for manual review
 3. **Custom Commands:** Use slash commands for specific types of analysis
 4. **Scheduled Reviews:** Weekly comprehensive audits run automatically
@@ -102,31 +103,36 @@ Located in `scripts/`:
 
 ```bash
 # In PR comment or Claude Code terminal
-/architecture-review "Review the new user authentication module for compliance with Clean Architecture principles"
+/architecture-review "Review the new user authentication module for compliance
+with Clean Architecture principles"
 ```text
 
 #### Security Scan
 
 ```bash
-/security-scan "Perform OWASP Top 10 assessment on the API endpoints and check for injection vulnerabilities"
+/security-scan "Perform OWASP Top 10 assessment on the API endpoints and check
+for injection vulnerabilities"
 ```text
 
 #### Performance Check
 
 ```bash  
-/performance-check "Analyze the database queries and API response times for optimization opportunities"
+/performance-check "Analyze the database queries and API response times for
+optimization opportunities"
 ```text
 
 #### Documentation Audit
 
 ```bash
-/documentation-audit "Review the API documentation for completeness and accuracy against OpenAPI standards"
+/documentation-audit "Review the API documentation for completeness and accuracy
+against OpenAPI standards"
 ```text
 
 #### Quick Fix
 
 ```bash
-/quick-fix "Fix code formatting, style issues, and simple optimizations in the user service"
+/quick-fix "Fix code formatting, style issues, and simple optimizations in the
+user service"
 ```text
 
 ### Monitoring and Maintenance

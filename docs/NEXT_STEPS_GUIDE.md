@@ -1,6 +1,7 @@
 # AI-Powered Code Review System - Next Steps Implementation Guide
 
-This guide provides detailed instructions for completing the remaining "Next Steps" for the AI-Powered Code Review workflow system.
+This guide provides detailed instructions for completing the remaining "Next
+Steps" for the AI-Powered Code Review workflow system.
 
 ## Overview
 

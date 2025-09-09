@@ -6,18 +6,26 @@
 
 ## Purpose
 
-This guide provides comprehensive instructions for integrating any AI agent or LLM tool with the Web Application Architecture Guidelines. It includes specific adaptation strategies for different AI systems and provides a universal framework for consistent architectural guidance.
+This guide provides comprehensive instructions for integrating any AI agent or
+LLM tool with the Web Application Architecture Guidelines. It includes specific
+adaptation strategies for different AI systems and provides a universal
+framework for consistent architectural guidance.
 
 ## Universal Architecture Instructions
 
-All AI agents should follow these core principles when providing web application architecture guidance:
+All AI agents should follow these core principles when providing web application
+architecture guidance:
 
 ### Foundation Principles
 
-1. **Maturity-Based Recommendations**: Tailor guidance to team size, project complexity, and organizational maturity
-2. **Security-First Design**: Always prioritize security considerations in architectural decisions
-3. **Performance Optimization**: Include performance implications in all recommendations
-4. **Accessibility**: Ensure all recommendations support inclusive design practices
+1. **Maturity-Based Recommendations**: Tailor guidance to team size, project
+complexity, and organizational maturity
+2. **Security-First Design**: Always prioritize security considerations in
+architectural decisions
+3. **Performance Optimization**: Include performance implications in all
+recommendations
+4. **Accessibility**: Ensure all recommendations support inclusive design
+practices
 5. **Maintainability**: Design for long-term evolution and team collaboration
 
 ### Response Structure Template
@@ -50,7 +58,8 @@ When providing architectural guidance, organize responses using this structure:
 
 ### Claude (Anthropic)
 
-**Primary Instruction File**: `docs/ai-agents/claude/claude-architecture-instructions.md`
+**Primary Instruction File**:
+`docs/ai-agents/claude/claude-architecture-instructions.md`
 
 **Integration Strategy**:
 
@@ -62,12 +71,16 @@ When providing architectural guidance, organize responses using this structure:
 **Usage Example**:
 
 ```text
-You are an expert web application architect. Follow the guidelines in claude-architecture-instructions.md to provide comprehensive, security-focused architectural guidance. Use the maturity model to tailor recommendations to the team's context.
+You are an expert web application architect. Follow the guidelines in
+claude-architecture-instructions.md to provide comprehensive, security-focused
+architectural guidance. Use the maturity model to tailor recommendations to the
+team's context.
 ```text
 
 ### ChatGPT/GPT-4 (OpenAI)
 
-**Primary Instruction File**: `docs/ai-agents/chatgpt-architecture-instructions.md`
+**Primary Instruction File**:
+`docs/ai-agents/chatgpt-architecture-instructions.md`
 
 **Integration Strategy**:
 
@@ -79,12 +92,16 @@ You are an expert web application architect. Follow the guidelines in claude-arc
 **Usage Example**:
 
 ```text
-Act as a senior software architect. Use the guidelines in chatgpt-architecture-instructions.md to provide detailed, practical architectural guidance with code examples. Focus on step-by-step implementation plans.
+Act as a senior software architect. Use the guidelines in
+chatgpt-architecture-instructions.md to provide detailed, practical
+architectural guidance with code examples. Focus on step-by-step implementation
+plans.
 ```text
 
 ### GitHub Copilot (Microsoft)
 
-**Primary Instruction File**: `docs/ai-agents/copilot-architecture-instructions.md`
+**Primary Instruction File**:
+`docs/ai-agents/copilot-architecture-instructions.md`
 
 **Integration Strategy**:
 
@@ -103,7 +120,8 @@ Act as a senior software architect. Use the guidelines in chatgpt-architecture-i
 
 ### Google Gemini (Google)
 
-**Primary Instruction File**: `docs/ai-agents/gemini-architecture-instructions.md`
+**Primary Instruction File**:
+`docs/ai-agents/gemini-architecture-instructions.md`
 
 **Integration Strategy**:
 
@@ -115,12 +133,16 @@ Act as a senior software architect. Use the guidelines in chatgpt-architecture-i
 **Usage Example**:
 
 ```text
-You are a software architecture consultant. Follow gemini-architecture-instructions.md to provide research-backed architectural recommendations. Use your multimodal capabilities to create diagrams and visual explanations when helpful.
+You are a software architecture consultant. Follow
+gemini-architecture-instructions.md to provide research-backed architectural
+recommendations. Use your multimodal capabilities to create diagrams and visual
+explanations when helpful.
 ```text
 
 ### Anthropic API Integration
 
-**Primary Instruction File**: `docs/ai-agents/anthropic-api-architecture-instructions.md`
+**Primary Instruction File**:
+`docs/ai-agents/anthropic-api-architecture-instructions.md`
 
 **Integration Strategy**:
 
@@ -136,7 +158,9 @@ You are a software architecture consultant. Follow gemini-architecture-instructi
 response = client.messages.create(
     model="claude-3-sonnet-20240229",
     max_tokens=4000,
-    system="Follow the architectural guidelines in anthropic-api-architecture-instructions.md to provide structured, safe architectural recommendations for web applications.",
+    system="Follow the architectural guidelines in
+    anthropic-api-architecture-instructions.md to provide structured, safe
+    architectural recommendations for web applications.",
     messages=[{"role": "user", "content": user_query}]
 )
 ```text
@@ -145,9 +169,12 @@ response = client.messages.create(
 
 ### Creating Instructions for New AI Agents
 
-1. **Copy Base Template**: Start with `claude-architecture-instructions.md` as the foundation
-2. **Adapt Capabilities**: Modify based on the AI agent's specific strengths and limitations
-3. **Customize Format**: Adjust instruction format to match the agent's optimal input style
+1. **Copy Base Template**: Start with `claude-architecture-instructions.md` as
+the foundation
+2. **Adapt Capabilities**: Modify based on the AI agent's specific strengths and
+limitations
+3. **Customize Format**: Adjust instruction format to match the agent's optimal
+input style
 4. **Test and Iterate**: Validate instructions with real-world scenarios
 
 ### Template for New AI Agent Instructions
@@ -188,7 +215,8 @@ response = client.messages.create(
 
 - Analyze current project architecture and requirements
 - Identify team size, experience level, and constraints
-- Determine appropriate maturity level (Foundation, Professional, Enterprise, Innovation)
+- Determine appropriate maturity level (Foundation, Professional, Enterprise,
+  Innovation)
 
 ### 2. Planning Phase
 
@@ -249,7 +277,10 @@ All AI agents should provide:
 
 ### System Overview
 
-The AI-Powered Code Review workflow system (v1.3.3+) provides automated, intelligent code analysis and optimization recommendations with comprehensive architecture documentation. This system can be leveraged by all AI agents to provide consistent, validated architectural guidance.
+The AI-Powered Code Review workflow system (v1.3.3+) provides automated,
+intelligent code analysis and optimization recommendations with comprehensive
+architecture documentation. This system can be leveraged by all AI agents to
+provide consistent, validated architectural guidance.
 
 ### Core Components
 
@@ -260,11 +291,16 @@ The AI-Powered Code Review workflow system (v1.3.3+) provides automated, intelli
 
 **Custom Commands Available**:
 
-- `/architecture-review` - Comprehensive architectural analysis focusing on Clean Architecture principles, design patterns, and component interactions
-- `/security-scan` - Security vulnerability assessment covering OWASP Top 10, authentication, authorization, and data protection
-- `/performance-check` - Performance optimization review analyzing frontend (Core Web Vitals), backend, and infrastructure performance
-- `/documentation-audit` - Documentation quality validation including template compliance and accessibility
-- `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
+- `/architecture-review` - Comprehensive architectural analysis focusing on
+  Clean Architecture principles, design patterns, and component interactions
+- `/security-scan` - Security vulnerability assessment covering OWASP Top 10,
+  authentication, authorization, and data protection
+- `/performance-check` - Performance optimization review analyzing frontend
+  (Core Web Vitals), backend, and infrastructure performance
+- `/documentation-audit` - Documentation quality validation including template
+  compliance and accessibility
+- `/quick-fix` - Quick fix implementation for common issues with immediate,
+  actionable solutions
 
 **Automation Features**:
 
@@ -277,30 +313,42 @@ The AI-Powered Code Review workflow system (v1.3.3+) provides automated, intelli
 
 When the AI-Powered Code Review system is available, any AI agent should:
 
-1. **Reference Existing Analysis**: Check for workflow outputs and build upon automated insights
-2. **Validate Recommendations**: Ensure suggestions align with automated quality gates
-3. **Leverage Metrics**: Use performance and quality metrics from the monitoring system
-4. **Complement Automation**: Provide human-readable explanations and context for automated findings
+1. **Reference Existing Analysis**: Check for workflow outputs and build upon
+automated insights
+2. **Validate Recommendations**: Ensure suggestions align with automated quality
+gates
+3. **Leverage Metrics**: Use performance and quality metrics from the monitoring
+system
+4. **Complement Automation**: Provide human-readable explanations and context
+for automated findings
 
 ### Agent-Specific Integration Strategies
 
-**Claude**: Direct integration with workflow system, can trigger and interpret custom commands
-**ChatGPT**: Reference workflow outputs in conversational guidance, explain automated recommendations
+**Claude**: Direct integration with workflow system, can trigger and interpret
+custom commands
+**ChatGPT**: Reference workflow outputs in conversational guidance, explain
+automated recommendations
 **Gemini**: Analyze workflow data for research-backed optimization suggestions
 **Copilot**: Generate code that aligns with workflow validation criteria
-**Anthropic API**: Programmatically integrate with workflow system for automated architectural guidance
+**Anthropic API**: Programmatically integrate with workflow system for automated
+architectural guidance
 
 ### Workflow Integration Example
 
 ```markdown
 ## Enhanced Claude Workflow Integration
 
-This repository includes automated architectural analysis. When providing guidance:
+This repository includes automated architectural analysis. When providing
+guidance:
 
-1. **Check Existing Analysis**: Review any existing `/architecture-review` or `/security-scan` outputs
-2. **Build Upon Automation**: Expand on automated findings with detailed explanations
-3. **Validate Alignment**: Ensure recommendations align with quality gates and performance metrics
-4. **Suggest Commands**: Recommend appropriate custom commands for specific analysis needs
+1. **Check Existing Analysis**: Review any existing `/architecture-review` or
+`/security-scan` outputs
+2. **Build Upon Automation**: Expand on automated findings with detailed
+explanations
+3. **Validate Alignment**: Ensure recommendations align with quality gates and
+performance metrics
+4. **Suggest Commands**: Recommend appropriate custom commands for specific
+analysis needs
 
 Example workflow usage:
 - Use `/architecture-review` for comprehensive system design validation
@@ -313,7 +361,8 @@ Example workflow usage:
 
 The workflow system provides:
 
-- **Performance Analysis**: Duration tracking, success rates, optimization recommendations
+- **Performance Analysis**:
+  Duration tracking, success rates, optimization recommendations
 - **Health Monitoring**: System reliability and API usage monitoring
 - **Quality Metrics**: Automated validation results and trend analysis
 - **Alert System**: Issue detection and notification capabilities
@@ -415,19 +464,27 @@ The workflow system provides:
 
 Every change you make MUST include:
 
-1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
-2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
-3. **Template Updates**: Update templates if changes affect their usage or structure
-4. **Integration Updates**: Update AI agent integration guides and instruction files
-5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+1. **System File Updates**: Update all relevant system files (README.md,
+configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain
+accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or
+structure
+4. **Integration Updates**: Update AI agent integration guides and instruction
+files
+5. **Validation**: Run repository validation to ensure all documentation passes
+compliance checks
 
 ### Version Bump Evaluation Requirements
 
 For every change, evaluate if a version bump is required:
 
-1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
-2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
-3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or
+fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI
+agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor
+optimizations
 
 **Process**:
 
@@ -438,16 +495,22 @@ For every change, evaluate if a version bump is required:
 
 ### Quality Standards
 
-- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
-- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Zero Breaking Changes**:
+  Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**:
+  Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate
-- **Repository Compliance**: Ensure all changes pass repository validation checks
+- **Repository Compliance**:
+  Ensure all changes pass repository validation checks
 
-These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
+These requirements ensure consistency across all AI agents and maintain the
+repository's high quality standards.
 
 ---
 
-This integration guide ensures consistent, high-quality architectural guidance across all AI agents while leveraging each agent's unique capabilities and strengths.
+This integration guide ensures consistent, high-quality architectural guidance
+across all AI agents while leveraging each agent's unique capabilities and
+strengths.
 
 **Version**: 1.3.3
 **Last Updated**: 2025-09-06 @ 22:12

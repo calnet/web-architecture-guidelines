@@ -17,7 +17,8 @@ mkdir -p docs/templates
 mkdir -p docs/examples
 
 # Add remote origin (replace with your repository URL)
-git remote add origin https://github.com/yourusername/web-architecture-guidelines.git
+git remote add origin
+https://github.com/yourusername/web-architecture-guidelines.git
 
 # Set default branch to main
 git branch -M main
@@ -55,7 +56,8 @@ git checkout -b feature/architecture-guidelines
 
 ## Complete File Creation and Commit Strategy
 
-All files have been saved to your local filesystem. Now you can commit them systematically:
+All files have been saved to your local filesystem. Now you can commit them
+systematically:
 
 ### Phase 1: Initial Repository Setup
 
@@ -78,18 +80,22 @@ Thumbs.db" > .gitignore
 git add .
 
 # Initial commit
-git commit -m "feat: initial repository setup with comprehensive architecture guidelines
+git commit -m "feat: initial repository setup with comprehensive architecture
+guidelines
 
-- Complete AI agent instruction set (Claude V1/V2, ChatGPT, Copilot, Gemini, Anthropic API)
+- Complete AI agent instruction set (Claude V1/V2, ChatGPT, Copilot, Gemini,
+  Anthropic API)
 - Comprehensive documentation templates for all project types
 - Project integration guide with extension patterns
 - External documentation links and references
 - Repository structure and configuration files
 
-This establishes a complete foundation for web application architecture guidance."
+This establishes a complete foundation for web application architecture
+guidance."
 
 # Add remote and push (replace with your repository URL)
-git remote add origin https://github.com/yourusername/web-architecture-guidelines.git
+git remote add origin
+https://github.com/yourusername/web-architecture-guidelines.git
 git push -u origin main
 ```text
 
@@ -106,7 +112,8 @@ Features:
 - External documentation links curated for modern web development
 - GitHub workflows for quality assurance and automation
 
-This release provides a complete foundation for building enterprise-grade web applications with AI assistance."
+This release provides a complete foundation for building enterprise-grade web
+applications with AI assistance."
 
 # Push the tag
 git push origin v1.0.0
@@ -161,12 +168,16 @@ jobs:
       - name: Validate directory structure
         run: |
           # Check required directories exist
-          test -d docs/ai-agents || (echo "Missing docs/ai-agents directory" && exit 1)
-          test -d docs/templates || (echo "Missing docs/templates directory" && exit 1)
+          test -d docs/ai-agents || (echo "Missing docs/ai-agents directory" &&
+          exit 1)
+          test -d docs/templates || (echo "Missing docs/templates directory" &&
+          exit 1)
           
           # Check required files exist
-          test -f docs/external-documentation-links.md || (echo "Missing external documentation links" && exit 1)
-          test -f docs/project-integration-guide.md || (echo "Missing project integration guide" && exit 1)
+          test -f docs/external-documentation-links.md || (echo "Missing
+          external documentation links" && exit 1)
+          test -f docs/project-integration-guide.md || (echo "Missing project
+          integration guide" && exit 1)
           
           echo "✅ All required files and directories exist"
 EOF
@@ -235,7 +246,8 @@ Brief description of the changes in this PR.
 ## Type of Change
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Breaking change (fix or feature that would cause existing functionality to
+  not work as expected)
 - [ ] Documentation update
 
 ## Areas Modified
@@ -317,7 +329,8 @@ web-architecture-guidelines/
 
 ### For AI Agent Integration
 
-1. **Copy instruction files**: Use appropriate agent instructions as system prompts
+1. **Copy instruction files**: Use appropriate agent instructions as system
+prompts
 2. **Customize for context**: Adapt based on specific project needs
 3. **Update regularly**: Keep synchronized with guideline updates
 
@@ -377,4 +390,6 @@ NEW FEATURES:
 git push origin v1.1.0
 ```text
 
-This repository now provides a complete, professional foundation for web application architecture guidance that can evolve with your organization's needs and industry best practices.
+This repository now provides a complete, professional foundation for web
+application architecture guidance that can evolve with your organization's needs
+and industry best practices.

@@ -1,17 +1,20 @@
 # Web Architecture Guidelines Documentation Site
 
-An interactive React-based documentation website for the Web Architecture Guidelines repository.
+An interactive React-based documentation website for the Web Architecture
+Guidelines repository.
 
 ## Features
 
 - 📱 **Responsive Design** - Works on all device sizes
 - 🎨 **Modern UI** - Clean, professional interface with syntax highlighting
-- 📖 **Markdown Rendering** - Supports GitHub Flavored Markdown with code highlighting
+- 📖 **Markdown Rendering** - Supports GitHub Flavored Markdown with code
+  highlighting
 - 🔍 **Easy Navigation** - Sidebar navigation and breadcrumb routing
 - ⚡ **Fast Loading** - Optimized build with code splitting
 - 🛠️ **Live Updates** - Automatically syncs with documentation changes
 - 🤖 **Enhanced Claude Integration** - Complete workflow system documentation
-- 📊 **Performance Monitoring** - Real-time workflow health and optimization guides
+- 📊 **Performance Monitoring** - Real-time workflow health and optimization
+  guides
 
 ## Quick Start
 
@@ -52,7 +55,8 @@ npm run copy-docs
 This copies:
 
 - `README.md`, `git-commands-and-setup.md`, `CLAUDE.md`, `LICENSE`
-- `IMPLEMENTATION_GUIDE.md`, `WORKFLOW_README.md`, `CHANGELOG.md` - AI-Powered Code Review workflow documentation
+- `IMPLEMENTATION_GUIDE.md`, `WORKFLOW_README.md`, `CHANGELOG.md` - AI-Powered
+  Code Review workflow documentation
 - `docs/` - Complete documentation structure
 - `examples/` - Configuration examples  
 - `scripts/` - Validation and workflow management scripts
@@ -152,14 +156,16 @@ The site organizes documentation into logical sections:
 
 The production build includes:
 
-- **Code Splitting** - Separate chunks for vendor, router, and markdown libraries
+- **Code Splitting** - Separate chunks for vendor, router, and markdown
+  libraries
 - **Tree Shaking** - Removes unused code
 - **Asset Optimization** - Compressed CSS and JS
 - **Source Maps** - For debugging in production
 
 ## Development Workflow
 
-1. **Start Development**: `npm run dev` automatically syncs docs and starts server
+1. **Start Development**: `npm run dev` automatically syncs docs and starts
+server
 2. **Make Changes**: Edit React components or documentation files
 3. **Hot Reload**: Changes appear instantly in browser
 4. **Build & Deploy**: `npm run build` creates optimized production bundle

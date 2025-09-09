@@ -6,36 +6,48 @@
 
 ## Integration Reference
 
-This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+This instruction file is part of a comprehensive AI agent integration system.
+For universal guidelines and integration with other AI agents, see:
 
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
-- **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
-- **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
+- **Claude Instructions**:
+  `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
+- **Cross-Agent Compatibility**:
+  Follow the universal framework for consistent guidance across all AI tools
 
 ## Enhanced Claude Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system that complements GitHub Copilot's code generation capabilities with comprehensive automated analysis and complete architecture documentation.
+**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+system that complements GitHub Copilot's code generation capabilities with
+comprehensive automated analysis and complete architecture documentation.
 
 ### AI Tool Collaboration Strategy
 
 When working with repositories that have the AI-Powered Code Review system:
 
-1. **Code Generation** (GitHub Copilot): Generate clean, maintainable code following architectural patterns
-2. **Code Review** (Enhanced Claude): Automated analysis through `/architecture-review`, `/security-scan`, `/performance-check` commands
-3. **Optimization** (Both): Iterative improvement based on automated feedback and suggestions
+1. **Code Generation** (GitHub Copilot): Generate clean, maintainable code
+following architectural patterns
+2. **Code Review** (Enhanced Claude): Automated analysis through
+`/architecture-review`, `/security-scan`, `/performance-check` commands
+3. **Optimization** (Both): Iterative improvement based on automated feedback
+and suggestions
 
 ### Integration Benefits
 
-- **Consistent Quality**: Copilot suggestions validated against established architecture principles
-- **Security Validation**: Generated code automatically scanned for security vulnerabilities
+- **Consistent Quality**:
+  Copilot suggestions validated against established architecture principles
+- **Security Validation**:
+  Generated code automatically scanned for security vulnerabilities
 - **Performance Optimization**: Real-time analysis of performance implications
-- **Documentation Quality**: Automated validation of code comments and documentation
+- **Documentation Quality**:
+  Automated validation of code comments and documentation
 
 ### Workflow Integration
 
 ```typescript
 // GitHub Copilot generates code following patterns like this:
-// Claude Enhanced workflow validates against security, performance, and architecture standards
+// Claude Enhanced workflow validates against security, performance, and
+architecture standards
 
 // Example: Copilot suggests secure API pattern
 const ApiClient = {
@@ -56,11 +68,14 @@ const ApiClient = {
 };
 ```text
 
-For complete AI-Powered Code Review workflow setup, see the repository's IMPLEMENTATION_GUIDE.md.
+For complete AI-Powered Code Review workflow setup, see the repository's
+IMPLEMENTATION_GUIDE.md.
 
 ## Code Generation Philosophy
 
-When generating code suggestions for web applications, prioritize clean, maintainable, and secure patterns. Always suggest industry best practices and include relevant comments explaining architectural decisions.
+When generating code suggestions for web applications, prioritize clean,
+maintainable, and secure patterns. Always suggest industry best practices and
+include relevant comments explaining architectural decisions.
 
 ## Architecture Pattern Recognition
 
@@ -425,7 +440,7 @@ async processPayment(
   await this.validatePaymentData(paymentData);
   
   // Check for fraudulent activity patterns
-  const fraudScore = await this.fraudService.analyzePayment(paymentData, userId);
+const fraudScore = await this.fraudService.analyzePayment(paymentData, userId);
   if (fraudScore > FRAUD_THRESHOLD) {
     throw new FraudDetectedError('Suspicious payment pattern detected');
   }
@@ -514,7 +529,9 @@ export const config = (): AppConfig => ({
 - Use HTTPS in production
 - Implement security headers (CSP, HSTS, etc.)
 
-Remember: Always consider the specific context of the project and suggest patterns that align with the existing codebase architecture and team conventions.
+Remember: Always consider the specific context of the project and suggest
+patterns that align with the existing codebase architecture and team
+conventions.
 
 ## Standard AI Agent Requirements
 
@@ -524,19 +541,27 @@ Remember: Always consider the specific context of the project and suggest patter
 
 Every change you make MUST include:
 
-1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
-2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
-3. **Template Updates**: Update templates if changes affect their usage or structure
-4. **Integration Updates**: Update AI agent integration guides and instruction files
-5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+1. **System File Updates**: Update all relevant system files (README.md,
+configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain
+accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or
+structure
+4. **Integration Updates**: Update AI agent integration guides and instruction
+files
+5. **Validation**: Run repository validation to ensure all documentation passes
+compliance checks
 
 ### Version Bump Evaluation Requirements
 
 For every change, evaluate if a version bump is required:
 
-1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
-2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
-3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or
+fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI
+agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor
+optimizations
 
 **Process**:
 
@@ -547,9 +572,13 @@ For every change, evaluate if a version bump is required:
 
 ### Quality Standards
 
-- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
-- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Zero Breaking Changes**:
+  Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**:
+  Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate
-- **Repository Compliance**: Ensure all changes pass repository validation checks
+- **Repository Compliance**:
+  Ensure all changes pass repository validation checks
 
-These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
+These requirements ensure consistency across all AI agents and maintain the
+repository's high quality standards.

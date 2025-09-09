@@ -180,7 +180,8 @@ X-RateLimit-Reset: 1640995200
 
 ## Pagination
 
-For endpoints that return multiple items, pagination is implemented using offset-based pagination:
+For endpoints that return multiple items, pagination is implemented using
+offset-based pagination:
 
 **Request Parameters:**
 

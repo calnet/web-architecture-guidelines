@@ -6,36 +6,51 @@
 
 ## Purpose
 
-This unified instruction file guides Claude in providing comprehensive, structured guidance for building well-architected web applications that are maintainable, secure, scalable, and follow industry best practices from conception to deployment and beyond.
+This unified instruction file guides Claude in providing comprehensive,
+structured guidance for building well-architected web applications that are
+maintainable, secure, scalable, and follow industry best practices from
+conception to deployment and beyond.
 
 ## AI-Powered Code Review Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system that provides automated, intelligent code analysis and optimization recommendations with complete architecture documentation.
+**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+system that provides automated, intelligent code analysis and optimization
+recommendations with complete architecture documentation.
 
 ### Available Custom Commands
 
-When working with repositories that have this system implemented, you can use specialized commands for focused analysis:
+When working with repositories that have this system implemented, you can use
+specialized commands for focused analysis:
 
-- `/architecture-review` - Comprehensive architectural analysis focusing on Clean Architecture principles, design patterns, and component interactions
-- `/security-scan` - Security vulnerability assessment covering OWASP Top 10, authentication, authorization, and data protection
-- `/performance-check` - Performance optimization review analyzing frontend (Core Web Vitals), backend, and infrastructure performance
-- `/documentation-audit` - Documentation quality validation including template compliance and accessibility
-- `/quick-fix` - Quick fix implementation for common issues with immediate, actionable solutions
+- `/architecture-review` - Comprehensive architectural analysis focusing on
+  Clean Architecture principles, design patterns, and component interactions
+- `/security-scan` - Security vulnerability assessment covering OWASP Top 10,
+  authentication, authorization, and data protection
+- `/performance-check` - Performance optimization review analyzing frontend
+  (Core Web Vitals), backend, and infrastructure performance
+- `/documentation-audit` - Documentation quality validation including template
+  compliance and accessibility
+- `/quick-fix` - Quick fix implementation for common issues with immediate,
+  actionable solutions
 
 ### Integration with Architecture Guidelines
 
-The AI-Powered Code Review system enforces and validates the architecture principles outlined in these instructions through:
+The AI-Powered Code Review system enforces and validates the architecture
+principles outlined in these instructions through:
 
 - **Automated Analysis**: GitHub Actions workflows provide continuous review
 - **Standardized Metrics**: Consistent evaluation criteria across all projects
 - **Performance Monitoring**: Real-time tracking of implementation success
-- **Quality Gates**: Automated validation of security, performance, and maintainability standards
+- **Quality Gates**:
+  Automated validation of security, performance, and maintainability standards
 
-Refer to the repository's IMPLEMENTATION_GUIDE.md for complete setup and usage instructions.
+Refer to the repository's IMPLEMENTATION_GUIDE.md for complete setup and usage
+instructions.
 
 ## Implementation Maturity Model
 
-Organize recommendations using this staged approach based on team size, complexity, and requirements:
+Organize recommendations using this staged approach based on team size,
+complexity, and requirements:
 
 ### Level 1 (Foundation) - Essential Practices
 
@@ -82,21 +97,28 @@ Organize recommendations using this staged approach based on team size, complexi
 
 ## Core Principles
 
-When discussing web application architecture, always emphasize these foundational principles:
+When discussing web application architecture, always emphasize these
+foundational principles:
 
 ### Code Quality Standards
 
-- **DRY (Don't Repeat Yourself)**: Eliminate code duplication through abstraction
+- **DRY (Don't Repeat Yourself)**:
+  Eliminate code duplication through abstraction
 - **Clean Code**: Write self-documenting, readable code with clear naming
-- **SOLID Principles**: Single responsibility, open/closed, Liskov substitution, interface segregation, dependency inversion
+- **SOLID Principles**:
+  Single responsibility, open/closed, Liskov substitution, interface
+  segregation, dependency inversion
 - **Maintainability**: Design for long-term evolution and team collaboration
 - **Type Safety**: Utilize strong typing systems to prevent runtime errors
 
 ### Architecture Patterns
 
-- **Separation of Concerns**: Clear boundaries between different application layers
-- **Dependency Inversion**: High-level modules should not depend on low-level modules
-- **Configuration over Convention**: Make applications configurable and adaptable
+- **Separation of Concerns**:
+  Clear boundaries between different application layers
+- **Dependency Inversion**:
+  High-level modules should not depend on low-level modules
+- **Configuration over Convention**:
+  Make applications configurable and adaptable
 - **Database Agnostic**: Abstract data access to support multiple database types
 - **Event-Driven Architecture**: Design for scalability and loose coupling
 
@@ -106,7 +128,8 @@ When discussing web application architecture, always emphasize these foundationa
 - **Documentation**: Living documentation that evolves with the codebase
 - **Security by Design**: Implement security considerations from the ground up
 - **Accessibility**: Build inclusive applications following WCAG guidelines
-- **User and Developer Friendly**: Optimize for both end-user experience and developer productivity
+- **User and Developer Friendly**:
+  Optimize for both end-user experience and developer productivity
 
 ## Cross-Reference Integration Map
 
@@ -142,7 +165,8 @@ Understanding how different architectural components interconnect:
 
 ## Response Structure
 
-When providing architectural guidance, organize responses using this comprehensive structure:
+When providing architectural guidance, organize responses using this
+comprehensive structure:
 
 ### 1. Resource Constraint Guidance & Decision Trees
 
@@ -177,7 +201,8 @@ When providing architectural guidance, organize responses using this comprehensi
 
 Recommend appropriate patterns based on complexity and requirements:
 
-- **Clean Architecture / Hexagonal Architecture**: For maintainable, testable applications
+- **Clean Architecture / Hexagonal Architecture**:
+  For maintainable, testable applications
 - **Domain-Driven Design (DDD)**: For complex business domains
 - **CQRS**: When read/write patterns differ significantly
 - **Event Sourcing**: For audit trails and complex state management
@@ -188,7 +213,8 @@ Recommend appropriate patterns based on complexity and requirements:
 - **Feature-based folder structures**: Group by business functionality
 - **Dependency injection patterns**: Improve testability and maintainability
 - **Interface segregation**: Define clear contracts between components
-- **Error handling strategies**: Consistent error management across the application
+- **Error handling strategies**:
+  Consistent error management across the application
 
 ### 4. Development Practices
 
@@ -407,7 +433,8 @@ Tailor recommendations based on:
 
 ### Universal Integration Guidelines
 
-This instruction set can be adapted for any AI agent or LLM tool. To integrate with other AI systems:
+This instruction set can be adapted for any AI agent or LLM tool. To integrate
+with other AI systems:
 
 #### 1. Core Instruction Adaptation
 
@@ -471,19 +498,27 @@ This instruction set can be adapted for any AI agent or LLM tool. To integrate w
 
 Every change you make MUST include:
 
-1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
-2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
-3. **Template Updates**: Update templates if changes affect their usage or structure
-4. **Integration Updates**: Update AI agent integration guides and instruction files
-5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+1. **System File Updates**: Update all relevant system files (README.md,
+configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain
+accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or
+structure
+4. **Integration Updates**: Update AI agent integration guides and instruction
+files
+5. **Validation**: Run repository validation to ensure all documentation passes
+compliance checks
 
 ### Version Bump Evaluation Requirements
 
 For every change, evaluate if a version bump is required:
 
-1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
-2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
-3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or
+fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI
+agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor
+optimizations
 
 **Process**:
 
@@ -494,22 +529,32 @@ For every change, evaluate if a version bump is required:
 
 ### Quality Standards
 
-- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
-- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Zero Breaking Changes**:
+  Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**:
+  Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate
-- **Repository Compliance**: Ensure all changes pass repository validation checks
+- **Repository Compliance**:
+  Ensure all changes pass repository validation checks
 
-These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
+These requirements ensure consistency across all AI agents and maintain the
+repository's high quality standards.
 
 ## Final Notes
 
-- **Stay Current**: Web development evolves rapidly; these guidelines should be updated regularly
-- **Context Matters**: Always consider the specific project context when applying these guidelines
+- **Stay Current**:
+  Web development evolves rapidly; these guidelines should be updated regularly
+- **Context Matters**:
+  Always consider the specific project context when applying these guidelines
 - **Iterative Improvement**: Start with essentials and gradually add complexity
-- **Team Collaboration**: Architecture decisions should involve the entire development team
-- **Documentation**: Keep architectural decisions documented for future reference
+- **Team Collaboration**:
+  Architecture decisions should involve the entire development team
+- **Documentation**:
+  Keep architectural decisions documented for future reference
 
-This instruction set provides a comprehensive foundation for building modern web applications while maintaining flexibility for different project contexts and requirements.
+This instruction set provides a comprehensive foundation for building modern web
+applications while maintaining flexibility for different project contexts and
+requirements.
 
 ---
 

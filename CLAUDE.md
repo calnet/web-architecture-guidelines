@@ -1,14 +1,19 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Repository Overview
 
-This is a documentation-only repository containing web application architecture guidelines optimized for AI agents and development teams. The repository focuses on providing comprehensive instruction sets for various AI agents and documentation templates for building high-quality web applications.
+This is a documentation-only repository containing web application architecture
+guidelines optimized for AI agents and development teams. The repository focuses
+on providing comprehensive instruction sets for various AI agents and
+documentation templates for building high-quality web applications.
 
 ## AI-Powered Code Review System
 
-This repository includes an advanced Claude Code Review workflow system with the following components:
+This repository includes an advanced Claude Code Review workflow system with the
+following components:
 
 ### GitHub Workflows
 
@@ -17,7 +22,8 @@ This repository includes an advanced Claude Code Review workflow system with the
 
 ### Custom Commands Available
 
-When reviewing code or responding to comments, you can use these specialized commands:
+When reviewing code or responding to comments, you can use these specialized
+commands:
 
 #### `/architecture-review`
 
@@ -129,7 +135,7 @@ docs/
 │   └── anthropic-api-architecture-instructions.md
 ├── external-documentation-links.md     # Curated external resources
 ├── project-integration-guide.md        # How to extend these guidelines
-└── templates/                          # Documentation templates organized by category
+└── templates/ # Documentation templates organized by category
     ├── README.md                       # Template index and usage guide
     ├── architecture/                   # ADRs and system documentation
     ├── api/                           # API specification templates
@@ -158,22 +164,29 @@ scripts/                               # Workflow management scripts
 
 ## Core Architecture
 
-This repository follows a documentation-first approach with these key principles:
+This repository follows a documentation-first approach with these key
+principles:
 
 ### Content Organization
 
-- **Separation of concerns**: AI agent instructions are separate from generic templates
-- **Categorization**: Templates organized by functional area (architecture, API, user guides, development)
+- **Separation of concerns**:
+  AI agent instructions are separate from generic templates
+- **Categorization**:
+  Templates organized by functional area (architecture, API, user guides,
+  development)
 - **Modularity**: Workflow system broken into focused, manageable components
 
 ### Quality Assurance
 
-- **GitHub Actions workflow** (`.github/workflows/validate-docs.yml`) provides automated validation
-- **AI-Powered Code Review workflows** provide intelligent code review and analysis
+- **GitHub Actions workflow** (`.github/workflows/validate-docs.yml`) provides
+  automated validation
+- **AI-Powered Code Review workflows** provide intelligent code review and
+  analysis
 - **Link checking**: Validates all markdown links are accessible
 - **Markdown linting**: Ensures consistent formatting and style
 - **Structure validation**: Verifies required directories and files exist
-- **Cross-reference validation**: Ensures internal links and references are accurate
+- **Cross-reference validation**:
+  Ensures internal links and references are accurate
 
 ### Workflow Integration
 
@@ -186,7 +199,8 @@ This repository follows a documentation-first approach with these key principles
 
 ### Documentation Validation
 
-The repository uses GitHub Actions for automated validation. Enhanced workflows provide:
+The repository uses GitHub Actions for automated validation. Enhanced workflows
+provide:
 
 ```bash
 # Automated validation runs on every PR
@@ -211,7 +225,8 @@ When updating documentation:
 1. **Maintain structure**: Follow the established directory organization
 2. **Update cross-references**: Ensure links between documents remain valid
 3. **Follow semantic versioning**: Use conventional commits for changes
-4. **Test externally**: Verify external links in `external-documentation-links.md` are still valid
+4. **Test externally**: Verify external links in
+`external-documentation-links.md` are still valid
 5. **Validate templates**: Run template compliance checks after changes
 
 ### Commit Conventions
@@ -225,34 +240,41 @@ The repository follows conventional commit format:
 - `refactor`: Code/structure improvements without functionality changes
 - `test`: Test additions or modifications
 
-Example: `feat: enhance documentation templates and integration guide with structured categories`
+Example: `feat: enhance documentation templates and integration guide with
+structured categories`
 
 ## File Modification Guidelines
 
 ### When working with AI agent instructions
 
-- **Maintain consistency**: Keep instruction format similar across different agents
-- **Version appropriately**: Create new versions for major changes rather than breaking existing ones
-- **Cross-reference**: Update the main README.md when adding new agent instructions
+- **Maintain consistency**:
+  Keep instruction format similar across different agents
+- **Version appropriately**:
+  Create new versions for major changes rather than breaking existing ones
+- **Cross-reference**:
+  Update the main README.md when adding new agent instructions
 - **Test commands**: Validate custom commands work as expected
 
 ### When working with templates
 
 - **Preserve structure**: Maintain the placeholder text and example format
 - **Update index**: Modify `docs/templates/README.md` when adding new templates
-- **Keep scalable**: Ensure templates work for both startup and enterprise projects
+- **Keep scalable**:
+  Ensure templates work for both startup and enterprise projects
 - **Validate compliance**: Run template validation scripts after changes
 
 ### When updating external links
 
 - **Verify accessibility**: Test all links before committing
-- **Maintain categorization**: Follow the established organization in `external-documentation-links.md`
+- **Maintain categorization**:
+  Follow the established organization in `external-documentation-links.md`
 - **Add context**: Include brief descriptions for why resources are valuable
 - **Monitor regularly**: Set up automated link checking where possible
 
 ### When modifying workflows
 
-- **Test thoroughly**: Use `scripts/test-workflow.sh` for comprehensive validation
+- **Test thoroughly**:
+  Use `scripts/test-workflow.sh` for comprehensive validation
 - **Monitor health**: Check system health with `scripts/monitor-workflow.sh`
 - **Document changes**: Update implementation guides and README files
 - **Validate secrets**: Ensure required API keys and secrets are configured
@@ -261,8 +283,10 @@ Example: `feat: enhance documentation templates and integration guide with struc
 
 - **README.md**: Main entry point explaining repository purpose and usage
 - **CLAUDE.md**: This file - enhanced instructions for Claude Code reviews
-- **docs/project-integration-guide.md**: Critical for understanding how to extend guidelines
-- **docs/external-documentation-links.md**: Curated list of external resources requiring regular maintenance
+- **docs/project-integration-guide.md**:
+  Critical for understanding how to extend guidelines
+- **docs/external-documentation-links.md**:
+  Curated list of external resources requiring regular maintenance
 - **git-commands-and-setup.md**: Repository setup and maintenance procedures
 - **IMPLEMENTATION_GUIDE.md**: Complete guide for the enhanced workflow system
 - **WORKFLOW_README.md**: Usage and maintenance documentation for workflows
@@ -272,8 +296,10 @@ Example: `feat: enhance documentation templates and integration guide with struc
 - **No build/test commands**: This is a documentation-only repository
 - **Markdown consistency**: All documentation uses GitHub-flavored markdown
 - **Link integrity**: All internal and external links must be valid
-- **Professional formatting**: Templates are ready for immediate professional use
-- **Comprehensive coverage**: Instructions cover all major aspects of web application architecture
+- **Professional formatting**:
+  Templates are ready for immediate professional use
+- **Comprehensive coverage**:
+  Instructions cover all major aspects of web application architecture
 - **Accessibility compliance**: Documentation follows WCAG 2.1 AA guidelines
 - **Version control**: Proper branching and commit message conventions
 
@@ -296,7 +322,8 @@ Example: `feat: enhance documentation templates and integration guide with struc
 
 - **Authentication Issues**: Verify ANTHROPIC_API_KEY secret configuration
 - **Workflow Failures**: Check logs in GitHub Actions and run health checks
-- **Command Issues**: Validate custom command files exist and are properly formatted
+- **Command Issues**:
+  Validate custom command files exist and are properly formatted
 - **Performance Problems**: Monitor API rate limits and optimize prompts
 
 ## Repository Maintenance
@@ -306,7 +333,9 @@ Example: `feat: enhance documentation templates and integration guide with struc
 - **Bi-annually**: Comprehensive template review and updates
 - **Annually**: Major version review and workflow optimization
 
-This repository serves as a comprehensive foundation for web application architecture guidance that evolves with industry best practices and AI agent capabilities, enhanced with intelligent automation and monitoring.
+This repository serves as a comprehensive foundation for web application
+architecture guidance that evolves with industry best practices and AI agent
+capabilities, enhanced with intelligent automation and monitoring.
 
 ---
 

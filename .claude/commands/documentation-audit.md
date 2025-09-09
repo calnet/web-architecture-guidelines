@@ -4,11 +4,13 @@
 
 ## Purpose
 
-Evaluate documentation quality, completeness, and alignment with established templates and standards.
+Evaluate documentation quality, completeness, and alignment with established
+templates and standards.
 
 ## Command Behavior
 
-When triggered, this command instructs Claude to perform comprehensive documentation analysis:
+When triggered, this command instructs Claude to perform comprehensive
+documentation analysis:
 
 ### 1. Template Compliance
 
@@ -127,19 +129,22 @@ When triggered, this command instructs Claude to perform comprehensive documenta
 ### Comprehensive Documentation Review
 
 ```text
-/documentation-audit "Complete review of all project documentation for accuracy and completeness"
+/documentation-audit "Complete review of all project documentation for accuracy
+and completeness"
 ```text
 
 ### API Documentation Focus
 
 ```text
-/documentation-audit "Audit API documentation for completeness and developer experience"
+/documentation-audit "Audit API documentation for completeness and developer
+experience"
 ```text
 
 ### Template Compliance Check
 
 ```text
-/documentation-audit "Validate compliance with established documentation templates"
+/documentation-audit "Validate compliance with established documentation
+templates"
 ```text
 
 ## Documentation Standards

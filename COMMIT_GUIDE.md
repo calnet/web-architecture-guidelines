@@ -121,7 +121,8 @@ If `git status` shows "nothing to commit, working tree clean":
 
 1. **Review your work**: Check if you've saved all files
 2. **Verify staging**: Use `git add .` to stage any new files
-3. **Create meaningful changes**: Follow the repository's contribution guidelines
+3. **Create meaningful changes**: Follow the repository's contribution
+guidelines
 4. **Use validation scripts**: Run quality checks before committing
 
 ## Next Steps
@@ -142,4 +143,5 @@ Since there are currently no pending changes to commit:
 
 ---
 
-*This guide was generated based on the current repository state and established workflows.*
+*This guide was generated based on the current repository state and established
+workflows.*

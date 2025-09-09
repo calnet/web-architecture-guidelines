@@ -2,22 +2,29 @@
 
 ## Overview
 
-This pull request represents a comprehensive cleanup and enhancement of the web-architecture-guidelines repository, preparing it for more efficient development and better AI agent integration.
+This pull request represents a comprehensive cleanup and enhancement of the
+web-architecture-guidelines repository, preparing it for more efficient
+development and better AI agent integration.
 
 ## Changes Made
 
 ### 🧹 Repository Cleanup
 
-- **Removed obsolete files**: Deleted outdated documentation, redundant workflows, and deprecated configuration files
-- **Streamlined workflows**: Consolidated GitHub Actions workflows to focus on essential validation
-- **Cleaned up duplicated content**: Removed redundant copies of documentation in docs-site/public
+- **Removed obsolete files**:
+  Deleted outdated documentation, redundant workflows, and deprecated
+  configuration files
+- **Streamlined workflows**:
+  Consolidated GitHub Actions workflows to focus on essential validation
+- **Cleaned up duplicated content**:
+  Removed redundant copies of documentation in docs-site/public
 
 ### ✨ Developer Experience Improvements
 
 - **Added VSCode configuration**:
   - `.vscode/settings.json` with markdown formatting rules
   - `.vscode/extensions.json` with recommended extensions
-- **Enhanced Claude AI instructions**: Created versioned Claude architecture instructions with improved structure
+- **Enhanced Claude AI instructions**:
+  Created versioned Claude architecture instructions with improved structure
 
 ### 📊 Impact Summary
 
@@ -39,8 +46,10 @@ All repository validation checks pass:
 ## Benefits
 
 1. **Reduced maintenance overhead**: Fewer redundant files to maintain
-2. **Improved developer experience**: Consistent VSCode settings and recommendations
-3. **Better AI agent integration**: Enhanced Claude instructions with structured approach
+2. **Improved developer experience**: Consistent VSCode settings and
+recommendations
+3. **Better AI agent integration**: Enhanced Claude instructions with structured
+approach
 4. **Cleaner repository structure**: Easier navigation and contribution
 
 ## Testing
@@ -50,4 +59,5 @@ All repository validation checks pass:
 - GitHub Actions workflows validated
 - Repository structure integrity confirmed
 
-This cleanup maintains all essential functionality while significantly improving repository maintainability and developer experience.
+This cleanup maintains all essential functionality while significantly improving
+repository maintainability and developer experience.

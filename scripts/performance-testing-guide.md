@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide provides documentation for performance testing approaches that can be applied to web applications built using these architecture guidelines.
+This guide provides documentation for performance testing approaches that can be
+applied to web applications built using these architecture guidelines.
 
 ## Performance Testing Categories
 
@@ -53,9 +54,11 @@ This guide provides documentation for performance testing approaches that can be
 
 Since this is a documentation-only repository, performance testing focuses on:
 
-1. **Documentation Build Performance**: Ensuring documentation site builds efficiently
+1. **Documentation Build Performance**: Ensuring documentation site builds
+efficiently
 2. **Link Validation Performance**: Fast validation of documentation links  
-3. **Template Processing Performance**: Efficient template generation and validation
+3. **Template Processing Performance**: Efficient template generation and
+validation
 
 ## Monitoring Performance
 
@@ -76,4 +79,6 @@ For applications built using these guidelines:
 
 ---
 
-*Note: This documentation repository focuses on architectural guidelines. Specific performance testing implementations should be added to individual projects based on their technology stack and requirements.*
+*Note: This documentation repository focuses on architectural guidelines.
+Specific performance testing implementations should be added to individual
+projects based on their technology stack and requirements.*

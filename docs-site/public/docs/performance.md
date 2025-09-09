@@ -2,7 +2,9 @@
 
 ## Overview
 
-This document provides performance optimization guidelines and best practices for building fast, scalable web applications. It covers frontend optimization, backend performance, database tuning, and monitoring strategies.
+This document provides performance optimization guidelines and best practices
+for building fast, scalable web applications. It covers frontend optimization,
+backend performance, database tuning, and monitoring strategies.
 
 ## Frontend Performance
 

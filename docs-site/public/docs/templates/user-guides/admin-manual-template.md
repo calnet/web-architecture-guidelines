@@ -21,10 +21,13 @@ health and performance.
 
 - **User Management**: Creating, managing, and deactivating user accounts
 - **System Configuration**: Configuring application settings and integrations
-- **Security Management**: Monitoring security events and managing access controls
+- **Security Management**:
+  Monitoring security events and managing access controls
 - **Content Moderation**: Reviewing and moderating user-generated content
-- **Performance Monitoring**: Monitoring system performance and resource utilization
-- **Backup and Recovery**: Ensuring data protection and disaster recovery preparedness
+- **Performance Monitoring**:
+  Monitoring system performance and resource utilization
+- **Backup and Recovery**:
+  Ensuring data protection and disaster recovery preparedness
 - **Compliance**: Maintaining regulatory compliance and audit trails
 
 ### Administrative Access

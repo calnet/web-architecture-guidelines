@@ -2,7 +2,9 @@
 
 ## Overview
 
-This guide provides complete instructions for implementing and using the enhanced Claude Code Review workflow system. The system includes automated workflows, custom commands, monitoring tools, and comprehensive documentation.
+This guide provides complete instructions for implementing and using the
+enhanced Claude Code Review workflow system. The system includes automated
+workflows, custom commands, monitoring tools, and comprehensive documentation.
 
 ## Architecture
 
@@ -146,18 +148,21 @@ Workflows are configured through YAML files in `.github/workflows/`:
 - **Triggers**: PR creation, updates, issue comments with `@claude`
 - **Model**: claude-3-5-sonnet-20241022
 - **Max Tokens**: 4000 for PR reviews, 8000 for comprehensive audits
-- **Features**: Custom command detection, security validation, performance checks
+- **Features**:
+  Custom command detection, security validation, performance checks
 
 #### Advanced Workflow (`advanced-architecture-review.yml`)  
 
 - **Triggers**: PRs to main branch, manual dispatch
 - **Strategy**: Matrix build for parallel analysis
-- **Focus Areas**: Architecture, security, performance, documentation, accessibility
+- **Focus Areas**:
+  Architecture, security, performance, documentation, accessibility
 - **Integration**: Cross-reference validation and integration assessment
 
 ### Custom Commands Configuration
 
-Commands are defined in `.claude/commands/` and can be customized by editing the markdown files:
+Commands are defined in `.claude/commands/` and can be customized by editing the
+markdown files:
 
 ```bash
 # Edit command behavior
@@ -177,7 +182,8 @@ The system automatically reviews code on:
 - Pull request updates  
 - Push to watched branches
 
-No manual intervention required - Claude will post review comments automatically.
+No manual intervention required - Claude will post review comments
+automatically.
 
 ### Manual Reviews
 
@@ -469,7 +475,9 @@ Track these metrics to measure system effectiveness:
 
 ---
 
-*This implementation guide provides comprehensive instructions for deploying and managing the enhanced Claude Code Review workflow system. For additional support or questions, refer to the monitoring logs and health check outputs.*
+*This implementation guide provides comprehensive instructions for deploying and
+managing the enhanced Claude Code Review workflow system. For additional support
+or questions, refer to the monitoring logs and health check outputs.*
 
 ---
 

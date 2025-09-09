@@ -6,25 +6,39 @@
 
 ## Integration Reference
 
-This instruction file is part of a comprehensive AI agent integration system. For universal guidelines and integration with other AI agents, see:
+This instruction file is part of a comprehensive AI agent integration system.
+For universal guidelines and integration with other AI agents, see:
 
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
-- **Claude Instructions**: `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
-- **Cross-Agent Compatibility**: Follow the universal framework for consistent guidance across all AI tools
+- **Claude Instructions**:
+  `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
+- **Cross-Agent Compatibility**:
+  Follow the universal framework for consistent guidance across all AI tools
 
 ## AI-Powered Code Review Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow system specifically designed for Anthropic API integration projects with complete architecture documentation. This system provides automated code analysis and optimization for applications that integrate with Anthropic's services.
+**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+system specifically designed for Anthropic API integration projects with
+complete architecture documentation. This system provides automated code
+analysis and optimization for applications that integrate with Anthropic's
+services.
 
 ### Enhanced Workflow Features for Anthropic API Projects
 
-When implementing Anthropic API integrations, the AI-Powered Code Review system provides specialized validation for:
+When implementing Anthropic API integrations, the AI-Powered Code Review system
+provides specialized validation for:
 
-- **API Security**: Validates proper ANTHROPIC_API_KEY handling, request authentication, and response validation
-- **Rate Limiting**: Ensures proper implementation of rate limiting and usage monitoring
-- **Error Handling**: Reviews error handling patterns specific to Anthropic API responses
-- **Performance Optimization**: Analyzes streaming implementations, token management, and response caching
-- **Cost Optimization**: Reviews token usage patterns and suggests optimization strategies
+- **API Security**:
+  Validates proper ANTHROPIC_API_KEY handling, request authentication, and
+  response validation
+- **Rate Limiting**:
+  Ensures proper implementation of rate limiting and usage monitoring
+- **Error Handling**:
+  Reviews error handling patterns specific to Anthropic API responses
+- **Performance Optimization**:
+  Analyzes streaming implementations, token management, and response caching
+- **Cost Optimization**:
+  Reviews token usage patterns and suggests optimization strategies
 
 ### Custom Command Integration
 
@@ -129,7 +143,8 @@ export const useAnthropicCompletion = () => {
   const isLoading = ref(false);
   const error = ref<string | null>(null);
   
-  const generateCompletion = async (prompt: string, options?: CompletionOptions) => {
+const generateCompletion = async (prompt: string, options?: CompletionOptions)
+=> {
     isLoading.value = true;
     error.value = null;
     completion.value = '';
@@ -197,7 +212,8 @@ export const useAnthropicCompletion = () => {
 
 Remember: Always prioritize user experience, security,
 and cost efficiency when integrating with the Anthropic API.
-Monitor usage patterns and optimize continuously based on real-world performance data.
+Monitor usage patterns and optimize continuously based on real-world performance
+data.
 
 ## Standard AI Agent Requirements
 
@@ -207,19 +223,27 @@ Monitor usage patterns and optimize continuously based on real-world performance
 
 Every change you make MUST include:
 
-1. **System File Updates**: Update all relevant system files (README.md, configuration files, validation scripts)
-2. **Cross-Reference Updates**: Ensure all documentation references remain accurate after changes
-3. **Template Updates**: Update templates if changes affect their usage or structure
-4. **Integration Updates**: Update AI agent integration guides and instruction files
-5. **Validation**: Run repository validation to ensure all documentation passes compliance checks
+1. **System File Updates**: Update all relevant system files (README.md,
+configuration files, validation scripts)
+2. **Cross-Reference Updates**: Ensure all documentation references remain
+accurate after changes
+3. **Template Updates**: Update templates if changes affect their usage or
+structure
+4. **Integration Updates**: Update AI agent integration guides and instruction
+files
+5. **Validation**: Run repository validation to ensure all documentation passes
+compliance checks
 
 ### Version Bump Evaluation Requirements
 
 For every change, evaluate if a version bump is required:
 
-1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or fundamental API changes
-2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI agent integrations
-3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor optimizations
+1. **Major Version (X.0.0)**: Breaking changes, major architectural shifts, or
+fundamental API changes
+2. **Minor Version (0.X.0)**: New features, significant enhancements, or new AI
+agent integrations
+3. **Patch Version (0.0.X)**: Bug fixes, documentation improvements, or minor
+optimizations
 
 **Process**:
 
@@ -230,9 +254,13 @@ For every change, evaluate if a version bump is required:
 
 ### Quality Standards
 
-- **Zero Breaking Changes**: Maintain backward compatibility unless major version bump
-- **Comprehensive Testing**: Validate all changes with existing validation scripts
+- **Zero Breaking Changes**:
+  Maintain backward compatibility unless major version bump
+- **Comprehensive Testing**:
+  Validate all changes with existing validation scripts
 - **Documentation Currency**: Keep all documentation up-to-date and accurate
-- **Repository Compliance**: Ensure all changes pass repository validation checks
+- **Repository Compliance**:
+  Ensure all changes pass repository validation checks
 
-These requirements ensure consistency across all AI agents and maintain the repository's high quality standards.
+These requirements ensure consistency across all AI agents and maintain the
+repository's high quality standards.

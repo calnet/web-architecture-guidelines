@@ -6,7 +6,8 @@
 
 ## Overview
 
-This directory contains comprehensive templates for all types of project documentation, organized by category for easy access and use.
+This directory contains comprehensive templates for all types of project
+documentation, organized by category for easy access and use.
 
 ## Template Categories
 
@@ -16,8 +17,11 @@ Templates for documenting system architecture and technical decisions.
 
 **Location**: `architecture/`
 
-- **[ADR Template](architecture/adr-template.md)** - Architecture Decision Record template
-- **[System Architecture Document](architecture/system-architecture-document.md)** - Comprehensive system documentation template
+- **[ADR Template](architecture/adr-template.md)** - Architecture Decision
+  Record template
+- **[System Architecture
+  Document](architecture/system-architecture-document.md)** - Comprehensive
+  system documentation template
 
 ### 🔌 API Documentation Templates  
 
@@ -25,7 +29,8 @@ Templates for documenting APIs and services.
 
 **Location**: `api/`
 
-- **[API Specification](api/api-specification.md)** - Complete API documentation template with examples
+- **[API Specification](api/api-specification.md)** - Complete API documentation
+  template with examples
 
 ### 📚 User Guide Templates
 
@@ -33,8 +38,10 @@ Templates for end-user and administrative documentation.
 
 **Location**: `user-guides/`
 
-- **[User Manual](user-guides/user-manual-template.md)** - Comprehensive end-user documentation template
-- **[Admin Manual](user-guides/admin-manual-template.md)** - Complete administrator guide template
+- **[User Manual](user-guides/user-manual-template.md)** - Comprehensive
+  end-user documentation template
+- **[Admin Manual](user-guides/admin-manual-template.md)** - Complete
+  administrator guide template
 
 ### 💻 Development Templates
 
@@ -42,8 +49,10 @@ Templates for development team documentation and processes.
 
 **Location**: `development/`
 
-- **[Setup Guide](development/setup-guide-template.md)** - Development environment setup template  
-- **[Coding Standards](development/coding-standards-template.md)** - Comprehensive coding standards template
+- **[Setup Guide](development/setup-guide-template.md)** - Development
+  environment setup template
+- **[Coding Standards](development/coding-standards-template.md)** -
+  Comprehensive coding standards template
 
 ## How to Use These Templates
 
@@ -60,7 +69,8 @@ Select the template that best matches your documentation needs:
 
 ```bash
 # Copy template to your project
-cp docs/templates/architecture/adr-template.md docs/decisions/adr-001-database-choice.md
+cp docs/templates/architecture/adr-template.md
+docs/decisions/adr-001-database-choice.md
 
 # Customize the content for your specific needs
 # Replace all placeholder text [like this]
@@ -225,7 +235,8 @@ docs/templates/
     └── coding-standards-template.md           # Coding Standards
 ```text
 
-*All templates are actively maintained and regularly updated based on project feedback and industry best practices.*
+*All templates are actively maintained and regularly updated based on project
+feedback and industry best practices.*
 
 ---
 *Last Updated: [Date]*  

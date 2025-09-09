@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide explains how to extend the base architecture guidelines for specific projects while maintaining separation and consistency across your organization.
+This guide explains how to extend the base architecture guidelines for specific
+projects while maintaining separation and consistency across your organization.
 
 ## Architecture Philosophy
 
@@ -10,8 +11,10 @@ This guide explains how to extend the base architecture guidelines for specific 
 
 - **Universal Standards**: Core principles that apply to all projects
 - **Project Extensions**: Specific adaptations for individual project needs
-- **Clean Separation**: Project-specific guidelines reference but don't modify base guidelines
-- **Collaborative Evolution**: Feedback from projects improves base guidelines over time
+- **Clean Separation**:
+  Project-specific guidelines reference but don't modify base guidelines
+- **Collaborative Evolution**:
+  Feedback from projects improves base guidelines over time
 
 ### Integration Strategy
 
@@ -96,7 +99,7 @@ Based on the base guidelines, this project uses:
 ## Deviations from Base Guidelines
 | Guideline | Base Recommendation | Project Choice | Rationale |
 |-----------|-------------------|----------------|-----------|
-| Testing Framework | Jest | Vitest | Faster execution, better TypeScript support |
+| Testing Framework | Jest | Vitest | Faster, better TS support |
 | State Management | Redux Toolkit | Zustand | Simpler for our use case |
 ```text
 
@@ -175,7 +178,8 @@ docs/
   "scripts": {
     "lint": "eslint . --config @org/eslint-config-base",
     "test": "vitest --config ./vitest.config.ts",
-    "test:base-compliance": "npm run lint && npm run test:unit && npm run test:integration",
+    "test:base-compliance": "npm run lint && npm run test:unit && npm run
+    test:integration",
     "docs:templates": "npm run docs:copy-templates && npm run docs:validate"
   },
   "devDependencies": {
@@ -257,7 +261,8 @@ jobs:
 **Stakeholders**: Backend team, DevOps, Product team
 
 ## Decision
-Based on base guidelines recommendation for PostgreSQL, with project-specific extensions:
+Based on base guidelines recommendation for PostgreSQL, with project-specific
+extensions:
 - **Primary Database**: PostgreSQL 14
 - **Extension**: Added read replicas for analytics workload
 - **Extension**: TimescaleDB for time-series metrics data
@@ -370,7 +375,8 @@ Process order checkout with payment integration
 **Last Updated**: 2025-09-06 @ 22:12
 
 ## Prerequisites
-Before starting, complete the [Base Development Environment Setup](../git-commands-and-setup.md).
+Before starting, complete the [Base Development Environment
+Setup](../git-commands-and-setup.md).
 
 ## Base Setup Compliance
 ✅ Node.js 18+ (base requirement)
@@ -425,12 +431,12 @@ After completing base setup:
 ```markdown
 ## Documentation Metadata
 
-| Document | Base Template | Version | Last Updated | Customizations |
-|----------|---------------|---------|--------------|----------------|
-| System Architecture | system-architecture-document.md | v1.0 | 2024-01-15 | Added e-commerce sections |
-| API Specification | api-specification.md | v1.0 | 2024-01-10 | Added payment endpoints |
-| User Manual | user-manual-template.md | v1.0 | 2024-01-05 | Added checkout workflow |
-| Setup Guide | setup-guide-template.md | v1.0 | 2024-01-01 | Added e-commerce services |
+| Document | Base Template | Version | Updated | Customizations |
+|----------|---------------|---------|---------|----------------|
+| System Architecture | system-arch.md | v1.0 | 2024-01-15 | E-commerce |
+| API Specification | api-spec.md | v1.0 | 2024-01-10 | Payment endpoints |
+| User Manual | user-manual.md | v1.0 | 2024-01-05 | Checkout workflow |
+| Setup Guide | setup-guide.md | v1.0 | 2024-01-01 | E-commerce services |
 ```text
 
 **Update Notification Process:**
@@ -642,7 +648,8 @@ export async function generateComplianceReport(
 
 **Version Synchronization:**
 
-The repository includes automated tools to maintain version consistency across all documentation:
+The repository includes automated tools to maintain version consistency across
+all documentation:
 
 ```bash
 # Validate all versions are aligned
@@ -711,7 +718,11 @@ validate-versions:
 - **Knowledge Retention**: Reduced impact of team member turnover
 ```text
 
-This integration guide ensures that projects can effectively utilize the organized template structure while maintaining consistency and contributing to continuous improvement across the organization. The categorized templates make it easier to find the right documentation format and maintain professional standards across all projects.
+This integration guide ensures that projects can effectively utilize the
+organized template structure while maintaining consistency and contributing to
+continuous improvement across the organization. The categorized templates make
+it easier to find the right documentation format and maintain professional
+standards across all projects.
 
 ---
 

@@ -4,11 +4,13 @@
 
 ## Purpose
 
-Conduct comprehensive security vulnerability assessment and compliance validation against established security standards.
+Conduct comprehensive security vulnerability assessment and compliance
+validation against established security standards.
 
 ## Command Behavior
 
-When triggered, this command instructs Claude to perform a thorough security analysis covering:
+When triggered, this command instructs Claude to perform a thorough security
+analysis covering:
 
 ### 1. OWASP Top 10 Compliance
 

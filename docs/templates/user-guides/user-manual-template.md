@@ -263,7 +263,7 @@
 | "Session expired" | Your login session has timed out | Log in again |
 | "Permission denied" | Insufficient access rights | Contact administrator |
 | "Connection timeout" | Network or server issue | Check connection, try again |
-| "Invalid file format" | Uploaded file type not supported | Use supported file formats |
+| "Invalid file format" | File type not supported | Use supported formats |
 
 ### Getting Help
 
@@ -285,24 +285,30 @@
 ### General Questions
 
 **Q: How do I reset my password?**
-A: Click "Forgot Password" on the login page, enter your email address, and follow the instructions in the email you receive.
+A: Click "Forgot Password" on the login page, enter your email address, and
+follow the instructions in the email you receive.
 
 **Q: Can I use this application on mobile devices?**
-A: Yes, the application is fully responsive and works on tablets and smartphones through your mobile browser.
+A: Yes, the application is fully responsive and works on tablets and smartphones
+through your mobile browser.
 
 **Q: Is my data secure?**
-A: Yes, we use enterprise-grade encryption, secure data centers, and follow industry security standards. Your data is protected both in transit and at rest.
+A: Yes, we use enterprise-grade encryption, secure data centers, and follow
+industry security standards. Your data is protected both in transit and at rest.
 
 **Q: How do I delete my account?**
-A: Contact our support team to request account deletion. Note that this action cannot be undone.
+A: Contact our support team to request account deletion. Note that this action
+cannot be undone.
 
 ### Feature-Specific Questions
 
 **Q: How many team members can I invite?**
-A: This depends on your subscription plan. Check Settings > Billing for your current limits.
+A: This depends on your subscription plan. Check Settings > Billing for your
+current limits.
 
 **Q: Can I integrate with external tools?**
-A: Yes, we offer API access and pre-built integrations with popular tools. See Settings > Integrations for available options.
+A: Yes, we offer API access and pre-built integrations with popular tools. See
+Settings > Integrations for available options.
 
 **Q: How do I export my data?**
 A: Go to Settings > Data Export to download your information in various formats.
@@ -313,7 +319,8 @@ A: Go to Settings > Data Export to download your information in various formats.
 A: Go to Settings > Billing and click "Upgrade Plan" to see available options.
 
 **Q: Can I get a refund?**
-A: Refunds are available within 30 days of purchase. Contact support for assistance.
+A: Refunds are available within 30 days of purchase. Contact support for
+assistance.
 
 ## Keyboard Shortcuts
 

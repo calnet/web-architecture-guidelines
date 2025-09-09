@@ -1,6 +1,8 @@
 # Template Compatibility Matrix
 
-This document provides a comprehensive overview of template compatibility, dependencies, and version requirements across the web architecture guidelines repository.
+This document provides a comprehensive overview of template compatibility,
+dependencies, and version requirements across the web architecture guidelines
+repository.
 
 **Generated:** 2025-09-09 19:02:47
 
@@ -40,16 +42,16 @@ The template compatibility matrix helps developers understand:
 
 ## Compatibility Matrix
 
-| Template | Version | Category | Target Audience | Frameworks | Dependencies | Last Updated |
-|----------|---------|----------|-----------------|------------|--------------|--------------|
-| api-specification | 1.3.3 | api |  |  |  | 2025-09-06 @ 22:12 |
-| adr-template |  | architecture |  |  |  |  |
-| system-architecture-document | 1.3.3 | architecture |  |  |  | 2025-09-06 @ 22:12 |
-| coding-standards-template | 1.3.3 | development | Development Team   | React, Express |  | 2025-09-06 @ 22:12 |
-| setup-guide-template | 1.3.3 | development | Developers   | Docker |  | 2025-09-06 @ 22:12 |
-| README | 1.3.3 | templates |  |  | architecture/adr-template, docs/decisions/adr-001-database-choice.md | 2025-09-06 @ 22:12 |
-| admin-manual-template | 1.3.3 | user-guides | System Administrators   |  |  | 2025-09-06 @ 22:12 |
-| user-manual-template | 1.3.3 | user-guides | End Users   |  |  | 2025-09-06 @ 22:12 |
+| Template | Ver | Category | Audience | Frameworks | Updated |
+|----------|-----|----------|----------|------------|---------|
+| api-specification | 1.3.3 | api |  |  | 2025-09-06 |
+| adr-template |  | arch |  |  |  |
+| system-arch-doc | 1.3.3 | arch |  |  | 2025-09-06 |
+| coding-standards | 1.3.3 | dev | Dev Team | React, Express | 2025-09-06 |
+| setup-guide | 1.3.3 | dev | Developers | Docker | 2025-09-06 |
+| README | 1.3.3 | tmpl |  | ADR template | 2025-09-06 |
+| admin-manual | 1.3.3 | user | Admins |  | 2025-09-06 |
+| user-manual | 1.3.3 | user | End Users |  | 2025-09-06 |
 
 ## Framework Compatibility
 
@@ -89,8 +91,10 @@ All templates follow [Semantic Versioning](https://semver.org/):
 
 ### Compatibility Guidelines
 
-1. **Same Major Version**: Templates within the same major version are compatible
-2. **Dependency Versions**: Use templates with matching or compatible dependency versions
+1. **Same Major Version**: Templates within the same major version are
+compatible
+2. **Dependency Versions**: Use templates with matching or compatible dependency
+versions
 3. **Framework Versions**: Ensure framework compatibility when mixing templates
 4. **Update Strategy**: Update dependencies before dependent templates
 

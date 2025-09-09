@@ -4,11 +4,13 @@
 
 ## Purpose
 
-Perform comprehensive architectural analysis focusing on system design, patterns, and compliance with established guidelines.
+Perform comprehensive architectural analysis focusing on system design,
+patterns, and compliance with established guidelines.
 
 ## Command Behavior
 
-When triggered, this command instructs Claude to conduct a thorough architectural review with the following focus areas:
+When triggered, this command instructs Claude to conduct a thorough
+architectural review with the following focus areas:
 
 ### 1. Architectural Pattern Compliance
 

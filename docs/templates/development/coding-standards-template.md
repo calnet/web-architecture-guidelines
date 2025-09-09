@@ -10,7 +10,9 @@
 **Last Updated**: 2025-09-06 @ 22:12
 **Target Audience**: Development Team
 
-This document defines the coding standards and best practices for [Project Name]. Following these standards ensures code consistency, maintainability, and collaboration effectiveness across the development team.
+This document defines the coding standards and best practices for [Project
+Name]. Following these standards ensures code consistency, maintainability, and
+collaboration effectiveness across the development team.
 
 ## Code Style
 
@@ -297,7 +299,8 @@ const users = await userRepository.find({
 
 // Batch operations instead of loops
 const userIds = ["1", "2", "3"];
-const users = await userRepository.findByIds(userIds); // Not: multiple findById calls
+const users = await userRepository.findByIds(userIds); // Not: multiple findById
+calls
 
 // Use transactions for related operations
 await dataSource.transaction(async (manager) => {

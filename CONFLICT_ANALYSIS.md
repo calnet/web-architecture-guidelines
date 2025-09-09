@@ -2,7 +2,8 @@
 
 ## Overview
 
-Analysis of merge conflicts between `copilot/fix-6e0c749c-5f83-43a4-a0d8-b5dd3fc86735`
+Analysis of merge conflicts between
+`copilot/fix-6e0c749c-5f83-43a4-a0d8-b5dd3fc86735`
 and `develop` branch.
 
 ## Conflict Statistics
@@ -18,28 +19,28 @@ and `develop` branch.
 
 | File | Conflict Type | Recommendation |
 |------|---------------|----------------|
-| `.github/workflows/base-compliance.yml` | Content | Use develop (security fixes) |
-| `.github/workflows/claude-code-review.yml` | Content | Use develop (enhanced workflow) |
-| `.github/workflows/sync-templates.yml` | Content | Use develop (latest actions) |
-| `README.md` | Content | Merge both, prioritize develop structure |
+| `.github/workflows/base-compliance.yml` | Content | Use develop |
+| `.github/workflows/claude-code-review.yml` | Content | Use develop |
+| `.github/workflows/sync-templates.yml` | Content | Use develop |
+| `README.md` | Content | Merge both, prioritize develop |
 | `CLAUDE.md` | Content | Use develop (consolidated) |
-| `docs/version-management-guide.md` | Add/Add | Use develop (enhanced system) |
-| `tsconfig.json` | Add/Add | Use develop (better config) |
+| `docs/version-management-guide.md` | Add/Add | Use develop |
+| `tsconfig.json` | Add/Add | Use develop |
 | `package.json` | Content | Merge dependencies |
 
 ### MEDIUM PRIORITY (Documentation & Templates)
 
 | File | Conflict Type | Recommendation |
 |------|---------------|----------------|
-| `docs/ai-agents/anthropic-api-architecture-instructions.md` | Content | Intelligent merge |
-| `docs/ai-agents/chatgpt-architecture-instructions.md` | Content | Intelligent merge |
-| `docs/ai-agents/copilot-architecture-instructions.md` | Content | Intelligent merge |
-| `docs/ai-agents/gemini-architecture-instructions.md` | Content | Intelligent merge |
+| `docs/ai-agents/anthropic-api-architecture-instructions.md` | Content | Merge |
+| `docs/ai-agents/chatgpt-architecture-instructions.md` | Content | Merge |
+| `docs/ai-agents/copilot-architecture-instructions.md` | Content | Merge |
+| `docs/ai-agents/gemini-architecture-instructions.md` | Content | Merge |
 | `docs/templates/README.md` | Content | Use develop |
 | `docs/templates/api/api-specification.md` | Content | Use develop |
 | `docs/templates/architecture/adr-template.md` | Content | Use develop |
-| `docs/templates/architecture/system-architecture-document.md` | Content | Use develop |
-| `docs/templates/development/coding-standards-template.md` | Content | Use develop |
+| `docs/templates/architecture/system-arch.md` | Content | Use develop |
+| `docs/templates/development/coding-standards.md` | Content | Use develop |
 | `docs/templates/development/setup-guide-template.md` | Content | Use develop |
 | `docs/templates/user-guides/user-manual-template.md` | Content | Use develop |
 | `docs/architecture/system-architecture.md` | Content | Merge improvements |
@@ -50,16 +51,16 @@ and `develop` branch.
 
 | File | Conflict Type | Recommendation |
 |------|---------------|----------------|
-| `docs-site/public/README.md` | Content | Use current branch |
-| `docs-site/public/git-commands-and-setup.md` | Content | Use current branch |
-| `docs-site/public/scripts/validate-docs-structure.sh` | Content | Use current branch |
-| `docs-site/src/components/DocumentationPage.tsx` | Content | Use current branch |
+| `docs-site/public/README.md` | Content | Use current |
+| `docs-site/public/git-commands-and-setup.md` | Content | Use current |
+| `docs-site/public/scripts/validate-docs-structure.sh` | Content | Use current |
+| `docs-site/src/components/DocumentationPage.tsx` | Content | Use current |
 | `docs/.template-version` | Content | Use develop |
 | `BROKEN_LINKS_FIXED.md` | Content | Merge |
 | `LINK_FIXES_SUMMARY.md` | Content | Merge |
 | `git-commands-and-setup.md` | Content | Merge |
 | `scripts/validate-docs-structure.sh` | Content | Use develop |
-| `docs/project-integration-guide.md` | Content | Merge improvements |
+| `docs/project-integration-guide.md` | Content | Merge |
 
 ## Key Decision Rationale
 

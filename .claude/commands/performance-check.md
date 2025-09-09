@@ -4,11 +4,13 @@
 
 ## Purpose
 
-Analyze application performance characteristics and identify optimization opportunities across all layers of the system.
+Analyze application performance characteristics and identify optimization
+opportunities across all layers of the system.
 
 ## Command Behavior
 
-When triggered, this command instructs Claude to conduct comprehensive performance analysis:
+When triggered, this command instructs Claude to conduct comprehensive
+performance analysis:
 
 ### 1. Frontend Performance
 
@@ -121,13 +123,15 @@ When triggered, this command instructs Claude to conduct comprehensive performan
 ### General Performance Review
 
 ```text
-/performance-check "Analyze overall application performance and identify bottlenecks"
+/performance-check "Analyze overall application performance and identify
+bottlenecks"
 ```text
 
 ### Database Performance Focus
 
 ```text
-/performance-check "Review database query performance and optimization opportunities"
+/performance-check "Review database query performance and optimization
+opportunities"
 ```text
 
 ### Frontend Performance Analysis

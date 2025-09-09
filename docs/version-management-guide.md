@@ -1,16 +1,22 @@
 # Version Management Guide
 
-This document provides comprehensive guidance on the repository's centralized version management system.
+This document provides comprehensive guidance on the repository's centralized
+version management system.
 
 ## Overview
 
-The Web Architecture Guidelines repository uses a centralized version management system to ensure consistency across all documentation, templates, and configuration files. The system maintains synchronization between multiple package.json files, documentation sites, template versions, and metadata across the entire repository.
+The Web Architecture Guidelines repository uses a centralized version management
+system to ensure consistency across all documentation, templates, and
+configuration files. The system maintains synchronization between multiple
+package.json files, documentation sites, template versions, and metadata across
+the entire repository.
 
 ## Version Management Structure
 
 ### Source of Truth
 
-- **Root VERSION file**: Contains the authoritative version number for the entire repository
+- **Root VERSION file**:
+  Contains the authoritative version number for the entire repository
 - Located at: `./VERSION`
 - Format: Semantic versioning (e.g., `1.3.3`)
 
@@ -21,7 +27,8 @@ The Web Architecture Guidelines repository uses a centralized version management
 - `package.json` - Main repository package file
 - `examples/package.json` - Example project configuration
 - `docs-site/package.json` - Documentation site package file
-- `docs-site/public/examples/package.json` - Public example project configuration
+- `docs-site/public/examples/package.json` - Public example project
+  configuration
 
 #### Template Version Files
 
@@ -47,7 +54,8 @@ All `.md` files in:
 #### AI Agent Instruction Files (Optional)
 
 - Files in `docs/ai-agents/` and `docs-site/public/docs/ai-agents/`
-- Only synchronized if they contain explicit version markers (e.g., "Version: 1.3.3")
+- Only synchronized if they contain explicit version markers (e.g., "Version:
+  1.3.3")
 
 ## Commands
 
@@ -182,7 +190,8 @@ Version: 1.3.3
 #### Missing Files
 
 **Problem**: Warning messages about missing version files
-**Solution**: Files may not exist in all environments (e.g., docs-site may not be present in all setups)
+**Solution**: Files may not exist in all environments (e.g., docs-site may not
+be present in all setups)
 
 #### Permission Errors
 
@@ -200,7 +209,8 @@ chmod +x ./scripts/list-version-files.sh
 - **Idempotent**: Safe to run multiple times
 - **Non-destructive**: Only updates version numbers, preserves all other content
 - **Validation**: Comprehensive checking before and after operations
-- **Rollback**: Version changes can be reverted by updating VERSION file and re-syncing
+- **Rollback**:
+  Version changes can be reverted by updating VERSION file and re-syncing
 
 ## Troubleshooting
 
@@ -229,7 +239,8 @@ chmod +x ./scripts/list-version-files.sh
 
 #### Exclude Specific Files
 
-To temporarily exclude files from version management, modify the scripts to skip certain patterns:
+To temporarily exclude files from version management, modify the scripts to skip
+certain patterns:
 
 ```bash
 # In sync-versions.sh, comment out specific file patterns
@@ -242,13 +253,15 @@ For AI agent instructions or other files, add custom patterns to the scripts:
 
 ```bash
 # In sync-versions.sh, add new sed patterns
-sed -i "s/Custom Version: [0-9][0-9.]*[0-9]/Custom Version: $MAIN_VERSION/g" "$file"
+sed -i "s/Custom Version: [0-9][0-9.]*[0-9]/Custom Version: $MAIN_VERSION/g"
+"$file"
 ```text
 
 ## Best Practices
 
 1. **Always validate after sync**: Run `versions:validate` after `versions:sync`
-2. **Commit version changes separately**: Keep version updates in dedicated commits
+2. **Commit version changes separately**: Keep version updates in dedicated
+commits
 3. **Use conventional commit messages**: `chore: update version to X.Y.Z`
 4. **Test in development**: Validate version management in development branches
 5. **Monitor CI/CD**: Ensure version validation passes in automated workflows
@@ -260,7 +273,8 @@ The version management system integrates with:
 - **Git workflows**: Pre-commit hooks can include version validation
 - **Release processes**: Automated version bumping during releases
 - **Documentation generation**: Template versions for generated documentation
-- **Dependency management**: Ensuring consistency across multiple package.json files
+- **Dependency management**:
+  Ensuring consistency across multiple package.json files
 
 ## Maintenance
 
@@ -272,7 +286,8 @@ The version management system integrates with:
 
 ### Script Maintenance
 
-The version management scripts are located in `./scripts/` and should be updated when:
+The version management scripts are located in `./scripts/` and should be updated
+when:
 
 - New version-managed files are added
 - File path structures change
@@ -280,7 +295,8 @@ The version management scripts are located in `./scripts/` and should be updated
 
 ---
 
-For additional support, refer to the main project documentation or create an issue in the repository.
+For additional support, refer to the main project documentation or create an
+issue in the repository.
 
 ---
 

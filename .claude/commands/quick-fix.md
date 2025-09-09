@@ -4,11 +4,13 @@
 
 ## Purpose
 
-Provide immediate, actionable fixes for common code quality, formatting, and minor functionality issues.
+Provide immediate, actionable fixes for common code quality, formatting, and
+minor functionality issues.
 
 ## Command Behavior
 
-When triggered, this command instructs Claude to identify and provide quick fixes for:
+When triggered, this command instructs Claude to identify and provide quick
+fixes for:
 
 ### 1. Code Quality Issues
 
