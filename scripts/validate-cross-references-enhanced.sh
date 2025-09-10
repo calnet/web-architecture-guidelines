@@ -114,10 +114,31 @@ log "📋 Validating template references..."
 
 # Find references to templates and ensure they exist
 find docs -name "*.md" -type f | while read -r file; do
-    # Look for template references like docs/templates/...
-    grep -oE 'docs/templates/[^)\s]*' "$file" 2>/dev/null | while read -r template_ref; do
-        if [[ ! -f "$template_ref" ]]; then
+    # Look for template references in markdown links [text](docs/templates/...)
+    grep -oE '\[([^\]]*)\]\(([^)]*docs/templates/[^)]*)\)' "$file" 2>/dev/null | while read -r link; do
+        # Extract the path from the markdown link
+        template_ref=$(echo "$link" | sed -n 's/.*](\([^)]*\)).*/\1/p')
+        if [[ -n "$template_ref" && ! -f "$template_ref" && ! -d "$template_ref" ]]; then
             error "Missing template referenced in $file: $template_ref"
+        fi
+    done
+    
+    # Also check for direct template path references (without markdown links)
+    grep -oE 'docs/templates/[a-zA-Z0-9/_.-]*' "$file" 2>/dev/null | while read -r template_ref; do
+        # Skip if it's part of a markdown link (already handled above)
+        if ! grep -q "\]($template_ref)" "$file" 2>/dev/null; then
+            # Only report if the file/directory doesn't exist
+            if [[ ! -f "$template_ref" && ! -d "$template_ref" ]]; then
+                # Skip common directory patterns that are expected to exist
+                case "$template_ref" in
+                    "docs/templates/"|"docs/templates")
+                        # These are directory references, acceptable
+                        ;;
+                    *)
+                        error "Missing template referenced in $file: $template_ref"
+                        ;;
+                esac
+            fi
         fi
     done
 done
@@ -143,10 +164,31 @@ log "💻 Validating code example references..."
 
 # Find code example references and ensure they exist
 find docs -name "*.md" -type f | while read -r file; do
-    # Look for example references
-    grep -oE 'examples/[^)\s]*' "$file" 2>/dev/null | while read -r example_ref; do
-        if [[ ! -f "$example_ref" ]] && [[ ! -d "$example_ref" ]]; then
+    # Look for example references in markdown links [text](examples/...)
+    grep -oE '\[([^\]]*)\]\(([^)]*examples/[^)]*)\)' "$file" 2>/dev/null | while read -r link; do
+        # Extract the path from the markdown link
+        example_ref=$(echo "$link" | sed -n 's/.*](\([^)]*\)).*/\1/p')
+        if [[ -n "$example_ref" && ! -f "$example_ref" && ! -d "$example_ref" ]]; then
             warn "Missing example referenced in $file: $example_ref"
+        fi
+    done
+    
+    # Also check for direct example path references (without markdown links)
+    grep -oE 'examples/[a-zA-Z0-9/_.-]*' "$file" 2>/dev/null | while read -r example_ref; do
+        # Skip if it's part of a markdown link (already handled above)  
+        if ! grep -q "\]($example_ref)" "$file" 2>/dev/null; then
+            # Only report if the file/directory doesn't exist
+            if [[ ! -f "$example_ref" && ! -d "$example_ref" ]]; then
+                # Skip common directory patterns that are expected to exist
+                case "$example_ref" in
+                    "examples/"|"examples")
+                        # These are directory references, acceptable
+                        ;;
+                    *)
+                        warn "Missing example referenced in $file: $example_ref"
+                        ;;
+                esac
+            fi
         fi
     done
 done

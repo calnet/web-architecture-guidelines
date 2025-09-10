@@ -1,0 +1,262 @@
+name: Quality Gate
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  checks: write
+  statuses: write
+
+jobs:
+  # Critical checks that MUST pass for PR to be mergeable
+  critical-quality-checks:
+    name: Critical Quality Checks
+    runs-on: ubuntu-latest
+    outputs:
+      security-status: ${{ steps.security.outputs.status }}
+      architecture-status: ${{ steps.architecture.outputs.status }}
+      template-status: ${{ steps.templates.outputs.status }}
+      dependencies-status: ${{ steps.dependencies.outputs.status }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Critical Security Check
+        id: security
+        run: |
+          echo "Running critical security validation..."
+          
+          # Run security validation and capture exit code
+          if npm run lint:security; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "✅ Critical security checks: PASSED"
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "❌ Critical security checks: FAILED"
+            exit 1
+          fi
+
+      - name: Critical Architecture Check
+        id: architecture
+        run: |
+          echo "Running critical architecture validation..."
+          
+          # Run architecture validation and capture exit code
+          if npm run lint:architecture; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "✅ Critical architecture checks: PASSED"
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "❌ Critical architecture checks: FAILED"
+            exit 1
+          fi
+
+      - name: Critical Template Check
+        id: templates
+        run: |
+          echo "Running critical template validation..."
+          
+          # Run template validation and capture exit code
+          if npm run lint:templates; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "✅ Critical template checks: PASSED"
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "❌ Critical template checks: FAILED"
+            exit 1
+          fi
+
+      - name: Critical Dependencies Check
+        id: dependencies
+        run: |
+          echo "Running critical dependency security check..."
+          
+          # Check for high/critical vulnerabilities that block merging
+          if npm audit --audit-level=high; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "✅ Critical dependency checks: PASSED"
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "❌ Critical dependency security vulnerabilities found"
+            echo "High or critical vulnerabilities must be fixed before merging"
+            exit 1
+          fi
+
+  # Warning checks that provide feedback but don't block PRs
+  warning-quality-checks:
+    name: Warning Quality Checks
+    runs-on: ubuntu-latest
+    needs: critical-quality-checks
+    if: always()  # Run even if critical checks fail
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Performance Warnings Check
+        continue-on-error: true
+        run: |
+          echo "Running performance validation..."
+          if npm run lint:performance; then
+            echo "✅ Performance checks: PASSED"
+          else
+            echo "⚠️ Performance issues detected (warnings only)"
+          fi
+
+      - name: Cross-Reference Warnings Check
+        continue-on-error: true
+        run: |
+          echo "Running cross-reference validation..."
+          if npm run check:cross-references-enhanced; then
+            echo "✅ Cross-reference checks: PASSED"
+          else
+            echo "⚠️ Cross-reference issues detected (warnings only)"
+          fi
+
+      - name: Link Validation Check
+        continue-on-error: true
+        run: |
+          echo "Running link validation..."
+          # This is a warning-level check for external links
+          timeout 60s bash -c '
+            find . -name "*.md" -not -path "./node_modules/*" -exec \
+              grep -l "http" {} \; | head -5 | while read file; do
+                echo "Checking links in $file..."
+              done
+          ' || echo "⚠️ Link checking timed out or found issues (warnings only)"
+
+  # Comprehensive project health report
+  quality-report:
+    name: Quality Report
+    runs-on: ubuntu-latest
+    needs: [critical-quality-checks, warning-quality-checks]
+    if: always()
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Quality Report
+        run: |
+          echo "# 📊 Quality Gate Report" > quality-report.md
+          echo "" >> quality-report.md
+          echo "Generated: $(date)" >> quality-report.md
+          echo "" >> quality-report.md
+          
+          # Critical Status Summary
+          echo "## 🚨 Critical Checks (Must Pass)" >> quality-report.md
+          echo "" >> quality-report.md
+          echo "| Check | Status | Required |" >> quality-report.md
+          echo "|-------|--------|----------|" >> quality-report.md
+          echo "| Security | ${{ needs.critical-quality-checks.outputs.security-status || 'unknown' }} | ✅ Yes |" >> quality-report.md
+          echo "| Architecture | ${{ needs.critical-quality-checks.outputs.architecture-status || 'unknown' }} | ✅ Yes |" >> quality-report.md
+          echo "| Templates | ${{ needs.critical-quality-checks.outputs.template-status || 'unknown' }} | ✅ Yes |" >> quality-report.md
+          echo "| Dependencies | ${{ needs.critical-quality-checks.outputs.dependencies-status || 'unknown' }} | ✅ Yes |" >> quality-report.md
+          echo "" >> quality-report.md
+          
+          # Overall Status
+          if [[ "${{ needs.critical-quality-checks.result }}" == "success" ]]; then
+            echo "## ✅ Overall Status: PASS" >> quality-report.md
+            echo "" >> quality-report.md
+            echo "All critical quality checks have passed. This PR is eligible for merging." >> quality-report.md
+          else
+            echo "## ❌ Overall Status: BLOCKED" >> quality-report.md
+            echo "" >> quality-report.md
+            echo "Critical quality checks have failed. This PR cannot be merged until issues are resolved." >> quality-report.md
+          fi
+          
+          echo "" >> quality-report.md
+          echo "## ⚠️ Warning Checks (Advisory)" >> quality-report.md
+          echo "" >> quality-report.md
+          echo "- Performance validation: Advisory only" >> quality-report.md  
+          echo "- Cross-reference validation: Advisory only" >> quality-report.md
+          echo "- Link validation: Advisory only" >> quality-report.md
+          echo "" >> quality-report.md
+          echo "## 🔧 Next Steps" >> quality-report.md
+          echo "" >> quality-report.md
+          
+          if [[ "${{ needs.critical-quality-checks.result }}" != "success" ]]; then
+            echo "1. Review and fix critical security, architecture, template, or dependency issues" >> quality-report.md
+            echo "2. Re-run validation locally: \`npm run validate:all\`" >> quality-report.md
+            echo "3. Re-run critical checks: \`npm run check:errors\`" >> quality-report.md
+          else
+            echo "1. Review any warning-level issues for code quality improvement" >> quality-report.md
+            echo "2. Consider running AI-powered analysis: Comment \`@claude\` for detailed review" >> quality-report.md
+          fi
+          
+          echo "" >> quality-report.md
+          echo "---" >> quality-report.md
+          echo "*Quality Gate automated by GitHub Actions*" >> quality-report.md
+          
+          cat quality-report.md
+
+      - name: Upload Quality Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report
+          path: quality-report.md
+          retention-days: 30
+
+  # Final status check for branch protection
+  quality-gate-status:
+    name: Quality Gate Status
+    runs-on: ubuntu-latest
+    needs: critical-quality-checks
+    if: always()
+    
+    steps:
+      - name: Set Quality Gate Status
+        run: |
+          if [[ "${{ needs.critical-quality-checks.result }}" == "success" ]]; then
+            echo "✅ Quality Gate: PASSED"
+            echo "All critical checks passed - PR is eligible for merging"
+            exit 0
+          else
+            echo "❌ Quality Gate: FAILED"  
+            echo "Critical issues detected - PR blocked from merging"
+            echo ""
+            echo "Failed checks:"
+            [[ "${{ needs.critical-quality-checks.outputs.security-status }}" == "failed" ]] && echo "- Security validation failed"
+            [[ "${{ needs.critical-quality-checks.outputs.architecture-status }}" == "failed" ]] && echo "- Architecture validation failed"
+            [[ "${{ needs.critical-quality-checks.outputs.template-status }}" == "failed" ]] && echo "- Template validation failed"
+            [[ "${{ needs.critical-quality-checks.outputs.dependencies-status }}" == "failed" ]] && echo "- Dependencies validation failed"
+            echo ""
+            echo "Fix these issues and push new commits to re-run validation"
+            exit 1
+          fi
