@@ -260,13 +260,18 @@ The repository includes comprehensive validation tools and the new AI-Powered
 Code Review system:
 
 ```bash
+# Quality Gate System (Comprehensive Error Prevention)
+npm run check:critical         # Critical checks that block PRs
+npm run check:errors:strict    # Enhanced error checking with proper exit codes
+npm run validate:all          # Complete validation suite
+
 # AI-Powered Code Review system validation
 npm run next-steps:all          # Complete system validation
 npm run workflow:test          # Test workflow system
 npm run workflow:monitor       # Monitor performance
 
-# Traditional validation (still available)
-npm run check:errors           # Comprehensive project error check
+# Individual validation checks
+npm run check:errors           # Traditional project error check
 npm run lint:templates         # Validate template structure
 npm run lint:architecture      # Check architecture compliance
 npm run lint:security          # Security compliance check
@@ -277,8 +282,9 @@ npm run check:comprehensive    # Full validation with TypeScript
 
 ### Validation Coverage
 
+- ✅ **Quality Gate System** - Comprehensive error prevention with blocking critical checks
 - ✅ **Enhanced Claude Workflow System** - Automated code review capabilities
-- ✅ **GitHub Actions Workflows** - claude-code-review.yml and
+- ✅ **GitHub Actions Workflows** - claude-code-review.yml, quality-gate.yml and
   advanced-architecture-review.yml
 - ✅ **Custom Claude Commands** - 5 specialized analysis commands
 - ✅ **Version Management** - Automated version synchronization across 77+ files
@@ -292,7 +298,8 @@ npm run check:comprehensive    # Full validation with TypeScript
 - ✅ Dependency security audit
 - ✅ File system integrity
 
-See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for traditional validation
+See [ERROR_CHECK_REPORT.md](ERROR_CHECK_REPORT.md) for traditional validation,
+[Quality Gate Setup Guide](docs/quality-gate-setup.md) for comprehensive error prevention,
 and [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for AI-Powered Code
 Review workflow documentation.
 
@@ -300,10 +307,27 @@ Review workflow documentation.
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Make your changes and add tests
-4. Run `npm run check:errors` to validate your changes
-5. Commit with conventional commit messages
-6. Submit a pull request
+3. Make your changes and ensure they pass quality gates
+4. **Run critical checks**: `npm run check:critical`
+5. **Run comprehensive validation**: `npm run validate:all`  
+6. Commit with conventional commit messages
+7. Submit a pull request
+
+### Quality Gate Requirements
+
+All PRs must pass the following **critical checks** to be merged:
+- ✅ Security validation (`npm run lint:security`)
+- ✅ Architecture compliance (`npm run lint:architecture`)  
+- ✅ Template validation (`npm run lint:templates`)
+- ✅ Dependency security (high/critical vulnerabilities)
+- ✅ File system integrity
+
+**Warning checks** provide feedback but don't block merging:
+- ⚠️ Performance optimization recommendations
+- ⚠️ Cross-reference accuracy
+- ⚠️ External link accessibility
+
+See [Quality Gate Setup Guide](docs/quality-gate-setup.md) for detailed information.
 
 ### Commit Message Format
 
