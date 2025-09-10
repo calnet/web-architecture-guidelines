@@ -85,7 +85,7 @@ git fetch origin develop
 
 # 3. Create merge preparation branch
 git checkout -b merge-prep-develop
-```
+```text
 
 ### Phase 2: Conflict Resolution Priority Matrix
 
@@ -163,7 +163,7 @@ git merge merge-prep-develop --no-ff
 
 # 6. Clean up
 git branch -d merge-prep-develop
-```
+```text
 
 ## Risk Mitigation
 

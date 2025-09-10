@@ -11,6 +11,7 @@ workflows to function properly.
 API for automated code analysis and review generation.
 
 **How to obtain:**
+
 1. Visit [Anthropic Console](https://console.anthropic.com/)
 2. Sign up/log in to your account
 3. Navigate to API Keys section
@@ -18,6 +19,7 @@ API for automated code analysis and review generation.
 5. Copy the generated key (starts with `sk-ant-`)
 
 **How to configure:**
+
 1. Go to repository **Settings** → **Secrets and variables** → **Actions**
 2. Click **"New repository secret"**
 3. Name: `CLAUDE_API_KEY`
@@ -41,10 +43,12 @@ workflows. No manual configuration required.
 ### claude-code-review.yml
 
 **Required secrets:**
+
 - `CLAUDE_API_KEY` - For Anthropic API access
 - `GITHUB_TOKEN` - Automatically provided
 
 **Configuration status check:**
+
 - ✅ `GITHUB_TOKEN` - Auto-configured
 - ❌ `CLAUDE_API_KEY` - Requires manual setup
 
@@ -73,7 +77,7 @@ permissions:
   statuses: write
   actions: read
   id-token: write
-```
+```text
 
 ## Security Best Practices
 
@@ -104,12 +108,14 @@ After configuring secrets, verify the setup:
 ## API Usage and Costs
 
 **Anthropic API Usage:**
+
 - Code review workflows consume API tokens
 - Usage depends on code change size and complexity
 - Monitor usage in Anthropic Console
 - Consider rate limiting for high-volume repositories
 
 **Estimated costs:**
+
 - Small PRs (< 100 lines): ~$0.01-0.05
 - Medium PRs (100-500 lines): ~$0.05-0.20
 - Large PRs (> 500 lines): ~$0.20-1.00

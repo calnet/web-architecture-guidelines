@@ -16,18 +16,24 @@ Added the following documents to the documentation site sidebar and routing:
 #### Added to Getting Started Section
 
 - **Claude Guide** (`/CLAUDE.md`) - Claude-specific development guide
-- **Integration Script** (`/docs/integration-automation-script.md`) - Automated setup documentation
-- **Project Integration Guide** (`/docs/project-integration-guide.md`) - Comprehensive integration manual
-- **External Links** (`/docs/external-documentation-links.md`) - External resource references
+- **Integration Script** (`/docs/integration-automation-script.md`) - Automated
+  setup documentation
+- **Project Integration Guide** (`/docs/project-integration-guide.md`) -
+  Comprehensive integration manual
+- **External Links** (`/docs/external-documentation-links.md`) - External
+  resource references
 
 #### Added to Templates Section
 
-- **Admin Manual Template** (`/docs/templates/user-guides/admin-manual-template.md`) - Administrator documentation template
+- **Admin Manual Template**
+  (`/docs/templates/user-guides/admin-manual-template.md`) - Administrator
+  documentation template
 
 ### 3. **Documentation Site File Path Issues**
 
 - **Issue**: DocumentationPage component had incorrect file paths
-- **Fix**: Updated all file paths from relative (`../docs/`) to absolute (`/docs/`)
+- **Fix**:
+  Updated all file paths from relative (`../docs/`) to absolute (`/docs/`)
 - **Status**: ✅ Fixed
 
 ### 4. **Missing Navigation Routes**
@@ -86,7 +92,7 @@ Added the following documents to the documentation site sidebar and routing:
 
 ### Improved Navigation Structure
 
-```
+```text
 Getting Started
 ├── README
 ├── Git Commands
@@ -123,7 +129,7 @@ Examples
 Scripts & Tools
 ├── Validation Scripts
 └── Template Tools
-```
+```text
 
 ### Fixed File Serving
 
@@ -169,4 +175,5 @@ The documentation site is now fully functional with:
 - **Complete accessibility** to all repository content
 - **Professional presentation** of all guidelines and templates
 
-All broken links have been fixed and all missing navigation routes have been added to the documentation site.
+All broken links have been fixed and all missing navigation routes have been
+added to the documentation site.

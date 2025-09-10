@@ -3,6 +3,7 @@
 ## Repository Initialization Options
 
 ### Option 1: New Repository from Scratch
+
 ```bash
 # Create new directory and initialize git
 mkdir web-architecture-guidelines
@@ -16,13 +17,15 @@ mkdir -p docs/templates
 mkdir -p docs/examples
 
 # Add remote origin (replace with your repository URL)
-git remote add origin https://github.com/yourusername/web-architecture-guidelines.git
+git remote add origin
+https://github.com/yourusername/web-architecture-guidelines.git
 
 # Set default branch to main
 git branch -M main
-```
+```text
 
 ### Option 2: Clone Existing Repository
+
 ```bash
 # Clone your existing repository
 git clone https://github.com/yourusername/web-architecture-guidelines.git
@@ -33,9 +36,10 @@ mkdir -p docs/ai-agents/claude
 mkdir -p docs/guidelines
 mkdir -p docs/templates
 mkdir -p docs/examples
-```
+```text
 
 ### Option 3: Add to Existing Repository
+
 ```bash
 # Navigate to your existing repository
 cd your-existing-repo
@@ -48,13 +52,15 @@ mkdir -p docs/examples
 
 # Create feature branch for documentation
 git checkout -b feature/architecture-guidelines
-```
+```text
 
 ## Complete File Creation and Commit Strategy
 
-All files have been saved to your local filesystem. Now you can commit them systematically:
+All files have been saved to your local filesystem. Now you can commit them
+systematically:
 
 ### Phase 1: Initial Repository Setup
+
 ```bash
 # Navigate to the directory
 cd C:\Users\calnet\Documents\Projects\Claude\web-architecture-guidelines
@@ -74,22 +80,27 @@ Thumbs.db" > .gitignore
 git add .
 
 # Initial commit
-git commit -m "feat: initial repository setup with comprehensive architecture guidelines
+git commit -m "feat: initial repository setup with comprehensive architecture
+guidelines
 
-- Complete AI agent instruction set (Claude V1/V2, ChatGPT, Copilot, Gemini, Anthropic API)
+- Complete AI agent instruction set (Claude V1/V2, ChatGPT, Copilot, Gemini,
+  Anthropic API)
 - Comprehensive documentation templates for all project types
 - Project integration guide with extension patterns
 - External documentation links and references
 - Repository structure and configuration files
 
-This establishes a complete foundation for web application architecture guidance."
+This establishes a complete foundation for web application architecture
+guidance."
 
 # Add remote and push (replace with your repository URL)
-git remote add origin https://github.com/yourusername/web-architecture-guidelines.git
+git remote add origin
+https://github.com/yourusername/web-architecture-guidelines.git
 git push -u origin main
-```
+```text
 
 ### Phase 2: Create Release Tags
+
 ```bash
 # Tag the initial release
 git tag -a v1.0.0 -m "Initial release: Comprehensive Web Architecture Guidelines
@@ -101,13 +112,15 @@ Features:
 - External documentation links curated for modern web development
 - GitHub workflows for quality assurance and automation
 
-This release provides a complete foundation for building enterprise-grade web applications with AI assistance."
+This release provides a complete foundation for building enterprise-grade web
+applications with AI assistance."
 
 # Push the tag
 git push origin v1.0.0
-```
+```text
 
 ### Phase 3: GitHub Configuration (Optional)
+
 ```bash
 # Create GitHub configuration files
 mkdir -p .github/workflows
@@ -155,12 +168,16 @@ jobs:
       - name: Validate directory structure
         run: |
           # Check required directories exist
-          test -d docs/ai-agents || (echo "Missing docs/ai-agents directory" && exit 1)
-          test -d docs/templates || (echo "Missing docs/templates directory" && exit 1)
+          test -d docs/ai-agents || (echo "Missing docs/ai-agents directory" &&
+          exit 1)
+          test -d docs/templates || (echo "Missing docs/templates directory" &&
+          exit 1)
           
           # Check required files exist
-          test -f docs/external-documentation-links.md || (echo "Missing external documentation links" && exit 1)
-          test -f docs/project-integration-guide.md || (echo "Missing project integration guide" && exit 1)
+          test -f docs/external-documentation-links.md || (echo "Missing
+          external documentation links" && exit 1)
+          test -f docs/project-integration-guide.md || (echo "Missing project
+          integration guide" && exit 1)
           
           echo "✅ All required files and directories exist"
 EOF
@@ -229,7 +246,8 @@ Brief description of the changes in this PR.
 ## Type of Change
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Breaking change (fix or feature that would cause existing functionality to
+  not work as expected)
 - [ ] Documentation update
 
 ## Areas Modified
@@ -269,13 +287,13 @@ git commit -m "ci: add GitHub workflows and templates
 Purpose: Ensure documentation quality and standardize contributions"
 
 git push
-```
+```text
 
 ## Repository Structure Verification
 
 After setting up, your repository should have this complete structure:
 
-```
+```text
 web-architecture-guidelines/
 ├── README.md
 ├── .gitignore
@@ -299,21 +317,25 @@ web-architecture-guidelines/
     │   ├── bug_report.md
     │   └── feature_request.md
     └── PULL_REQUEST_TEMPLATE.md
-```
+```text
 
 ## Usage Instructions
 
 ### For Development Teams
+
 1. **Reference the guidelines**: Use as organizational standards
 2. **Extend for projects**: Follow the integration guide
 3. **Contribute improvements**: Submit PRs with lessons learned
 
 ### For AI Agent Integration
-1. **Copy instruction files**: Use appropriate agent instructions as system prompts
+
+1. **Copy instruction files**: Use appropriate agent instructions as system
+prompts
 2. **Customize for context**: Adapt based on specific project needs
 3. **Update regularly**: Keep synchronized with guideline updates
 
 ### For Documentation
+
 1. **Use templates**: Copy and customize for your projects
 2. **Follow standards**: Maintain consistency across projects
 3. **Reference external links**: Use curated resources for deep dives
@@ -321,6 +343,7 @@ web-architecture-guidelines/
 ## Maintenance
 
 ### Regular Updates
+
 ```bash
 # Monthly: Update external links
 # Quarterly: Review AI agent instructions for new capabilities
@@ -338,9 +361,10 @@ git commit -m "docs: update external documentation links for Q4 2024
 - Added emerging technology references"
 git push origin update/external-links-2024-q4
 # Create PR for review
-```
+```text
 
 ### Version Management
+
 ```bash
 # For minor updates (new content, improvements)
 git tag -a v1.1.0 -m "feat: enhanced AI agent instructions
@@ -364,6 +388,8 @@ NEW FEATURES:
 - Comprehensive cost optimization strategies"
 
 git push origin v1.1.0
-```
+```text
 
-This repository now provides a complete, professional foundation for web application architecture guidance that can evolve with your organization's needs and industry best practices.
+This repository now provides a complete, professional foundation for web
+application architecture guidance that can evolve with your organization's needs
+and industry best practices.

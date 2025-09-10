@@ -1,12 +1,15 @@
 # Template Compatibility Matrix
 
-This document provides a comprehensive overview of template compatibility, dependencies, and version requirements across the web architecture guidelines repository.
+This document provides a comprehensive overview of template compatibility,
+dependencies, and version requirements across the web architecture guidelines
+repository.
 
 **Generated:** 2025-09-09 19:02:47
 
 ## Overview
 
 The template compatibility matrix helps developers understand:
+
 - Template version dependencies
 - Framework compatibility
 - Inter-template relationships
@@ -16,12 +19,12 @@ The template compatibility matrix helps developers understand:
 
 ### api
 
-- **api-specification** (v1.3.3) - 
+- **api-specification** (v1.3.3) -
 
 ### architecture
 
-- **system-architecture-document** (v1.3.3) - 
-- **adr-template** (v) - 
+- **system-architecture-document** (v1.3.3) -
+- **adr-template** (v) -
 
 ### development
 
@@ -30,26 +33,25 @@ The template compatibility matrix helps developers understand:
 
 ### templates
 
-- **README** (v1.3.3) - 
+- **README** (v1.3.3) -
 
 ### user-guides
 
 - **admin-manual-template** (v1.3.3) - System Administrators  
 - **user-manual-template** (v1.3.3) - End Users  
 
-
 ## Compatibility Matrix
 
-| Template | Version | Category | Target Audience | Frameworks | Dependencies | Last Updated |
-|----------|---------|----------|-----------------|------------|--------------|--------------|
-| api-specification | 1.3.3 | api |  |  |  | 2025-09-06 @ 22:12 |
-| adr-template |  | architecture |  |  |  |  |
-| system-architecture-document | 1.3.3 | architecture |  |  |  | 2025-09-06 @ 22:12 |
-| coding-standards-template | 1.3.3 | development | Development Team   | React, Express |  | 2025-09-06 @ 22:12 |
-| setup-guide-template | 1.3.3 | development | Developers   | Docker |  | 2025-09-06 @ 22:12 |
-| README | 1.3.3 | templates |  |  | architecture/adr-template, docs/decisions/adr-001-database-choice.md | 2025-09-06 @ 22:12 |
-| admin-manual-template | 1.3.3 | user-guides | System Administrators   |  |  | 2025-09-06 @ 22:12 |
-| user-manual-template | 1.3.3 | user-guides | End Users   |  |  | 2025-09-06 @ 22:12 |
+| Template | Ver | Category | Audience | Frameworks | Updated |
+|----------|-----|----------|----------|------------|---------|
+| api-specification | 1.3.3 | api |  |  | 2025-09-06 |
+| adr-template |  | arch |  |  |  |
+| system-arch-doc | 1.3.3 | arch |  |  | 2025-09-06 |
+| coding-standards | 1.3.3 | dev | Dev Team | React, Express | 2025-09-06 |
+| setup-guide | 1.3.3 | dev | Developers | Docker | 2025-09-06 |
+| README | 1.3.3 | tmpl |  | ADR template | 2025-09-06 |
+| admin-manual | 1.3.3 | user | Admins |  | 2025-09-06 |
+| user-manual | 1.3.3 | user | End Users |  | 2025-09-06 |
 
 ## Framework Compatibility
 
@@ -73,31 +75,33 @@ The template compatibility matrix helps developers understand:
 
 - coding-standards-template (v1.3.3) - development
 
-
 ## Dependency Graph
 
 ### Templates with Dependencies
-
 
 ## Version Compatibility Rules
 
 ### Semantic Versioning
 
 All templates follow [Semantic Versioning](https://semver.org/):
+
 - **Major version** (X.y.z): Breaking changes that require user action
 - **Minor version** (x.Y.z): New features, backward compatible
 - **Patch version** (x.y.Z): Bug fixes, backward compatible
 
 ### Compatibility Guidelines
 
-1. **Same Major Version**: Templates within the same major version are compatible
-2. **Dependency Versions**: Use templates with matching or compatible dependency versions
+1. **Same Major Version**: Templates within the same major version are
+compatible
+2. **Dependency Versions**: Use templates with matching or compatible dependency
+versions
 3. **Framework Versions**: Ensure framework compatibility when mixing templates
 4. **Update Strategy**: Update dependencies before dependent templates
 
 ### Breaking Changes
 
 When major versions change, review:
+
 - Template structure changes
 - Required field modifications
 - Framework compatibility updates
@@ -129,6 +133,7 @@ When major versions change, review:
 ## Maintenance
 
 This compatibility matrix is automatically generated and should be updated:
+
 - After any template version changes
 - When new templates are added
 - During major repository releases

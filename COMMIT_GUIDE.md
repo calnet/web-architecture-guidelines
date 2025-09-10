@@ -25,13 +25,14 @@ npm run versions:validate
 
 # Run comprehensive error check
 npm run check:errors
-```
+```text
 
 ### 2. Review Current Branch Strategy
 
 Currently on: `copilot/vscode1757171479427`
 
 **Recommended approach** (based on repository documentation):
+
 ```bash
 # Switch to develop branch (when available)
 git checkout develop
@@ -39,7 +40,7 @@ git pull origin develop
 
 # Create feature branch for new work
 git checkout -b feature/[scope]-[description]
-```
+```text
 
 ### 3. Commit Message Standards
 
@@ -54,7 +55,7 @@ git commit -m "chore(deps): update TypeScript to v5.9.2"
 git commit -m "style(templates): improve markdown formatting"
 git commit -m "refactor(scripts): restructure validation logic"
 git commit -m "test(validation): add template compliance tests"
-```
+```text
 
 ## Common Commit Types
 
@@ -98,11 +99,12 @@ git commit -m "feat(templates): enhance API specification template
 
 # 5. Push to your feature branch
 git push -u origin feature/templates-api-enhancement
-```
+```text
 
 ## Repository Health Check Results
 
 Last validation run results:
+
 - 📁 Documentation Structure: ✅ PASSED (32 files validated)
 - 🏗️ Architecture Compliance: ✅ PASSED (9 checks)
 - 🔒 Security Compliance: ✅ PASSED (9 checks, 3 warnings)
@@ -119,7 +121,8 @@ If `git status` shows "nothing to commit, working tree clean":
 
 1. **Review your work**: Check if you've saved all files
 2. **Verify staging**: Use `git add .` to stage any new files
-3. **Create meaningful changes**: Follow the repository's contribution guidelines
+3. **Create meaningful changes**: Follow the repository's contribution
+guidelines
 4. **Use validation scripts**: Run quality checks before committing
 
 ## Next Steps
@@ -140,4 +143,5 @@ Since there are currently no pending changes to commit:
 
 ---
 
-*This guide was generated based on the current repository state and established workflows.*
+*This guide was generated based on the current repository state and established
+workflows.*

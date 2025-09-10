@@ -10,7 +10,10 @@
 
 ## Context
 
-We need to establish a unified authentication and authorization strategy that works across all applications in our ecosystem. The strategy should support modern security practices, provide good developer experience, and scale with our growing user base while integrating well with the technology stack from ADR-001.
+We need to establish a unified authentication and authorization strategy that
+works across all applications in our ecosystem. The strategy should support
+modern security practices, provide good developer experience, and scale with our
+growing user base while integrating well with the technology stack from ADR-001.
 
 ## Decision Drivers
 
@@ -28,23 +31,29 @@ We need to establish a unified authentication and authorization strategy that wo
 
 1. **Session-Based Authentication**
    - Pros: Simple implementation, server-side session control, familiar pattern
-   - Cons: Scalability issues, not suitable for microservices, mobile app challenges
 
-2. **JWT Token-Based Authentication**
+- Cons: Scalability issues, not suitable for microservices, mobile app
+challenges
+
+1. **JWT Token-Based Authentication**
    - Pros: Stateless, good for microservices, mobile-friendly, self-contained
-   - Cons: Token revocation challenges, potential security issues if misconfigured
 
-3. **OAuth 2.0 / OpenID Connect**
+- Cons: Token revocation challenges, potential security issues if misconfigured
+
+1. **OAuth 2.0 / OpenID Connect**
    - Pros: Industry standard, third-party integration, delegation support
-   - Cons: Complex implementation, requires external provider or custom implementation
 
-4. **Hybrid Approach (JWT + Refresh Tokens)**
+- Cons: Complex implementation, requires external provider or custom
+implementation
+
+1. **Hybrid Approach (JWT + Refresh Tokens)**
    - Pros: Balance of security and usability, proper token lifecycle management
    - Cons: Increased complexity, requires careful implementation
 
 ## Decision
 
-We have decided to implement a **Hybrid JWT-Based Authentication Strategy** with the following components:
+We have decided to implement a **Hybrid JWT-Based Authentication Strategy** with
+the following components:
 
 ### Core Authentication System
 
@@ -54,13 +63,13 @@ We have decided to implement a **Hybrid JWT-Based Authentication Strategy** with
    - Signed with RS256 (asymmetric keys)
    - Stateless verification
 
-2. **Refresh Token Strategy**
+1. **Refresh Token Strategy**
    - Long-lived (7 days, configurable)
    - Stored securely in httpOnly cookies
    - Single-use with rotation on refresh
    - Database-tracked for revocation capabilities
 
-3. **Multi-Factor Authentication (MFA)**
+1. **Multi-Factor Authentication (MFA)**
    - TOTP (Time-based One-Time Password) support
    - SMS backup option for critical accounts
    - Recovery codes for account recovery
@@ -82,7 +91,7 @@ interface JWTPayload {
   roles: string[];          // User roles
   permissions: string[];    // Specific permissions
 }
-```
+```text
 
 ### Security Standards
 
@@ -93,11 +102,17 @@ interface JWTPayload {
 
 ## Rationale
 
-**JWT with Refresh Tokens** provides the best balance of security, scalability, and developer experience. The stateless nature of JWTs works well with our microservices architecture while refresh tokens provide proper security controls.
+**JWT with Refresh Tokens** provides the best balance of security, scalability,
+and developer experience. The stateless nature of JWTs works well with our
+microservices architecture while refresh tokens provide proper security
+controls.
 
-**Short-lived access tokens** minimize the impact of token compromise while **refresh token rotation** ensures long-term security without frequent user re-authentication.
+**Short-lived access tokens** minimize the impact of token compromise while
+**refresh token rotation** ensures long-term security without frequent user
+re-authentication.
 
-**Multi-factor authentication** is essential for modern applications and regulatory compliance.
+**Multi-factor authentication** is essential for modern applications and
+regulatory compliance.
 
 ## Consequences
 
@@ -125,10 +140,10 @@ interface JWTPayload {
 ## Implementation Plan
 
 1. **Phase 1**: Core authentication service development (Week 1-3)
-2. **Phase 2**: JWT token management and refresh logic (Week 4-5)
-3. **Phase 3**: MFA implementation and testing (Week 6-7)
-4. **Phase 4**: Integration with applications (Week 8-10)
-5. **Phase 5**: Security audit and production deployment (Week 11-12)
+1. **Phase 2**: JWT token management and refresh logic (Week 4-5)
+1. **Phase 3**: MFA implementation and testing (Week 6-7)
+1. **Phase 4**: Integration with applications (Week 8-10)
+1. **Phase 5**: Security audit and production deployment (Week 11-12)
 
 ### Technical Implementation
 
@@ -149,7 +164,7 @@ const authenticateJWT = (requiredPermissions?: string[]) => {
     // JWT verification and permission checking logic
   };
 };
-```
+```text
 
 ## Related Decisions
 
@@ -166,6 +181,7 @@ const authenticateJWT = (requiredPermissions?: string[]) => {
 ## Monitoring and Review
 
 This decision will be reviewed:
+
 - After security incidents or vulnerabilities
 - Quarterly security reviews
 - When adding new client applications

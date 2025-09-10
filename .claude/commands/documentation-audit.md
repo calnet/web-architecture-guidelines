@@ -3,12 +3,17 @@
 **Usage**: `/documentation-audit "Documentation scope"`
 
 ## Purpose
-Evaluate documentation quality, completeness, and alignment with established templates and standards.
+
+Evaluate documentation quality, completeness, and alignment with established
+templates and standards.
 
 ## Command Behavior
-When triggered, this command instructs Claude to perform comprehensive documentation analysis:
+
+When triggered, this command instructs Claude to perform comprehensive
+documentation analysis:
 
 ### 1. Template Compliance
+
 - **Architecture Documents**
   - ADR (Architecture Decision Record) compliance
   - System architecture documentation completeness
@@ -27,6 +32,7 @@ When triggered, this command instructs Claude to perform comprehensive documenta
   - Troubleshooting documentation
 
 ### 2. Content Quality Assessment
+
 - **Clarity and Readability**
   - Language clarity and consistency
   - Technical accuracy
@@ -40,6 +46,7 @@ When triggered, this command instructs Claude to perform comprehensive documenta
   - Example and code snippet coverage
 
 ### 3. Accessibility & Usability
+
 - **Document Accessibility**
   - Heading structure (H1-H6 hierarchy)
   - Alt text for images and diagrams
@@ -53,6 +60,7 @@ When triggered, this command instructs Claude to perform comprehensive documenta
   - Related document connections
 
 ### 4. Maintenance & Currency
+
 - **Version Control**
   - Document versioning practices
   - Change tracking and history
@@ -114,27 +122,35 @@ When triggered, this command instructs Claude to perform comprehensive documenta
 - [ ] Link validation automation
 - [ ] Documentation testing integration
 - [ ] Version synchronization automation
-```
+```text
 
 ## Usage Examples
 
 ### Comprehensive Documentation Review
-```
-/documentation-audit "Complete review of all project documentation for accuracy and completeness"
-```
+
+```text
+/documentation-audit "Complete review of all project documentation for accuracy
+and completeness"
+```text
 
 ### API Documentation Focus
-```
-/documentation-audit "Audit API documentation for completeness and developer experience"
-```
+
+```text
+/documentation-audit "Audit API documentation for completeness and developer
+experience"
+```text
 
 ### Template Compliance Check
-```
-/documentation-audit "Validate compliance with established documentation templates"
-```
+
+```text
+/documentation-audit "Validate compliance with established documentation
+templates"
+```text
 
 ## Documentation Standards
+
 This command evaluates against:
+
 - Web Architecture Guidelines documentation templates
 - Industry documentation best practices
 - WCAG accessibility guidelines for documents
@@ -142,6 +158,7 @@ This command evaluates against:
 - API documentation standards (OpenAPI)
 
 ## Quality Metrics
+
 - Template compliance: >90%
 - Link validation: 100% working links
 - Content freshness: <90 days since last review
@@ -149,6 +166,7 @@ This command evaluates against:
 - User feedback incorporation: Regular review cycles
 
 ## Integration Points
+
 - Documentation generation tools
 - Link checking automation
 - Version control integration
@@ -156,6 +174,7 @@ This command evaluates against:
 - Analytics and usage tracking
 
 ## Success Criteria
+
 - ✅ Identifies documentation gaps
 - ✅ Validates template compliance
 - ✅ Assesses content quality and accuracy

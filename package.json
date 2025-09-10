@@ -4,7 +4,7 @@
   "description": "Comprehensive guidelines for building well-architected web applications",
   "scripts": {
     "security:audit": "npm audit",
-    "security:audit-fix": "npm audit fix", 
+    "security:audit-fix": "npm audit fix",
     "security:check": "npm audit --audit-level moderate",
     "lint": "npm run lint:all",
     "lint:templates": "./scripts/validate-templates.sh",
@@ -69,6 +69,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@types/node": "^24.3.1"
+    "@types/node": "^24.3.1",
+    "markdownlint-cli": "^0.45.0"
   }
 }
