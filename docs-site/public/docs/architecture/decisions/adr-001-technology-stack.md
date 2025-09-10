@@ -9,9 +9,10 @@
 
 ## Context
 
-We need to establish a standard technology stack for web application development
-across our organization. The selected technologies should support scalability,
-maintainability, developer productivity, and long-term sustainability.
+We need to establish a standard technology stack for web application
+development across our organization. The selected technologies should support
+scalability, maintainability, developer productivity, and long-term
+sustainability.
 
 ## Decision Drivers
 
@@ -27,37 +28,34 @@ maintainability, developer productivity, and long-term sustainability.
 ### Frontend Framework Options
 
 1. **React with TypeScript**
+   - Pros: Large ecosystem, excellent TypeScript support, component
+     reusability, strong community
+   - Cons: Learning curve, requires additional libraries for complete solution
 
-- Pros: Large ecosystem, excellent TypeScript support, component reusability,
-strong community
-  - Cons: Learning curve, requires additional libraries for complete solution
+2. **Vue.js with TypeScript**
+   - Pros: Gentler learning curve, good TypeScript support, comprehensive
+     framework
+   - Cons: Smaller ecosystem compared to React, less job market demand
 
-1. **Vue.js with TypeScript**
-
-- Pros: Gentler learning curve, good TypeScript support, comprehensive framework
-  - Cons: Smaller ecosystem compared to React, less job market demand
-
-1. **Angular**
-
-- Pros: Complete framework, excellent TypeScript integration, enterprise-ready
-- Cons: Steeper learning curve, more opinionated, heavyweight for smaller
-projects
+3. **Angular**
+   - Pros: Complete framework, excellent TypeScript integration,
+     enterprise-ready
+   - Cons: Steeper learning curve, more opinionated, heavyweight for smaller
+     projects
 
 ### Backend Framework Options
 
 1. **Node.js with Express/Fastify**
+   - Pros: JavaScript/TypeScript everywhere, large ecosystem, familiar to
+     frontend developers
+   - Cons: Single-threaded limitations, potential performance bottlenecks
 
-- Pros: JavaScript/TypeScript everywhere, large ecosystem, familiar to frontend
-developers
-  - Cons: Single-threaded limitations, potential performance bottlenecks
+2. **Python with FastAPI**
+   - Pros: Excellent developer experience, automatic API documentation,
+     strong typing
+   - Cons: Different language from frontend, deployment complexity
 
-1. **Python with FastAPI**
-
-- Pros: Excellent developer experience, automatic API documentation, strong
-typing
-  - Cons: Different language from frontend, deployment complexity
-
-1. **Go with Gin/Echo**
+3. **Go with Gin/Echo**
    - Pros: Excellent performance, simple deployment, strong standard library
    - Cons: Different paradigm, smaller web ecosystem
 
@@ -91,8 +89,8 @@ We have decided to adopt the following technology stack:
 ## Rationale
 
 **React + TypeScript** provides the best balance of developer productivity,
-ecosystem maturity, and type safety for frontend development. The large talent
-pool and extensive documentation reduce onboarding time.
+ecosystem maturity, and type safety for frontend development. The large
+talent pool and extensive documentation reduce onboarding time.
 
 **Node.js + TypeScript** maintains language consistency across the stack,
 enabling full-stack developers and code sharing between frontend and backend.
@@ -128,10 +126,10 @@ consistency guarantees needed for business applications.
 ## Implementation Plan
 
 1. **Phase 1**: Set up development environment and tooling (Week 1-2)
-1. **Phase 2**: Create boilerplate templates and project structure (Week 3-4)
-1. **Phase 3**: Team training and documentation (Week 5-6)
-1. **Phase 4**: Pilot project implementation (Week 7-10)
-1. **Phase 5**: Full rollout to new projects (Week 11+)
+2. **Phase 2**: Create boilerplate templates and project structure (Week 3-4)
+3. **Phase 3**: Team training and documentation (Week 5-6)
+4. **Phase 4**: Pilot project implementation (Week 7-10)
+5. **Phase 5**: Full rollout to new projects (Week 11+)
 
 ## Related Decisions
 
@@ -149,4 +147,6 @@ This decision will be reviewed quarterly and may be revised based on:
 
 ---
 
-**Last updated**: September 3, 2025
+## Last Updated
+
+September 3, 2025

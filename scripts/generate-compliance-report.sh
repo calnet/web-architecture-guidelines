@@ -8,7 +8,7 @@ if command -v npx &> /dev/null && npx tsc --version &> /dev/null; then
     
     # Compile and run TypeScript version
     npx tsc tools/template-compliance-checker.ts --target es2020 --module commonjs --outDir tools/dist --moduleResolution node
-    node tools/dist/template-compliance-checker.js "$(pwd)"
+    npx ts-node tools/template-compliance-checker.ts "$(pwd)"
     
 elif command -v node &> /dev/null; then
     echo "TypeScript not available, using Node.js fallback..."

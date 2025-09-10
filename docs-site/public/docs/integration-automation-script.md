@@ -67,7 +67,7 @@ Preview what changes would be made without actually modifying any files:
 
 ```bash
 bash scripts/integrate-web-architecture-guidelines.sh --dry-run
-```
+```text
 
 This mode is ideal for:
 
@@ -82,7 +82,7 @@ Run the complete interactive setup process:
 
 ```bash
 bash scripts/integrate-web-architecture-guidelines.sh
-```
+```text
 
 The interactive mode will:
 
@@ -104,7 +104,7 @@ bash scripts/integrate-web-architecture-guidelines.sh \
   --org "Acme, Inc." \
   --pkg pnpm \
   --setup-ci true
-```
+```text
 
 #### Available Flags
 
@@ -203,6 +203,6 @@ standards.
 **Document Information**:
 
 - **Version**: 1.3.3
-- **Last Updated**: 2025-09-06 @ 18:49
+- **Last Updated**: 2025-09-06 @ 22:12
 - **Review Schedule**: Quarterly
 - **Maintained by**: Architecture Team
