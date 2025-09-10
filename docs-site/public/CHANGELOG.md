@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2024-09-06
+
+### Security
+
+- **CRITICAL**:
+  Fixed code injection vulnerability in AI-Powered Code Review workflow
+- Resolved direct interpolation of `github.event.comment.body` in shell commands
+  - Implemented secure environment variable-based input handling
+  - Added security comments to prevent future regressions
+  - All user input now properly sanitized to prevent command injection attacks
+
+### Technical Improvements
+
+- Fixed YAML formatting issues in workflow files (line length, trailing spaces)
+- Enhanced workflow security with proper input validation
+- Updated workflow execution to follow security best practices
+
+## [1.3.2] - 2025-09-06
+
+### ✨ Features
+
+- feat: align AI agent guidelines and remove duplication (v1.3.1)
+- feat: restructure Resource Constraint Guidance section with clear tiered
+  headings for different team sizes
+- feat: consolidate Claude instruction files and create unified AI agent
+  integration system v1.3.0
+- feat: complete Enhanced Claude Code Review workflow Next Steps implementation
+- feat: implement comprehensive automated version management system
+- feat: bump version to 1.2.0 for Enhanced Claude Code Review workflow system
+- feat: complete enhanced Claude Code Review workflow system implementation
+- feat: implement modular Claude workflow scripts
+- Merge pull request #12 from calnet/copilot/vscode1757171479427
+
+### 📚 Documentation
+
+- docs: update guidelines and documentation to reflect Enhanced Claude Code
+  Review workflow system v1.2.0
+
 ## [1.3.1] - 2025-09-06
 
 ### Improved
@@ -92,8 +130,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- `claude-architecture-instructions-v1.md` - Content merged into unified file
-- `claude-architecture-instructions-v2.md` - Content merged into unified file
+- Legacy versioned Claude instruction files - Content consolidated into unified
+  comprehensive guide
 
 ### Updated References
 
@@ -111,8 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2025-09-06
 
-### ✨ Features
+### ✨ Features (v1.2.0)
 
 - feat: complete enhanced Claude Code Review workflow system implementation
 - feat: implement modular Claude workflow scripts
-- Merge pull request #12 from calnet/copilot/vscode1757171479427

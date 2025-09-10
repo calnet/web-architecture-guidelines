@@ -1,13 +1,15 @@
 name: Sync Documentation Templates
 
-on:
+"on":
   schedule:
     - cron: '0 9 * * 1'  # Weekly on Monday
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
+  issues: write
+  actions: write
 
 env:
   BASE_REPO: "https://github.com/calnet/web-architecture-guidelines"
@@ -25,14 +27,35 @@ jobs:
         run: |
           # Download latest templates from base repository
           echo "Downloading latest templates from $BASE_REPO"
-          curl -L -o /tmp/templates.zip "$BASE_REPO/archive/main.zip"
+          
+          # Check if we're not in a circular reference
+          if curl -s -f -L -o /tmp/templates.zip "$BASE_REPO/archive/main.zip"; then
+            echo "Downloaded templates successfully"
+          else
+            echo "Failed to download templates from $BASE_REPO"
+            exit 1
+          fi
           
           # Extract and compare templates
           cd /tmp
-          unzip -q templates.zip
+          if unzip -q templates.zip; then
+            echo "Extracted templates successfully"
+          else
+            echo "Failed to extract templates"
+            exit 1
+          fi
+          
+          # Check if extraction created the expected directory
+          EXTRACTED_DIR="/tmp/web-architecture-guidelines-main"
+          if [ ! -d "$EXTRACTED_DIR" ]; then
+            echo "Expected directory $EXTRACTED_DIR not found after extraction"
+            echo "Available directories:"
+            ls -la /tmp/ | grep web-architecture || echo "No matching directories found"
+            exit 1
+          fi
           
           # Compare template versions if they exist
-          BASE_VERSION_FILE="/tmp/web-architecture-guidelines-main/docs/.template-version"
+          BASE_VERSION_FILE="$EXTRACTED_DIR/docs/.template-version"
           LOCAL_VERSION_FILE="docs/.template-version"
           
           if [ -f "$BASE_VERSION_FILE" ] && [ -f "$LOCAL_VERSION_FILE" ]; then
@@ -40,6 +63,8 @@ jobs:
             LOCAL_VERSION=$(cat "$LOCAL_VERSION_FILE")
             echo "Base version: $BASE_VERSION"
             echo "Local version: $LOCAL_VERSION"
+            echo "base_version=$BASE_VERSION" >> $GITHUB_OUTPUT
+            echo "local_version=$LOCAL_VERSION" >> $GITHUB_OUTPUT
             
             if [ "$BASE_VERSION" != "$LOCAL_VERSION" ]; then
               echo "templates_updated=true" >> $GITHUB_OUTPUT
@@ -50,6 +75,8 @@ jobs:
             fi
           else
             echo "templates_updated=true" >> $GITHUB_OUTPUT
+            echo "base_version=unknown" >> $GITHUB_OUTPUT
+            echo "local_version=unknown" >> $GITHUB_OUTPUT
             echo "Version files not found - forcing update"
           fi
       
@@ -59,13 +86,41 @@ jobs:
           # Copy updated templates while preserving customizations
           echo "Updating templates..."
           
-          # Backup current templates
-          mkdir -p backups/templates/$(date +%Y%m%d_%H%M%S)
-          cp -r docs/templates/ backups/templates/$(date +%Y%m%d_%H%M%S)/ 2>/dev/null || true
+          # Ensure backup directory exists
+          BACKUP_DIR="backups/templates/$(date +%Y%m%d_%H%M%S)"
+          mkdir -p "$BACKUP_DIR"
           
-          # Copy new templates
-          cp -r /tmp/web-architecture-guidelines-main/docs/templates/* docs/templates/
-          cp /tmp/web-architecture-guidelines-main/docs/.template-version docs/
+          # Backup current templates if they exist
+          if [ -d "docs/templates" ]; then
+            cp -r docs/templates/ "$BACKUP_DIR/" 2>/dev/null || true
+            echo "Backed up current templates to $BACKUP_DIR"
+          else
+            echo "No existing templates directory to backup"
+          fi
+          
+          # Ensure destination directory exists
+          mkdir -p docs/templates
+          
+          # Check if source templates exist
+          SOURCE_TEMPLATES="/tmp/web-architecture-guidelines-main/docs/templates"
+          if [ -d "$SOURCE_TEMPLATES" ]; then
+            # Copy new templates
+            cp -r "$SOURCE_TEMPLATES"/* docs/templates/
+            echo "Copied templates from $SOURCE_TEMPLATES"
+          else
+            echo "Warning: Source templates directory not found at $SOURCE_TEMPLATES"
+            echo "Available directories in extracted archive:"
+            find /tmp/web-architecture-guidelines-main -type d -name "templates" 2>/dev/null || echo "No templates directories found"
+          fi
+          
+          # Copy version file if it exists
+          SOURCE_VERSION="/tmp/web-architecture-guidelines-main/docs/.template-version"
+          if [ -f "$SOURCE_VERSION" ]; then
+            cp "$SOURCE_VERSION" docs/
+            echo "Updated template version file"
+          else
+            echo "Warning: Template version file not found at $SOURCE_VERSION"
+          fi
           
           echo "Templates updated successfully"
       
@@ -85,14 +140,25 @@ jobs:
             - Preserved project-specific customizations where possible
             - Updated template metadata and version information
             
+            ### Version Information
+            - Previous version: ${{ steps.check.outputs.local_version }}
+            - Updated to version: ${{ steps.check.outputs.base_version }}
+            
             ### Action Required
             - [ ] Review template changes for any breaking modifications
             - [ ] Update customized sections if needed
             - [ ] Test documentation generation with new templates
             - [ ] Verify all cross-references still work correctly
             
-            ### Template Version
-            - Updated to version: $(cat docs/.template-version 2>/dev/null || echo "unknown")
-            - Previous version preserved in backups/
+            ### Backup Location
+            - Previous templates preserved in `backups/templates/` directory
+            
+            _This PR was created automatically by the sync-templates workflow._
           branch: update-templates
           delete-branch: true
+          commit-message: |
+            docs: update documentation templates
+            
+            - Update templates to version ${{ steps.check.outputs.base_version }}
+            - Preserve customizations where possible
+            - Backup previous version to backups/ directory

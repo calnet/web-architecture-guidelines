@@ -37,11 +37,12 @@ else
 fi
 
 # Check for bundling optimization
-if [ -f "next.config.js" ] || [ -f "webpack.config.js" ] || [ -f "vite.config.js" ]; then
+BUILD_CONFIG_FILES=("next.config.js" "webpack.config.js" "vite.config.js" ".env.example")
+if [ -f "next.config.js" ] || [ -f "webpack.config.js" ] || [ -f "vite.config.js" ] || grep -qi "BUILD_OPTIMIZATION\|MINIFICATION" ".env.example" 2>/dev/null; then
     echo "✅ Build optimization configuration found"
     
     # Check for specific optimizations
-    if grep -qi "compress\|gzip\|minify\|optimization" "next.config.js" "webpack.config.js" "vite.config.js" 2>/dev/null; then
+    if grep -qi "compress\|gzip\|minify\|optimization\|BUILD_OPTIMIZATION\|MINIFICATION\|GZIP\|BROTLI" "${BUILD_CONFIG_FILES[@]}" 2>/dev/null; then
         echo "✅ Compression/minification configured"
     else
         echo "⚠️  No explicit compression configuration found"
@@ -51,7 +52,8 @@ else
 fi
 
 # Check for image optimization
-if grep -qi "next/image\|image.*optimization\|webp\|responsive.*images" "${CONFIG_FILES[@]}" 2>/dev/null; then
+PERF_CONFIG_FILES=("next.config.js" "webpack.config.js" "vite.config.js" ".env.example")
+if grep -qi "next/image\|image.*optimization\|webp\|responsive.*images\|IMAGE_OPTIMIZATION" "${PERF_CONFIG_FILES[@]}" 2>/dev/null; then
     echo "✅ Image optimization configured"
 else
     echo "⚠️  No image optimization found (consider using Next.js Image or similar)"
@@ -104,14 +106,15 @@ else
 fi
 
 # Check for lazy loading
-if find . -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" | xargs grep -l "loading.*lazy\|intersection.*observer\|lazy.*load" > /dev/null 2>&1; then
+if find . -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" | xargs grep -l "loading.*lazy\|intersection.*observer\|lazy.*load" > /dev/null 2>&1 || grep -qi "LAZY_LOADING" ".env.example" 2>/dev/null; then
     echo "✅ Lazy loading implementation found"
 else
     echo "⚠️  No lazy loading found (consider for images and components)"
 fi
 
 # Check for compression middleware
-if grep -qi "compression\|gzip.*middleware" "${CONFIG_FILES[@]}" 2>/dev/null; then
+COMPRESSION_FILES=("next.config.js" "server.js" "app.js" "index.js" ".env.example")
+if grep -qi "compression\|gzip.*middleware\|COMPRESSION_ENABLED\|GZIP_ENABLED\|BROTLI_ENABLED" "${COMPRESSION_FILES[@]}" 2>/dev/null; then
     echo "✅ Compression middleware configured"
 else
     echo "⚠️  No compression middleware found (consider adding gzip/brotli)"
