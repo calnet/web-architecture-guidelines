@@ -7,59 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.4] - 2025-09-13
 
-### ✨ Features
+### Features
 
 - feat: Implement comprehensive quality gate system with blocking critical checks
 
-### 🐛 Bug Fixes
+### Bug Fixes
 
-- fix: resolve markdown lint errors, update version docs, and prepare for release 1.3.4
+- fix: resolve markdown lint errors, update version docs, and prepare for
+  release 1.3.4
 - fix: remove unused variable in pre-merge-validation script
 
-### 📚 Documentation
+### Documentation
 
 - docs: Add comprehensive Quality Gate Implementation Report
 
-### 🔧 Maintenance
+### Maintenance
 
 - Merge pull request #22 from calnet/dependabot/npm_and_yarn/docs-site/vite-7.1.5
 - chore(deps): bump vite from 7.1.4 to 7.1.5 in /docs-site
-
-## [1.3.4] - 2025-09-13
-
-### ✨ Features
-
-- feat: Implement comprehensive quality gate system
-  with blocking critical checks
-
-### 🐛 Bug Fixes
-
-- fix: remove unused variable in pre-merge-validation script
-
-### 📚 Documentation
-
-- docs: Add comprehensive Quality Gate Implementation Report
-
-### 🔧 Maintenance
-
-- Merge pull request #22 from calnet/dependabot/npm_and_yarn/docs-site/vite-7.1.5
-- chore(deps): bump vite from 7.1.4 to 7.1.5 in /docs-site
-
-## [1.3.3] - 2024-09-06
 
 ## [1.3.3] - 2024-09-06
 
 ### Security
 
-  Fixed code injection vulnerability in AI-Powered Code Review workflow
-    - Implemented secure environment variable-based input handling
-    - Added security comments to prevent future regressions
-    - All user input now properly sanitized to prevent command injection attacks
+- Fixed code injection vulnerability in AI-Powered Code Review workflow
+  - Implemented secure environment variable-based input handling
+  - Added security comments to prevent future regressions
+  - All user input now properly sanitized to prevent command injection attacks
 
 ### Technical Improvements
 
-- Fixed YAML formatting issues in workflow files
-  (line length, trailing spaces)
+- Fixed YAML formatting issues in workflow files (line length, trailing spaces)
 - Enhanced workflow security with proper input validation
 - Updated workflow execution to follow security best practices
 
