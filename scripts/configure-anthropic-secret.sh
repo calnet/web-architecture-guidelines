@@ -55,34 +55,35 @@ print_info() {
 
 validate_secret() {
     print_header "🔍 Validating ANTHROPIC_API_KEY Secret Configuration"
-    
+
     # Check if gh CLI is available and authenticated
     if ! command -v gh &> /dev/null; then
         print_error "GitHub CLI not installed. Please install it to validate secrets."
         return 1
     fi
-    
+
     if ! gh auth status &> /dev/null; then
         print_error "GitHub CLI not authenticated. Please run 'gh auth login'."
         return 1
     fi
-    
+
     # Check repository access
     if ! gh repo view "$REPO" &> /dev/null; then
         print_error "Cannot access repository $REPO. Check permissions."
         return 1
     fi
-    
+
     # Attempt to list secrets (requires admin access)
     print_info "Checking secret configuration..."
-    
+
     if gh secret list --repo "$REPO" | grep -q "$SECRET_NAME"; then
         print_success "ANTHROPIC_API_KEY secret is configured in repository"
-        
+
         # Check when it was last updated
-        local last_updated=$(gh secret list --repo "$REPO" | grep "$SECRET_NAME" | awk '{print $3" "$4}')
+        local last_updated
+        last_updated=$(gh secret list --repo "$REPO" | grep "$SECRET_NAME" | awk '{print $3" "$4}')
         print_info "Last updated: $last_updated"
-        
+
         return 0
     else
         print_warning "ANTHROPIC_API_KEY secret not found in repository"
@@ -92,7 +93,7 @@ validate_secret() {
 
 setup_instructions() {
     print_header "📋 ANTHROPIC_API_KEY Setup Instructions"
-    
+
     echo ""
     echo "To configure the ANTHROPIC_API_KEY repository secret:"
     echo ""
@@ -107,7 +108,7 @@ setup_instructions() {
     echo "3. Verify the secret was set:"
     echo "   gh secret list --repo $REPO | grep $SECRET_NAME"
     echo ""
-    
+
     echo "## Method 2: Using GitHub Web Interface"
     echo ""
     echo "1. Navigate to: https://github.com/$REPO/settings/secrets/actions"
@@ -120,7 +121,7 @@ setup_instructions() {
     echo ""
     echo "4. Click 'Add secret'"
     echo ""
-    
+
     echo "## API Key Requirements"
     echo ""
     echo "The API key should:"
@@ -128,7 +129,7 @@ setup_instructions() {
     echo "- Have sufficient usage limits for code review operations"
     echo "- Be stored securely and never committed to code"
     echo ""
-    
+
     echo "## Validation"
     echo ""
     echo "After setting up the secret, run:"
@@ -141,21 +142,22 @@ setup_instructions() {
 
 test_workflow_access() {
     print_header "🧪 Testing Workflow Access to Secret"
-    
+
     print_info "Checking workflow files for secret usage..."
-    
+
     local workflows_dir=".github/workflows"
     local secret_usage_found=false
-    
+
     if [[ -d "$workflows_dir" ]]; then
         # Check workflow files for ANTHROPIC_API_KEY usage
         for workflow in "$workflows_dir"/*.yml "$workflows_dir"/*.yaml; do
             if [[ -f "$workflow" ]]; then
                 if grep -q "ANTHROPIC_API_KEY" "$workflow"; then
-                    local workflow_name=$(basename "$workflow")
+                    local workflow_name
+                    workflow_name=$(basename "$workflow")
                     print_info "Found secret usage in: $workflow_name"
                     secret_usage_found=true
-                    
+
                     # Check specific usage patterns
                     if grep -q "secrets.ANTHROPIC_API_KEY" "$workflow"; then
                         print_success "Correct secret reference found in $workflow_name"
@@ -165,7 +167,7 @@ test_workflow_access() {
                 fi
             fi
         done
-        
+
         if [[ "$secret_usage_found" == "true" ]]; then
             print_success "Workflow files properly configured to use ANTHROPIC_API_KEY"
         else
@@ -175,10 +177,10 @@ test_workflow_access() {
         print_error "No .github/workflows directory found"
         return 1
     fi
-    
+
     # Check for environment variable usage
     print_info "Checking environment variable configuration..."
-    
+
     if grep -r "ANTHROPIC_API_KEY" "$workflows_dir" | grep -q "env:"; then
         print_success "Environment variable properly configured in workflows"
     else
@@ -188,9 +190,9 @@ test_workflow_access() {
 
 generate_test_workflow() {
     print_header "🔧 Generating Secret Validation Test Workflow"
-    
+
     local test_file="/tmp/test-anthropic-secret.yml"
-    
+
     cat > "$test_file" << 'EOF'
 name: Test ANTHROPIC_API_KEY Secret
 
@@ -203,7 +205,7 @@ env:
 jobs:
   test-secret:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Test secret availability
         run: |
@@ -215,7 +217,7 @@ jobs:
             echo "Secret length: ${#ANTHROPIC_API_KEY} characters"
             echo "First 10 characters: ${ANTHROPIC_API_KEY:0:10}..."
           fi
-          
+
       - name: Validate secret format
         run: |
           # Anthropic API keys typically start with 'sk-ant-'
@@ -225,7 +227,7 @@ jobs:
             echo "⚠️ API key may not have expected format"
           fi
 EOF
-    
+
     print_success "Test workflow generated at: $test_file"
     print_info "To use this test workflow:"
     echo "  1. Copy to .github/workflows/test-secret.yml"
@@ -238,7 +240,7 @@ EOF
 
 main() {
     local validate_only=false
-    
+
     # Parse arguments
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -257,15 +259,15 @@ main() {
                 ;;
         esac
     done
-    
+
     if [[ "$validate_only" == "true" ]]; then
         validate_secret
         exit $?
     fi
-    
+
     print_header "🔐 ANTHROPIC_API_KEY Configuration Helper"
     echo ""
-    
+
     # Check current status
     if validate_secret; then
         print_success "Secret is already configured!"
@@ -276,10 +278,10 @@ main() {
         echo ""
         setup_instructions
     fi
-    
+
     echo ""
     generate_test_workflow
-    
+
     echo ""
     print_header "📖 Additional Resources"
     echo ""
@@ -287,7 +289,7 @@ main() {
     echo "- GitHub Secrets Documentation: https://docs.github.com/en/actions/security-guides/encrypted-secrets"
     echo "- Claude API Documentation: https://docs.anthropic.com/claude/reference/getting-started-with-the-api"
     echo ""
-    
+
     print_success "Configuration helper completed!"
 }
 
