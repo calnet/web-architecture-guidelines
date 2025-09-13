@@ -1,7 +1,7 @@
 # Anthropic API Web Application Architecture Instructions
 
 **Instruction Version**: 1.3.4
-**Last Updated**: 2025-09-06 @ 22:12
+**Last Updated**: 2025-09-13 @ 14:39
 **Target AI**: Claude via Anthropic API
 
 ## Integration Reference
