@@ -27,7 +27,10 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Check for project errors
+            - name: Critical error checks (blocking)
+              run: npm run check:critical
+
+            - name: Comprehensive project error check
               run: npm run check:errors
 
             - name: Validate documentation structure

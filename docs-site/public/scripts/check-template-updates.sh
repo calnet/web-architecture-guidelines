@@ -4,7 +4,7 @@
 echo "Checking for base template updates..."
 
 # Compare template versions
-BASE_TEMPLATE_VERSION=$(curl -s $BASE_REPO/docs/templates/VERSION)
+BASE_TEMPLATE_VERSION=$(curl -s "$BASE_REPO/docs/templates/VERSION")
 LOCAL_TEMPLATE_VERSION=$(cat docs/.template-version 2>/dev/null || echo "unknown")
 
 if [ "$BASE_TEMPLATE_VERSION" != "$LOCAL_TEMPLATE_VERSION" ]; then
