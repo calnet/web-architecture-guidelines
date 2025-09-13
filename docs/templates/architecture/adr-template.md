@@ -83,5 +83,5 @@ How will we know this decision is working?
 Additional context, discussions, or references
 
 ---
-*Template Version: 1.3.4****************  
+*Template Version: 1.3.4*****************  
 *Last Updated: 2025-09-06 @ 17:03*

@@ -371,4 +371,4 @@ assistance.
 ---
 *Last updated: [Date]*  
 *Version: [Version number]*  
-*Template Version: 1.3.4****************
+*Template Version: 1.3.4*****************
