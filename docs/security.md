@@ -2,19 +2,23 @@
 
 ## Overview
 
-This document outlines security best practices and guidelines for web application development. These guidelines help ensure applications are built with security-by-design principles and protect against common vulnerabilities.
+This document outlines security best practices and guidelines for web
+application development. These guidelines help ensure applications are built
+with security-by-design principles and protect against common vulnerabilities.
 
 ## Authentication and Authorization
 
 ### Multi-Factor Authentication (MFA)
 
 - Require MFA for all administrative accounts
-- Support multiple authentication factors (SMS, email, authenticator apps, hardware tokens)
+- Support multiple authentication factors (SMS, email, authenticator apps,
+  hardware tokens)
 - Implement backup authentication methods for account recovery
 
 ### Password Security
 
-- Enforce strong password policies (minimum 8 characters, complexity requirements)
+- Enforce strong password policies (minimum 8 characters, complexity
+  requirements)
 - Implement password history to prevent reuse of recent passwords
 - Use secure password hashing algorithms (bcrypt, scrypt, or Argon2)
 - Implement account lockout mechanisms after failed attempts
@@ -62,12 +66,12 @@ This document outlines security best practices and guidelines for web applicatio
 
 ### Content Security Policy (CSP)
 
-```
+```yaml
 Content-Security-Policy: default-src 'self'; 
   script-src 'self' 'unsafe-inline'; 
   style-src 'self' 'unsafe-inline'; 
   img-src 'self' data: https:;
-```
+```text
 
 ### Additional Security Headers
 

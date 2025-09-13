@@ -46,13 +46,21 @@ else
 fi
 
 # Check for HTTPS configuration
-CONFIG_FILES=("next.config.js" "server.js" "app.js" "index.js" "package.json")
-if check_security_config "https\|ssl\|tls" "${CONFIG_FILES[@]}"; then
+CONFIG_FILES=("next.config.js" "server.js" "app.js" "index.js" "package.json" ".env.example")
+if check_security_config "https\|ssl\|tls\|HTTPS\|SSL\|TLS" "${CONFIG_FILES[@]}"; then
     echo "✅ HTTPS/SSL configuration found"
 elif grep -qi "secure.*true\|httpOnly.*true" "${CONFIG_FILES[@]}" 2>/dev/null; then
     echo "✅ Secure cookie configuration found"
 else
     echo "⚠️  No explicit HTTPS/SSL configuration found"
+fi
+
+# Check for security headers configuration
+SECURITY_HEADER_FILES=("next.config.js" "server.js" "app.js" "index.js" ".env.example")
+if check_security_config "helmet\|security.*headers\|HELMET\|CSP\|HSTS\|X_FRAME_OPTIONS" "${SECURITY_HEADER_FILES[@]}"; then
+    echo "✅ Security headers configuration found"
+else
+    echo "⚠️  No security headers configuration found (consider adding helmet.js or similar)"
 fi
 
 # Check for input validation
@@ -62,13 +70,6 @@ if [ -d "src" ] || [ -d "lib" ] || [ -d "pages" ]; then
     else
         echo "⚠️  No explicit input validation found (ensure user inputs are validated)"
     fi
-fi
-
-# Check for security headers configuration
-if grep -qi "helmet\|security.*headers\|csp\|content.*security.*policy" "${CONFIG_FILES[@]}" 2>/dev/null; then
-    echo "✅ Security headers configuration found"
-else
-    echo "⚠️  No security headers configuration found (consider adding helmet.js or similar)"
 fi
 
 # Check for authentication configuration

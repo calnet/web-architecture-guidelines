@@ -1,12 +1,18 @@
-# Coding Standards Template
-
-**Template Version**: 1.3.3
-**Last Updated**: 2025-09-06 @ 18:49
-**Target Audience**: Development Team  
-
 # [Project Name] Coding Standards
 
-This document defines the coding standards and best practices for [Project Name]. Following these standards ensures code consistency, maintainability, and collaboration effectiveness across the development team.
+<!-- Template Version: 1.3.3 -->
+<!-- Last Updated: 2025-09-06 @ 22:12 -->
+<!-- Target Audience: Development Team -->
+
+## Template Metadata
+
+**Template Version**: 1.3.3
+**Last Updated**: 2025-09-06 @ 22:12
+**Target Audience**: Development Team
+
+This document defines the coding standards and best practices for [Project
+Name]. Following these standards ensures code consistency, maintainability, and
+collaboration effectiveness across the development team.
 
 ## Code Style
 
@@ -14,11 +20,11 @@ This document defines the coding standards and best practices for [Project Name]
 
 **TypeScript/JavaScript**:
 
--   Use **4 spaces** for indentation (no tabs)
--   Maximum line length: **100 characters**
--   Use **semicolons** at the end of statements
--   Use **single quotes** for strings, double quotes for JSX attributes
--   Add trailing commas in multi-line objects and arrays
+- Use **4 spaces** for indentation (no tabs)
+- Maximum line length: **100 characters**
+- Use **semicolons** at the end of statements
+- Use **single quotes** for strings, double quotes for JSX attributes
+- Add trailing commas in multi-line objects and arrays
 
 ```typescript
 // Good
@@ -34,14 +40,14 @@ const config = {
     timeout: 5000,
     retries: 3,
 };
-```
+```text
 
 **CSS/SCSS**:
 
--   Use **4 spaces** for indentation
--   Use **kebab-case** for class names
--   Order properties alphabetically within blocks
--   Use **rem/em** for scalable units, **px** for borders and fixed elements
+- Use **4 spaces** for indentation
+- Use **kebab-case** for class names
+- Order properties alphabetically within blocks
+- Use **rem/em** for scalable units, **px** for borders and fixed elements
 
 ```scss
 // Good
@@ -53,16 +59,16 @@ const config = {
     font-size: 1rem;
     padding: 0.5rem 1rem;
 }
-```
+```text
 
 ### Naming Conventions
 
 **Variables and Functions**:
 
--   Use **camelCase** for variables and functions
--   Use descriptive names that explain intent
--   Avoid abbreviations unless commonly understood
--   Use verbs for functions, nouns for variables
+- Use **camelCase** for variables and functions
+- Use descriptive names that explain intent
+- Avoid abbreviations unless commonly understood
+- Use verbs for functions, nouns for variables
 
 ```typescript
 // Good
@@ -72,12 +78,12 @@ const isUserAuthenticated = true;
 function calculateTotalPrice(items: CartItem[]): number {
     return items.reduce((total, item) => total + item.price, 0);
 }
-```
+```text
 
 **Constants**:
 
--   Use **SCREAMING_SNAKE_CASE** for constants
--   Group related constants in enums or const objects
+- Use **SCREAMING_SNAKE_CASE** for constants
+- Group related constants in enums or const objects
 
 ```typescript
 // Good
@@ -93,7 +99,7 @@ enum UserRole {
     USER = "user",
     GUEST = "guest",
 }
-```
+```text
 
 ## Best Practices
 
@@ -101,7 +107,7 @@ enum UserRole {
 
 **Project Structure**:
 
-```
+```text
 src/
 ├── components/          # Reusable UI components
 │   ├── common/         # Shared components
@@ -113,15 +119,15 @@ src/
 ├── constants/          # Application constants
 ├── assets/             # Static assets (images, fonts)
 └── styles/             # Global styles and themes
-```
+```text
 
 ### Function and Method Design
 
 **Function Size and Responsibility**:
 
--   Keep functions small and focused (ideally < 20 lines)
--   Each function should have a single responsibility
--   Use pure functions when possible
+- Keep functions small and focused (ideally < 20 lines)
+- Each function should have a single responsibility
+- Use pure functions when possible
 
 ```typescript
 // Good - Single responsibility, pure function
@@ -138,16 +144,16 @@ function formatCurrency(amount: number, currency = "USD"): string {
         currency,
     }).format(amount);
 }
-```
+```text
 
 ### Error Handling
 
 **Exception Handling**:
 
--   Always handle errors explicitly
--   Use specific error types
--   Provide meaningful error messages
--   Log errors appropriately
+- Always handle errors explicitly
+- Use specific error types
+- Provide meaningful error messages
+- Log errors appropriately
 
 ```typescript
 // Good
@@ -164,7 +170,7 @@ async function fetchUserData(userId: string): Promise<User> {
         throw new UserDataFetchError("Unable to retrieve user information");
     }
 }
-```
+```text
 
 ## Testing
 
@@ -172,15 +178,15 @@ async function fetchUserData(userId: string): Promise<User> {
 
 **Test File Naming**:
 
--   Use `.test.ts` or `.spec.ts` suffix
--   Mirror the directory structure of source files
--   Use descriptive test file names
+- Use `.test.ts` or `.spec.ts` suffix
+- Mirror the directory structure of source files
+- Use descriptive test file names
 
 **Test Organization**:
 
--   Group related tests with `describe` blocks
--   Use clear, descriptive test names
--   Follow Arrange-Act-Assert pattern
+- Group related tests with `describe` blocks
+- Use clear, descriptive test names
+- Follow Arrange-Act-Assert pattern
 
 ```typescript
 // Good
@@ -205,7 +211,7 @@ describe("UserService", () => {
         });
     });
 });
-```
+```text
 
 ## Performance Guidelines
 
@@ -213,10 +219,10 @@ describe("UserService", () => {
 
 **Code Efficiency**:
 
--   Prefer algorithms with better time complexity
--   Avoid nested loops when possible
--   Cache expensive computations
--   Use appropriate data structures
+- Prefer algorithms with better time complexity
+- Avoid nested loops when possible
+- Cache expensive computations
+- Use appropriate data structures
 
 ```typescript
 // Good - O(n) complexity with Map lookup
@@ -232,7 +238,7 @@ function findUsersByRole(users: User[], targetRole: string): User[] {
 
     return roleMap.get(targetRole) || [];
 }
-```
+```text
 
 ### Frontend Performance
 
@@ -257,7 +263,7 @@ const handleItemClick = useCallback(
     },
     [onItemSelect]
 );
-```
+```text
 
 ### Backend Performance
 
@@ -270,16 +276,16 @@ const users = await userRepository.find({
     select: ["id", "name", "email"], // Only select needed columns
     take: 20, // Limit results
 });
-```
+```text
 
 ---
 
 **Template Metadata:**
 
--   Version: 1.0
--   Last Updated: [Date]
--   Maintained by: [Team Name]
--   Review Schedule: Quarterly
+- Version: 1.0
+- Last Updated: [Date]
+- Maintained by: [Team Name]
+- Review Schedule: Quarterly
 
 ### Database Performance
 
@@ -293,7 +299,8 @@ const users = await userRepository.find({
 
 // Batch operations instead of loops
 const userIds = ["1", "2", "3"];
-const users = await userRepository.findByIds(userIds); // Not: multiple findById calls
+const users = await userRepository.findByIds(userIds); // Not: multiple findById
+calls
 
 // Use transactions for related operations
 await dataSource.transaction(async (manager) => {
@@ -326,7 +333,7 @@ async function getPaginatedUsers({ page, limit }: PaginationOptions) {
         },
     };
 }
-```
+```text
 
 ## Security Guidelines
 
@@ -376,7 +383,7 @@ function validateFileUpload(file: Express.Multer.File): void {
         throw new ValidationError("File too large");
     }
 }
-```
+```text
 
 ### Secure Coding Practices
 
@@ -443,7 +450,7 @@ function checkRateLimit(
     record.count++;
     return true;
 }
-```
+```text
 
 ## Error Handling Patterns
 
@@ -524,7 +531,7 @@ function asyncHandler<T extends any[], R>(
         }
     };
 }
-```
+```text
 
 ## Code Quality Checklist
 
@@ -534,65 +541,65 @@ Before submitting code, ensure:
 
 #### Code Quality
 
--   [ ] Code follows naming conventions
--   [ ] Functions have single responsibility
--   [ ] No code duplication (DRY principle)
--   [ ] Complex logic is properly commented
--   [ ] No unused imports or variables
--   [ ] Consistent formatting throughout
+- [ ] Code follows naming conventions
+- [ ] Functions have single responsibility
+- [ ] No code duplication (DRY principle)
+- [ ] Complex logic is properly commented
+- [ ] No unused imports or variables
+- [ ] Consistent formatting throughout
 
 #### Error Handling
 
--   [ ] All async operations have error handling
--   [ ] Custom errors provide meaningful messages
--   [ ] Errors are logged with appropriate context
--   [ ] User-facing errors are sanitized
+- [ ] All async operations have error handling
+- [ ] Custom errors provide meaningful messages
+- [ ] Errors are logged with appropriate context
+- [ ] User-facing errors are sanitized
 
 #### Testing
 
--   [ ] Tests are written for new functionality
--   [ ] Tests cover edge cases and error scenarios
--   [ ] Test coverage meets minimum requirements (80%)
--   [ ] Integration tests for API endpoints
+- [ ] Tests are written for new functionality
+- [ ] Tests cover edge cases and error scenarios
+- [ ] Test coverage meets minimum requirements (80%)
+- [ ] Integration tests for API endpoints
 
 #### Performance
 
--   [ ] No obvious performance bottlenecks
--   [ ] Database queries are optimized
--   [ ] Large lists are paginated
--   [ ] Heavy computations are memoized
+- [ ] No obvious performance bottlenecks
+- [ ] Database queries are optimized
+- [ ] Large lists are paginated
+- [ ] Heavy computations are memoized
 
 #### Security
 
--   [ ] Input validation is implemented
--   [ ] No sensitive data in logs
--   [ ] Authentication and authorization checks
--   [ ] SQL injection prevention
+- [ ] Input validation is implemented
+- [ ] No sensitive data in logs
+- [ ] Authentication and authorization checks
+- [ ] SQL injection prevention
 
 #### Documentation
 
--   [ ] Complex functions have JSDoc comments
--   [ ] README is updated if needed
--   [ ] API documentation is current
--   [ ] Breaking changes are documented
+- [ ] Complex functions have JSDoc comments
+- [ ] README is updated if needed
+- [ ] API documentation is current
+- [ ] Breaking changes are documented
 
 ### Code Review Guidelines
 
 #### For Authors
 
--   **Keep PRs small**: Limit to 400 lines of changes when possible
--   **Write descriptive titles**: Explain what and why, not just how
--   **Provide context**: Link to issues, explain decisions
--   **Self-review first**: Review your own code before requesting review
--   **Test thoroughly**: Ensure all tests pass and new functionality works
+- **Keep PRs small**: Limit to 400 lines of changes when possible
+- **Write descriptive titles**: Explain what and why, not just how
+- **Provide context**: Link to issues, explain decisions
+- **Self-review first**: Review your own code before requesting review
+- **Test thoroughly**: Ensure all tests pass and new functionality works
 
 #### For Reviewers
 
--   **Be constructive**: Provide specific, actionable feedback
--   **Focus on important issues**: Don't nitpick formatting if tools handle it
--   **Explain reasoning**: Help the author understand your suggestions
--   **Appreciate good code**: Acknowledge well-written code and clever solutions
--   **Test the changes**: Pull and test significant changes locally
+- **Be constructive**: Provide specific, actionable feedback
+- **Focus on important issues**: Don't nitpick formatting if tools handle it
+- **Explain reasoning**: Help the author understand your suggestions
+- **Appreciate good code**: Acknowledge well-written code and clever solutions
+- **Test the changes**: Pull and test significant changes locally
 
 ### Automated Quality Gates
 
@@ -614,7 +621,7 @@ Before submitting code, ensure:
         "max-lines-per-function": ["warn", 50]
     }
 }
-```
+```text
 
 #### TypeScript Configuration
 
@@ -629,7 +636,7 @@ Before submitting code, ensure:
         "noUnusedParameters": true
     }
 }
-```
+```text
 
 #### Test Coverage Requirements
 
@@ -646,17 +653,17 @@ Before submitting code, ensure:
         }
     }
 }
-```
+```text
 
 ## Tools and Automation
 
 ### Development Tools
 
--   **Code Formatting**: Prettier with consistent configuration
--   **Linting**: ESLint with TypeScript support
--   **Type Checking**: TypeScript in strict mode
--   **Testing**: Jest for unit/integration tests, Cypress/Playwright for E2E
--   **Code Coverage**: Istanbul/NYC for coverage reporting
+- **Code Formatting**: Prettier with consistent configuration
+- **Linting**: ESLint with TypeScript support
+- **Type Checking**: TypeScript in strict mode
+- **Testing**: Jest for unit/integration tests, Cypress/Playwright for E2E
+- **Code Coverage**: Istanbul/NYC for coverage reporting
 
 ### Pre-commit Hooks
 
@@ -673,16 +680,16 @@ Before submitting code, ensure:
         "*.{js,jsx}": ["eslint --fix", "prettier --write", "git add"]
     }
 }
-```
+```text
 
 ### CI/CD Quality Gates
 
--   **Build Verification**: Ensure code compiles successfully
--   **Test Execution**: All tests must pass
--   **Coverage Check**: Minimum coverage thresholds
--   **Security Scanning**: Dependency vulnerability checks
--   **Performance Testing**: Bundle size and runtime performance
--   **Code Quality**: SonarQube or similar analysis
+- **Build Verification**: Ensure code compiles successfully
+- **Test Execution**: All tests must pass
+- **Coverage Check**: Minimum coverage thresholds
+- **Security Scanning**: Dependency vulnerability checks
+- **Performance Testing**: Bundle size and runtime performance
+- **Code Quality**: SonarQube or similar analysis
 
 ## Language-Specific Guidelines
 
@@ -704,7 +711,7 @@ class User:
     name: str
     email: str
     is_active: bool = True
-```
+```text
 
 ### Java (if applicable)
 
@@ -718,7 +725,7 @@ public class UserService {
         // Implementation
     }
 }
-```
+```text
 
 ### C# (if applicable)
 
@@ -734,29 +741,29 @@ public class UserService
         // Implementation
     }
 }
-```
+```text
 
 ## Maintenance and Evolution
 
 ### Regular Code Reviews
 
--   **Weekly team reviews**: Discuss code quality trends
--   **Monthly architecture reviews**: Ensure standards are being followed
--   **Quarterly standard updates**: Evolve standards based on lessons learned
+- **Weekly team reviews**: Discuss code quality trends
+- **Monthly architecture reviews**: Ensure standards are being followed
+- **Quarterly standard updates**: Evolve standards based on lessons learned
 
 ### Continuous Improvement
 
--   **Collect feedback**: Regular developer surveys on coding standards
--   **Monitor metrics**: Track code quality metrics over time
--   **Update tools**: Keep development tools and dependencies current
--   **Share knowledge**: Regular tech talks and knowledge sharing sessions
+- **Collect feedback**: Regular developer surveys on coding standards
+- **Monitor metrics**: Track code quality metrics over time
+- **Update tools**: Keep development tools and dependencies current
+- **Share knowledge**: Regular tech talks and knowledge sharing sessions
 
 ### Documentation Updates
 
--   **Version control**: Track changes to coding standards
--   **Communication**: Announce changes to the entire team
--   **Training**: Provide training on new standards or tools
--   **Examples**: Update code examples to reflect current best practices
+- **Version control**: Track changes to coding standards
+- **Communication**: Announce changes to the entire team
+- **Training**: Provide training on new standards or tools
+- **Examples**: Update code examples to reflect current best practices
 
 ---
 

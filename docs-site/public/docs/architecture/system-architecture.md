@@ -2,7 +2,10 @@
 
 ## Overview
 
-This documentation outlines the architectural principles, technology stack, and deployment strategies for web applications built using these guidelines. It serves as a reference for development teams and stakeholders to understand system design decisions and technical implementation approaches.
+This documentation outlines the architectural principles, technology stack, and
+deployment strategies for web applications built using these guidelines. It
+serves as a reference for development teams and stakeholders to understand
+system design decisions and technical implementation approaches.
 
 ## Architecture
 
@@ -12,7 +15,8 @@ This documentation outlines the architectural principles, technology stack, and 
 
 - Separation of concerns with clear layer boundaries
 - Dependency inversion: higher-level modules don't depend on lower-level modules
-- Business logic remains independent of frameworks, databases, and external services
+- Business logic remains independent of frameworks, databases, and external
+  services
 - Testable architecture with mockable dependencies
 
 #### Layered Architecture Structure
@@ -27,7 +31,7 @@ This documentation outlines the architectural principles, technology stack, and 
 ├─────────────────────────────────────┤
 │          Infrastructure Layer       │ ← Database, External APIs, File System
 └─────────────────────────────────────┘
-```
+```text
 
 #### Domain-Driven Design (DDD)
 
@@ -104,7 +108,7 @@ src/
 ├── stores/                  # State management
 ├── utils/                   # Pure utility functions
 └── types/                   # TypeScript type definitions
-```
+```text
 
 **Component Design Principles**:
 
@@ -134,7 +138,7 @@ src/
 ├── validators/              # Input validation schemas
 ├── utils/                   # Utility functions
 └── config/                  # Configuration management
-```
+```text
 
 **Service Design Patterns**:
 
@@ -203,7 +207,7 @@ function createUser(input: unknown) {
   const validatedData = userSchema.parse(input);
   // Process validated data
 }
-```
+```text
 
 **Security Headers and Policies**:
 
@@ -224,7 +228,7 @@ app.use(helmet({
     preload: true,
   },
 }));
-```
+```text
 
 ### Threat Modeling and Mitigation
 
@@ -273,7 +277,7 @@ const ExpensiveList = memo(({ items, onSelect }) => {
     </Suspense>
   );
 });
-```
+```text
 
 **Backend Performance**:
 
@@ -299,7 +303,7 @@ class UserService {
     return user;
   }
 }
-```
+```text
 
 ### Scalability Considerations
 
@@ -358,7 +362,7 @@ class PerformanceMonitor {
     }
   }
 }
-```
+```text
 
 ## Deployment Strategy
 
@@ -407,7 +411,7 @@ function loadConfig(): AppConfig {
     },
   };
 }
-```
+```text
 
 ### Containerization and Orchestration
 
@@ -429,7 +433,7 @@ COPY . .
 USER nextjs
 EXPOSE 3000
 CMD ["npm", "start"]
-```
+```text
 
 **Kubernetes Deployment**:
 
@@ -483,7 +487,7 @@ jobs:
       - run: docker build -t app:${{ github.sha }} .
       - run: docker push registry/app:${{ github.sha }}
       - run: kubectl set image deployment/app app=registry/app:${{ github.sha }}
-```
+```text
 
 **Deployment Strategies**:
 
@@ -509,7 +513,8 @@ groups:
   - name: application.rules
     rules:
       - alert: HighErrorRate
-        expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) > 0.05
+        expr: sum(rate(http_requests_total{status=~"5.."}[5m])) /
+        sum(rate(http_requests_total[5m])) > 0.05
         for: 5m
         labels:
           severity: critical
@@ -523,15 +528,18 @@ groups:
           severity: critical
         annotations:
           summary: Database connection failure
-```
+```text
 
 ---
 
 **Document Information**:
 
 - **Version**: 1.3.3
-- **Last Updated**: 2025-09-06 @ 18:49
+- **Last Updated**: 2025-09-06 @ 22:12
 - **Review Schedule**: Quarterly
 - **Maintained by**: Architecture Team
 
-This architecture documentation provides a comprehensive foundation for building scalable, secure, and maintainable web applications. Teams should adapt these guidelines based on specific project requirements, compliance needs, and organizational constraints.
+This architecture documentation provides a comprehensive foundation for building
+scalable, secure, and maintainable web applications. Teams should adapt these
+guidelines based on specific project requirements, compliance needs, and
+organizational constraints.

@@ -1,6 +1,7 @@
 # Enhanced Version Management System
 
 **Document Information**:
+
 - **Version**: 1.3.3
 - **Last Updated**: 2025-09-06 @ 22:12
 - **Review Schedule**: Quarterly  
@@ -8,13 +9,17 @@
 
 ## Overview
 
-This document describes the enhanced version management system for the web architecture guidelines repository. The system provides automated version management, semantic versioning, release automation, and comprehensive validation.
+This document describes the enhanced version management system for the web
+architecture guidelines repository. The system provides automated version
+management, semantic versioning, release automation, and comprehensive
+validation.
 
 ## System Components
 
 ### 1. Automated Version Management
 
 #### Version Bumping (`version-bump.sh`)
+
 Automatically bumps versions based on conventional commit messages:
 
 ```bash
@@ -29,9 +34,10 @@ npm run versions:bump-patch    # Bug fixes
 # Advanced options
 ./scripts/version-bump.sh --type minor --dry-run
 ./scripts/version-bump.sh --type major --no-tag --no-changelog
-```
+```text
 
 **Features:**
+
 - Analyzes commit messages for automatic bump type detection
 - Updates all version references across the repository
 - Generates changelog entries automatically
@@ -39,6 +45,7 @@ npm run versions:bump-patch    # Bug fixes
 - Validates consistency after changes
 
 #### Changelog Generation (`generate-changelog.sh`)
+
 Generates structured changelog entries from conventional commits:
 
 ```bash
@@ -47,9 +54,10 @@ npm run changelog:generate 1.2.0 HEAD~5..HEAD
 
 # Automatic generation (called by version-bump)
 ./scripts/generate-changelog.sh
-```
+```text
 
 **Generated Structure:**
+
 - ⚠️ BREAKING CHANGES
 - ✨ Features  
 - 🐛 Bug Fixes
@@ -59,6 +67,7 @@ npm run changelog:generate 1.2.0 HEAD~5..HEAD
 ### 2. Enhanced Validation & Performance
 
 #### Parallel Version Validation
+
 Enhanced `validate-versions.sh` with performance improvements:
 
 ```bash
@@ -67,9 +76,10 @@ npm run versions:validate
 
 # Parallel processing for better performance
 # Automatically detects CPU cores and optimizes
-```
+```text
 
 **Improvements:**
+
 - Parallel processing for large repositories
 - Performance timing and metrics
 - Enhanced error reporting
@@ -77,6 +87,7 @@ npm run versions:validate
 - Version history tracking
 
 #### Cross-Reference Validation (`validate-cross-references-enhanced.sh`)
+
 Advanced validation of internal links and references:
 
 ```bash
@@ -90,9 +101,10 @@ npm run check:cross-references-enhanced
 # - Code example references
 # - Section anchors
 # - Relative path contexts
-```
+```text
 
 **Features:**
+
 - Resolves complex relative paths
 - Validates anchor links within documents
 - Checks template and ADR references
@@ -102,6 +114,7 @@ npm run check:cross-references-enhanced
 ### 3. Release Management
 
 #### Release Manager (`release-manager.sh`)
+
 Formal release process with validation and rollback capabilities:
 
 ```bash
@@ -125,9 +138,10 @@ npm run release:list
 
 # Rollback to previous version
 npm run release:rollback 1.1.0
-```
+```text
 
 **Release Process:**
+
 1. **Preparation**: Version updates, changelog generation, validation
 2. **Validation**: Comprehensive testing and consistency checks
 3. **Publishing**: Git tag creation and remote push
@@ -136,6 +150,7 @@ npm run release:rollback 1.1.0
 ### 4. Advanced Features
 
 #### Breaking Change Detection (`detect-breaking-changes.sh`)
+
 Analyzes changes to detect potential breaking changes:
 
 ```bash
@@ -148,9 +163,10 @@ npm run check:breaking-changes
 # Different output formats
 ./scripts/detect-breaking-changes.sh HEAD~1 markdown
 ./scripts/detect-breaking-changes.sh HEAD~1 json
-```
+```text
 
 **Analysis Areas:**
+
 - Template structure changes
 - API/interface modifications
 - Configuration changes
@@ -158,6 +174,7 @@ npm run check:breaking-changes
 - Exit code analysis
 
 #### Template Compatibility Matrix (`generate-template-compatibility.sh`)
+
 Creates comprehensive compatibility documentation:
 
 ```bash
@@ -169,9 +186,10 @@ npm run templates:compatibility-json
 
 # Generate CSV format  
 npm run templates:compatibility-csv
-```
+```text
 
 **Generated Content:**
+
 - Template version dependencies
 - Framework compatibility matrix
 - Inter-template relationships
@@ -184,60 +202,69 @@ npm run templates:compatibility-csv
 ### For New Projects
 
 1. **Use latest stable versions**:
+
    ```bash
    npm run release:status
    npm run versions:validate
-   ```
+   ```text
 
 2. **Check compatibility**:
+
    ```bash
    npm run templates:compatibility
-   ```
+   ```text
 
 3. **Validate setup**:
+
    ```bash
    npm run validate:all
-   ```
+   ```text
 
 ### For Existing Projects
 
 1. **Review breaking changes**:
+
    ```bash
    npm run check:breaking-changes
-   ```
+   ```text
 
 2. **Update incrementally**:
+
    ```bash
    npm run versions:bump-patch  # Safe updates
    npm run release:validate
-   ```
+   ```text
 
 3. **Full validation**:
+
    ```bash
    npm run validate:all
    npm run check:cross-references-enhanced
-   ```
+   ```text
 
 ### For Maintainers
 
 1. **Regular maintenance**:
+
    ```bash
    npm run versions:validate
    npm run templates:compatibility
    npm run check:breaking-changes
-   ```
+   ```text
 
 2. **Release preparation**:
+
    ```bash
    npm run release:prepare X.Y.Z
    npm run release:validate
    npm run release:publish
-   ```
+   ```text
 
 3. **Emergency rollback**:
+
    ```bash
    npm run release:rollback X.Y.Z
-   ```
+   ```text
 
 ## Semantic Versioning Rules
 
@@ -261,7 +288,7 @@ fix: bug fix               → patch bump
 BREAKING CHANGE: ...       → major bump
 docs: documentation        → patch bump
 chore: maintenance         → patch bump
-```
+```text
 
 ## Integration with CI/CD
 
@@ -279,7 +306,7 @@ The version management system integrates with existing GitHub Actions:
 
 - name: Generate Compatibility Matrix
   run: npm run templates:compatibility
-```
+```text
 
 ### Pre-commit Hooks
 
@@ -290,13 +317,14 @@ Recommended pre-commit validation:
 npm run versions:validate
 npm run check:cross-references-enhanced
 npm run lint:all
-```
+```text
 
 ## Automation Features
 
 ### Conventional Commit Analysis
 
 The system automatically analyzes commit messages to:
+
 - Determine appropriate version bump type
 - Generate categorized changelog entries
 - Detect breaking changes
@@ -305,6 +333,7 @@ The system automatically analyzes commit messages to:
 ### Cross-Repository Consistency
 
 Ensures consistency across:
+
 - Package.json files
 - Template version markers
 - Documentation version references
@@ -314,6 +343,7 @@ Ensures consistency across:
 ### Dependency Management
 
 Tracks and validates:
+
 - Template dependencies
 - Framework compatibility
 - Version alignment across components
@@ -348,7 +378,7 @@ npm run versions:sync
 
 # Comprehensive validation
 npm run validate:all
-```
+```text
 
 ### Rollback Procedures
 
@@ -385,26 +415,30 @@ npm run validate:all
 ### From Manual to Automated
 
 1. **Assess Current State**:
+
    ```bash
    npm run versions:validate
    npm run check:breaking-changes
-   ```
+   ```text
 
 2. **Sync Versions**:
+
    ```bash
    npm run versions:sync
-   ```
+   ```text
 
 3. **Generate Documentation**:
+
    ```bash
    npm run templates:compatibility
    npm run changelog:generate
-   ```
+   ```text
 
 4. **Validate Setup**:
+
    ```bash
    npm run release:validate
-   ```
+   ```text
 
 ### Tool Integration
 
@@ -418,27 +452,31 @@ npm run validate:all
 ### Common Issues
 
 1. **Version Mismatches**:
+
    ```bash
    npm run versions:sync
    npm run versions:validate
-   ```
+   ```text
 
 2. **Cross-Reference Errors**:
+
    ```bash
    npm run check:cross-references-enhanced
-   ```
+   ```text
 
 3. **Breaking Changes**:
+
    ```bash
    npm run check:breaking-changes
    ./scripts/detect-breaking-changes.sh HEAD~5 markdown
-   ```
+   ```text
 
 4. **Release Issues**:
+
    ```bash
    npm run release:status
    npm run release:rollback X.Y.Z
-   ```
+   ```text
 
 ### Debug Mode
 
@@ -448,7 +486,7 @@ Most scripts support verbose output:
 ./scripts/version-bump.sh --dry-run
 ./scripts/release-manager.sh prepare 1.2.0 --force
 ./scripts/detect-breaking-changes.sh HEAD~1 json
-```
+```text
 
 ## Future Enhancements
 
@@ -471,8 +509,13 @@ Most scripts support verbose output:
 
 ## Conclusion
 
-The enhanced version management system provides comprehensive automation for version management, release processes, and validation. It ensures consistency, reduces manual errors, and provides powerful tools for maintaining repository quality.
+The enhanced version management system provides comprehensive automation for
+version management, release processes, and validation. It ensures consistency,
+reduces manual errors, and provides powerful tools for maintaining repository
+quality.
 
-Regular use of these tools will improve development velocity, reduce maintenance overhead, and provide clear visibility into system changes and dependencies.
+Regular use of these tools will improve development velocity, reduce maintenance
+overhead, and provide clear visibility into system changes and dependencies.
 
-For questions or issues, refer to the troubleshooting section or consult the individual script documentation.
+For questions or issues, refer to the troubleshooting section or consult the
+individual script documentation.

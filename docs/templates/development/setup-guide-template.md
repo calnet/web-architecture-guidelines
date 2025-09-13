@@ -5,7 +5,9 @@
 **Target Audience**: Developers  
 
 ## Prerequisites
+
 Before starting, ensure you have the following installed:
+
 - **Node.js**: Version 18.x or higher
 - **Git**: Latest version  
 - **Code Editor**: VS Code (recommended) or your preferred editor
@@ -15,6 +17,7 @@ Before starting, ensure you have the following installed:
 ## Quick Start
 
 ### 1. Repository Setup
+
 ```bash
 # Clone the repository
 git clone [repository-url]
@@ -25,10 +28,12 @@ npm install
 
 # Copy environment configuration
 cp .env.example .env.local
-```
+```text
 
 ### 2. Environment Configuration
+
 Edit `.env.local` with your local settings:
+
 ```env
 # Database
 DATABASE_URL="postgresql://user:password@localhost:5432/dbname"
@@ -40,9 +45,10 @@ JWT_SECRET="your-jwt-secret"
 # Development settings
 NODE_ENV="development"
 LOG_LEVEL="debug"
-```
+```text
 
 ### 3. Database Setup
+
 ```bash
 # Start local database (Docker)
 docker-compose up -d postgres
@@ -52,18 +58,20 @@ npm run db:migrate
 
 # Seed development data
 npm run db:seed
-```
+```text
 
 ### 4. Start Development Server
+
 ```bash
 # Start the development server
 npm run dev
 
 # Or start with debugging
 npm run dev:debug
-```
+```text
 
 ### 5. Verify Installation
+
 - Navigate to `http://localhost:3000`
 - You should see the application homepage
 - Check that all features are working correctly
@@ -73,16 +81,19 @@ npm run dev:debug
 ### IDE Configuration
 
 #### VS Code Setup
+
 **Install recommended extensions:**
+
 ```bash
 code --install-extension esbenp.prettier-vscode
 code --install-extension bradlc.vscode-tailwindcss
 code --install-extension ms-vscode.vscode-typescript-next
 code --install-extension ms-vscode.vscode-eslint
 code --install-extension GitLens.gitlens
-```
+```text
 
 **Workspace settings (`.vscode/settings.json`):**
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -96,9 +107,10 @@ code --install-extension GitLens.gitlens
     "**/.git": true
   }
 }
-```
+```text
 
 #### IntelliJ IDEA Setup
+
 1. **Import project**
    - Open IntelliJ IDEA
    - Import project as existing source
@@ -116,6 +128,7 @@ code --install-extension GitLens.gitlens
    - GitToolBox
 
 ### Git Configuration
+
 ```bash
 # Set up Git hooks
 npm run prepare
@@ -129,12 +142,14 @@ git config alias.br branch
 git config alias.ci commit
 git config alias.st status
 git config alias.logs "log --oneline --graph --decorate"
-```
+```text
 
 ### Development Services
 
 #### Docker Services
+
 **docker-compose.yml:**
+
 ```yaml
 version: '3.8'
 services:
@@ -164,16 +179,18 @@ services:
 
 volumes:
   postgres_data:
-```
+```text
 
 **Start services:**
+
 ```bash
 docker-compose up -d
-```
+```text
 
 ### Testing Setup
 
 #### Test Configuration
+
 ```bash
 # Run all tests
 npm test
@@ -189,35 +206,40 @@ npm run test:e2e
 
 # Run specific test file
 npm test -- user.test.ts
-```
+```text
 
 #### Test Environment Variables
+
 Create `.env.test`:
+
 ```env
 NODE_ENV=test
 DATABASE_URL="postgresql://user:password@localhost:5432/testdb"
 JWT_SECRET="test-jwt-secret"
 LOG_LEVEL="error"
-```
+```text
 
 ## Development Workflow
 
 ### Branch Strategy
-```
+
+```text
 main              ← Production-ready code
 ├── develop       ← Integration branch
     ├── feature/  ← Feature branches
     ├── bugfix/   ← Bug fix branches
     └── hotfix/   ← Emergency fixes
-```
+```text
 
 ### Feature Development Process
+
 1. **Create feature branch**
+
    ```bash
    git checkout develop
    git pull origin develop
    git checkout -b feature/user-authentication
-   ```
+   ```text
 
 2. **Implement changes**
    - Write code following coding standards
@@ -226,13 +248,14 @@ main              ← Production-ready code
    - Commit frequently with meaningful messages
 
 3. **Pre-pull request checklist**
+
    ```bash
    # Run quality checks
    npm run lint
    npm run type-check
    npm run test
    npm run build
-   ```
+   ```text
 
 4. **Create pull request**
    - Use PR template
@@ -241,25 +264,29 @@ main              ← Production-ready code
    - Request appropriate reviewers
 
 ### Commit Guidelines
+
 **Conventional commit format:**
-```
+
+```yaml
 type(scope): description
 
 [optional body]
 
 [optional footer]
-```
+```text
 
 **Examples:**
+
 ```bash
 feat(auth): add OAuth2 integration
 fix(api): resolve user creation bug
 docs(readme): update setup instructions
 test(user): add unit tests for user service
 refactor(db): optimize query performance
-```
+```text
 
 **Commit types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -269,6 +296,7 @@ refactor(db): optimize query performance
 - `chore`: Maintenance tasks
 
 ### Code Review Process
+
 1. **Create feature branch** from `develop`
 2. **Implement changes** with tests
 3. **Run quality checks** locally
@@ -281,7 +309,9 @@ refactor(db): optimize query performance
 ### Automated Quality Gates
 
 #### Pre-commit Hooks
+
 Automated checks run before each commit:
+
 - **Code formatting** (Prettier)
 - **Linting** (ESLint)
 - **Type checking** (TypeScript)
@@ -289,6 +319,7 @@ Automated checks run before each commit:
 - **Security scanning** (npm audit)
 
 #### CI/CD Pipeline Checks
+
 - **Build verification**
 - **Full test suite**
 - **Code coverage thresholds**
@@ -296,6 +327,7 @@ Automated checks run before each commit:
 - **Performance regression tests**
 
 ### Manual Quality Checks
+
 ```bash
 # Lint code
 npm run lint
@@ -317,9 +349,10 @@ npm run analyze
 
 # Build verification
 npm run build
-```
+```text
 
 ### Code Quality Metrics
+
 - **Test Coverage**: Minimum 80% line coverage
 - **TypeScript**: Strict mode enabled
 - **ESLint**: Zero warnings in production code
@@ -331,9 +364,11 @@ npm run build
 ### Common Issues
 
 #### Node.js Version Mismatch
+
 **Error**: `The engine "node" is incompatible with this module`
 
-**Solution**: 
+**Solution**:
+
 ```bash
 # Using Node Version Manager (nvm)
 nvm install 18
@@ -345,12 +380,14 @@ fnm use 18
 
 # Verify version
 node --version
-```
+```text
 
 #### Port Already in Use
+
 **Error**: `Port 3000 is already in use`
 
 **Solutions**:
+
 ```bash
 # Option 1: Kill process using port
 lsof -ti:3000 | xargs kill -9
@@ -361,38 +398,45 @@ PORT=3001 npm run dev
 # Option 3: Find and kill specific process
 ps aux | grep node
 kill -9 [process-id]
-```
+```text
 
 #### Database Connection Failed
+
 **Error**: `Connection refused` or `ECONNREFUSED`
 
 **Solutions**:
+
 1. **Ensure Docker is running**
+
    ```bash
    docker --version
    docker ps
-   ```
+   ```text
 
 2. **Start database service**
+
    ```bash
    docker-compose up -d postgres
-   ```
+   ```text
 
 3. **Check connection string**
    - Verify `.env.local` database URL
    - Ensure credentials match docker-compose.yml
 
 4. **Reset database**
+
    ```bash
    docker-compose down
    docker-compose up -d postgres
    npm run db:migrate
-   ```
+   ```text
 
 #### Module Not Found
+
 **Error**: `Cannot find module` or `Module not found`
 
 **Solutions**:
+
 ```bash
 # Clear node modules and reinstall
 rm -rf node_modules package-lock.json
@@ -403,12 +447,14 @@ npm cache clean --force
 
 # Check for case sensitivity issues (especially on Windows)
 # Ensure import paths match actual file names exactly
-```
+```text
 
 #### TypeScript Compilation Errors
+
 **Error**: Various TypeScript compilation issues
 
 **Solutions**:
+
 ```bash
 # Clear TypeScript cache
 npx tsc --build --clean
@@ -421,12 +467,14 @@ npx tsc --build --clean
 
 # Update TypeScript and related packages
 npm update typescript @types/node
-```
+```text
 
 #### Docker Issues
+
 **Error**: Docker service won't start
 
 **Solutions**:
+
 ```bash
 # Check Docker daemon status
 docker info
@@ -441,35 +489,41 @@ docker system prune -a
 
 # Reset Docker completely (last resort)
 docker system prune -a --volumes
-```
+```text
 
 ### Performance Issues
 
 #### Slow Development Server
+
 **Symptoms**: Long startup times, slow hot reload
 
 **Solutions**:
+
 - **Exclude unnecessary files** from watching
+
   ```javascript
   // webpack.config.js or vite.config.js
   watchOptions: {
     ignored: /node_modules/
   }
-  ```
+  ```text
 
 - **Increase Node.js memory**
+
   ```bash
   export NODE_OPTIONS="--max-old-space-size=8192"
   npm run dev
-  ```
+  ```text
 
 - **Use SSD storage** for better I/O performance
 - **Close unnecessary applications** to free up resources
 
 #### Large Bundle Size
+
 **Symptoms**: Slow page loads, large JavaScript bundles
 
 **Solutions**:
+
 ```bash
 # Analyze bundle size
 npm run analyze
@@ -482,23 +536,26 @@ npm run analyze
 
 # Remove unused dependencies
 npx depcheck
-```
+```text
 
 ### Getting Help
 
 #### Self-Service Resources
+
 - **Documentation**: Check project README and docs/
 - **Issue Tracker**: Search existing GitHub issues
 - **Stack Overflow**: Search for similar problems
 - **Official Documentation**: Framework and library docs
 
 #### Team Support
+
 - **Team Chat**: [Slack/Discord channel]
 - **Code Review**: Ask for help in pull requests
 - **Pair Programming**: Schedule sessions with team members
 - **Office Hours**: Regular help sessions with senior developers
 
 #### External Resources
+
 - **Community Forums**: Framework-specific communities
 - **GitHub Discussions**: Project-specific discussions
 - **Technical Blogs**: Industry best practices and solutions
@@ -507,12 +564,14 @@ npx depcheck
 ## Additional Resources
 
 ### Development Tools
+
 - **API Testing**: Postman, Insomnia, REST Client
 - **Database Tools**: pgAdmin, MongoDB Compass, Redis CLI
 - **Debugging**: Browser DevTools, Node.js debugger, VS Code debugger
 - **Performance**: Lighthouse, WebPageTest, Chrome DevTools
 
 ### Learning Resources
+
 - **Style Guide**: [Link to coding standards]
 - **API Documentation**: [Link to API docs]
 - **Architecture Overview**: [Link to architecture docs]
@@ -520,6 +579,7 @@ npx depcheck
 - **Team Onboarding**: [Link to team-specific documentation]
 
 ### Useful Commands Reference
+
 ```bash
 # Development
 npm run dev              # Start development server
@@ -550,8 +610,8 @@ docker-compose up -d     # Start services
 docker-compose down      # Stop services
 docker-compose logs      # View logs
 docker-compose ps        # List running services
-```
+```text
 
 ---
-*Template Version: 1.3.3**************  
+*Template Version: 1.3.3***************  
 *Last Updated: [Date]*

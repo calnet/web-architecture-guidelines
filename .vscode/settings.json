@@ -1,5 +1,5 @@
 {
-  // Markdown specific settings
+  // Markdown specific settings - aligned with .markdownlint.json
   "[markdown]": {
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80,
@@ -13,65 +13,159 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true
   },
-  
+
+  // TypeScript/JavaScript settings - aligned with tsconfig.json
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  // JSON/YAML settings
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  // Shell script settings
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  },
+
   // General editor settings for consistent formatting
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "files.eol": "\n",
   "files.encoding": "utf8",
-  
-  // Markdownlint configuration
+  "editor.trimAutoWhitespace": true,
+
+  // Markdownlint configuration - matches .markdownlint.json exactly
   "markdownlint.config": {
+    "default": true,
     "MD013": {
       "line_length": 80,
       "code_blocks": false,
       "tables": false,
       "headings": false
     },
-    "MD024": {
-      "siblings_only": true
-    },
     "MD033": false,
-    "MD041": false
+    "MD041": false,
+    "MD022": {
+      "lines_above": 1,
+      "lines_below": 1
+    },
+    "MD032": true,
+    "MD031": true,
+    "MD040": true,
+    "MD012": true,
+    "MD047": true
   },
-  
+
+  // ESLint configuration (if using)
+  "eslint.workingDirectories": ["."],
+  "eslint.validate": ["javascript", "typescript"],
+
+  // TypeScript settings
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+
   // File associations
   "files.associations": {
-    "*.md": "markdown"
+    "*.md": "markdown",
+    "*.yml": "yaml",
+    "*.yaml": "yaml",
+    "Dockerfile*": "dockerfile",
+    "*.sh": "shellscript"
   },
-  
+
   // Auto-save settings
   "files.autoSave": "onFocusChange",
-  
-  // Git settings
+
+  // Git settings - enhanced for validation workflow
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.showInlineOpenFileAction": false,
-  
+  "git.enableCommitSigning": false,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+
   // Explorer settings for better navigation
   "explorer.sortOrder": "type",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "*.md": "${capture}.backup.md"
+    "*.md": "${capture}.backup.md, ${capture}.backup-*",
+    "package.json": "package-lock.json, tsconfig*.json, *.config.js, *.config.ts",
+    ".gitignore": ".gitattributes, .gitmodules, .gitmessage",
+    "README.md": "CHANGELOG.md, CONTRIBUTING.md, LICENSE*, SECURITY.md"
   },
-  
+
   // Search settings to exclude common non-essential directories
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,
     "**/build": true,
+    "**/out": true,
     "**/.git": true,
-    "**/tmp": true
+    "**/tmp": true,
+    "**/*.backup*": true,
+    "**/validation-report.log": true
   },
-  
-  // Recommended extensions for this repository
-  "extensions.recommendations": [
-    "DavidAnson.vscode-markdownlint",
-    "yzhang.markdown-all-in-one",
-    "bierner.markdown-preview-github-styles",
-    "shd101wyy.markdown-preview-enhanced"
-  ],
-  
+
+  // Files to exclude from explorer
+  "files.exclude": {
+    "**/*.backup-*": true,
+    "**/validation-report.log": true
+  },
+
+  // Terminal settings for script execution
+  "terminal.integrated.env.linux": {
+    "FORCE_COLOR": "1"
+  },
+  "terminal.integrated.defaultProfile.linux": "bash",
+
+  // Tasks configuration for npm scripts integration
+  "npm.enableScriptExplorer": true,
+  "npm.scriptExplorerAction": "run",
+
+  // Problems panel configuration
+  "problems.decorations.enabled": true,
+  "problems.showCurrentInStatus": true,
+
   // Workspace specific spelling settings
   "cSpell.words": [
     "markdownlint",
@@ -86,6 +180,33 @@
     "dockerfile",
     "yaml",
     "json",
-    "README"
-  ]
+    "tsconfig",
+    "eslint",
+    "prettier",
+    "workflow",
+    "workflows",
+    "github",
+    "nodejs",
+    "npm",
+    "shellcheck",
+    "chmod",
+    "mkdir",
+    "dirname",
+    "basename",
+    "realpath"
+  ],
+
+  // GitHub Actions YAML validation
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+  },
+
+  // Enable validation features
+  "html.validate.scripts": true,
+  "json.validate.enable": true,
+  "yaml.validate": true,
+  "yaml.completion": true,
+
+  // Integrated terminal working directory
+  "terminal.integrated.cwd": "${workspaceFolder}"
 }

@@ -21,10 +21,13 @@ health and performance.
 
 - **User Management**: Creating, managing, and deactivating user accounts
 - **System Configuration**: Configuring application settings and integrations
-- **Security Management**: Monitoring security events and managing access controls
+- **Security Management**:
+  Monitoring security events and managing access controls
 - **Content Moderation**: Reviewing and moderating user-generated content
-- **Performance Monitoring**: Monitoring system performance and resource utilization
-- **Backup and Recovery**: Ensuring data protection and disaster recovery preparedness
+- **Performance Monitoring**:
+  Monitoring system performance and resource utilization
+- **Backup and Recovery**:
+  Ensuring data protection and disaster recovery preparedness
 - **Compliance**: Maintaining regulatory compliance and audit trails
 
 ### Administrative Access
@@ -98,7 +101,7 @@ health and performance.
     email,first_name,last_name,role,department
     john.doe@company.com,John,Doe,user,engineering
     jane.smith@company.com,Jane,Smith,admin,hr
-    ```
+    ```text
 
 2. **Import process**
 
@@ -253,7 +256,7 @@ Minimum Requirements:
 - History: Cannot reuse last 5 passwords
 - Expiration: 90 days (configurable)
 - Lockout: 5 failed attempts, 30-minute lockout
-```
+```text
 
 **Multi-Factor Authentication (2FA)**:
 
@@ -300,7 +303,7 @@ SMTP Settings:
 - Port: 587 (TLS) or 465 (SSL)
 - Authentication: Username/Password
 - Encryption: TLS/SSL required
-```
+```text
 
 **API Integrations**:
 

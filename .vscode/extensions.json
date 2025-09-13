@@ -1,9 +1,45 @@
 {
   "recommendations": [
+    // Essential markdown support - matches project lint standards
     "DavidAnson.vscode-markdownlint",
     "yzhang.markdown-all-in-one",
     "bierner.markdown-preview-github-styles",
-    "shd101wyy.markdown-preview-enhanced",
-    "streetsidesoftware.code-spell-checker"
+
+    // Code formatting and linting
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+
+    // YAML/JSON support for GitHub Actions and configs
+    "redhat.vscode-yaml",
+
+    // Shell script support for validation scripts
+    "foxundermoon.shell-format",
+    "timonwong.shellcheck",
+
+    // Git and GitHub workflow support
+    "github.vscode-github-actions",
+    "eamodio.gitlens",
+
+    // TypeScript/Node.js development
+    "ms-vscode.vscode-typescript-next",
+    "christian-kohler.npm-intellisense",
+    "eg2.vscode-npm-script",
+
+    // Docker support (for examples)
+    "ms-azuretools.vscode-docker",
+
+    // Spell checking for documentation
+    "streetsidesoftware.code-spell-checker",
+
+    // File utilities
+    "sleistner.vscode-fileutils",
+
+    // Enhanced markdown editing
+    "shd101wyy.markdown-preview-enhanced"
+  ],
+  "unwantedRecommendations": [
+    // Avoid conflicting formatters
+    "ms-vscode.vscode-json",
+    "vscode.json-language-features"
   ]
 }

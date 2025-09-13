@@ -4,14 +4,16 @@
   "description": "Comprehensive guidelines for building well-architected web applications",
   "scripts": {
     "security:audit": "npm audit",
-    "security:audit-fix": "npm audit fix", 
+    "security:audit-fix": "npm audit fix",
     "security:check": "npm audit --audit-level moderate",
     "lint": "npm run lint:all",
     "lint:templates": "./scripts/validate-templates.sh",
     "lint:architecture": "./scripts/validate-architecture.sh",
     "lint:security": "./scripts/validate-security.sh",
     "lint:performance": "./scripts/validate-performance.sh",
-    "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance",
+    "lint:markdown": "npx markdownlint --config .markdownlint.json *.md",
+    "lint:markdown-fix": "./scripts/fix-markdown-lint.sh",
+    "lint:all": "npm run lint:templates && npm run lint:architecture && npm run lint:security && npm run lint:performance && npm run lint:markdown",
     "type-check": "npx tsc --noEmit --skipLibCheck --project .",
     "test": "echo 'No tests specified yet'",
     "test:coverage": "echo 'No test coverage configured yet'",
@@ -22,7 +24,9 @@
     "validate:performance": "npm run lint:performance",
     "generate:compliance-report": "npm run compliance:report",
     "check:errors": "./scripts/check-project-errors.sh",
+    "check:errors:strict": "./scripts/check-project-errors-strict.sh",
     "check:comprehensive": "npx tsc && npm run check:errors",
+    "check:critical": "./scripts/check-project-errors-strict.sh",
     "check:cross-references": "./scripts/validate-cross-references.sh",
     "check:cross-references-enhanced": "./scripts/validate-cross-references-enhanced.sh",
     "check:breaking-changes": "./scripts/detect-breaking-changes.sh",
@@ -30,6 +34,9 @@
     "compliance:report": "./scripts/generate-compliance-report.sh",
     "compliance:validate": "npm run compliance:enhance && npm run compliance:report",
     "validate:all": "npm run lint:all && npm run check:cross-references-enhanced",
+    "validate:pre-merge": "./scripts/pre-merge-validation.sh",
+    "validate:pre-merge-verbose": "./scripts/pre-merge-validation.sh --verbose",
+    "validate:report": "./scripts/pre-merge-validation.sh --report",
     "versions:sync": "./scripts/sync-versions.sh",
     "versions:validate": "./scripts/validate-versions.sh",
     "versions:list": "./scripts/list-version-files.sh",
@@ -69,6 +76,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@types/node": "^24.3.1"
+    "@types/node": "^24.3.1",
+    "markdownlint-cli": "^0.45.0"
   }
 }
