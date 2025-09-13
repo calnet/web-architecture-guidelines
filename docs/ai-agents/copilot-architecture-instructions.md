@@ -1,7 +1,7 @@
 # GitHub Copilot Web Application Architecture Instructions
 
-**Instruction Version**: 1.3.3
-**Last Updated**: 2025-09-06 @ 22:12
+**Instruction Version**: 1.3.4
+**Last Updated**: 2025-09-13 @ 13:55
 **Target AI**: GitHub Copilot
 
 ## Integration Reference

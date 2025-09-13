@@ -19,15 +19,15 @@ monitoring, and production-ready deployment capabilities.
 ```text
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
-│ ├── claude-architecture-instructions.md # Unified Claude instructions (all
-levels)
+│ ├── claude-architecture-instructions.md # Unified Claude instructions
+│   # (all levels)
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md
 │   └── anthropic-api-architecture-instructions.md
 ├── external-documentation-links.md     # Curated external resources
 ├── integration-automation-script.md # Automated integration script
-documentation
+  # documentation
 ├── project-integration-guide.md        # How to extend these guidelines
 └── templates/ # Documentation templates (organized by category)
     ├── README.md                       # Template index and usage guide
@@ -92,8 +92,10 @@ npm run workflow:monitor
 
 - 🤖 **Automated Code Reviews** - Intelligent PR analysis with custom Claude
   commands
-- 🔒 **Security Scanning** - OWASP Top 10 compliance and vulnerability assessment
-- ⚡ **Performance Analysis** - Core Web Vitals and optimization recommendations
+- 🔒 **Security Scanning** - OWASP Top 10 compliance and vulnerability
+  assessment
+- ⚡ **Performance Analysis** - Core Web Vitals and optimization
+  recommendations
 - 📋 **Documentation Audits** - Quality validation and compliance checking
 - 🛠️ **Quick Fixes** - Automated resolution of common issues
 - 📊 **Performance Monitoring** - Real-time workflow health and optimization
@@ -115,9 +117,9 @@ npm run workflow:monitor
 ### For Development Teams
 
 1. Use the [Integration Automation
-Script](docs/integration-automation-script.md) for automated setup
-2. Review the [Project Integration Guide](docs/project-integration-guide.md) for
-manual integration
+  Script](docs/integration-automation-script.md) for automated setup
+2. Review the [Project Integration Guide](docs/project-integration-guide.md)
+  for manual integration
 3. Use [documentation templates](docs/templates/) for your project
 
 ### GitHub Actions Setup
@@ -125,11 +127,11 @@ manual integration
 For automated code review and CI/CD workflows:
 
 1. Follow the [GitHub Actions Secrets Setup
-Guide](docs/github-actions-secrets-setup.md)
+  Guide](docs/github-actions-secrets-setup.md)
 2. Configure required API keys and secrets
 3. Enable automated workflows for continuous quality assurance
-4. Reference [external documentation](docs/external-documentation-links.md) as
-needed
+4. Reference [external documentation](docs/external-documentation-links.md)
+  as needed
 
 ### For Project-Specific Implementation
 
@@ -309,7 +311,7 @@ Review workflow documentation.
 2. Create a feature branch (`git checkout -b feature/improvement`)
 3. Make your changes and ensure they pass quality gates
 4. **Run critical checks**: `npm run check:critical`
-5. **Run comprehensive validation**: `npm run validate:all`  
+5. **Run comprehensive validation**: `npm run validate:all`
 6. Commit with conventional commit messages
 7. Submit a pull request
 
@@ -317,7 +319,7 @@ Review workflow documentation.
 
 All PRs must pass the following **critical checks** to be merged:
 - ✅ Security validation (`npm run lint:security`)
-- ✅ Architecture compliance (`npm run lint:architecture`)  
+- ✅ Architecture compliance (`npm run lint:architecture`)
 - ✅ Template validation (`npm run lint:templates`)
 - ✅ Dependency security (high/critical vulnerabilities)
 - ✅ File system integrity
@@ -389,9 +391,12 @@ information
   Finds all files with version patterns without manual configuration
 - **Multiple Version Types**:
   Supports **Version**, **Template Version**, **Instruction Version** patterns
-- **Comprehensive Validation**: Checks 77+ files for version consistency
-- **Enhanced Logging**: Detailed logs and performance tracking
-- **Zero Manual Maintenance**: Add new files and they're automatically included
+- **Comprehensive Validation**:
+  Checks 77+ files for version consistency
+- **Enhanced Logging**:
+  Detailed logs and performance tracking
+- **Zero Manual Maintenance**:
+  Add new files and they're automatically included
 - Template version files and metadata
 - Documentation files with version headers
 - Individual template versions (28+ files)
@@ -425,6 +430,3 @@ Built on industry best practices and lessons learned from:
 
 *Continuously updated to reflect current best practices and emerging
 technologies.*
-
-
-

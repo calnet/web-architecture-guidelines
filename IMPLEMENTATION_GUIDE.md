@@ -481,6 +481,6 @@ or questions, refer to the monitoring logs and health check outputs.*
 
 ---
 
-- **Version**: 1.3.3
+- **Version**: 1.3.4
 - **Last Updated**: September 2025
-- **Template Version**: 1.3.3
+- **Template Version**: 1.3.4

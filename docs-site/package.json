@@ -1,6 +1,6 @@
 {
   "name": "web-architecture-guidelines-docs",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Interactive documentation site for web architecture guidelines",
   "type": "module",
   "scripts": {
