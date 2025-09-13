@@ -73,7 +73,8 @@ header() {
 run_validation() {
     local name="$1"
     local command="$2"
-    local critical="${3:-false}"
+    # Note: critical parameter reserved for future use
+    # local critical="${3:-false}"
 
     if [[ "$VERBOSE" == "true" ]]; then
         log "Running $name..."
