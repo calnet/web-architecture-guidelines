@@ -9,11 +9,11 @@ TOTAL_WARNINGS=0
 
 # Function to increment error/warning counters
 increment_errors() {
-    TOTAL_ERRORS=$((TOTAL_ERRORS + $1))
+    TOTAL_ERRORS=$((TOTAL_ERRORS + "$1"))
 }
 
 increment_warnings() {
-    TOTAL_WARNINGS=$((TOTAL_WARNINGS + $1))
+    TOTAL_WARNINGS=$((TOTAL_WARNINGS + "$1"))
 }
 
 # Documentation Structure Validation
@@ -21,12 +21,12 @@ echo "📁 DOCUMENTATION STRUCTURE VALIDATION"
 echo "------------------------------------"
 if ./scripts/validate-docs-structure.sh > /tmp/docs-structure.log 2>&1; then
     echo "✅ Documentation structure: PASSED"
-    grep "✅" /tmp/docs-structure.log | wc -l | xargs echo "   - Files validated:"
+    grep -c "✅" /tmp/docs-structure.log | xargs echo "   - Files validated:"
 else
     echo "❌ Documentation structure: FAILED"
-    errors=$(grep "❌" /tmp/docs-structure.log | wc -l)
+    errors=$(grep -c "❌" /tmp/docs-structure.log)
     echo "   - Errors found: $errors"
-    increment_errors $errors
+    increment_errors "$errors"
 fi
 echo ""
 
@@ -35,63 +35,63 @@ echo "🏗️ ARCHITECTURE VALIDATION"
 echo "-------------------------"
 if ./scripts/validate-architecture.sh > /tmp/arch.log 2>&1; then
     echo "✅ Architecture compliance: PASSED"
-    grep "✅" /tmp/arch.log | wc -l | xargs echo "   - Checks passed:"
+    grep -c "✅" /tmp/arch.log | xargs echo "   - Checks passed:"
 else
     echo "❌ Architecture compliance: FAILED"
-    errors=$(grep "❌" /tmp/arch.log | wc -l)
+    errors=$(grep -c "❌" /tmp/arch.log)
     echo "   - Errors found: $errors"
-    increment_errors $errors
+    increment_errors "$errors"
 fi
-warnings=$(grep "⚠️" /tmp/arch.log | wc -l)
-if [ $warnings -gt 0 ]; then
+warnings=$(grep -c "⚠️" /tmp/arch.log)
+if [ "$warnings" -gt 0 ]; then
     echo "   - Warnings: $warnings"
-    increment_warnings $warnings
+    increment_warnings "$warnings"
 fi
 echo ""
 
-# Security Validation  
+# Security Validation
 echo "🔒 SECURITY VALIDATION"
 echo "--------------------"
 if ./scripts/validate-security.sh > /tmp/security.log 2>&1; then
     echo "✅ Security compliance: PASSED"
-    grep "✅" /tmp/security.log | wc -l | xargs echo "   - Checks passed:"
+    grep -c "✅" /tmp/security.log | xargs echo "   - Checks passed:"
 else
-    echo "❌ Security compliance: FAILED"  
-    errors=$(grep "❌" /tmp/security.log | wc -l)
+    echo "❌ Security compliance: FAILED"
+    errors=$(grep -c "❌" /tmp/security.log)
     echo "   - Errors found: $errors"
-    increment_errors $errors
+    increment_errors "$errors"
 fi
-warnings=$(grep "⚠️" /tmp/security.log | wc -l)
-if [ $warnings -gt 0 ]; then
+warnings=$(grep -c "⚠️" /tmp/security.log)
+if [ "$warnings" -gt 0 ]; then
     echo "   - Warnings: $warnings"
-    increment_warnings $warnings
+    increment_warnings "$warnings"
 fi
 
 # Check for potential secrets
 echo "   - Checking for potential secrets..."
-secret_files=$(find . -type f -name "*.js" -o -name "*.ts" -o -name "*.json" -o -name "*.md" | xargs grep -l "api_key\|apikey\|password.*=\|secret.*=" 2>/dev/null | grep -v ".env.example" | grep -v "node_modules" | wc -l)
-if [ $secret_files -gt 0 ]; then
+secret_files=$(find . -type f \( -name "*.js" -o -name "*.ts" -o -name "*.json" -o -name "*.md" \) -print0 | xargs -0 grep -l "api_key\|apikey\|password.*=\|secret.*=" 2>/dev/null | grep -v ".env.example" | grep -v -c "node_modules")
+if [ "$secret_files" -gt 0 ]; then
     echo "   ⚠️  Potential secrets in $secret_files files (review needed)"
     increment_warnings 1
 fi
 echo ""
 
 # Performance Validation
-echo "⚡ PERFORMANCE VALIDATION"  
+echo "⚡ PERFORMANCE VALIDATION"
 echo "-----------------------"
 if ./scripts/validate-performance.sh > /tmp/performance.log 2>&1; then
     echo "✅ Performance compliance: PASSED"
-    grep "✅" /tmp/performance.log | wc -l | xargs echo "   - Checks passed:"
+    grep -c "✅" /tmp/performance.log | xargs echo "   - Checks passed:"
 else
     echo "❌ Performance compliance: FAILED"
-    errors=$(grep "❌" /tmp/performance.log | wc -l)
+    errors=$(grep -c "❌" /tmp/performance.log)
     echo "   - Errors found: $errors"
-    increment_errors $errors
+    increment_errors "$errors"
 fi
-warnings=$(grep "⚠️" /tmp/performance.log | wc -l)
-if [ $warnings -gt 0 ]; then
+warnings=$(grep -c "⚠️" /tmp/performance.log)
+if [ "$warnings" -gt 0 ]; then
     echo "   - Warnings: $warnings"
-    increment_warnings $warnings
+    increment_warnings "$warnings"
 fi
 echo ""
 
@@ -100,12 +100,12 @@ echo "📋 TEMPLATE VALIDATION"
 echo "--------------------"
 if ./scripts/validate-templates.sh > /tmp/templates.log 2>&1; then
     echo "✅ Template validation: PASSED"
-    grep "✅" /tmp/templates.log | wc -l | xargs echo "   - Checks passed:"
+    grep -c "✅" /tmp/templates.log | xargs echo "   - Checks passed:"
 else
     echo "❌ Template validation: FAILED"
-    errors=$(grep "❌" /tmp/templates.log | wc -l)
+    errors=$(grep -c "❌" /tmp/templates.log)
     echo "   - Errors found: $errors"
-    increment_errors $errors
+    increment_errors "$errors"
 fi
 echo ""
 
@@ -138,13 +138,13 @@ else
     dead_links=$(grep "ERROR:" /tmp/readme-links.log | head -1 | grep -o "[0-9]* dead links" | grep -o "[0-9]*")
     if [ -n "$dead_links" ] && [ "$dead_links" -gt 0 ]; then
         echo "❌ README links: $dead_links broken links found"
-        increment_errors $dead_links
+        increment_errors "$dead_links"
     fi
 fi
 
 echo "Checking external documentation links..."
 if npx --yes markdown-link-check docs/external-documentation-links.md > /tmp/external-links.log 2>&1; then
-    echo "✅ External links: PASSED"  
+    echo "✅ External links: PASSED"
 else
     dead_links=$(grep "ERROR:" /tmp/external-links.log | head -1 | grep -o "[0-9]* dead links" | grep -o "[0-9]*")
     if [ -n "$dead_links" ] && [ "$dead_links" -gt 0 ]; then
@@ -182,12 +182,12 @@ done
 
 # Check for duplicate scripts (potential sync issues)
 duplicate_scripts=$(find . -name "validate-*.sh" | sort | uniq -d | wc -l)
-if [ $duplicate_scripts -gt 0 ]; then
+if [ "$duplicate_scripts" -gt 0 ]; then
     echo "⚠️  Found $duplicate_scripts duplicate validation scripts"
     increment_warnings 1
 fi
 
-if [ $missing_files -eq 0 ] && [ $duplicate_scripts -eq 0 ]; then
+if [ $missing_files -eq 0 ] && [ "$duplicate_scripts" -eq 0 ]; then
     echo "✅ File system integrity: PASSED"
 else
     increment_errors $missing_files
@@ -223,7 +223,7 @@ if [ $TOTAL_ERRORS -gt 0 ] || [ $TOTAL_WARNINGS -gt 0 ]; then
     echo "2. Fix broken links in documentation"
     echo "3. Address any security warnings"
     echo "4. Update template compliance where needed"
-    
+
     if [ $TOTAL_ERRORS -gt 0 ]; then
         echo "5. PRIORITY: Fix $TOTAL_ERRORS critical errors first"
         exit 1

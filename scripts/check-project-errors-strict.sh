@@ -36,14 +36,28 @@ increment_passed() {
     PASSED_CHECKS=$((PASSED_CHECKS + 1))
 }
 
+# Function to check external links
+# shellcheck disable=SC2317  # Function is called via timeout command
+check_external_links() {
+    if [ -f "docs/external-documentation-links.md" ]; then
+        grep -o "http[s]*://[^)]*" docs/external-documentation-links.md | head -5 | while read -r url; do
+            if curl -s --head --fail "$url" > /dev/null 2>&1; then
+                echo "✅ Link accessible: $url"
+            else
+                echo "⚠️ Link issue: $url"
+            fi
+        done
+    fi
+}
+
 # Function to run a check and handle its results
 run_check() {
     local check_name="$1"
     local check_command="$2"
     local is_critical="${3:-false}"
-    
+
     echo -e "${BLUE}🔍 Running $check_name...${NC}"
-    
+
     if eval "$check_command" > "/tmp/${check_name}.log" 2>&1; then
         echo -e "${GREEN}✅ $check_name: PASSED${NC}"
         increment_passed
@@ -57,11 +71,11 @@ run_check() {
             echo -e "${YELLOW}⚠️ $check_name: WARNINGS DETECTED${NC}"
             increment_warnings 1
         fi
-        
+
         # Show last few lines of error output
         echo -e "${YELLOW}Last few lines of output:${NC}"
         tail -5 "/tmp/${check_name}.log" | sed 's/^/   /'
-        
+
         return $exit_code
     fi
 }
@@ -77,7 +91,7 @@ mkdir -p /tmp
 echo -e "${RED}🚨 CRITICAL CHECKS (Must Pass for Merge)${NC}"
 echo "----------------------------------------"
 
-# Critical: Security validation 
+# Critical: Security validation
 run_check "Security Validation" "npm run lint:security" "true"
 
 # Critical: Architecture compliance
@@ -138,17 +152,17 @@ else
     # Count ERROR vs WARN in the output
     error_count=$(grep -c "ERROR" /tmp/cross-ref.log || echo "0")
     warn_count=$(grep -c "WARN" /tmp/cross-ref.log || echo "0")
-    
+
     if [ "$error_count" -gt 0 ]; then
         echo -e "${RED}❌ Cross-Reference Validation: $error_count ERRORS${NC}"
-        increment_blocking $error_count
+        increment_blocking "$error_count"
         echo -e "${YELLOW}First few errors:${NC}"
         grep "ERROR" /tmp/cross-ref.log | head -3 | sed 's/^/   /'
     fi
-    
+
     if [ "$warn_count" -gt 0 ]; then
         echo -e "${YELLOW}⚠️ Cross-Reference Warnings: $warn_count warnings${NC}"
-        increment_warnings $warn_count
+        increment_warnings "$warn_count"
     fi
 fi
 
@@ -163,17 +177,7 @@ run_check "Performance Validation" "npm run lint:performance" "false"
 
 # Warning: External links (network dependent)
 echo -e "${BLUE}🔍 Running External Link Check...${NC}"
-timeout 30s bash -c '
-    if [ -f "docs/external-documentation-links.md" ]; then
-        grep -o "http[s]*://[^)]*" docs/external-documentation-links.md | head -5 | while read url; do
-            if curl -s --head --fail "$url" > /dev/null 2>&1; then
-                echo "✅ Link accessible: $url"
-            else
-                echo "⚠️ Link issue: $url"
-            fi
-        done
-    fi
-' > /tmp/link-check.log 2>&1 || true
+timeout 30s check_external_links > /tmp/link-check.log 2>&1 || true
 
 if grep -q "Link issue" /tmp/link-check.log 2>/dev/null; then
     echo -e "${YELLOW}⚠️ External Links: Some links may be inaccessible (warnings only)${NC}"
@@ -189,7 +193,7 @@ secret_files=$(find . -type f \( -name "*.js" -o -name "*.ts" -o -name "*.json" 
     -not -path "./node_modules/*" \
     -not -path "./.git/*" \
     -exec grep -l "api_key\|apikey\|password.*=\|secret.*=" {} \; 2>/dev/null | \
-    grep -v ".env.example" | wc -l)
+    grep -cv ".env.example" || echo "0")
 
 if [ "$secret_files" -gt 0 ]; then
     echo -e "${YELLOW}⚠️ Potential Secrets: Found in $secret_files files (review recommended)${NC}"
@@ -205,7 +209,7 @@ echo ""
 echo -e "${BLUE}📊 FINAL SUMMARY${NC}"
 echo "================"
 echo "Critical Errors: $CRITICAL_ERRORS"
-echo "Blocking Errors: $BLOCKING_ERRORS"  
+echo "Blocking Errors: $BLOCKING_ERRORS"
 echo "Warnings: $WARNINGS"
 echo "Passed Checks: $PASSED_CHECKS"
 echo ""
@@ -239,7 +243,7 @@ elif [ $CRITICAL_ERRORS -eq 0 ] && [ $BLOCKING_ERRORS -le 5 ]; then
         echo ""
         echo -e "${BLUE}💡 OPTIONAL IMPROVEMENTS:${NC}"
         echo "1. Review warning-level issues when convenient"
-        echo "2. Consider fixing external links"  
+        echo "2. Consider fixing external links"
         echo "3. Review potential secrets (may be false positives)"
     else
         echo "No issues found. Project is in excellent condition."

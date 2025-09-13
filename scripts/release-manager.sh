@@ -80,7 +80,7 @@ confirm() {
     if [[ "$FORCE" == "true" ]]; then
         return 0
     fi
-    
+
     echo -e "${YELLOW}$1${NC}"
     read -p "Continue? (y/N): " -n 1 -r
     echo
@@ -119,31 +119,31 @@ validate_branch() {
 
 run_validations() {
     header "Running pre-release validations..."
-    
+
     # 1. Validate documentation structure
     log "📄 Validating documentation structure..."
     if ! ./scripts/validate-docs-structure.sh; then
         error "Documentation structure validation failed"
     fi
-    
+
     # 2. Validate versions
     log "🔢 Validating version consistency..."
     if ! ./scripts/validate-versions.sh; then
         error "Version validation failed"
     fi
-    
+
     # 3. Validate cross-references
     log "🔗 Validating cross-references..."
     if ! ./scripts/validate-cross-references-enhanced.sh; then
         error "Cross-reference validation failed"
     fi
-    
+
     # 4. Run linting
     log "🧹 Running linting..."
     if ! npm run lint:all; then
         error "Linting failed"
     fi
-    
+
     # 5. Run tests (if not skipped)
     if [[ "$SKIP_TESTS" != "true" ]]; then
         log "🧪 Running tests..."
@@ -151,60 +151,67 @@ run_validations() {
             warn "Tests failed or not configured"
         fi
     fi
-    
+
     success "All validations passed!"
 }
 
 prepare_release() {
     local version="$1"
-    
+
     header "Preparing release $version"
-    
+
     validate_version_format "$version"
     validate_git_status
     validate_branch
-    
+
     # Get current version
-    local current_version=$(cat VERSION | tr -d '\n')
+        local current_version
+        if [[ -f VERSION ]]; then
+            read -r current_version < VERSION
+        else
+            current_version="Unknown"
+        fi
     log "Current version: $current_version"
     log "Target version: $version"
-    
+
     confirm "Prepare release $version?"
-    
+
     # Update version
     echo "$version" > VERSION
     log "Updated VERSION file"
-    
+
     # Sync all versions
     log "Synchronizing versions across repository..."
     ./scripts/sync-versions.sh
-    
+
     # Update timestamps
-    local timestamp=$(date '+%Y-%m-%d @ %H:%M')
+    local timestamp
+    timestamp=$(date '+%Y-%m-%d @ %H:%M')
     log "Updating timestamps to: $timestamp"
-    
+
     find docs -name "*.md" -exec grep -l "Last Updated" {} \; | while read file; do
         sed -i "s/\*\*Last Updated\*\*: [^*]*/\*\*Last Updated\*\*: $timestamp/" "$file"
         sed -i "s/- \*\*Last Updated\*\*: [^*]*/- \*\*Last Updated\*\*: $timestamp/" "$file"
     done
-    
+
     # Generate changelog
     log "Generating changelog..."
-    local last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+    local last_tag
+    last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
     local commit_range="HEAD"
     if [[ -n "$last_tag" ]]; then
         commit_range="$last_tag..HEAD"
     fi
     ./scripts/generate-changelog.sh "$version" "$commit_range"
-    
+
     # Run validations
     run_validations
-    
+
     # Commit changes
     log "Committing release preparation..."
     git add .
     git commit -m "chore: prepare release $version"
-    
+
     # Create tag
     local tag_name="v$version"
     if [[ "$PRE_RELEASE" == "true" ]]; then
@@ -215,7 +222,7 @@ prepare_release() {
         git tag -a "$tag_name" -m "Release version $version"
         log "Created release tag: $tag_name"
     fi
-    
+
     success "Release $version prepared successfully!"
     log ""
     log "Next steps:"
@@ -226,40 +233,42 @@ prepare_release() {
 
 validate_release() {
     header "Validating current release candidate"
-    
+
     # Check if we're on a tagged version
-    local current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
+    local current_tag
+    current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
     if [[ -z "$current_tag" ]]; then
         warn "Not on a tagged release"
     else
         log "Current release: $current_tag"
     fi
-    
+
     run_validations
-    
+
     success "Release validation completed successfully!"
 }
 
 publish_release() {
     header "Publishing release"
-    
+
     validate_git_status
-    
+
     # Check if we're on a tagged version
-    local current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
+    local current_tag
+    current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
     if [[ -z "$current_tag" ]]; then
         error "Not on a tagged release. Please prepare a release first."
     fi
-    
+
     log "Publishing release: $current_tag"
-    
+
     confirm "Publish release $current_tag to remote repository?"
-    
+
     # Push changes and tags
     log "Pushing to remote repository..."
     git push origin "$MAIN_BRANCH"
     git push origin "$current_tag"
-    
+
     success "Release $current_tag published successfully!"
     log ""
     log "Release is now available at:"
@@ -269,36 +278,36 @@ publish_release() {
 
 rollback_release() {
     local target_version="$1"
-    
+
     header "Rolling back to version $target_version"
-    
+
     validate_version_format "$target_version"
     validate_git_status
     validate_branch
-    
+
     # Check if target version tag exists
     if ! git tag -l | grep -q "^v$target_version$"; then
         error "Target version tag v$target_version does not exist"
     fi
-    
+
     warn "This will reset the repository to version $target_version"
     warn "All changes since then will be lost!"
     confirm "Proceed with rollback to $target_version?"
-    
+
     # Reset to target version
     log "Resetting to version $target_version..."
     git reset --hard "v$target_version"
-    
+
     # Update VERSION file to be sure
     echo "$target_version" > VERSION
-    
+
     # Sync versions
     ./scripts/sync-versions.sh
-    
+
     # Commit the rollback
     git add .
     git commit -m "chore: rollback to version $target_version"
-    
+
     success "Rolled back to version $target_version"
     log ""
     log "Next steps:"
@@ -308,14 +317,15 @@ rollback_release() {
 
 list_releases() {
     header "Available releases"
-    
+
     log "Tagged releases:"
     git tag -l --sort=-version:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+' | head -10
-    
+
     log ""
     log "Current version: $(cat VERSION 2>/dev/null || echo 'Unknown')"
-    
-    local current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
+
+    local current_tag
+    current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
     if [[ -n "$current_tag" ]]; then
         log "Current tag: $current_tag"
     else
@@ -325,15 +335,19 @@ list_releases() {
 
 show_status() {
     header "Release Status"
-    
-    local current_version=$(cat VERSION 2>/dev/null || echo 'Unknown')
-    local current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
-    local current_branch=$(git branch --show-current)
-    local git_status=$(git status --porcelain)
-    
+
+    local current_version
+    current_version=$(cat VERSION 2>/dev/null || echo 'Unknown')
+    local current_tag
+    current_tag=$(git describe --exact-match --tags HEAD 2>/dev/null || echo "")
+    local current_branch
+    current_branch=$(git branch --show-current)
+    local git_status
+    git_status=$(git status --porcelain)
+
     log "Current version: $current_version"
     log "Current branch: $current_branch"
-    
+
     if [[ -n "$current_tag" ]]; then
         log "Current tag: $current_tag"
         log "Status: On tagged release"
@@ -341,13 +355,13 @@ show_status() {
         log "Current commit: $(git rev-parse --short HEAD)"
         log "Status: Development version"
     fi
-    
+
     if [[ -n "$git_status" ]]; then
         warn "Working directory has uncommitted changes"
     else
         success "Working directory is clean"
     fi
-    
+
     # Check version consistency
     log ""
     log "Version consistency check:"

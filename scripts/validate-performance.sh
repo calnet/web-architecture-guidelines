@@ -8,14 +8,14 @@ ERRORS=0
 check_performance_config() {
     local config="$1"
     local files=("${@:2}")
-    
+
     for file in "${files[@]}"; do
         if [ -f "$file" ] && grep -qi "$config" "$file"; then
             echo "✅ $config configured in $file"
             return 0
         fi
     done
-    
+
     echo "❌ $config not found in configuration files"
     return 1
 }
@@ -40,7 +40,7 @@ fi
 BUILD_CONFIG_FILES=("next.config.js" "webpack.config.js" "vite.config.js" ".env.example")
 if [ -f "next.config.js" ] || [ -f "webpack.config.js" ] || [ -f "vite.config.js" ] || grep -qi "BUILD_OPTIMIZATION\|MINIFICATION" ".env.example" 2>/dev/null; then
     echo "✅ Build optimization configuration found"
-    
+
     # Check for specific optimizations
     if grep -qi "compress\|gzip\|minify\|optimization\|BUILD_OPTIMIZATION\|MINIFICATION\|GZIP\|BROTLI" "${BUILD_CONFIG_FILES[@]}" 2>/dev/null; then
         echo "✅ Compression/minification configured"
@@ -61,7 +61,7 @@ fi
 
 # Check for code splitting
 if [ -d "src" ] || [ -d "pages" ] || [ -d "app" ]; then
-    if find . -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" | xargs grep -l "dynamic.*import\|lazy\|Suspense\|loadable" > /dev/null 2>&1; then
+    if find . \( -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" \) -print0 | xargs -0 grep -l "dynamic.*import\|lazy\|Suspense\|loadable" > /dev/null 2>&1; then
         echo "✅ Code splitting implementation found"
     else
         echo "⚠️  No code splitting found (consider implementing for better performance)"
@@ -106,7 +106,7 @@ else
 fi
 
 # Check for lazy loading
-if find . -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" | xargs grep -l "loading.*lazy\|intersection.*observer\|lazy.*load" > /dev/null 2>&1 || grep -qi "LAZY_LOADING" ".env.example" 2>/dev/null; then
+if find . \( -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" \) -print0 | xargs -0 grep -l "loading.*lazy\|intersection.*observer\|lazy.*load" > /dev/null 2>&1 || grep -qi "LAZY_LOADING" ".env.example" 2>/dev/null; then
     echo "✅ Lazy loading implementation found"
 else
     echo "⚠️  No lazy loading found (consider for images and components)"
