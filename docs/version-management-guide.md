@@ -18,7 +18,7 @@ the entire repository.
 - **Root VERSION file**:
   Contains the authoritative version number for the entire repository
 - Located at: `./VERSION`
-- Format: Semantic versioning (e.g., `1.3.3`)
+- Format: Semantic versioning (e.g., `1.3.4`)
 
 ### Managed Files
 
@@ -106,7 +106,7 @@ When updating the repository version:
 
    ```bash
    git add .
-   git commit -m "chore: update version to 1.3.3"
+   git commit -m "chore: update version to 1.3.4"
    ```text
 
 ### 2. Development Workflow Integration
@@ -143,7 +143,7 @@ validate-versions:
 
 ```json
 {
-  "version": "1.3.3"
+  "version": "1.3.4"
 }
 ```text
 

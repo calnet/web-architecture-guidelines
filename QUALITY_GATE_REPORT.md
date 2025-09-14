@@ -190,7 +190,8 @@ The system is **ready for production use** and will significantly improve code q
 **Status**: ✅ PRODUCTION READY
 **Next Review**: December 2024
 
-*For questions or support, refer to the documentation in `docs/quality-gate-setup.md` or run `npm run check:critical` for immediate validation.*
+*For questions or support, refer to the documentation in `docs/quality-gate-setup.md` or run `npm run check:critical` for
+immediate validation.*
 
 ---
 
