@@ -182,7 +182,7 @@ prepare_release() {
 
     # Sync all versions
     log "Synchronizing versions across repository..."
-    ./scripts/sync-versions.sh
+    ./scripts/version-manager.sh --sync
 
     # Update timestamps
     local timestamp
@@ -302,7 +302,7 @@ rollback_release() {
     echo "$target_version" > VERSION
 
     # Sync versions
-    ./scripts/sync-versions.sh
+    ./scripts/version-manager.sh --sync
 
     # Commit the rollback
     git add .

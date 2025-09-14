@@ -195,8 +195,8 @@ scripts/                               # Workflow management scripts (2 files ro
 ├── create-commands.sh                 # Commands creation script
 ├── create-monitoring.sh               # Monitoring scripts creation
 ├── create-docs.sh                     # Documentation creation script
-├── monitor-workflow.sh                # Health monitoring script
-└── test-workflow.sh                   # Comprehensive testing script
+├── workflow-manager.sh                # Unified workflow management script
+└── validate.sh                       # Unified validation script
 
 # Repository Root Files (8 files routed in Getting Started category)
 ├── README.md                          # Main project overview
@@ -345,8 +345,8 @@ structured categories`
 ### When modifying workflows
 
 - **Test thoroughly**:
-  Use `scripts/test-workflow.sh` for comprehensive validation
-- **Monitor health**: Check system health with `scripts/monitor-workflow.sh`
+  Use `scripts/workflow-manager.sh --test` for comprehensive validation
+- **Monitor health**: Check system health with `scripts/workflow-manager.sh --monitor`
 - **Document changes**: Update implementation guides and README files
 - **Validate secrets**: Ensure required API keys and secrets are configured
 

@@ -183,7 +183,7 @@ log "Updated VERSION file"
 
 # Update all version references using existing sync script
 log "Synchronizing versions across repository..."
-./scripts/sync-versions.sh
+./scripts/version-manager.sh --sync
 
 # Update timestamp in all versioned files
 TIMESTAMP=$(date '+%Y-%m-%d @ %H:%M')

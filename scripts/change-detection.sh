@@ -279,7 +279,7 @@ suggest_fixes() {
     fi
     
     # Check if comprehensive validation is needed
-    if ! ./scripts/unified-validation.sh > /dev/null 2>&1; then
+    if ! ./scripts/validate.sh --mode quick > /dev/null 2>&1; then
         log "💡 Validation issues found"
         log "💡 Suggested fix: npm run validate:verbose"
     fi

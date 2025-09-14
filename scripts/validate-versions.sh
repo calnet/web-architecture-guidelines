@@ -147,7 +147,7 @@ elif [ $ERRORS -eq 0 ]; then
     exit 0
 else
     echo "💥 Found $ERRORS version mismatches and $WARNINGS warnings!" | tee -a "$VALIDATION_LOG"
-    echo "🔧 Run './scripts/sync-versions.sh' to fix inconsistencies" | tee -a "$VALIDATION_LOG"
+    echo "🔧 Run './scripts/version-manager.sh --sync' to fix inconsistencies" | tee -a "$VALIDATION_LOG"
     echo "📝 Full log saved to: $VALIDATION_LOG" | tee -a "$VALIDATION_LOG"
     exit 1
 fi

@@ -393,8 +393,8 @@ web-architecture-guidelines/
 ├── scripts/                              # Workflow scripts
 │   ├── create-workflows.sh
 │   ├── create-commands.sh
-│   ├── monitor-workflow.sh
-│   └── test-workflow.sh
+│   ├── workflow-manager.sh
+│   └── validate.sh
 ├── CHANGELOG.md
 ├── ERROR_CHECK_REPORT.md
 ├── QUALITY_GATE_REPORT.md
@@ -540,7 +540,7 @@ npm run preview
 npx markdown-link-check docs/**/*.md
 
 # Run documentation validation
-scripts/test-workflow.sh
+scripts/workflow-manager.sh --test
 
 # Check Claude commands
 for cmd in .claude/commands/*.md; do
