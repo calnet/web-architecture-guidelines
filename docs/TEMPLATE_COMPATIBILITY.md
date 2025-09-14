@@ -144,4 +144,4 @@ This compatibility matrix is automatically generated and should be updated:
 ---
 
 - **Version**: 1.3.4
-- **Last Updated**: September 2025
+- **Last Updated**: 14 September 25 @ 13:41

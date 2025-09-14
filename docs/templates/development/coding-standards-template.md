@@ -1,13 +1,13 @@
 # [Project Name] Coding Standards
 
 <!-- Template Version: 1.3.4 -->
-<!-- Last Updated: September 2025 -->
+<!-- Last Updated: 14 September 25 @ 13:41 -->
 <!-- Target Audience: Development Team -->
 
 ## Template Metadata
 
 **Template Version**: 1.3.4
-**Last Updated**: September 2025
+**Last Updated**: 14 September 25 @ 13:41
 **Target Audience**: Development Team
 
 This document defines the coding standards and best practices for [Project

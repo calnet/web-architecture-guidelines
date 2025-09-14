@@ -45,7 +45,7 @@ get_file_mod_date() {
             stat -c %y "$file" | cut -d. -f1 | sed 's/\([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\) \([0-9]\{2\}:[0-9]\{2\}\).*/\1 @ \2/'
             ;;
         "month_year")
-            # Format: September 2025
+            # Format: 14 September 25 @ 13:41
             local file_date=$(stat -c %y "$file" | cut -d' ' -f1)
             date -d "$file_date" "+%B %Y"
             ;;
