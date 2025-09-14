@@ -3,7 +3,7 @@
 **Document Information**:
 
 - **Version**: 1.3.4
-- **Last Updated**: 2025-09-14 @ 12:31
+- **Last Updated**: September 2025
 - **Review Schedule**: Quarterly  
 - **Maintained by**: Architecture Team
 

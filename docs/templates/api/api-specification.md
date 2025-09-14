@@ -1,7 +1,7 @@
 # API Specification Template
 
 **Template Version**: 1.3.4
-**Last Updated**: 2025-09-14 @ 12:31
+**Last Updated**: September 2025
 **Compliance Score**: Targeting 100%  
 
 ## Overview
