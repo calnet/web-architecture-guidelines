@@ -33,6 +33,7 @@
     "node_modules",
     "dist",
     ".github",
+    "docs",
     "**/*.test.ts",
     "**/*.spec.ts"
   ]

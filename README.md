@@ -17,56 +17,34 @@ monitoring, and production-ready deployment capabilities.
 ## Structure
 
 ```text
-docs/
-├── ai-agents/                          # AI agent-specific instructions
+docs/                                 # Interactive React Documentation Site & Content
+├── src/                               # React components and application code
+├── public/                            # Generated documentation content
+├── copy-docs.sh                       # Content synchronization script
+├── package.json                       # React site dependencies
+├── ai-agents/                         # AI agent-specific instructions
 │ ├── claude-architecture-instructions.md # Unified Claude instructions
 │   # (all levels)
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md
 │   └── anthropic-api-architecture-instructions.md
-├── external-documentation-links.md     # Curated external resources
-├── integration-automation-script.md # Automated integration script
-  # documentation
-├── project-integration-guide.md        # How to extend these guidelines
-└── templates/ # Documentation templates (organized by category)
-    ├── README.md                       # Template index and usage guide
-    ├── architecture/                   # Architecture documentation templates
-    │   ├── adr-template.md            # Architecture Decision Records
+├── external-documentation-links.md   # Curated external resources
+├── integration-automation-script.md  # Automated integration script
+├── project-integration-guide.md      # How to extend these guidelines
+└── templates/                        # Documentation templates (organized by category)
+    ├── README.md                     # Template index and usage guide
+    ├── architecture/                 # Architecture documentation templates
+    │   ├── adr-template.md          # Architecture Decision Records
     │   └── system-architecture-document.md # System documentation
-    ├── api/                           # API documentation templates
-    │   └── api-specification.md       # REST API documentation
-    ├── user-guides/                   # User documentation templates
-    │   ├── user-manual-template.md    # End-user documentation
-    │   └── admin-manual-template.md   # Administrator documentation
-    └── development/                   # Development team templates
-        ├── setup-guide-template.md   # Environment setup
+    ├── api/                         # API documentation templates
+    │   └── api-specification.md     # REST API documentation
+    ├── user-guides/                 # User documentation templates
+    │   ├── user-manual-template.md  # End-user documentation
+    │   └── admin-manual-template.md # Administrator documentation
+    └── development/                 # Development team templates
+        ├── setup-guide-template.md # Environment setup
         └── coding-standards-template.md # Code quality standards
-
-.claude/commands/                       # AI-Powered Code Review System
-├── architecture-review.md             # Comprehensive architecture analysis
-├── security-scan.md                   # Security vulnerability assessment
-├── performance-check.md               # Performance optimization review
-├── documentation-audit.md             # Documentation quality validation
-└── quick-fix.md                       # Quick fix implementation
-
-.github/workflows/                      # Automated Review Workflows
-├── claude-code-review.yml             # Main automated review workflow
-└── advanced-architecture-review.yml   # Multi-stage comprehensive analysis
-
-scripts/                               # Enhanced Workflow Management
-├── setup-enhanced-workflow.sh         # Complete system setup
-├── test-workflow.sh                   # Comprehensive workflow testing
-├── monitor-workflow.sh                # Performance monitoring & optimization
-├── configure-anthropic-secret.sh      # ANTHROPIC_API_KEY configuration
-└── version management scripts/        # Automated version synchronization
-
-docs-site/                             # Interactive React Documentation Site
-├── src/                               # React components and application code
-├── public/                            # Generated documentation content
-├── copy-docs.sh                       # Content synchronization script
-├── package.json                       # React site dependencies
-└── README.md                          # Documentation site usage guide
 ```
 
 ## Quick Start
@@ -123,6 +101,35 @@ npm run workflow:monitor
 2. Review the [Project Integration Guide](docs/project-integration-guide.md)
   for manual integration
 3. Use [documentation templates](docs/templates/) for your project
+
+### Interactive Documentation Site
+
+**New in v1.3.4**: React-based interactive documentation site with modern interface and real-time search.
+
+```bash
+# Navigate to docs folder and start the React site
+cd docs
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+# Site available at http://localhost:5173
+
+# Build for production
+npm run build
+```
+
+**Features:**
+
+- 🔍 **Real-time Search** - Find content quickly across all documentation
+- 📱 **Responsive Design** - Works well on desktop, tablet, and mobile
+- 🔄 **Auto-sync** - Automatically syncs with main documentation content
+- ⚡ **Fast Navigation** - Modern SPA with instant page loads
+- 🎯 **Interactive Interface** - Browse documentation with intuitive navigation
+
+The React site serves as a modern frontend for all documentation while maintaining a single source of truth.
 
 ### GitHub Actions Setup
 
@@ -212,38 +219,6 @@ documentation across all projects.
 - **Real examples** demonstrating best practices
 - **Professional formatting** ready for immediate use
 - **Scalable design** from startup to enterprise projects
-
-## Interactive Documentation Site
-
-The repository includes a modern React-based documentation site for enhanced browsing and navigation.
-
-### Features
-
-- **🎨 Modern Interface**: Clean, responsive design with intuitive navigation
-- **🔍 Real-time Search**: Find content quickly across all documentation
-- **📱 Mobile Responsive**: Works seamlessly on all devices
-- **🔄 Auto-sync**: Automatically syncs with the main docs folder
-- **⚡ Fast Performance**: Built with Vite for optimal loading speeds
-
-### Quick Start
-
-```bash
-cd docs-site
-npm install
-npm run dev
-```
-
-The site will be available at `http://localhost:3000` with hot reload for development.
-
-### Building for Production
-
-```bash
-cd docs-site
-npm run build
-npm run preview
-```
-
-See [docs-site/README.md](docs-site/README.md) for detailed setup and deployment instructions.
 
 ## Core Principles
 
