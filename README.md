@@ -17,34 +17,42 @@ monitoring, and production-ready deployment capabilities.
 ## Structure
 
 ```text
-docs/                                 # Interactive React Documentation Site & Content
-├── src/                               # React components and application code
-├── public/                            # Generated documentation content
-├── copy-docs.sh                       # Content synchronization script
-├── package.json                       # React site dependencies
+docs/                                  # Unified Documentation Content & React Site
+├── src/                               # React documentation site components
+│   ├── components/                    # React components for documentation site
+│   └── App.tsx                        # Main React application
 ├── ai-agents/                         # AI agent-specific instructions
-│ ├── claude-architecture-instructions.md # Unified Claude instructions
-│   # (all levels)
-│   ├── chatgpt-architecture-instructions.md
-│   ├── copilot-architecture-instructions.md
-│   ├── gemini-architecture-instructions.md
-│   └── anthropic-api-architecture-instructions.md
+│   ├── AI_AGENT_INTEGRATION_GUIDE.md # Universal AI agent integration guide
+│   ├── claude/                        # Claude-specific instructions
+│   │   └── claude-architecture-instructions.md
+│   ├── claude-architecture-instructions.md    # Main Claude instructions
+│   ├── chatgpt-architecture-instructions.md   # ChatGPT/GPT-4 instructions
+│   ├── copilot-architecture-instructions.md   # GitHub Copilot instructions
+│   ├── gemini-architecture-instructions.md    # Google Gemini instructions
+│   └── anthropic-api-architecture-instructions.md # Anthropic API instructions
+├── architecture/                      # System architecture documentation
+│   ├── decisions/                     # Architecture Decision Records (ADRs)
+│   └── system-architecture.md         # Overall system architecture
+├── templates/                         # Documentation templates by category
+│   ├── README.md                      # Template index and usage guide
+│   ├── architecture/                  # Architecture documentation templates
+│   │   ├── adr-template.md           # Architecture Decision Records template
+│   │   └── system-architecture-document.md # System documentation template
+│   ├── api/                          # API documentation templates
+│   │   └── api-specification.md      # REST API documentation template
+│   ├── user-guides/                  # User documentation templates
+│   │   ├── user-manual-template.md   # End-user documentation template
+│   │   └── admin-manual-template.md  # Administrator documentation template
+│   └── development/                  # Development team templates
+│       ├── setup-guide-template.md   # Environment setup template
+│       └── coding-standards-template.md # Code quality standards template
 ├── external-documentation-links.md   # Curated external resources
-├── integration-automation-script.md  # Automated integration script
 ├── project-integration-guide.md      # How to extend these guidelines
-└── templates/                        # Documentation templates (organized by category)
-    ├── README.md                     # Template index and usage guide
-    ├── architecture/                 # Architecture documentation templates
-    │   ├── adr-template.md          # Architecture Decision Records
-    │   └── system-architecture-document.md # System documentation
-    ├── api/                         # API documentation templates
-    │   └── api-specification.md     # REST API documentation
-    ├── user-guides/                 # User documentation templates
-    │   ├── user-manual-template.md  # End-user documentation
-    │   └── admin-manual-template.md # Administrator documentation
-    └── development/                 # Development team templates
-        ├── setup-guide-template.md # Environment setup
-        └── coding-standards-template.md # Code quality standards
+├── integration-automation-script.md  # Automated integration script
+├── copy-docs.sh                      # Content synchronization script
+├── package.json                      # React site dependencies
+├── vite.config.ts                    # Vite build configuration
+└── index.html                        # Entry point for React documentation site
 ```
 
 ## Quick Start

@@ -126,21 +126,54 @@ When conducting code reviews, follow these enhanced standards:
 ## Repository Structure
 
 ```text
-docs/
-├── ai-agents/                          # AI agent-specific instructions
-│   ├── claude-architecture-instructions.md # Claude-specific instructions
-│   ├── chatgpt-architecture-instructions.md
-│   ├── copilot-architecture-instructions.md
-│   ├── gemini-architecture-instructions.md
-│   └── anthropic-api-architecture-instructions.md
-├── external-documentation-links.md     # Curated external resources
-├── project-integration-guide.md        # How to extend these guidelines
-└── templates/ # Documentation templates organized by category
-    ├── README.md                       # Template index and usage guide
-    ├── architecture/                   # ADRs and system documentation
-    ├── api/                           # API specification templates
-    ├── user-guides/                   # User and admin manual templates
-    └── development/                   # Setup guides and coding standards
+docs/                                  # Unified Documentation Content & React Site
+├── src/                               # React documentation site components
+│   ├── components/                    # React UI components for documentation
+│   ├── App.tsx                        # Main React application entry
+│   ├── main.tsx                       # React application bootstrap
+│   └── index.css                      # Application styles
+├── ai-agents/                         # AI agent-specific instructions
+│   ├── AI_AGENT_INTEGRATION_GUIDE.md # Universal AI agent integration guide
+│   ├── claude/                        # Claude-specific subdirectory
+│   │   └── claude-architecture-instructions.md # Alternative Claude instructions
+│   ├── claude-architecture-instructions.md     # Main Claude instructions
+│   ├── chatgpt-architecture-instructions.md    # ChatGPT/GPT-4 instructions
+│   ├── copilot-architecture-instructions.md    # GitHub Copilot instructions
+│   ├── gemini-architecture-instructions.md     # Google Gemini instructions
+│   └── anthropic-api-architecture-instructions.md # Anthropic API integration
+├── architecture/                      # System architecture documentation
+│   ├── decisions/                     # Architecture Decision Records (ADRs)
+│   │   ├── adr-001-technology-stack.md
+│   │   ├── adr-002-database-schema-patterns.md
+│   │   └── adr-003-authentication-strategy.md
+│   └── system-architecture.md         # Overall system architecture document
+├── templates/                         # Documentation templates by category
+│   ├── README.md                      # Template index and usage guide
+│   ├── VERSION                        # Template version file
+│   ├── architecture/                  # Architecture documentation templates
+│   │   ├── adr-template.md           # Architecture Decision Records template
+│   │   └── system-architecture-document.md # System documentation template
+│   ├── api/                          # API documentation templates
+│   │   └── api-specification.md      # REST API documentation template
+│   ├── user-guides/                  # User documentation templates
+│   │   ├── user-manual-template.md   # End-user documentation template
+│   │   └── admin-manual-template.md  # Administrator documentation template
+│   └── development/                  # Development team templates
+│       ├── setup-guide-template.md   # Environment setup template
+│       └── coding-standards-template.md # Code quality standards template
+├── external-documentation-links.md   # Curated external resources
+├── project-integration-guide.md      # How to extend these guidelines
+├── integration-automation-script.md  # Automated integration script
+├── github-actions-secrets-setup.md   # GitHub Actions setup guide
+├── quality-gate-setup.md             # Quality gate configuration
+├── version-management-guide.md       # Version management documentation
+├── copy-docs.sh                      # Content synchronization script
+├── package.json                      # React site dependencies
+├── package-lock.json                 # Lock file for dependencies
+├── vite.config.ts                    # Vite build configuration
+├── tsconfig.json                     # TypeScript configuration
+├── tsconfig.node.json               # Node.js TypeScript configuration
+└── index.html                        # Entry point for React documentation site
 
 .github/workflows/                      # AI-Powered Code Review workflows
 ├── claude-code-review.yml             # Main review workflow

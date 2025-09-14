@@ -58,7 +58,7 @@ When providing architectural guidance, organize responses using this structure:
 ### Claude (Anthropic)
 
 **Primary Instruction File**:
-`docs/ai-agents/claude/claude-architecture-instructions.md`
+`docs/ai-agents/claude-architecture-instructions.md` (main comprehensive guide)
 
 **Integration Strategy**:
 
