@@ -105,13 +105,21 @@ Based on the base guidelines, this project uses:
 
 ### 2. Implement Template Structure
 
+**Access Templates via Documentation Site:**
+
+The base guidelines repository includes a comprehensive React-based documentation site with complete access to all templates:
+
+1. **Browse Templates Online**: Access all templates through the documentation site at `/docs/templates/`
+2. **Interactive Navigation**: 8 template categories with dedicated routes and descriptions
+3. **Direct File Access**: All templates available in `docs/templates/` directory structure
+
 **Copy and Customize Templates:**
 
 ```bash
 # Create project documentation structure
 mkdir -p docs/{architecture,api,user-guides,development}
 
-# Copy relevant templates from base guidelines
+# Copy relevant templates from base guidelines (all accessible via documentation site)
 cp base-guidelines/docs/templates/architecture/adr-template.md \
    docs/architecture/adr-template.md
 
@@ -132,7 +140,15 @@ cp base-guidelines/docs/templates/development/setup-guide-template.md \
 
 cp base-guidelines/docs/templates/development/coding-standards-template.md \
    docs/development/coding-standards.md
-```text
+```
+
+**Template Categories Available:**
+- **Architecture Templates**: ADR template, system architecture document
+- **API Templates**: REST API specification template
+- **User Guide Templates**: User manual and administrator manual templates
+- **Development Templates**: Setup guide and coding standards templates
+
+All templates are fully accessible through the documentation site with interactive browsing and syntax highlighting.text
 
 **Create Project-Specific Documentation Structure:**
 
