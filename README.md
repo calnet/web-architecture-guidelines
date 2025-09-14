@@ -23,9 +23,7 @@ docs/                                  # Unified Documentation Content & React S
 │   └── App.tsx                        # Main React application
 ├── ai-agents/                         # AI agent-specific instructions
 │   ├── AI_AGENT_INTEGRATION_GUIDE.md # Universal AI agent integration guide
-│   ├── claude/                        # Claude-specific instructions
-│   │   └── claude-architecture-instructions.md
-│   ├── claude-architecture-instructions.md    # Main Claude instructions
+│   ├── claude-architecture-instructions.md    # Claude instructions
 │   ├── chatgpt-architecture-instructions.md   # ChatGPT/GPT-4 instructions
 │   ├── copilot-architecture-instructions.md   # GitHub Copilot instructions
 │   ├── gemini-architecture-instructions.md    # Google Gemini instructions
@@ -184,15 +182,13 @@ For automated code review and CI/CD workflows:
 
 ## AI Agent Instructions
 
-### [Claude](docs/ai-agents/claude/)
+### [Claude](docs/ai-agents/claude-architecture-instructions.md)
 
 Comprehensive web application architecture instructions with integrated
 AI-powered code review capabilities:
 
 - **[Main Instructions](docs/ai-agents/claude-architecture-instructions.md)**:
   Complete unified guidance (v1.3.4)
-- **[Subdirectory Version](docs/ai-agents/claude/)**:
-  Alternative organization structure
 - **Features**: Advanced patterns, performance optimization, modern practices,
   and custom review commands
 
