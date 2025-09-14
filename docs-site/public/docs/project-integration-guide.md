@@ -372,7 +372,6 @@ Process order checkout with payment integration
 ## Template Compliance
 **Based on**: [Base Setup Guide Template v1.0]
 **Project Extensions**: E-commerce specific services
-**Last Updated**: 14 September 2025 @ 13:41
 
 ## Prerequisites
 Before starting, complete the [Base Development Environment

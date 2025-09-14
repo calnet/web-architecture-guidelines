@@ -1,7 +1,6 @@
 # Documentation Templates Index
 
 **Template Version**: 1.3.4
-**Last Updated**: 14 September 2025 @ 13:41
 **Maintainer**: Documentation Team  
 
 ## Overview
@@ -239,5 +238,6 @@ docs/templates/
 feedback and industry best practices.*
 
 ---
-*Last Updated: [Date]*  
-*Template Index Version: 1.3.4*
+
+- **Template Version**: 1.3.4
+- **Last Updated**: 14 September 2025 @ 13:41
