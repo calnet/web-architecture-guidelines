@@ -291,7 +291,7 @@ echo "1.3.5" > VERSION
 
 # 5. Commit
 git add .
-git commit -m "Bump version to 1.3.5"
+git commit -m "Bump version to 1.3.4"
 ```
 
 ---

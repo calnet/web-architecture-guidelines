@@ -17,6 +17,8 @@ function generateIndexPage(category: string): string {
                 { title: 'Integration Script', path: '/docs/getting-started/integration-automation', description: 'Automated integration tools and scripts' },
                 { title: 'Integration Guide', path: '/docs/getting-started/project-integration', description: 'Complete guide for integrating this architecture into your projects' },
                 { title: 'External Links', path: '/docs/getting-started/external-links', description: 'Curated links to external documentation and resources' },
+                { title: 'Implementation Guide', path: '/docs/getting-started/implementation-guide', description: 'Comprehensive implementation and workflow setup guide' },
+                { title: 'Docs Directory', path: '/docs/getting-started/docs-readme', description: 'Documentation directory overview and structure' },
             ]
         },
         'templates': {
@@ -25,9 +27,12 @@ function generateIndexPage(category: string): string {
             items: [
                 { title: 'API Specification', path: '/docs/templates/api', description: 'Template for API documentation and specifications' },
                 { title: 'Architecture ADR', path: '/docs/templates/architecture', description: 'Architecture Decision Record template' },
+                { title: 'System Architecture Doc', path: '/docs/templates/system-architecture', description: 'System architecture documentation template' },
                 { title: 'Coding Standards', path: '/docs/templates/development', description: 'Development and coding standards template' },
+                { title: 'Setup Guide', path: '/docs/templates/setup-guide', description: 'Environment setup guide template' },
                 { title: 'User Guides', path: '/docs/templates/user-guides', description: 'User manual and guide templates' },
                 { title: 'Admin Manual', path: '/docs/templates/admin-manual', description: 'Administrator manual template' },
+                { title: 'Template Overview', path: '/docs/templates/overview', description: 'Template usage guide and overview' },
             ]
         },
         'architecture': {
@@ -37,18 +42,66 @@ function generateIndexPage(category: string): string {
                 { title: 'System Architecture', path: '/docs/architecture/system', description: 'Complete system architecture documentation' },
                 { title: 'Security Guidelines', path: '/docs/architecture/security', description: 'Security architecture and best practices' },
                 { title: 'Performance Guidelines', path: '/docs/architecture/performance', description: 'Performance optimization and monitoring guidelines' },
-                { title: 'ADR Examples', path: '/docs/architecture/decisions', description: 'Architecture Decision Record examples' },
+                { title: 'Technology Stack ADR', path: '/docs/architecture/adr-001', description: 'Technology stack decisions and rationale' },
+                { title: 'Database Patterns ADR', path: '/docs/architecture/adr-002', description: 'Database schema and pattern decisions' },
+                { title: 'Authentication ADR', path: '/docs/architecture/adr-003', description: 'Authentication strategy and implementation' },
             ]
         },
         'ai-agents': {
             title: 'AI Agents',
             description: 'Configuration and instructions for various AI development assistants.',
             items: [
+                { title: 'Integration Guide', path: '/docs/ai-agents/integration-guide', description: 'Universal AI agent integration guide and best practices' },
                 { title: 'Anthropic API', path: '/docs/ai-agents/anthropic', description: 'Anthropic API integration and usage instructions' },
                 { title: 'ChatGPT', path: '/docs/ai-agents/chatgpt', description: 'ChatGPT configuration and architectural guidelines' },
                 { title: 'GitHub Copilot', path: '/docs/ai-agents/copilot', description: 'GitHub Copilot setup and best practices' },
                 { title: 'Gemini', path: '/docs/ai-agents/gemini', description: 'Google Gemini AI integration guide' },
                 { title: 'Claude', path: '/docs/ai-agents/claude', description: 'Claude AI assistant configuration and instructions' },
+            ]
+        },
+        'project-management': {
+            title: 'Project Management',
+            description: 'Project management documentation including changelogs, reports, and analysis.',
+            items: [
+                { title: 'Changelog', path: '/docs/project-management/changelog', description: 'Version history and release notes' },
+                { title: 'Quality Gate Report', path: '/docs/project-management/quality-gate', description: 'Quality assurance and compliance reporting' },
+                { title: 'Error Check Report', path: '/docs/project-management/error-check', description: 'Validation and error reporting documentation' },
+                { title: 'Workflow Guide', path: '/docs/project-management/workflow-readme', description: 'Workflow system usage and maintenance guide' },
+                { title: 'Conflict Analysis', path: '/docs/project-management/conflict-analysis', description: 'Repository merge conflict analysis' },
+                { title: 'Merge Summary', path: '/docs/project-management/merge-summary', description: 'Repository merge completion documentation' },
+            ]
+        },
+        'configuration': {
+            title: 'Configuration',
+            description: 'System configuration guides and setup documentation.',
+            items: [
+                { title: 'GitHub Actions Setup', path: '/docs/configuration/github-actions', description: 'GitHub Actions secrets and workflow configuration' },
+                { title: 'Quality Gate Setup', path: '/docs/configuration/quality-gate', description: 'Quality gate configuration and validation setup' },
+                { title: 'Version Management', path: '/docs/configuration/version-management', description: 'Version management and release documentation' },
+                { title: 'Enhanced Version System', path: '/docs/configuration/enhanced-version', description: 'Advanced version management system features' },
+                { title: 'Template Compatibility', path: '/docs/configuration/template-compatibility', description: 'Template version compatibility and migration guide' },
+                { title: 'Validation System', path: '/docs/configuration/validation-system', description: 'Validation framework and quality checking system' },
+                { title: 'Next Steps Guide', path: '/docs/configuration/next-steps', description: 'Future development and enhancement roadmap' },
+            ]
+        },
+        'claude-commands': {
+            title: 'Claude Commands',
+            description: 'Custom Claude commands for code review and analysis.',
+            items: [
+                { title: 'Architecture Review', path: '/docs/claude-commands/architecture-review', description: 'Comprehensive architectural analysis command' },
+                { title: 'Documentation Audit', path: '/docs/claude-commands/documentation-audit', description: 'Documentation quality and completeness review' },
+                { title: 'Performance Check', path: '/docs/claude-commands/performance-check', description: 'Application performance analysis command' },
+                { title: 'Quick Fix', path: '/docs/claude-commands/quick-fix', description: 'Immediate actionable fixes command' },
+                { title: 'Security Scan', path: '/docs/claude-commands/security-scan', description: 'Security vulnerability assessment command' },
+            ]
+        },
+        'github-templates': {
+            title: 'GitHub Templates',
+            description: 'GitHub issue and pull request templates for consistent project management.',
+            items: [
+                { title: 'Bug Report', path: '/docs/github-templates/bug-report', description: 'Bug report issue template' },
+                { title: 'Feature Request', path: '/docs/github-templates/feature-request', description: 'Feature request issue template' },
+                { title: 'Pull Request', path: '/docs/github-templates/pull-request', description: 'Pull request template' },
             ]
         },
         'examples': {
@@ -66,6 +119,7 @@ function generateIndexPage(category: string): string {
             items: [
                 { title: 'Validation Scripts', path: '/docs/scripts/validation', description: 'Comprehensive validation and quality check scripts' },
                 { title: 'Template Tools', path: '/docs/scripts/templates', description: 'Template compliance and management tools' },
+                { title: 'Performance Testing', path: '/docs/scripts/performance-testing', description: 'Performance testing guide and tools' },
             ]
         }
     }
@@ -119,6 +173,10 @@ function DocumentationPage() {
                                 filePath = '/docs/project-integration-guide.md'
                             } else if (slug === 'external-links') {
                                 filePath = '/docs/external-documentation-links.md'
+                            } else if (slug === 'implementation-guide') {
+                                filePath = '/IMPLEMENTATION_GUIDE.md'
+                            } else if (slug === 'docs-readme') {
+                                filePath = '/docs/README.md'
                             }
                             break
                         case 'templates':
@@ -126,12 +184,18 @@ function DocumentationPage() {
                                 filePath = '/docs/templates/api/api-specification.md'
                             } else if (slug === 'architecture') {
                                 filePath = '/docs/templates/architecture/adr-template.md'
+                            } else if (slug === 'system-architecture') {
+                                filePath = '/docs/templates/architecture/system-architecture-document.md'
                             } else if (slug === 'development') {
                                 filePath = '/docs/templates/development/coding-standards-template.md'
+                            } else if (slug === 'setup-guide') {
+                                filePath = '/docs/templates/development/setup-guide-template.md'
                             } else if (slug === 'user-guides') {
                                 filePath = '/docs/templates/user-guides/user-manual-template.md'
                             } else if (slug === 'admin-manual') {
                                 filePath = '/docs/templates/user-guides/admin-manual-template.md'
+                            } else if (slug === 'overview') {
+                                filePath = '/docs/templates/README.md'
                             }
                             break
                         case 'architecture':
@@ -141,12 +205,18 @@ function DocumentationPage() {
                                 filePath = '/docs/security.md'
                             } else if (slug === 'performance') {
                                 filePath = '/docs/performance.md'
-                            } else if (slug === 'decisions') {
+                            } else if (slug === 'adr-001') {
                                 filePath = '/docs/architecture/decisions/adr-001-technology-stack.md'
+                            } else if (slug === 'adr-002') {
+                                filePath = '/docs/architecture/decisions/adr-002-database-schema-patterns.md'
+                            } else if (slug === 'adr-003') {
+                                filePath = '/docs/architecture/decisions/adr-003-authentication-strategy.md'
                             }
                             break
                         case 'ai-agents':
-                            if (slug === 'anthropic') {
+                            if (slug === 'integration-guide') {
+                                filePath = '/docs/ai-agents/AI_AGENT_INTEGRATION_GUIDE.md'
+                            } else if (slug === 'anthropic') {
                                 filePath = '/docs/ai-agents/anthropic-api-architecture-instructions.md'
                             } else if (slug === 'chatgpt') {
                                 filePath = '/docs/ai-agents/chatgpt-architecture-instructions.md'
@@ -156,6 +226,60 @@ function DocumentationPage() {
                                 filePath = '/docs/ai-agents/gemini-architecture-instructions.md'
                             } else if (slug === 'claude') {
                                 filePath = '/docs/ai-agents/claude-architecture-instructions.md'
+                            }
+                            break
+                        case 'project-management':
+                            if (slug === 'changelog') {
+                                filePath = '/CHANGELOG.md'
+                            } else if (slug === 'quality-gate') {
+                                filePath = '/QUALITY_GATE_REPORT.md'
+                            } else if (slug === 'error-check') {
+                                filePath = '/ERROR_CHECK_REPORT.md'
+                            } else if (slug === 'workflow-readme') {
+                                filePath = '/WORKFLOW_README.md'
+                            } else if (slug === 'conflict-analysis') {
+                                filePath = '/CONFLICT_ANALYSIS.md'
+                            } else if (slug === 'merge-summary') {
+                                filePath = '/MERGE_COMPLETION_SUMMARY.md'
+                            }
+                            break
+                        case 'configuration':
+                            if (slug === 'github-actions') {
+                                filePath = '/docs/github-actions-secrets-setup.md'
+                            } else if (slug === 'quality-gate') {
+                                filePath = '/docs/quality-gate-setup.md'
+                            } else if (slug === 'version-management') {
+                                filePath = '/docs/version-management-guide.md'
+                            } else if (slug === 'enhanced-version') {
+                                filePath = '/docs/ENHANCED_VERSION_SYSTEM.md'
+                            } else if (slug === 'template-compatibility') {
+                                filePath = '/docs/TEMPLATE_COMPATIBILITY.md'
+                            } else if (slug === 'validation-system') {
+                                filePath = '/docs/VALIDATION_SYSTEM.md'
+                            } else if (slug === 'next-steps') {
+                                filePath = '/docs/NEXT_STEPS_GUIDE.md'
+                            }
+                            break
+                        case 'claude-commands':
+                            if (slug === 'architecture-review') {
+                                filePath = '/.claude/commands/architecture-review.md'
+                            } else if (slug === 'documentation-audit') {
+                                filePath = '/.claude/commands/documentation-audit.md'
+                            } else if (slug === 'performance-check') {
+                                filePath = '/.claude/commands/performance-check.md'
+                            } else if (slug === 'quick-fix') {
+                                filePath = '/.claude/commands/quick-fix.md'
+                            } else if (slug === 'security-scan') {
+                                filePath = '/.claude/commands/security-scan.md'
+                            }
+                            break
+                        case 'github-templates':
+                            if (slug === 'bug-report') {
+                                filePath = '/.github/ISSUE_TEMPLATE/bug_report.md'
+                            } else if (slug === 'feature-request') {
+                                filePath = '/.github/ISSUE_TEMPLATE/feature_request.md'
+                            } else if (slug === 'pull-request') {
+                                filePath = '/.github/PULL_REQUEST_TEMPLATE.md'
                             }
                             break
                         case 'examples':
@@ -173,6 +297,8 @@ function DocumentationPage() {
                                 filePath = 'validation-overview'
                             } else if (slug === 'templates') {
                                 filePath = '/tools/template-compliance-checker.ts'
+                            } else if (slug === 'performance-testing') {
+                                filePath = '/scripts/performance-testing-guide.md'
                             }
                             break
                     }

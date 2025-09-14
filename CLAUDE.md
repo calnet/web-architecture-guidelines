@@ -126,41 +126,112 @@ When conducting code reviews, follow these enhanced standards:
 ## Repository Structure
 
 ```text
-docs/
-├── ai-agents/                          # AI agent-specific instructions
-│   ├── claude-architecture-instructions.md # Claude-specific instructions
-│   ├── chatgpt-architecture-instructions.md
-│   ├── copilot-architecture-instructions.md
-│   ├── gemini-architecture-instructions.md
-│   └── anthropic-api-architecture-instructions.md
-├── external-documentation-links.md     # Curated external resources
-├── project-integration-guide.md        # How to extend these guidelines
-└── templates/ # Documentation templates organized by category
-    ├── README.md                       # Template index and usage guide
-    ├── architecture/                   # ADRs and system documentation
-    ├── api/                           # API specification templates
-    ├── user-guides/                   # User and admin manual templates
-    └── development/                   # Setup guides and coding standards
+docs/                                  # Unified Documentation Content & React Site
+├── src/                               # React documentation site components
+│   ├── components/                    # React UI components for documentation
+│   │   ├── DocumentationPage.tsx     # Dynamic content loader with complete file mapping
+│   │   ├── Sidebar.tsx               # Navigation with 10 comprehensive categories  
+│   │   ├── HomePage.tsx               # Landing page component
+│   │   └── Navigation.tsx             # Top navigation component
+│   ├── App.tsx                        # Main React application entry
+│   ├── main.tsx                       # React application bootstrap (HashRouter)
+│   └── index.css                      # Application styles
+├── ai-agents/                         # AI agent-specific instructions (6 files routed)
+│   ├── AI_AGENT_INTEGRATION_GUIDE.md # Universal AI agent integration guide
+│   ├── claude-architecture-instructions.md     # Unified Claude instructions
+│   ├── chatgpt-architecture-instructions.md    # ChatGPT/GPT-4 instructions
+│   ├── copilot-architecture-instructions.md    # GitHub Copilot instructions
+│   ├── gemini-architecture-instructions.md     # Google Gemini instructions
+│   └── anthropic-api-architecture-instructions.md # Anthropic API integration
+├── architecture/                      # System architecture documentation (6 files routed)
+│   ├── decisions/                     # Architecture Decision Records (ADRs)
+│   │   ├── adr-001-technology-stack.md
+│   │   ├── adr-002-database-schema-patterns.md
+│   │   └── adr-003-authentication-strategy.md
+│   ├── system-architecture.md         # Overall system architecture document
+│   ├── security.md                    # Security guidelines
+│   └── performance.md                 # Performance guidelines
+├── templates/                         # Documentation templates by category (8 files routed)
+│   ├── README.md                      # Template index and usage guide
+│   ├── VERSION                        # Template version file
+│   ├── architecture/                  # Architecture documentation templates
+│   │   ├── adr-template.md           # Architecture Decision Records template
+│   │   └── system-architecture-document.md # System documentation template
+│   ├── api/                          # API documentation templates
+│   │   └── api-specification.md      # REST API documentation template
+│   ├── user-guides/                  # User documentation templates
+│   │   ├── user-manual-template.md   # End-user documentation template
+│   │   └── admin-manual-template.md  # Administrator documentation template
+│   └── development/                  # Development team templates
+│       ├── setup-guide-template.md   # Environment setup template
+│       └── coding-standards-template.md # Code quality standards template
+├── external-documentation-links.md   # Curated external resources
+├── project-integration-guide.md      # How to extend these guidelines
+├── integration-automation-script.md  # Automated integration script
+├── github-actions-secrets-setup.md   # GitHub Actions setup guide (configuration category)
+├── quality-gate-setup.md             # Quality gate configuration
+├── version-management-guide.md       # Version management documentation
+├── copy-docs.sh                      # Content synchronization script (enhanced for all files)
+├── package.json                      # React site dependencies
+├── package-lock.json                 # Lock file for dependencies
+├── vite.config.ts                    # Vite build configuration (base: './' + HashRouter)
+├── tsconfig.json                     # TypeScript configuration
+├── tsconfig.node.json               # Node.js TypeScript configuration
+└── index.html                        # Entry point for React documentation site
 
 .github/workflows/                      # AI-Powered Code Review workflows
 ├── claude-code-review.yml             # Main review workflow
 └── advanced-architecture-review.yml   # Advanced multi-stage workflow
 
-.claude/commands/                       # Custom Claude commands
+.claude/commands/                       # Custom Claude commands (5 files routed)
 ├── architecture-review.md             # Architecture analysis command
 ├── security-scan.md                   # Security assessment command
 ├── performance-check.md               # Performance optimization command
 ├── documentation-audit.md             # Documentation review command
 └── quick-fix.md                       # Quick fix command
 
-scripts/                               # Workflow management scripts
+scripts/                               # Workflow management scripts (2 files routed)
 ├── create-workflows.sh                # Workflow creation script
 ├── create-commands.sh                 # Commands creation script
 ├── create-monitoring.sh               # Monitoring scripts creation
 ├── create-docs.sh                     # Documentation creation script
 ├── monitor-workflow.sh                # Health monitoring script
 └── test-workflow.sh                   # Comprehensive testing script
-```text
+
+# Repository Root Files (8 files routed in Getting Started category)
+├── README.md                          # Main project overview
+├── CLAUDE.md                          # This file - Claude-specific instructions
+├── git-commands-and-setup.md          # Git setup and repository management
+├── IMPLEMENTATION_GUIDE.md            # Enhanced workflow implementation guide
+├── WORKFLOW_README.md                 # Workflow usage and maintenance
+├── CHANGELOG.md                       # Version history
+├── ERROR_CHECK_REPORT.md              # Validation reporting
+├── QUALITY_GATE_REPORT.md             # Quality assurance reports
+└── ... (additional project management files)
+```
+
+## Documentation Site Features
+
+### Comprehensive Content Access
+- **All 55+ markdown files** accessible through dedicated routes
+- **10 navigation categories** organize content logically:
+  1. **Getting Started** (8 files) - Project overview, setup, integration
+  2. **Templates** (8 files) - All documentation templates organized by category  
+  3. **Architecture** (6 files) - System architecture, ADRs, security, performance
+  4. **AI Agents** (6 files) - Instructions for Claude, ChatGPT, Copilot, Gemini
+  5. **Configuration** (7 files) - GitHub Actions, quality gates, version management
+  6. **Project Management** (6 files) - Changelog, quality reports, workflow guides
+  7. **Claude Commands** (5 files) - Custom Claude code review commands
+  8. **GitHub Templates** (3 files) - Issue and pull request templates
+  9. **Scripts Documentation** (2 files) - Performance testing and validation
+  10. **Additional Resources** - Implementation and workflow documentation
+
+### Technical Implementation
+- **HashRouter Configuration**: Ensures compatibility with static hosting (GitHub Pages, Netlify)
+- **Dynamic Content Loading**: All markdown files processed with syntax highlighting
+- **Responsive Design**: Optimized for desktop and mobile viewing
+- **Complete File Path Mapping**: Every markdown file has a dedicated route
+- **Enhanced Copy Script**: Automatically synchronizes all content for site access
 
 ## Core Architecture
 

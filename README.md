@@ -17,42 +17,72 @@ monitoring, and production-ready deployment capabilities.
 ## Structure
 
 ```text
-docs/                                 # Interactive React Documentation Site & Content
-├── src/                               # React components and application code
-├── public/                            # Generated documentation content
-├── copy-docs.sh                       # Content synchronization script
-├── package.json                       # React site dependencies
+docs/                                  # Unified Documentation Content & React Site
+├── src/                               # React documentation site components
+│   ├── components/                    # React components for documentation site
+│   └── App.tsx                        # Main React application
 ├── ai-agents/                         # AI agent-specific instructions
-│ ├── claude-architecture-instructions.md # Unified Claude instructions
-│   # (all levels)
-│   ├── chatgpt-architecture-instructions.md
-│   ├── copilot-architecture-instructions.md
-│   ├── gemini-architecture-instructions.md
-│   └── anthropic-api-architecture-instructions.md
+│   ├── AI_AGENT_INTEGRATION_GUIDE.md # Universal AI agent integration guide
+│   ├── claude-architecture-instructions.md    # Claude instructions
+│   ├── chatgpt-architecture-instructions.md   # ChatGPT/GPT-4 instructions
+│   ├── copilot-architecture-instructions.md   # GitHub Copilot instructions
+│   ├── gemini-architecture-instructions.md    # Google Gemini instructions
+│   └── anthropic-api-architecture-instructions.md # Anthropic API instructions
+├── architecture/                      # System architecture documentation
+│   ├── decisions/                     # Architecture Decision Records (ADRs)
+│   └── system-architecture.md         # Overall system architecture
+├── templates/                         # Documentation templates by category
+│   ├── README.md                      # Template index and usage guide
+│   ├── architecture/                  # Architecture documentation templates
+│   │   ├── adr-template.md           # Architecture Decision Records template
+│   │   └── system-architecture-document.md # System documentation template
+│   ├── api/                          # API documentation templates
+│   │   └── api-specification.md      # REST API documentation template
+│   ├── user-guides/                  # User documentation templates
+│   │   ├── user-manual-template.md   # End-user documentation template
+│   │   └── admin-manual-template.md  # Administrator documentation template
+│   └── development/                  # Development team templates
+│       ├── setup-guide-template.md   # Environment setup template
+│       └── coding-standards-template.md # Code quality standards template
 ├── external-documentation-links.md   # Curated external resources
-├── integration-automation-script.md  # Automated integration script
 ├── project-integration-guide.md      # How to extend these guidelines
-└── templates/                        # Documentation templates (organized by category)
-    ├── README.md                     # Template index and usage guide
-    ├── architecture/                 # Architecture documentation templates
-    │   ├── adr-template.md          # Architecture Decision Records
-    │   └── system-architecture-document.md # System documentation
-    ├── api/                         # API documentation templates
-    │   └── api-specification.md     # REST API documentation
-    ├── user-guides/                 # User documentation templates
-    │   ├── user-manual-template.md  # End-user documentation
-    │   └── admin-manual-template.md # Administrator documentation
-    └── development/                 # Development team templates
-        ├── setup-guide-template.md # Environment setup
-        └── coding-standards-template.md # Code quality standards
+├── integration-automation-script.md  # Automated integration script
+├── copy-docs.sh                      # Content synchronization script
+├── package.json                      # React site dependencies
+├── vite.config.ts                    # Vite build configuration
+└── index.html                        # Entry point for React documentation site
 ```
 
 ## Quick Start
 
+### Interactive Documentation Site
+
+**Comprehensive React-based documentation website** with complete routing for all repository content:
+
+```bash
+# Navigate to documentation site
+cd docs/
+
+# Install dependencies
+npm install
+
+# Start development server (view at http://localhost:5173)
+npm run dev
+
+# Build for production
+npm run build
+```
+
+**Features:**
+- 📚 **Complete Content Access** - All 55+ markdown files accessible through intuitive navigation
+- 🗂️ **Organized Categories** - 10 logical navigation sections covering all documentation types
+- 🔍 **Dynamic Content Loading** - Full markdown rendering with syntax highlighting
+- 📱 **Responsive Design** - Optimized for desktop and mobile viewing
+- 🚀 **Static Hosting Ready** - Deployable to GitHub Pages, Netlify, or any static host
+
 ### AI-Powered Code Review System
 
-**New in v1.3.3**: Complete automated code review workflow with AI-powered
-analysis, comprehensive architecture documentation, and zero critical errors.
+**Complete automated code review workflow** with AI-powered analysis, comprehensive architecture documentation, and zero critical errors.
 
 ```bash
 # Quick setup of AI-Powered Code Review system
@@ -104,7 +134,8 @@ npm run workflow:monitor
 
 ### Interactive Documentation Site
 
-**New in v1.3.4**: React-based interactive documentation site with modern interface and real-time search.
+**New in v1.3.4**: React-based interactive documentation site with modern
+interface and real-time search.
 
 ```bash
 # Navigate to docs folder and start the React site
@@ -129,7 +160,8 @@ npm run build
 - ⚡ **Fast Navigation** - Modern SPA with instant page loads
 - 🎯 **Interactive Interface** - Browse documentation with intuitive navigation
 
-The React site serves as a modern frontend for all documentation while maintaining a single source of truth.
+The React site serves as a modern frontend for all documentation while
+maintaining a single source of truth.
 
 ### GitHub Actions Setup
 
@@ -150,12 +182,15 @@ For automated code review and CI/CD workflows:
 
 ## AI Agent Instructions
 
-### [Claude](docs/ai-agents/claude/)
+### [Claude](docs/ai-agents/claude-architecture-instructions.md)
 
-- **V1**: Foundational architecture guidance
-- **V2**:
-  Enhanced with advanced patterns, performance optimization, and modern
-  practices
+Comprehensive web application architecture instructions with integrated
+AI-powered code review capabilities:
+
+- **[Main Instructions](docs/ai-agents/claude-architecture-instructions.md)**:
+  Complete unified guidance (v1.3.4)
+- **Features**: Advanced patterns, performance optimization, modern practices,
+  and custom review commands
 
 ### [ChatGPT](docs/ai-agents/chatgpt-architecture-instructions.md)
 
@@ -295,8 +330,8 @@ npm run check:comprehensive    # Full validation with TypeScript
 
 - ✅ **Quality Gate System** - Comprehensive error prevention with blocking critical checks
 - ✅ **Enhanced Claude Workflow System** - Automated code review capabilities
-- ✅ **GitHub Actions Workflows** - claude-code-review.yml, quality-gate.yml and
-  advanced-architecture-review.yml
+- ✅ **GitHub Actions Workflows** - claude-code-review.yml, quality-gate.yml 
+  and advanced-architecture-review.yml
 - ✅ **Custom Claude Commands** - 5 specialized analysis commands
 - ✅ **Version Management** - Automated version synchronization across 77+ files
 - ✅ **Performance Monitoring** - Real-time workflow health and optimization

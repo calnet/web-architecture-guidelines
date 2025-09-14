@@ -147,7 +147,7 @@ When conducting code reviews, follow these enhanced standards:
 ```
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
-│   ├── claude/                         # Claude-specific instructions (V1 and V2)
+│   ├── claude-architecture-instructions.md  # Unified Claude instructions
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md

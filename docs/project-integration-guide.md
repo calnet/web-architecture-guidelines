@@ -105,13 +105,21 @@ Based on the base guidelines, this project uses:
 
 ### 2. Implement Template Structure
 
+**Access Templates via Documentation Site:**
+
+The base guidelines repository includes a comprehensive React-based documentation site with complete access to all templates:
+
+1. **Browse Templates Online**: Access all templates through the documentation site at `/docs/templates/`
+2. **Interactive Navigation**: 8 template categories with dedicated routes and descriptions
+3. **Direct File Access**: All templates available in `docs/templates/` directory structure
+
 **Copy and Customize Templates:**
 
 ```bash
 # Create project documentation structure
 mkdir -p docs/{architecture,api,user-guides,development}
 
-# Copy relevant templates from base guidelines
+# Copy relevant templates from base guidelines (all accessible via documentation site)
 cp base-guidelines/docs/templates/architecture/adr-template.md \
    docs/architecture/adr-template.md
 
@@ -132,7 +140,15 @@ cp base-guidelines/docs/templates/development/setup-guide-template.md \
 
 cp base-guidelines/docs/templates/development/coding-standards-template.md \
    docs/development/coding-standards.md
-```text
+```
+
+**Template Categories Available:**
+- **Architecture Templates**: ADR template, system architecture document
+- **API Templates**: REST API specification template
+- **User Guide Templates**: User manual and administrator manual templates
+- **Development Templates**: Setup guide and coding standards templates
+
+All templates are fully accessible through the documentation site with interactive browsing and syntax highlighting.text
 
 **Create Project-Specific Documentation Structure:**
 
@@ -254,7 +270,7 @@ jobs:
 
 ## Base Guideline Reference
 - **Aligns with**: [Database selection criteria from base guidelines]
-- **Template Used**: [Base ADR template v1.0]
+- **Template Used**: [Base ADR template v1.3.4]
 
 ## Context Extension
 **Project**: E-commerce Platform
@@ -290,7 +306,7 @@ extensions:
 # E-commerce Platform System Architecture
 
 ## Template Compliance
-**Based on**: [Base System Architecture Document Template v1.0]
+**Based on**: [Base System Architecture Document Template v1.3.4]
 **Customizations**: Added e-commerce specific sections
 **Review Date**: [Date]
 
@@ -320,7 +336,7 @@ extensions:
 # E-commerce API Specification
 
 ## Template Compliance
-**Based on**: [Base API Specification Template v1.0]
+**Based on**: [Base API Specification Template v1.3.4]
 **Extensions**: Added e-commerce specific endpoints
 **API Version**: v2.0
 
@@ -370,7 +386,7 @@ Process order checkout with payment integration
 # Development Environment Setup
 
 ## Template Compliance
-**Based on**: [Base Setup Guide Template v1.0]
+**Based on**: [Base Setup Guide Template v1.3.4]
 **Project Extensions**: E-commerce specific services
 
 ## Prerequisites
@@ -432,10 +448,10 @@ After completing base setup:
 
 | Document | Base Template | Version | Updated | Customizations |
 |----------|---------------|---------|---------|----------------|
-| System Architecture | system-arch.md | v1.0 | 2024-01-15 | E-commerce |
-| API Specification | api-spec.md | v1.0 | 2024-01-10 | Payment endpoints |
-| User Manual | user-manual.md | v1.0 | 2024-01-05 | Checkout workflow |
-| Setup Guide | setup-guide.md | v1.0 | 2024-01-01 | E-commerce services |
+| System Architecture | system-arch.md | v1.3.4 | 2024-01-15 | E-commerce |
+| API Specification | api-spec.md | v1.3.4 | 2024-01-10 | Payment endpoints |
+| User Manual | user-manual.md | v1.3.4 | 2024-01-05 | Checkout workflow |
+| Setup Guide | setup-guide.md | v1.3.4 | 2024-01-01 | E-commerce services |
 ```text
 
 **Update Notification Process:**

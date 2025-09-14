@@ -34,6 +34,20 @@ if [ -f "$REPO_ROOT/CHANGELOG.md" ]; then
     cp "$REPO_ROOT/CHANGELOG.md" "$SCRIPT_DIR/public/"
 fi
 
+# Copy project management and analysis files
+if [ -f "$REPO_ROOT/ERROR_CHECK_REPORT.md" ]; then
+    cp "$REPO_ROOT/ERROR_CHECK_REPORT.md" "$SCRIPT_DIR/public/"
+fi
+if [ -f "$REPO_ROOT/QUALITY_GATE_REPORT.md" ]; then
+    cp "$REPO_ROOT/QUALITY_GATE_REPORT.md" "$SCRIPT_DIR/public/"
+fi
+if [ -f "$REPO_ROOT/CONFLICT_ANALYSIS.md" ]; then
+    cp "$REPO_ROOT/CONFLICT_ANALYSIS.md" "$SCRIPT_DIR/public/"
+fi
+if [ -f "$REPO_ROOT/MERGE_COMPLETION_SUMMARY.md" ]; then
+    cp "$REPO_ROOT/MERGE_COMPLETION_SUMMARY.md" "$SCRIPT_DIR/public/"
+fi
+
 # Copy .claude directory (Enhanced Claude commands)
 if [ -d "$REPO_ROOT/.claude" ]; then
     rsync -av --delete "$REPO_ROOT/.claude/" "$SCRIPT_DIR/public/.claude/"
@@ -87,7 +101,11 @@ echo "- CLAUDE.md"
 echo "- LICENSE"
 echo "- IMPLEMENTATION_GUIDE.md (Enhanced Claude workflow guide)"
 echo "- WORKFLOW_README.md (Usage and maintenance)"
-echo "- CHANGELOG.md (Version 1.2.0 changes)"
+echo "- CHANGELOG.md (Version history)"
+echo "- ERROR_CHECK_REPORT.md (Validation reporting)"
+echo "- QUALITY_GATE_REPORT.md (Quality assurance)"
+echo "- CONFLICT_ANALYSIS.md (Merge conflict analysis)"
+echo "- MERGE_COMPLETION_SUMMARY.md (Merge documentation)"
 echo "- .claude/ (Custom Claude commands)"
 echo "- .github/ (Automated workflows)"
 echo "- docs/ (complete documentation structure)"

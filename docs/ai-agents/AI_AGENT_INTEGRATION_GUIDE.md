@@ -58,7 +58,7 @@ When providing architectural guidance, organize responses using this structure:
 ### Claude (Anthropic)
 
 **Primary Instruction File**:
-`docs/ai-agents/claude/claude-architecture-instructions.md`
+`docs/ai-agents/claude-architecture-instructions.md` (main comprehensive guide)
 
 **Integration Strategy**:
 
@@ -163,6 +163,52 @@ response = client.messages.create(
     messages=[{"role": "user", "content": user_query}]
 )
 ```text
+
+## Repository Structure and Documentation Access
+
+### File Organization
+
+All AI agent instruction files are organized within the unified documentation structure:
+
+```text
+docs/ai-agents/
+├── AI_AGENT_INTEGRATION_GUIDE.md       # This comprehensive integration guide
+├── claude-architecture-instructions.md  # Main Claude instructions (primary)
+├── chatgpt-architecture-instructions.md # ChatGPT/GPT-4 instructions
+├── copilot-architecture-instructions.md # GitHub Copilot instructions
+├── gemini-architecture-instructions.md  # Google Gemini instructions
+├── anthropic-api-architecture-instructions.md # Anthropic API integration
+└── claude-architecture-instructions.md  # Unified Claude instructions
+    └── claude-architecture-instructions.md
+```
+
+### Interactive Documentation Site
+
+The repository includes a comprehensive React-based documentation site providing intuitive access to all content:
+
+**Key Features:**
+- **Complete Content Access**: All 55+ markdown files accessible through dedicated routes
+- **AI Agent Navigation**: Dedicated category with all 6 instruction files
+- **Interactive Browsing**: Full markdown rendering with syntax highlighting
+- **Responsive Design**: Optimized for desktop and mobile viewing
+- **Static Hosting Ready**: Deployable to GitHub Pages, Netlify, or any static host
+
+**Access Methods:**
+1. **Direct File Access**: Files available in their directory structure for AI agent loading
+2. **Documentation Site**: Browse at `/docs/ai-agents/` through the React interface
+3. **Development Server**: Run `npm run dev` from the `docs/` directory for local browsing
+
+**Site Navigation Categories:**
+- **AI Agents** (6 files) - All instruction files plus integration guide
+- **Getting Started** (8 files) - Project setup and integration documentation  
+- **Templates** (8 files) - Documentation templates organized by category
+- **Architecture** (6 files) - System architecture and decision records
+- **Configuration** (7 files) - Setup guides and quality gate configuration
+- **Project Management** (6 files) - Workflow guides and quality reports
+- **Claude Commands** (5 files) - Custom Claude commands for code review
+- **GitHub Templates** (3 files) - Issue and pull request templates
+- **Scripts Documentation** (2 files) - Performance testing and validation tools
+- **Additional Resources** - Implementation guides and workflow documentation
 
 ## Custom AI Agent Integration
 
@@ -276,7 +322,7 @@ All AI agents should provide:
 
 ### System Overview
 
-The AI-Powered Code Review workflow system (v1.3.3+) provides automated,
+The AI-Powered Code Review workflow system (v1.3.4+) provides automated,
 intelligent code analysis and optimization recommendations with comprehensive
 architecture documentation. This system can be leveraged by all AI agents to
 provide consistent, validated architectural guidance.
