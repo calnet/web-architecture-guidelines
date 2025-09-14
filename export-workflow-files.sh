@@ -859,7 +859,7 @@ Provide architecture guidelines, templates, and AI agent instructions that enabl
 ```
 docs/
 ├── ai-agents/              # AI agent-specific instructions
-│   ├── claude/            # Claude-specific instructions (v1 & v2)
+│   ├── claude-architecture-instructions.md  # Unified Claude instructions
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md

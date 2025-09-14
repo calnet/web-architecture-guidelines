@@ -19,7 +19,7 @@ Full-featured React-based documentation website with comprehensive routing, navi
 - **gemini-architecture-instructions.md** - Google Gemini guidance
 - **anthropic-api-architecture-instructions.md** - Anthropic API integration
 - **AI_AGENT_INTEGRATION_GUIDE.md** - Universal integration framework
-- **claude/** - Alternative Claude instruction versions
+- **claude-architecture-instructions.md** - Unified Claude instructions
 
 ### Architecture Documentation (`architecture/`)
 - **system-architecture.md** - Complete system architecture overview

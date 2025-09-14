@@ -178,7 +178,7 @@ docs/ai-agents/
 ├── copilot-architecture-instructions.md # GitHub Copilot instructions
 ├── gemini-architecture-instructions.md  # Google Gemini instructions
 ├── anthropic-api-architecture-instructions.md # Anthropic API integration
-└── claude/                              # Claude-specific alternative versions
+└── claude-architecture-instructions.md  # Unified Claude instructions
     └── claude-architecture-instructions.md
 ```
 
