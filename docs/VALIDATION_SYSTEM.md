@@ -73,10 +73,10 @@ The system checks that version numbers are consistent across:
 - **Root VERSION file** - Master version source
 - **package.json files** - Version field in package files
 - **Documentation files** - Various version patterns:
-  - `**Version**: X.X.X`
-  - `**Template Version**: X.X.X`
-  - `**Instruction Version**: X.X.X`
-  - `*Template Version: X.X.X*`
+  - `**Version**: 1.3.4
+  - `**Template Version**: 1.3.4
+  - `**Instruction Version**: 1.3.4
+  - `*Template Version: 1.3.4**`
 - **Template version files** - `.template-version` and `VERSION` files
 
 ### Date Validation
