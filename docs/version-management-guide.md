@@ -175,7 +175,7 @@ or
 ### AI Agent Instructions (Optional)
 
 ```markdown
-Version: 1.3.3
+Version: 1.3.4
 ```text
 
 ## Error Handling

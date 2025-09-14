@@ -1,6 +1,6 @@
 # [Project Name] Coding Standards
 
-<!-- Template Version: 1.3.3 -->
+<!-- Template Version: 1.3.4 -->
 <!-- Last Updated: 2025-09-06 @ 22:12 -->
 <!-- Target Audience: Development Team -->
 
@@ -767,6 +767,6 @@ public class UserService
 
 ---
 
-_Template Version: 1.0_  
+_Template Version: 1.3.4_  
 _Last Updated: [Date]_  
 _For questions or suggestions, contact: [Team/Email]_

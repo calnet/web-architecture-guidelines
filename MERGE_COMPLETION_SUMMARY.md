@@ -1,7 +1,7 @@
 # Merge Completion Summary
 
 **Date:** September 10, 2025
-**Version:** 1.3.3
+**Version:** 1.3.4
 **Branch:** `copilot/vscode1757537787590`
 
 ## Summary
