@@ -60,6 +60,13 @@ scripts/                               # Enhanced Workflow Management
 ├── monitor-workflow.sh                # Performance monitoring & optimization
 ├── configure-anthropic-secret.sh      # ANTHROPIC_API_KEY configuration
 └── version management scripts/        # Automated version synchronization
+
+docs-site/                             # Interactive React Documentation Site
+├── src/                               # React components and application code
+├── public/                            # Generated documentation content
+├── copy-docs.sh                       # Content synchronization script
+├── package.json                       # React site dependencies
+└── README.md                          # Documentation site usage guide
 ```
 
 ## Quick Start
@@ -205,6 +212,38 @@ documentation across all projects.
 - **Real examples** demonstrating best practices
 - **Professional formatting** ready for immediate use
 - **Scalable design** from startup to enterprise projects
+
+## Interactive Documentation Site
+
+The repository includes a modern React-based documentation site for enhanced browsing and navigation.
+
+### Features
+
+- **🎨 Modern Interface**: Clean, responsive design with intuitive navigation
+- **🔍 Real-time Search**: Find content quickly across all documentation
+- **📱 Mobile Responsive**: Works seamlessly on all devices
+- **🔄 Auto-sync**: Automatically syncs with the main docs folder
+- **⚡ Fast Performance**: Built with Vite for optimal loading speeds
+
+### Quick Start
+
+```bash
+cd docs-site
+npm install
+npm run dev
+```
+
+The site will be available at `http://localhost:3000` with hot reload for development.
+
+### Building for Production
+
+```bash
+cd docs-site
+npm run build
+npm run preview
+```
+
+See [docs-site/README.md](docs-site/README.md) for detailed setup and deployment instructions.
 
 ## Core Principles
 
