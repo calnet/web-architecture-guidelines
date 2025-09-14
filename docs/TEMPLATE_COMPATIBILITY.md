@@ -19,26 +19,26 @@ The template compatibility matrix helps developers understand:
 
 ### api
 
-- **api-specification** (v1.3.3) -
+- **api-specification** (v1.3.4) -
 
 ### architecture
 
-- **system-architecture-document** (v1.3.3) -
+- **system-architecture-document** (v1.3.4) -
 - **adr-template** (v) -
 
 ### development
 
-- **coding-standards-template** (v1.3.3) - Development Team  
-- **setup-guide-template** (v1.3.3) - Developers  
+- **coding-standards-template** (v1.3.4) - Development Team  
+- **setup-guide-template** (v1.3.4) - Developers  
 
 ### templates
 
-- **README** (v1.3.3) -
+- **README** (v1.3.4) -
 
 ### user-guides
 
-- **admin-manual-template** (v1.3.3) - System Administrators  
-- **user-manual-template** (v1.3.3) - End Users  
+- **admin-manual-template** (v1.3.4) - System Administrators  
+- **user-manual-template** (v1.3.4) - End Users  
 
 ## Compatibility Matrix
 
@@ -65,15 +65,15 @@ The template compatibility matrix helps developers understand:
 
 #### Docker
 
-- setup-guide-template (v1.3.3) - development
+- setup-guide-template (v1.3.4) - development
 
 #### Express
 
-- coding-standards-template (v1.3.3) - development
+- coding-standards-template (v1.3.4) - development
 
 #### React
 
-- coding-standards-template (v1.3.3) - development
+- coding-standards-template (v1.3.4) - development
 
 ## Dependency Graph
 

@@ -17,7 +17,7 @@ For universal guidelines and integration with other AI agents, see:
 
 ## Enhanced Claude Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+**New in v1.3.4**: This repository includes an AI-Powered Code Review workflow
 system that complements GitHub Copilot's code generation capabilities with
 comprehensive automated analysis and complete architecture documentation.
 

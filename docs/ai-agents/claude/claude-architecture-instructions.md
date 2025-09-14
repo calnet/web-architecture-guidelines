@@ -12,7 +12,7 @@ conception to deployment and beyond.
 
 ## AI-Powered Code Review Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+**New in v1.3.4**: This repository includes an AI-Powered Code Review workflow
 system that provides automated, intelligent code analysis and optimization
 recommendations with complete architecture documentation.
 

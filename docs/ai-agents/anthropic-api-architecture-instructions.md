@@ -17,7 +17,7 @@ For universal guidelines and integration with other AI agents, see:
 
 ## AI-Powered Code Review Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+**New in v1.3.4**: This repository includes an AI-Powered Code Review workflow
 system specifically designed for Anthropic API integration projects with
 complete architecture documentation. This system provides automated code
 analysis and optimization for applications that integrate with Anthropic's

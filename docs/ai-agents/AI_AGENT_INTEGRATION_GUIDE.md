@@ -276,7 +276,7 @@ All AI agents should provide:
 
 ### System Overview
 
-The AI-Powered Code Review workflow system (v1.3.3+) provides automated,
+The AI-Powered Code Review workflow system (v1.3.4+) provides automated,
 intelligent code analysis and optimization recommendations with comprehensive
 architecture documentation. This system can be leveraged by all AI agents to
 provide consistent, validated architectural guidance.

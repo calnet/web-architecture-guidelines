@@ -17,7 +17,7 @@ For universal guidelines and integration with other AI agents, see:
 
 ## AI-Powered Code Review Integration
 
-**New in v1.3.3**: This repository includes an AI-Powered Code Review workflow
+**New in v1.3.4**: This repository includes an AI-Powered Code Review workflow
 system that provides automated code analysis and optimization recommendations
 with comprehensive architecture documentation. ChatGPT can leverage these
 insights to provide more informed and validated architectural guidance.
