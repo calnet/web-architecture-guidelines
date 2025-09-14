@@ -53,12 +53,14 @@ jobs:
           
           echo "✅ All required files and directories exist"
 
-  validate-versions:
+  validate-versions-and-dates:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Validate version consistency
+      - name: Validate version and date consistency
         run: |
           chmod +x ./scripts/validate-versions.sh
-          ./scripts/validate-versions.sh
+          chmod +x ./scripts/validate-dates.sh
+          chmod +x ./scripts/validate-comprehensive.sh
+          ./scripts/validate-comprehensive.sh

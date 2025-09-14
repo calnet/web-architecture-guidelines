@@ -1,7 +1,6 @@
 # Claude Web Application Architecture Instructions
 
 **Instruction Version**: 1.3.4
-**Last Updated**: 2025-09-14 @ 12:31
 **Target AI**: Claude (All Levels - Foundation to Enterprise)
 
 ## Purpose
@@ -559,5 +558,5 @@ requirements.
 ---
 
 **Version**: 1.3.4
-**Last Updated**: 2025-09-14 @ 12:31
+**Last Updated**: 14 September 2025 @ 13:41
 **Instruction Version**: 1.3.4

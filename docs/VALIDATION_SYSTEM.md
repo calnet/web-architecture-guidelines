@@ -85,10 +85,10 @@ The system ensures "Last Updated" dates match actual file modification dates:
 
 - **Supported formats**:
   - `2025-09-14 @ 12:05` (precise timestamp)
-  - `September 2025` (month/year)
+  - `14 September 2025 @ 13:41` (new standard format)
   - `2025-09-14` (ISO date)
 - **Pattern detection**:
-  - `**Last Updated**: September 2025
+  - `**Last Updated**: 14 September 2025 @ 13:41
   - `*Last Updated: DATE*`
   - `Last Updated: DATE`
 
@@ -297,5 +297,5 @@ git commit -m "Bump version to 1.3.5"
 ---
 
 - **Version**: 1.3.4
-- **Last Updated**: September 2025
+- **Last Updated**: 14 September 2025 @ 13:41
 - **Template Version**: 1.3.4
