@@ -428,8 +428,3 @@ Remember to validate architectural decisions through prototyping, testing, and
 measurement rather than theoretical optimization. The best architecture is one
 that solves real problems efficiently while remaining maintainable and adaptable
 to changing requirements.
-
----
-
-- **Instruction Version**: 1.3.4
-- **Last Updated**: September 2025
