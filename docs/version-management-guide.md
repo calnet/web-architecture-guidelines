@@ -26,34 +26,27 @@ the entire repository.
 
 - `package.json` - Main repository package file
 - `examples/package.json` - Example project configuration
-- `docs-site/package.json` - Documentation site package file
-- `docs-site/public/examples/package.json` - Public example project
-  configuration
 
 #### Template Version Files
 
 - `docs/.template-version` - Main templates version marker
 - `docs/templates/VERSION` - Templates directory version
-- `docs-site/public/docs/.template-version` - Public templates version marker
-- `docs-site/public/docs/templates/VERSION` - Public templates directory version
 
 #### Documentation Files with Version Metadata
 
 - `docs/architecture/system-architecture.md`
 - `docs/security.md`
 - `docs/performance.md`
-- `docs-site/public/docs/architecture/system-architecture.md`
 
 #### Template Files
 
 All `.md` files in:
 
 - `docs/templates/` (and subdirectories)
-- `docs-site/public/docs/templates/` (and subdirectories)
 
 #### AI Agent Instruction Files (Optional)
 
-- Files in `docs/ai-agents/` and `docs-site/public/docs/ai-agents/`
+- Files in `docs/ai-agents/`
 - Only synchronized if they contain explicit version markers (e.g., "Version:
   1.3.3")
 
@@ -190,8 +183,7 @@ Version: 1.3.4
 #### Missing Files
 
 **Problem**: Warning messages about missing version files
-**Solution**: Files may not exist in all environments (e.g., docs-site may not
-be present in all setups)
+**Solution**: Files may not exist in all environments or may have been removed during repository restructuring
 
 #### Permission Errors
 

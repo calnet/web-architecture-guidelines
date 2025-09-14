@@ -87,7 +87,7 @@ done < <(find . -name "package.json" -type f -print0)
 # 2. Update template version files
 echo "" | tee -a "$SYNC_LOG"
 echo "📄 Updating template version files..." | tee -a "$SYNC_LOG"
-for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
+for version_file in "docs/.template-version" "docs/templates/VERSION"; do
     if [ -f "$version_file" ]; then
         echo "📄 Processing $version_file..." | tee -a "$SYNC_LOG"
         echo "$MAIN_VERSION" > "$version_file"

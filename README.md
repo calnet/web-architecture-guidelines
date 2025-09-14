@@ -60,12 +60,7 @@ scripts/                               # Enhanced Workflow Management
 ├── monitor-workflow.sh                # Performance monitoring & optimization
 ├── configure-anthropic-secret.sh      # ANTHROPIC_API_KEY configuration
 └── version management scripts/        # Automated version synchronization
-
-docs-site/                             # Interactive Documentation Website
-├── README.md                          # Site setup and features
-├── copy-docs.sh                       # Documentation sync script
-└── src/                              # React-based documentation site
-```text
+```
 
 ## Quick Start
 
