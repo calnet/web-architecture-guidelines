@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Merge pull request #22 from calnet/dependabot/npm_and_yarn/docs-site/vite-7.1.5
 - chore(deps): bump vite from 7.1.4 to 7.1.5 in /docs-site
 
-## [1.3.3] - 2024-09-06
+## [1.3.3] - 2025-09-06
 
 ### Security
 
