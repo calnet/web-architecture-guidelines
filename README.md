@@ -160,10 +160,11 @@ For automated code review and CI/CD workflows:
 
 ### [Claude](docs/ai-agents/claude/)
 
-- **V1**: Foundational architecture guidance
-- **V2**:
-  Enhanced with advanced patterns, performance optimization, and modern
-  practices
+Comprehensive web application architecture instructions with integrated AI-powered code review capabilities:
+
+- **[Main Instructions](docs/ai-agents/claude-architecture-instructions.md)**: Complete unified guidance (v1.3.4)
+- **[Subdirectory Version](docs/ai-agents/claude/)**: Alternative organization structure
+- **Features**: Advanced patterns, performance optimization, modern practices, and custom review commands
 
 ### [ChatGPT](docs/ai-agents/chatgpt-architecture-instructions.md)
 
