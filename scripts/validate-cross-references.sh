@@ -125,42 +125,27 @@ validate_npm_script_references() {
     fi
 }
 
-# Function to check for duplicate documentation
-check_duplicate_documentation() {
-    echo "🔍 Checking for documentation synchronization..."
+# Function to check documentation structure
+check_documentation_structure() {
+    echo "🔍 Checking documentation structure..."
     
-    # Compare docs/ and docs-site/public/docs/
-    if [ -d "docs" ] && [ -d "docs-site/public/docs" ]; then
-        # Check if directories are synchronized
-        diff_output=$(diff -r docs/ docs-site/public/docs/ 2>/dev/null || true)
+    # Verify main documentation directories exist
+    if [ -d "docs" ]; then
+        echo "✅ Main docs directory exists"
         
-        if [ -n "$diff_output" ]; then
-            echo "❌ Documentation directories are not synchronized:"
-            echo "$diff_output"
-            ERRORS=$((ERRORS + 1))
-        else
-            echo "✅ Documentation directories are synchronized"
-        fi
-    fi
-    
-    # Compare scripts/ and docs-site/public/scripts/
-    if [ -d "scripts" ] && [ -d "docs-site/public/scripts" ]; then
-        # Check if critical scripts are synchronized
-        for script in scripts/*.sh; do
-            script_name=$(basename "$script")
-            public_script="docs-site/public/scripts/$script_name"
-            
-            if [ -f "$public_script" ]; then
-                if ! diff -q "$script" "$public_script" >/dev/null 2>&1; then
-                    echo "❌ Script not synchronized: $script vs $public_script"
-                    ERRORS=$((ERRORS + 1))
-                else
-                    echo "✅ Script synchronized: $script_name"
-                fi
+        # Check for key documentation files
+        key_files=("docs/templates/README.md" "docs/ai-agents" "docs/architecture" "docs/external-documentation-links.md")
+        for file in "${key_files[@]}"; do
+            if [ -e "$file" ]; then
+                echo "✅ Key documentation file exists: $file"
             else
-                echo "⚠️  Script missing in public: $script_name"
+                echo "❌ Missing key documentation file: $file"
+                ERRORS=$((ERRORS + 1))
             fi
         done
+    else
+        echo "❌ Main docs directory missing"
+        ERRORS=$((ERRORS + 1))
     fi
 }
 
@@ -208,8 +193,8 @@ done
 validate_npm_script_references
 echo ""
 
-# Check for documentation synchronization
-check_duplicate_documentation
+# Check documentation structure
+check_documentation_structure
 echo ""
 
 # Validate GitHub Actions versions

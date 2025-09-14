@@ -1,21 +1,23 @@
 #!/bin/bash
 
 # Script to copy documentation files to public directory for serving
+# This script now runs from within the docs/ folder
 
 echo "Copying documentation files to public directory..."
 
-# Get the script directory
+# Get the script directory (docs folder)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 
-# Create public/docs if it doesn't exist
-mkdir -p "$SCRIPT_DIR/public/docs"
+# Create public directories if they don't exist
+mkdir -p "$SCRIPT_DIR/public"
 mkdir -p "$SCRIPT_DIR/public/.claude"
 mkdir -p "$SCRIPT_DIR/public/.github"
 
 echo "Working from repository root: $REPO_ROOT"
+echo "Documentation folder (script location): $SCRIPT_DIR"
 
-# Copy main documentation files
+# Copy main documentation files from repository root
 cp "$REPO_ROOT/README.md" "$SCRIPT_DIR/public/"
 cp "$REPO_ROOT/git-commands-and-setup.md" "$SCRIPT_DIR/public/"
 cp "$REPO_ROOT/CLAUDE.md" "$SCRIPT_DIR/public/"
@@ -42,8 +44,25 @@ if [ -d "$REPO_ROOT/.github" ]; then
     rsync -av --delete "$REPO_ROOT/.github/" "$SCRIPT_DIR/public/.github/"
 fi
 
-# Copy docs directory (ensuring we don't overwrite but sync)
-rsync -av --delete "$REPO_ROOT/docs/" "$SCRIPT_DIR/public/docs/"
+# Copy documentation content from current docs folder, excluding React app files
+# Create public/docs directory for the documentation content
+mkdir -p "$SCRIPT_DIR/public/docs"
+
+# Copy all documentation files from current directory, excluding React-specific files
+rsync -av --delete \
+    --exclude 'node_modules' \
+    --exclude 'dist' \
+    --exclude 'public' \
+    --exclude 'src' \
+    --exclude 'package.json' \
+    --exclude 'package-lock.json' \
+    --exclude 'tsconfig.json' \
+    --exclude 'tsconfig.node.json' \
+    --exclude 'vite.config.ts' \
+    --exclude 'index.html' \
+    --exclude '.gitignore' \
+    --exclude 'copy-docs.sh' \
+    "$SCRIPT_DIR/" "$SCRIPT_DIR/public/docs/"
 
 # Copy examples directory
 if [ -d "$REPO_ROOT/examples" ]; then

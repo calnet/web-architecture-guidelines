@@ -83,7 +83,7 @@ done < <(find . -name "package.json" -type f -print0)
 # 2. Validate template version files
 echo "" | tee -a "$VALIDATION_LOG"
 echo "📄 Validating template version files..." | tee -a "$VALIDATION_LOG"
-for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
+for version_file in "docs/.template-version" "docs/templates/VERSION"; do
     if [ -f "$version_file" ]; then
         current_version=$(cat "$version_file" 2>/dev/null | tr -d '\n' || echo "NOT_FOUND")
         if [[ "$current_version" == "$MAIN_VERSION" ]]; then

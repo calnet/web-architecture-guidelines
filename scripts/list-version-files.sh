@@ -90,7 +90,7 @@ while IFS= read -r -d '' package_file; do
 done < <(find . -name "package.json" -type f -print0)
 
 # Template version files
-for version_file in "docs/.template-version" "docs/templates/VERSION" "docs-site/public/docs/.template-version" "docs-site/public/docs/templates/VERSION"; do
+for version_file in "docs/.template-version" "docs/templates/VERSION"; do
     if [ -f "$version_file" ]; then
         version=$(cat "$version_file" 2>/dev/null | tr -d '\n' || echo "NOT_FOUND")
         status=$(check_version_status "$version" "$MAIN_VERSION")
