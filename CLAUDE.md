@@ -138,9 +138,7 @@ docs/                                  # Unified Documentation Content & React S
 │   └── index.css                      # Application styles
 ├── ai-agents/                         # AI agent-specific instructions (6 files routed)
 │   ├── AI_AGENT_INTEGRATION_GUIDE.md # Universal AI agent integration guide
-│   ├── claude/                        # Claude-specific subdirectory
-│   │   └── claude-architecture-instructions.md # Alternative Claude instructions
-│   ├── claude-architecture-instructions.md     # Main Claude instructions
+│   ├── claude-architecture-instructions.md     # Unified Claude instructions
 │   ├── chatgpt-architecture-instructions.md    # ChatGPT/GPT-4 instructions
 │   ├── copilot-architecture-instructions.md    # GitHub Copilot instructions
 │   ├── gemini-architecture-instructions.md     # Google Gemini instructions

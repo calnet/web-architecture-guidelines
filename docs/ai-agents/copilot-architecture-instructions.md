@@ -11,7 +11,7 @@ For universal guidelines and integration with other AI agents, see:
 
 - **Universal Guidelines**: `AI_AGENT_INTEGRATION_GUIDE.md`
 - **Claude Instructions**:
-  `claude/claude-architecture-instructions.md` (unified, comprehensive guide)
+  `claude-architecture-instructions.md` (unified, comprehensive guide)
 - **Cross-Agent Compatibility**:
   Follow the universal framework for consistent guidance across all AI tools
 
