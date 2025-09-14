@@ -124,5 +124,5 @@ After configuring secrets, verify the setup:
 
 ---
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
+- **Version**: 1.3.5
+- **Last Updated**: 2025-09-14 @ 21:39

@@ -1,11 +1,11 @@
 # API Specification Template
 
-**Template Version**: 1.3.4
+**Template Version**: 1.3.5
 **Compliance Score**: Targeting 100%  
 
 ## Overview
 
-- **Version**: 1.3.4
+- **Version**: 1.3.5
 - **Base URL**: [API base URL]
 - **Protocol**: REST/GraphQL/gRPC
 - **Authentication**: [Auth method]
@@ -285,5 +285,5 @@ See the `examples/` directory for complete request/response examples.
 
 ---
 
-- **Template Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
+- **Template Version**: 1.3.5
+- **Last Updated**: 2025-09-14 @ 21:39
