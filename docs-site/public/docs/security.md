@@ -118,6 +118,6 @@ Content-Security-Policy: default-src 'self';
 **Document Information**:
 
 - **Version**: 1.3.4
-- **Last Updated**: 14 September 25 @ 13:41
+- **Last Updated**: 14 September 2025 @ 13:41
 - **Review Schedule**: Quarterly
 - **Maintained by**: Security Team

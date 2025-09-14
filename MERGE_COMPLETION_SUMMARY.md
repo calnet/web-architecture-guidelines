@@ -77,5 +77,5 @@ npm run validate:all
 ---
 
 - **Version**: 1.3.4
-- **Last Updated**: 14 September 25 @ 13:41
+- **Last Updated**: 14 September 2025 @ 13:41
 - **Template Version**: 1.3.4

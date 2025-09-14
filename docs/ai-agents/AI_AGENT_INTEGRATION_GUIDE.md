@@ -1,7 +1,6 @@
 # AI Agent Integration Guide
 
 **Version**: 1.3.4
-**Last Updated**: 14 September 25 @ 13:41
 **Template Version**: 1.3.4
 
 ## Purpose
@@ -183,7 +182,7 @@ input style
 # [AI Agent Name] Web Application Architecture Instructions
 
 **Instruction Version**: 1.3.4
-**Last Updated**: 14 September 25 @ 13:41
+**Last Updated**: 14 September 2025 @ 13:41
 **Target AI**: [AI Agent Name]
 
 ## Agent-Specific Adaptations
@@ -513,5 +512,5 @@ across all AI agents while leveraging each agent's unique capabilities and
 strengths.
 
 **Version**: 1.3.4
-**Last Updated**: 14 September 25 @ 13:41
+**Last Updated**: 14 September 2025 @ 13:41
 **Template Version**: 1.3.4
