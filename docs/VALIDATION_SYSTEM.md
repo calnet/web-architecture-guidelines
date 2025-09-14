@@ -88,7 +88,7 @@ The system ensures "Last Updated" dates match actual file modification dates:
   - `September 2025` (month/year)
   - `2025-09-14` (ISO date)
 - **Pattern detection**:
-  - `**Last Updated**: DATE`
+  - `**Last Updated**: September 2025
   - `*Last Updated: DATE*`
   - `Last Updated: DATE`
 
