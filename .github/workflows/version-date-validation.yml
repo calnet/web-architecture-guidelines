@@ -1,0 +1,198 @@
+name: Version and Date Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      fix_automatically:
+        description: 'Automatically fix version and date inconsistencies'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  validate-versions-and-dates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Make scripts executable
+        run: |
+          chmod +x ./scripts/validate-versions.sh
+          chmod +x ./scripts/validate-dates.sh
+          chmod +x ./scripts/validate-comprehensive.sh
+          chmod +x ./scripts/sync-versions.sh
+          chmod +x ./scripts/sync-dates.sh
+
+      - name: Run comprehensive validation
+        id: validation
+        run: |
+          echo "Running comprehensive validation..."
+          if ./scripts/validate-comprehensive.sh; then
+            echo "validation_result=success" >> $GITHUB_OUTPUT
+            echo "All validation checks passed!"
+          else
+            echo "validation_result=failed" >> $GITHUB_OUTPUT
+            echo "Validation checks failed"
+            exit 1
+          fi
+        continue-on-error: true
+
+      - name: Auto-fix if requested and validation failed
+        if: |
+          github.event.inputs.fix_automatically == 'true' && 
+          steps.validation.outputs.validation_result == 'failed'
+        run: |
+          echo "Attempting to auto-fix version and date inconsistencies..."
+          
+          # Configure git
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Sync versions and dates
+          ./scripts/sync-versions.sh
+          ./scripts/sync-dates.sh
+          
+          # Check if there are changes to commit
+          if git diff --quiet; then
+            echo "No changes were made during sync"
+          else
+            echo "Changes were made, committing..."
+            git add -A
+            git commit -m "auto-fix: synchronize versions and last updated dates
+
+- Updated version inconsistencies across repository files
+- Synchronized 'Last Updated' dates with actual file modification dates
+- Automated fix triggered by validation workflow"
+            
+            if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+              git push origin HEAD
+              echo "Changes pushed to PR branch"
+            else
+              git push
+              echo "Changes pushed to main branch"
+            fi
+          fi
+          
+          # Re-run validation to confirm fixes
+          echo "Re-running validation after fixes..."
+          ./scripts/validate-comprehensive.sh
+
+      - name: Generate validation report
+        if: always()
+        run: |
+          echo "## 🔍 Version and Date Validation Report" > validation_report.md
+          echo "" >> validation_report.md
+          
+          if [[ "${{ steps.validation.outputs.validation_result }}" == "success" ]]; then
+            echo "✅ **Status**: All checks passed" >> validation_report.md
+            echo "" >> validation_report.md
+            echo "All version references and last updated dates are consistent across the repository." >> validation_report.md
+          else
+            echo "❌ **Status**: Validation failed" >> validation_report.md
+            echo "" >> validation_report.md
+            echo "Found inconsistencies in version references or last updated dates." >> validation_report.md
+            
+            if [[ "${{ github.event.inputs.fix_automatically }}" == "true" ]]; then
+              echo "" >> validation_report.md
+              echo "🔧 **Auto-fix**: Attempted automatic resolution" >> validation_report.md
+            else
+              echo "" >> validation_report.md
+              echo "🔧 **Manual fix required**: Run the following commands:" >> validation_report.md
+              echo "```bash" >> validation_report.md
+              echo "./scripts/sync-versions.sh" >> validation_report.md
+              echo "./scripts/sync-dates.sh" >> validation_report.md
+              echo "./scripts/validate-comprehensive.sh" >> validation_report.md
+              echo "```" >> validation_report.md
+            fi
+          fi
+          
+          echo "" >> validation_report.md
+          echo "### 📊 Validation Details" >> validation_report.md
+          echo "" >> validation_report.md
+          echo "- **Workflow**: Version and Date Validation" >> validation_report.md
+          echo "- **Trigger**: ${{ github.event_name }}" >> validation_report.md
+          echo "- **Branch**: ${{ github.ref_name }}" >> validation_report.md
+          echo "- **Commit**: ${{ github.sha }}" >> validation_report.md
+          echo "- **Timestamp**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> validation_report.md
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: validation_report.md
+
+      - name: Comment on PR (if validation failed)
+        if: |
+          github.event_name == 'pull_request' && 
+          steps.validation.outputs.validation_result == 'failed' &&
+          github.event.inputs.fix_automatically != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('validation_report.md', 'utf8');
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+
+      - name: Fail workflow if validation failed and no auto-fix
+        if: |
+          steps.validation.outputs.validation_result == 'failed' &&
+          github.event.inputs.fix_automatically != 'true'
+        run: |
+          echo "❌ Validation failed and auto-fix was not enabled"
+          echo "💡 To automatically fix issues, re-run this workflow with 'fix_automatically' set to true"
+          exit 1
+
+  # Optional: Run on schedule to catch drift
+  scheduled-validation:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Make scripts executable
+        run: |
+          chmod +x ./scripts/validate-comprehensive.sh
+          
+      - name: Run scheduled validation
+        run: |
+          echo "Running scheduled validation check..."
+          if ./scripts/validate-comprehensive.sh; then
+            echo "✅ Scheduled validation passed"
+          else
+            echo "❌ Scheduled validation failed - creating issue"
+            
+            # Create an issue if validation fails
+            gh issue create \
+              --title "🚨 Scheduled Validation Failed" \
+              --body "Automated validation detected inconsistencies in version references or last updated dates. 
+
+            Please run the following commands to fix:
+            \`\`\`bash
+            ./scripts/sync-versions.sh
+            ./scripts/sync-dates.sh
+            ./scripts/validate-comprehensive.sh
+            \`\`\`
+
+            Or trigger the 'Version and Date Validation' workflow with 'fix_automatically' enabled." \
+              --label "automation,validation" || true
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

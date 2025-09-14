@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Pre-commit hook for version and date validation
+# This script ensures that version references and last updated dates are consistent before commits
+
+set -e
+
+echo "🔍 Pre-commit validation: Checking versions and dates..."
+
+# Make sure scripts are executable
+chmod +x ./scripts/validate-versions.sh 2>/dev/null || true
+chmod +x ./scripts/validate-dates.sh 2>/dev/null || true
+chmod +x ./scripts/validate-comprehensive.sh 2>/dev/null || true
+chmod +x ./scripts/sync-versions.sh 2>/dev/null || true
+chmod +x ./scripts/sync-dates.sh 2>/dev/null || true
+
+# Check if validation scripts exist
+if [[ ! -f "./scripts/validate-comprehensive.sh" ]]; then
+    echo "⚠️  Validation scripts not found - skipping pre-commit checks"
+    echo "   This is normal for repositories without version/date validation"
+    exit 0
+fi
+
+# Run comprehensive validation
+if ./scripts/validate-comprehensive.sh > /tmp/precommit_validation.log 2>&1; then
+    echo "✅ Pre-commit validation passed"
+    rm -f /tmp/precommit_validation.log
+    exit 0
+else
+    echo "❌ Pre-commit validation failed!"
+    echo ""
+    echo "Found issues with version consistency or last updated dates."
+    echo "Details:"
+    echo ""
+    tail -20 /tmp/precommit_validation.log
+    echo ""
+    echo "🔧 To fix automatically, run:"
+    echo "   ./scripts/sync-versions.sh"
+    echo "   ./scripts/sync-dates.sh"
+    echo ""
+    echo "📋 To validate after fixing:"
+    echo "   ./scripts/validate-comprehensive.sh"
+    echo ""
+    echo "💡 Or use '--no-verify' to skip this check (not recommended)"
+    rm -f /tmp/precommit_validation.log
+    exit 1
+fi
