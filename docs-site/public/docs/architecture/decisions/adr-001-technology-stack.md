@@ -150,3 +150,8 @@ This decision will be reviewed quarterly and may be revised based on:
 ## Last Updated
 
 September 3, 2025
+
+---
+
+- **Version**: 1.3.4
+- **Last Updated**: September 2025

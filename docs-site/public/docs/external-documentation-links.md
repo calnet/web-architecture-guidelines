@@ -213,3 +213,8 @@
 - **Notion**: <https://www.notion.so/help>
 - **Confluence**: <https://confluence.atlassian.com/doc/>
 - **Docusaurus**: <https://docusaurus.io>
+
+---
+
+- **Version**: 1.3.4
+- **Last Updated**: September 2025

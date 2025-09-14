@@ -430,3 +430,9 @@ Built on industry best practices and lessons learned from:
 
 *Continuously updated to reflect current best practices and emerging
 technologies.*
+
+---
+
+- **Version**: 1.3.4
+- **Last Updated**: September 2025
+- **Template Version**: 1.3.4
