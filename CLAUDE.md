@@ -276,10 +276,10 @@ provide:
 ```bash
 # Automated validation runs on every PR
 # Manual health check:
-scripts/monitor-workflow.sh --report
+scripts/workflow-manager.sh --monitor --report
 
 # Comprehensive testing:
-scripts/test-workflow.sh
+scripts/workflow-manager.sh --test
 ```text
 
 ### Enhanced Code Review Process
@@ -378,7 +378,7 @@ structured categories`
 
 ### Health Checks
 
-- **Daily**: Run `scripts/monitor-workflow.sh` for system health
+- **Daily**: Run `scripts/workflow-manager.sh --monitor` for system health
 - **Weekly**: Review workflow performance and success rates
 - **Monthly**: Comprehensive audit and optimization review
 

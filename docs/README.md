@@ -176,3 +176,22 @@ Popular options include:
 - Netlify
 - Vercel
 - AWS S3 + CloudFront
+
+## Script Consolidation (v1.3.5)
+
+This version includes major script consolidation and repository cleanup:
+
+### Consolidated Script Systems
+- **Unified Validation**: `scripts/validate.sh` with modes (full, quick, pre-merge, setup)
+- **Version Management**: `scripts/version-manager.sh` with operations (sync, list, discover, maintain, validate)  
+- **Workflow Operations**: `scripts/workflow-manager.sh` with functions (test, monitor, config, validate-secret)
+- **Shared Utilities**: `scripts/lib/common.sh` for consistent logging and helpers
+
+### Key Improvements
+- **29% reduction** in script count (41 → 29 scripts)
+- **34% reduction** in npm scripts (88 → 58 scripts) 
+- **Eliminated redundancy** while preserving all functionality
+- **Enhanced features** with new modes and options
+- **Consistent interface** across all automation tools
+
+For detailed information, see [SCRIPT_CONSOLIDATION_REPORT.md](../SCRIPT_CONSOLIDATION_REPORT.md).

@@ -23,10 +23,9 @@ The enhanced workflow system consists of four main components:
 - **documentation-audit**: Documentation quality validation
 - **quick-fix**: Quick fix implementation
 
-### 3. Monitoring & Testing
+### 3. Consolidated Monitoring & Testing
 
-- **monitor-workflow.sh**: Health monitoring and status checks
-- **test-workflow.sh**: Comprehensive workflow testing
+- **workflow-manager.sh**: Unified workflow operations (test, monitor, config, validate-secret)
 - **setup-enhanced-workflow.sh**: Complete system setup
 
 ### 4. Enhanced Documentation
@@ -34,6 +33,7 @@ The enhanced workflow system consists of four main components:
 - **CLAUDE.md**: Enhanced Claude instructions
 - **IMPLEMENTATION_GUIDE.md**: This comprehensive guide
 - **WORKFLOW_README.md**: Usage and maintenance documentation
+- **SCRIPT_CONSOLIDATION_REPORT.md**: Detailed consolidation documentation
 
 ## Installation
 
@@ -112,10 +112,10 @@ Test the complete installation:
 
 ```bash
 # Run comprehensive test
-scripts/test-workflow.sh
+scripts/workflow-manager.sh --test
 
-# Check system health
-scripts/monitor-workflow.sh --report
+# Check system health  
+scripts/workflow-manager.sh --monitor --report
 ```text
 
 ## Configuration
@@ -248,10 +248,10 @@ Monitor system health regularly:
 
 ```bash
 # Basic health check
-scripts/monitor-workflow.sh
+scripts/workflow-manager.sh --monitor
 
 # Detailed health report
-scripts/monitor-workflow.sh --report
+scripts/workflow-manager.sh --monitor --report
 ```text
 
 ### Performance Metrics
@@ -270,7 +270,7 @@ Set up monitoring alerts:
 ```bash
 # Add to crontab for regular monitoring
 crontab -e
-# Add: 0 */6 * * * /path/to/scripts/monitor-workflow.sh --report
+# Add: 0 */6 * * * /path/to/scripts/workflow-manager.sh --monitor --report
 ```text
 
 ## Troubleshooting
@@ -323,7 +323,7 @@ gh pr comment [PR-URL] --body "@claude /architecture-review test"
 gh api rate_limit
 
 # Monitor workflow duration
-scripts/monitor-workflow.sh
+scripts/workflow-manager.sh --monitor
 
 # Review workflow logs
 gh run view [RUN-ID] --log
@@ -339,10 +339,10 @@ gh run list --limit 5
 gh run view [RUN-ID] --log
 
 # Check system health
-scripts/monitor-workflow.sh --report
+scripts/workflow-manager.sh --monitor --report
 
 # Run comprehensive test
-scripts/test-workflow.sh
+scripts/workflow-manager.sh --test
 ```text
 
 ### Support
@@ -384,7 +384,7 @@ Edit command files in `.claude/commands/`:
 
 ### Monitoring Customization
 
-Adjust monitoring thresholds in `scripts/monitor-workflow.sh`:
+Adjust monitoring thresholds in `scripts/workflow-manager.sh`:
 
 ```bash
 # Change failure rate threshold
