@@ -925,4 +925,4 @@ SMTP Settings:
 
 _Last updated: [Date]_  
 _Version: [Version number]_  
-_Template Version: 1.0_
+_Template Version: 1.3.4_

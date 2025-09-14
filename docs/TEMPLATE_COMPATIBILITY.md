@@ -140,3 +140,8 @@ This compatibility matrix is automatically generated and should be updated:
 - Quarterly as part of regular maintenance
 
 **Last Generated:** 2025-09-09 19:02:47
+
+---
+
+- **Version**: 1.3.4
+- **Last Updated**: September 2025
