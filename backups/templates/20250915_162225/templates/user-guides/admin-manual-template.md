@@ -1,7 +1,7 @@
 # [Application Name] Administrator Manual
 
 **Template Version**: 1.3.4
-**Last Updated**: 2025-09-13 @ 14:39
+**Last Updated**: 14 September 2025 @ 13:41
 **Target Audience**: System Administrators  
 
 ## Overview
@@ -925,4 +925,4 @@ SMTP Settings:
 
 _Last updated: [Date]_  
 _Version: [Version number]_  
-_Template Version: 1.0_
+_Template Version: 1.3.4_

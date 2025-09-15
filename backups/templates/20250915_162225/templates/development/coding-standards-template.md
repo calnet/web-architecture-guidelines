@@ -1,13 +1,11 @@
 # [Project Name] Coding Standards
 
-<!-- Template Version: 1.3.3 -->
-<!-- Last Updated: 2025-09-06 @ 22:12 -->
+<!-- Template Version: 1.3.4 -->
 <!-- Target Audience: Development Team -->
 
 ## Template Metadata
 
 **Template Version**: 1.3.4
-**Last Updated**: 2025-09-13 @ 14:39
 **Target Audience**: Development Team
 
 This document defines the coding standards and best practices for [Project
@@ -277,15 +275,6 @@ const users = await userRepository.find({
     take: 20, // Limit results
 });
 ```text
-
----
-
-**Template Metadata:**
-
-- Version: 1.0
-- Last Updated: [Date]
-- Maintained by: [Team Name]
-- Review Schedule: Quarterly
 
 ### Database Performance
 
@@ -767,6 +756,7 @@ public class UserService
 
 ---
 
-_Template Version: 1.0_  
-_Last Updated: [Date]_  
+- **Template Version**: 1.3.4
+- **Last Updated**: 14 September 2025 @ 13:41
+
 _For questions or suggestions, contact: [Team/Email]_
