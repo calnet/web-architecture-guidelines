@@ -213,7 +213,7 @@ scripts/                               # Workflow management scripts (2 files ro
 ## Documentation Site Features
 
 ### Comprehensive Content Access
-- **All 55+ markdown files** accessible through dedicated routes
+- **All 53+ markdown files** accessible through dedicated routes
 - **10 navigation categories** organize content logically:
   1. **Getting Started** (8 files) - Project overview, setup, integration
   2. **Templates** (8 files) - All documentation templates organized by category  

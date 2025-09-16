@@ -477,10 +477,10 @@ These commands can be used in pull requests and code reviews for intelligent ana
 # Annually: Major review and version update
 
 # Example update process
-git checkout -b update/external-links-2024-q4
+git checkout -b update/external-links-2025-q1
 # Update files
 git add docs/external-documentation-links.md
-git commit -m "docs: update external documentation links for Q4 2024
+git commit -m "docs: update external documentation links for Q1 2025
 
 - Updated framework versions
 - Added new security resources
@@ -494,7 +494,7 @@ cd ..
 git add docs/package.json docs/package-lock.json
 git commit -m "deps: update React documentation site dependencies"
 
-git push origin update/external-links-2024-q4
+git push origin update/external-links-2025-q1
 # Create PR for review
 ```text
 
