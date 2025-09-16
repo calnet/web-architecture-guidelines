@@ -2,8 +2,8 @@
 
 **Document Information**:
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
+- **Version**: 1.3.5
+- **Last Updated**: 16 September 2025
 - **Review Schedule**: Quarterly  
 - **Maintained by**: Architecture Team
 

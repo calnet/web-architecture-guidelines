@@ -9,7 +9,7 @@
 gh secret set ANTHROPIC_API_KEY --body "your-api-key"
 
 # Test the system  
-scripts/test-workflow.sh
+scripts/workflow-manager.sh --test
 ```text
 
 ### 2. Test the Implementation
@@ -23,7 +23,7 @@ git push origin test/feature-branch
 gh pr create --title "Test PR" --body "Testing workflow"
 
 # Monitor results
-scripts/monitor-workflow.sh
+scripts/workflow-manager.sh --monitor
 ```text
 
 ### 3. Daily Usage
@@ -84,8 +84,7 @@ Located in `.claude/commands/`:
 
 Located in `scripts/`:
 
-- `monitor-workflow.sh`: Health monitoring and status checks
-- `test-workflow.sh`: Comprehensive workflow testing
+- `workflow-manager.sh`: Unified workflow operations (test, monitor, config, validate-secret)
 
 ## Usage Examples
 
@@ -141,7 +140,7 @@ user service"
 
 ```bash
 # Run monitoring script
-scripts/monitor-workflow.sh
+scripts/workflow-manager.sh --monitor
 
 # Check for failed runs
 gh run list --repo calnet/web-architecture-guidelines --status failure --limit 5
@@ -186,8 +185,7 @@ gh secret list --repo calnet/web-architecture-guidelines
 └── quick-fix.md                     # Quick fix implementation
 
 scripts/
-├── monitor-workflow.sh              # Health monitoring script
-├── test-workflow.sh                 # Comprehensive testing script
+├── workflow-manager.sh               # Unified workflow operations (test, monitor, config)
 ├── create-workflows.sh              # Workflow creation script
 ├── create-commands.sh               # Commands creation script
 ├── create-monitoring.sh             # Monitoring scripts creation
@@ -236,9 +234,9 @@ WORKFLOW_README.md                   # This usage guide
 
 ### Getting Help
 
-- Check system health: `scripts/monitor-workflow.sh --report`
+- Check system health: `scripts/workflow-manager.sh --monitor --report`
 - View workflow logs: `gh run list` and `gh run view [RUN_ID] --log`
-- Run comprehensive test: `scripts/test-workflow.sh`
+- Run comprehensive test: `scripts/workflow-manager.sh --test`
 
 ## Integration with Development Workflow
 
@@ -301,6 +299,6 @@ WORKFLOW_README.md                   # This usage guide
 
 ---
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
-- **Template Version**: 1.3.4
+- **Version**: 1.3.5
+- **Last Updated**: 16 September 2025
+- **Template Version**: 1.3.5

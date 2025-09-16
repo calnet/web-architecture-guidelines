@@ -150,19 +150,19 @@ validate-versions:
 ### Template Files
 
 ```markdown
-**Template Version**: 1.3.4
+**Template Version**: 1.3.5
 ```text
 
 or
 
 ```markdown
-*Template Version: 1.3.4************
+*Template Version: 1.3.5*************
 ```text
 
 ### Documentation Files
 
 ```markdown
-**Version**: 1.3.4
+**Version**: 1.3.5
 ```text
 
 ### AI Agent Instructions (Optional)
@@ -294,7 +294,7 @@ issue in the repository.
 
 **Document Information**:
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
+- **Version**: 1.3.5
+- **Last Updated**: 16 September 2025
 - **Review Schedule**: Quarterly
 - **Maintained by**: Architecture Team

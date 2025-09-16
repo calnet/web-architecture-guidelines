@@ -62,5 +62,5 @@ jobs:
         run: |
           chmod +x ./scripts/validate-versions.sh
           chmod +x ./scripts/validate-dates.sh
-          chmod +x ./scripts/validate-comprehensive.sh
-          ./scripts/validate-comprehensive.sh
+          chmod +x ./scripts/validate.sh
+          ./scripts/validate.sh --mode full

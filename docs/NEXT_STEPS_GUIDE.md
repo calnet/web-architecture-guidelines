@@ -19,7 +19,7 @@ The AI-Powered Code Review system v1.3.4 has been successfully implemented with:
 
 **Status**: ⏳ Requires repository admin access
 
-**Script**: `./scripts/configure-anthropic-secret.sh`
+**Script**: `./scripts/workflow-manager.sh --config`
 
 #### Quick Setup (Recommended)
 
@@ -29,7 +29,7 @@ The AI-Powered Code Review system v1.3.4 has been successfully implemented with:
 gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
 
 # 3. Validate the secret configuration
-./scripts/configure-anthropic-secret.sh --validate
+./scripts/workflow-manager.sh --validate-secret
 ```text
 
 #### Alternative: Web Interface Setup
@@ -44,32 +44,33 @@ gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
 
 ```bash
 # Validate secret is properly configured
-./scripts/configure-anthropic-secret.sh --validate
+./scripts/workflow-manager.sh --validate-secret
 
 # Test workflow access to secret
-./scripts/test-workflow.sh --validate-secret --dry-run
+./scripts/workflow-manager.sh --test --dry-run
 ```text
 
 ### 2. Test Workflow System with Sample PR
 
 **Status**: ⏳ Ready to execute
 
-**Script**: `./scripts/test-workflow.sh`
+**Script**: `./scripts/workflow-manager.sh --test`
 
 #### Comprehensive Testing
 
 ```bash
 # Run comprehensive validation (recommended first step)
-./scripts/test-workflow.sh --dry-run
+./scripts/workflow-manager.sh --test --dry-run
 
 # Create actual test PR for workflow validation
-./scripts/test-workflow.sh
+./scripts/workflow-manager.sh --test
 
-# Test only local validation without PR creation
-./scripts/test-workflow.sh --skip-pr
+# Test only local validation without PR creation  
+# Note: Use --dry-run to avoid creating actual PRs during testing
+./scripts/workflow-manager.sh --test --dry-run
 
 # Validate secret configuration during testing
-./scripts/test-workflow.sh --validate-secret
+./scripts/workflow-manager.sh --validate-secret
 ```text
 
 #### Manual Testing Scenarios
@@ -96,31 +97,31 @@ After running the test script, you can manually test:
 
 **Status**: ⏳ Ongoing monitoring
 
-**Script**: `./scripts/monitor-workflow.sh`
+**Script**: `./scripts/workflow-manager.sh --monitor`
 
 #### Real-time Monitoring
 
 ```bash
 # Quick health check (default)
-./scripts/monitor-workflow.sh
+./scripts/workflow-manager.sh --monitor
 
 # Comprehensive monitoring report
-./scripts/monitor-workflow.sh --report
+./scripts/workflow-manager.sh --report
 
 # Performance analysis
-./scripts/monitor-workflow.sh --performance
+./scripts/workflow-manager.sh --performance
 
 # Real-time dashboard
-./scripts/monitor-workflow.sh --dashboard
+./scripts/workflow-manager.sh --dashboard
 
 # Check for alerts and issues
-./scripts/monitor-workflow.sh --alerts
+./scripts/workflow-manager.sh --monitor # alerts integrated into monitor
 
 # Get optimization recommendations
-./scripts/monitor-workflow.sh --optimize
+./scripts/workflow-manager.sh --performance # includes optimization recommendations
 
 # Export metrics for analysis
-./scripts/monitor-workflow.sh --export-metrics
+./scripts/workflow-manager.sh --report # includes metrics export
 ```text
 
 #### Automated Monitoring Setup
@@ -129,10 +130,10 @@ Add to crontab for regular monitoring:
 
 ```bash
 # Daily health check at 9 AM
-0 9 * * * cd /path/to/repo && ./scripts/monitor-workflow.sh --report
+0 9 * * * cd /path/to/repo && ./scripts/workflow-manager.sh --report
 
 # Weekly performance analysis on Sundays
-0 10 * * 0 cd /path/to/repo && ./scripts/monitor-workflow.sh --performance
+0 10 * * 0 cd /path/to/repo && ./scripts/workflow-manager.sh --performance
 ```text
 
 ## Implementation Checklist
@@ -143,20 +144,20 @@ Add to crontab for regular monitoring:
 
   ```bash
   gh secret set ANTHROPIC_API_KEY --repo calnet/web-architecture-guidelines
-  ./scripts/configure-anthropic-secret.sh --validate
+  ./scripts/workflow-manager.sh --config --validate
   ```text
 
 - [ ] **Run initial system validation**
 
   ```bash
-  ./scripts/test-workflow.sh --dry-run
+  ./scripts/workflow-manager.sh --test --dry-run
   ```text
 
 - [ ] **Verify all components are working**
 
   ```bash
   npm run validate:all
-  ./scripts/monitor-workflow.sh
+  ./scripts/workflow-manager.sh --monitor
   ```text
 
 ### Testing Phase (Recommended)
@@ -164,7 +165,7 @@ Add to crontab for regular monitoring:
 - [ ] **Create test PR for workflow validation**
 
   ```bash
-  ./scripts/test-workflow.sh
+  ./scripts/workflow-manager.sh --test
   ```text
 
 - [ ] **Test custom commands**
@@ -181,13 +182,13 @@ Add to crontab for regular monitoring:
 - [ ] **Set up performance monitoring**
 
   ```bash
-  ./scripts/monitor-workflow.sh --report
+  ./scripts/workflow-manager.sh --report
   ```text
 
 - [ ] **Implement optimization recommendations**
 
   ```bash
-  ./scripts/monitor-workflow.sh --optimize
+  ./scripts/workflow-manager.sh --performance # includes optimization recommendations
   ```text
 
 - [ ] **Schedule regular health checks**
@@ -243,7 +244,7 @@ Add to crontab for regular monitoring:
 
    ```bash
    # Validate secret configuration
-   ./scripts/configure-anthropic-secret.sh --validate
+   ./scripts/workflow-manager.sh --config --validate
    ```text
 
 2. **Workflow Fails to Trigger**
@@ -257,14 +258,14 @@ Add to crontab for regular monitoring:
 
    ```bash
    # Verify command files exist
-   ./scripts/test-workflow.sh --dry-run
+   ./scripts/workflow-manager.sh --test --dry-run
    ```text
 
 4. **Performance Issues**
 
    ```bash
    # Analyze and get recommendations
-   ./scripts/monitor-workflow.sh --performance --optimize
+   ./scripts/workflow-manager.sh --performance # includes optimization analysis
    ```text
 
 ### Getting Help
@@ -295,21 +296,21 @@ After completing these next steps, consider:
 
 ---
 
-**Version**: 1.3.4
-**Last Updated**: 14 September 2025 @ 13:41
-**Template Version**: 1.3.4
+**Version**: 1.3.5
+**Last Updated**: 16 September 2025
+**Template Version**: 1.3.5
 
 ## Quick Reference Commands
 
 ```bash
 # Configuration
-./scripts/configure-anthropic-secret.sh [--validate]
+./scripts/workflow-manager.sh --config
 
 # Testing
-./scripts/test-workflow.sh [--dry-run|--validate-secret|--skip-pr]
+./scripts/workflow-manager.sh --test [--dry-run]
 
 # Monitoring
-./scripts/monitor-workflow.sh [--report|--performance|--dashboard|--optimize]
+./scripts/workflow-manager.sh [--test|--monitor|--config|--validate-secret|--report|--performance|--dashboard]
 
 # Validation
 npm run validate:all

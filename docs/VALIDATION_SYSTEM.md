@@ -73,10 +73,10 @@ The system checks that version numbers are consistent across:
 - **Root VERSION file** - Master version source
 - **package.json files** - Version field in package files
 - **Documentation files** - Various version patterns:
-  - `**Version**: 1.3.4
-  - `**Template Version**: 1.3.4
-  - `**Instruction Version**: 1.3.4
-  - `*Template Version: 1.3.4**`
+  - `**Version**: 1.3.5
+  - `**Template Version**: 1.3.5
+  - `**Instruction Version**: 1.3.5
+  - `*Template Version: 1.3.5***`
 - **Template version files** - `.template-version` and `VERSION` files
 
 ### Date Validation
@@ -88,7 +88,7 @@ The system ensures "Last Updated" dates match actual file modification dates:
   - `14 September 2025 @ 13:41` (new standard format)
   - `2025-09-14` (ISO date)
 - **Pattern detection**:
-  - `**Last Updated**: 14 September 2025 @ 13:41
+  - `**Last Updated**: 16 September 2025
   - `*Last Updated: DATE*`
   - `Last Updated: DATE`
 
@@ -296,6 +296,6 @@ git commit -m "Bump version to 1.3.4"
 
 ---
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
-- **Template Version**: 1.3.4
+- **Version**: 1.3.5
+- **Last Updated**: 16 September 2025
+- **Template Version**: 1.3.5

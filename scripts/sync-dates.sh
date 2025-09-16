@@ -40,6 +40,11 @@ get_file_mod_date() {
     local format="$2"
     
     case "$format" in
+        "dd_mmmm_yyyy")
+            # Format: 14 September 2025 (preferred format)
+            local file_date=$(stat -c %y "$file" | cut -d' ' -f1)
+            date -d "$file_date" "+%d %B %Y"
+            ;;
         "precise")
             # Format: 2025-09-14 @ 12:05
             stat -c %y "$file" | cut -d. -f1 | sed 's/\([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\) \([0-9]\{2\}:[0-9]\{2\}\).*/\1 @ \2/'
@@ -60,7 +65,13 @@ get_file_mod_date() {
 determine_date_format() {
     local date_str="$1"
     
-    if [[ "$date_str" =~ [0-9]{4}-[0-9]{2}-[0-9]{2}\ @\ [0-9]{2}:[0-9]{2} ]]; then
+    # Check for preferred dd mmmm yyyy format (e.g., "14 September 2025")
+    if [[ "$date_str" =~ ^[0-9]{1,2}\ [A-Z][a-z]+\ [0-9]{4}$ ]]; then
+        echo "dd_mmmm_yyyy"
+    # Check for dd mmmm yyyy @ hh:mm format (e.g., "14 September 2025 @ 13:41")
+    elif [[ "$date_str" =~ ^[0-9]{1,2}\ [A-Z][a-z]+\ [0-9]{4}\ @\ [0-9]{2}:[0-9]{2}$ ]]; then
+        echo "dd_mmmm_yyyy"
+    elif [[ "$date_str" =~ [0-9]{4}-[0-9]{2}-[0-9]{2}\ @\ [0-9]{2}:[0-9]{2} ]]; then
         echo "precise"
     elif [[ "$date_str" =~ ^[A-Z][a-z]+\ [0-9]{4}$ ]]; then
         echo "month_year"
@@ -88,16 +99,8 @@ update_date_in_file() {
     # Create backup
     cp "$file" "$backup_file"
     
-    date_format=$(determine_date_format "$current_date")
-    
-    if [[ "$date_format" == "unknown" ]]; then
-        echo "⚠️  Skipping $file: Unknown date format '$current_date'" | tee -a "$SYNC_LOG"
-        rm "$backup_file"
-        SKIPPED_FILES=$((SKIPPED_FILES + 1))
-        return 0
-    fi
-    
-    new_date=$(get_file_mod_date "$file" "$date_format")
+    # Always use the standardized dd_mmmm_yyyy format
+    new_date=$(get_file_mod_date "$file" "dd_mmmm_yyyy")
     
     # Update the date based on the pattern found
     if grep -q "\*\*Last Updated\*\*:" "$file" 2>/dev/null; then
@@ -135,17 +138,11 @@ add_date_to_file() {
     # Create backup
     cp "$file" "$backup_file"
     
-    # Determine what type of date to add based on file content and type
+    # Determine what type of date to add - always use standardized format
     local new_date=""
-    if [[ "$file_type" == "precise" ]]; then
-        new_date=$(get_file_mod_date "$file" "precise")
-        echo "" >> "$file"
-        echo "- **Last Updated**: $new_date" >> "$file"
-    else
-        new_date=$(get_file_mod_date "$file" "month_year")
-        echo "" >> "$file"
-        echo "- **Last Updated**: $new_date" >> "$file"
-    fi
+    new_date=$(get_file_mod_date "$file" "dd_mmmm_yyyy")
+    echo "" >> "$file"
+    echo "- **Last Updated**: $new_date" >> "$file"
     
     echo "📝 Added date to $file: $new_date" | tee -a "$SYNC_LOG"
     UPDATED_FILES=$((UPDATED_FILES + 1))

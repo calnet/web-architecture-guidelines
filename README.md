@@ -3,8 +3,8 @@
 Comprehensive guidelines for building well-architected, secure, scalable, and
 maintainable web applications.
 
-**Version:** 1.3.4 - Complete error resolution with enhanced architecture
-documentation and AI-powered workflows
+**Version:** 1.3.5 - Major script consolidation and repository cleanup with
+streamlined automation and enhanced AI-powered workflows
 
 ## Overview
 
@@ -89,7 +89,7 @@ npm run build
 ./setup-enhanced-workflow.sh
 
 # Configure ANTHROPIC_API_KEY
-npm run workflow:configure-secret
+npm run workflow:config
 
 # Test the workflow system
 npm run workflow:test
@@ -134,7 +134,18 @@ npm run workflow:monitor
 
 ### Interactive Documentation Site
 
-**New in v1.3.4**: React-based interactive documentation site with modern
+**New in v1.3.5**: Major script consolidation and repository cleanup with
+streamlined automation systems.
+
+**Script Consolidation Achievements:**
+- **Reduced script count by 29%**: From 41 scripts to 29 scripts  
+- **Eliminated npm script redundancy**: From 88 to 58 npm scripts (34% reduction)
+- **Unified validation system**: 4 validation scripts → 1 consolidated `validate.sh`
+- **Streamlined version management**: 5 version scripts → 1 unified `version-manager.sh`  
+- **Integrated workflow management**: 4 workflow scripts → 1 consolidated `workflow-manager.sh`
+- **Shared utilities**: Created `scripts/lib/common.sh` for consistent functionality
+
+**Enhanced in v1.3.4**: React-based interactive documentation site with modern
 interface and real-time search.
 
 ```bash
@@ -306,35 +317,43 @@ The repository includes comprehensive validation tools and the new AI-Powered
 Code Review system:
 
 ```bash
-# Quality Gate System (Comprehensive Error Prevention)
-npm run check:critical         # Critical checks that block PRs
-npm run check:errors:strict    # Enhanced error checking with proper exit codes
-npm run validate:all          # Complete validation suite
+# Unified Validation System (Consolidated from 4 scripts)
+npm run validate:full           # Comprehensive validation suite
+npm run validate:quick          # Fast essential checks  
+npm run validate:pre-merge      # Pre-commit validation
+npm run validate:setup          # Setup validation
 
-# AI-Powered Code Review system validation
-npm run next-steps:all          # Complete system validation
-npm run workflow:test          # Test workflow system
-npm run workflow:monitor       # Monitor performance
+# Version Management System (Consolidated from 5 scripts)
+npm run versions:sync           # Synchronize all versions
+npm run versions:list           # List version-managed files
+npm run versions:discover       # Discover version files
+npm run versions:maintain       # Maintain version consistency
+npm run versions:validate       # Validate version consistency
 
-# Individual validation checks
-npm run check:errors           # Traditional project error check
-npm run lint:templates         # Validate template structure
-npm run lint:architecture      # Check architecture compliance
-npm run lint:security          # Security compliance check
-npm run lint:performance       # Performance validation
-npm run lint:all              # Run all individual checks
-npm run check:comprehensive    # Full validation with TypeScript
+# Workflow Management (Consolidated from 4 scripts)
+npm run workflow:test           # Test workflow system
+npm run workflow:monitor        # Monitor performance and health
+npm run workflow:config         # Configure API secrets
+npm run workflow:validate-secret # Validate secret configuration
+
+# Repository Maintenance
+npm run cleanup:dry-run         # Preview cleanup operations
+npm run cleanup:run             # Execute repository cleanup
+npm run analysis:changes        # Detect and analyze changes
 ```text
 
 ### Validation Coverage
 
-- ✅ **Quality Gate System** - Comprehensive error prevention with blocking critical checks
+- ✅ **Unified Validation System** - Consolidated from 4 validation scripts into single interface with multiple modes
+- ✅ **Streamlined Version Management** - Consolidated from 5 scripts into unified version operations system  
+- ✅ **Integrated Workflow Management** - Consolidated from 4 scripts into single workflow operations hub
 - ✅ **Enhanced Claude Workflow System** - Automated code review capabilities
 - ✅ **GitHub Actions Workflows** - claude-code-review.yml, quality-gate.yml 
   and advanced-architecture-review.yml
 - ✅ **Custom Claude Commands** - 5 specialized analysis commands
-- ✅ **Version Management** - Automated version synchronization across 77+ files
+- ✅ **Version Management** - Automated version synchronization across 97+ files
 - ✅ **Performance Monitoring** - Real-time workflow health and optimization
+- ✅ **Repository Cleanup System** - Automated redundancy detection and removal
 - ✅ Documentation structure integrity
 - ✅ Architecture compliance (9 core principles)
 - ✅ Security best practices and vulnerability scanning
@@ -354,8 +373,8 @@ Review workflow documentation.
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/improvement`)
 3. Make your changes and ensure they pass quality gates
-4. **Run critical checks**: `npm run check:critical`
-5. **Run comprehensive validation**: `npm run validate:all`
+4. **Run validation checks**: `npm run validate:full`
+5. **Run pre-merge validation**: `npm run validate:pre-merge`
 6. Commit with conventional commit messages
 7. Submit a pull request
 
@@ -405,17 +424,18 @@ that ensures consistency across all documentation, templates, and configuration
 files.
 
 ```bash
-# Core version management commands
-npm run versions:validate # Comprehensive validation of all version-managed
-files
-npm run versions:sync # Automatically synchronize all versions to root VERSION
-npm run versions:list # Show detailed inventory of all version-managed files
+# Unified Version Management System (Consolidated from 5 scripts)
+npm run versions:sync           # Automatically synchronize all versions to root VERSION
+npm run versions:list           # Show detailed inventory of all version-managed files  
+npm run versions:discover       # Discover all files with version information
+npm run versions:maintain       # Add version info to files that should have it
+npm run versions:validate       # Comprehensive validation of all version-managed files
 
-# Advanced version management (direct script access)
-./scripts/discover-version-files.sh # Discover all files with version
-information
-./scripts/maintain-versions.sh # Add version info to files that should have it
-./scripts/enhance-version-management.sh # Upgrade the version management system
+# Version Bumping
+npm run versions:bump           # Interactive version bump
+npm run versions:bump-patch     # Patch version increment
+npm run versions:bump-minor     # Minor version increment  
+npm run versions:bump-major     # Major version increment
 ```text
 
 **Comprehensive Coverage**: The system automatically manages versions across:
@@ -477,6 +497,6 @@ technologies.*
 
 ---
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
-- **Template Version**: 1.3.4
+- **Version**: 1.3.5
+- **Last Updated**: 16 September 2025
+- **Template Version**: 1.3.5

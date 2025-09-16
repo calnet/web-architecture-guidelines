@@ -195,8 +195,8 @@ scripts/                               # Workflow management scripts (2 files ro
 ├── create-commands.sh                 # Commands creation script
 ├── create-monitoring.sh               # Monitoring scripts creation
 ├── create-docs.sh                     # Documentation creation script
-├── monitor-workflow.sh                # Health monitoring script
-└── test-workflow.sh                   # Comprehensive testing script
+├── workflow-manager.sh                # Unified workflow management script
+└── validate.sh                       # Unified validation script
 
 # Repository Root Files (8 files routed in Getting Started category)
 ├── README.md                          # Main project overview
@@ -276,10 +276,10 @@ provide:
 ```bash
 # Automated validation runs on every PR
 # Manual health check:
-scripts/monitor-workflow.sh --report
+scripts/workflow-manager.sh --monitor --report
 
 # Comprehensive testing:
-scripts/test-workflow.sh
+scripts/workflow-manager.sh --test
 ```text
 
 ### Enhanced Code Review Process
@@ -345,8 +345,8 @@ structured categories`
 ### When modifying workflows
 
 - **Test thoroughly**:
-  Use `scripts/test-workflow.sh` for comprehensive validation
-- **Monitor health**: Check system health with `scripts/monitor-workflow.sh`
+  Use `scripts/workflow-manager.sh --test` for comprehensive validation
+- **Monitor health**: Check system health with `scripts/workflow-manager.sh --monitor`
 - **Document changes**: Update implementation guides and README files
 - **Validate secrets**: Ensure required API keys and secrets are configured
 
@@ -378,7 +378,7 @@ structured categories`
 
 ### Health Checks
 
-- **Daily**: Run `scripts/monitor-workflow.sh` for system health
+- **Daily**: Run `scripts/workflow-manager.sh --monitor` for system health
 - **Weekly**: Review workflow performance and success rates
 - **Monthly**: Comprehensive audit and optimization review
 
@@ -410,6 +410,6 @@ capabilities, enhanced with intelligent automation and monitoring.
 
 ---
 
-- **Version**: 1.3.4
-- **Last Updated**: 14 September 2025 @ 13:41
-- **Template Version**: 1.3.4
+- **Version**: 1.3.5
+- **Last Updated**: 16 September 2025
+- **Template Version**: 1.3.5
