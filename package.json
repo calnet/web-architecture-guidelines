@@ -12,7 +12,7 @@
     "test": "echo 'No tests specified yet'",
     "test:coverage": "echo 'No test coverage configured yet'",
     "docs:dev": "cd docs && npm run dev",
-    "docs:build": "cd docs && npm run build", 
+    "docs:build": "cd docs && npm run build",
     "docs:preview": "cd docs && npm run preview",
     "docs:serve": "cd docs && npm run serve",
     "docs:copy": "cd docs && npm run copy-docs",
@@ -29,6 +29,7 @@
     "compliance:enhance": "./scripts/enhance-template-compliance.sh",
     "compliance:report": "./scripts/generate-compliance-report.sh",
     "compliance:validate": "npm run compliance:enhance && npm run compliance:report",
+    "compliance-check": "npm run compliance:validate",
     "versions:sync": "./scripts/version-manager.sh --sync",
     "versions:list": "./scripts/version-manager.sh --list",
     "versions:discover": "./scripts/version-manager.sh --discover",
@@ -56,13 +57,12 @@
     "workflow:report": "./scripts/workflow-manager.sh --report",
     "workflow:dashboard": "./scripts/workflow-manager.sh --dashboard",
     "lint:security": "./scripts/validate-security.sh",
-    "lint:architecture": "./scripts/validate-architecture.sh", 
+    "lint:architecture": "./scripts/validate-architecture.sh",
     "lint:performance": "./scripts/validate-performance.sh",
     "validate:all": "./scripts/validate.sh --mode full",
     "docs:validate-structure": "./scripts/validate-docs-structure.sh",
     "check:cross-references-enhanced": "./scripts/validate-cross-references-enhanced.sh",
     "check:critical": "./scripts/check-project-errors-strict.sh",
-    "check:errors": "./scripts/check-project-errors-strict.sh",
     "lint:templates": "./scripts/validate-templates.sh",
     "cleanup:dry-run": "./scripts/cleanup-repository.sh --dry-run",
     "cleanup:run": "./scripts/cleanup-repository.sh",
@@ -75,7 +75,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@types/node": "^24.4.0",
+    "@types/node": "^24.5.0",
     "markdownlint-cli": "^0.45.0"
   }
 }

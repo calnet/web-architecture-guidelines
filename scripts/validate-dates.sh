@@ -41,6 +41,11 @@ get_file_mod_date() {
     local format="$2"
     
     case "$format" in
+        "dd_mmmm_yyyy")
+            # Format: 14 September 2025 (preferred format)
+            local file_date=$(stat -c %y "$file" | cut -d' ' -f1)
+            date -d "$file_date" "+%d %B %Y"
+            ;;
         "precise")
             # Format: 2025-09-14 @ 12:05
             stat -c %y "$file" | cut -d. -f1 | sed 's/\([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\) \([0-9]\{2\}:[0-9]\{2\}\).*/\1 @ \2/'
@@ -61,7 +66,13 @@ get_file_mod_date() {
 determine_date_format() {
     local date_str="$1"
     
-    if [[ "$date_str" =~ [0-9]{4}-[0-9]{2}-[0-9]{2}\ @\ [0-9]{2}:[0-9]{2} ]]; then
+    # Check for preferred dd mmmm yyyy format (e.g., "14 September 2025")
+    if [[ "$date_str" =~ ^[0-9]{1,2}\ [A-Z][a-z]+\ [0-9]{4}$ ]]; then
+        echo "dd_mmmm_yyyy"
+    # Check for dd mmmm yyyy @ hh:mm format (e.g., "14 September 2025 @ 13:41")
+    elif [[ "$date_str" =~ ^[0-9]{1,2}\ [A-Z][a-z]+\ [0-9]{4}\ @\ [0-9]{2}:[0-9]{2}$ ]]; then
+        echo "dd_mmmm_yyyy"
+    elif [[ "$date_str" =~ [0-9]{4}-[0-9]{2}-[0-9]{2}\ @\ [0-9]{2}:[0-9]{2} ]]; then
         echo "precise"
     elif [[ "$date_str" =~ ^[A-Z][a-z]+\ [0-9]{4}$ ]]; then
         echo "month_year"
@@ -89,14 +100,34 @@ validate_date_in_file() {
     
     CHECKED_FILES=$((CHECKED_FILES + 1))
     
-    date_format=$(determine_date_format "$current_date")
-    expected_date=$(get_file_mod_date "$file" "$date_format")
+    # Always expect the standardized format dd_mmmm_yyyy
+    expected_date=$(get_file_mod_date "$file" "dd_mmmm_yyyy")
+    date_format="dd_mmmm_yyyy"
     
-    if [[ "$date_format" == "unknown" ]]; then
-        echo "⚠️  Unknown date format in $file: '$current_date'" | tee -a "$VALIDATION_LOG"
+    # Check if current date is in any acceptable format but convert for comparison
+    local normalized_current=""
+    if [[ "$current_date" =~ ^[0-9]{1,2}\ [A-Z][a-z]+\ [0-9]{4}$ ]]; then
+        normalized_current="$current_date"
+    elif [[ "$current_date" =~ ^[0-9]{1,2}\ [A-Z][a-z]+\ [0-9]{4}\ @\ [0-9]{2}:[0-9]{2}$ ]]; then
+        normalized_current=$(echo "$current_date" | sed 's/ @ [0-9][0-9]:[0-9][0-9]$//')
+    elif [[ "$current_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}\ @\ [0-9]{2}:[0-9]{2}$ ]]; then
+        local iso_date=$(echo "$current_date" | cut -d' ' -f1)
+        normalized_current=$(date -d "$iso_date" "+%d %B %Y")
+    elif [[ "$current_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+        normalized_current=$(date -d "$current_date" "+%d %B %Y")
+    else
+        echo "⚠️  Non-standard date format in $file: '$current_date' (expected: '$expected_date')" | tee -a "$VALIDATION_LOG"
         WARNINGS=$((WARNINGS + 1))
-    elif [[ "$current_date" == "$expected_date" ]]; then
-        echo "✅ $file: $current_date" | tee -a "$VALIDATION_LOG"
+        return 0
+    fi
+    
+    if [[ "$normalized_current" == "$expected_date" ]]; then
+        if [[ "$current_date" == "$expected_date" ]]; then
+            echo "✅ $file: $current_date" | tee -a "$VALIDATION_LOG"
+        else
+            echo "⚠️  Correct date but wrong format in $file: '$current_date' (should be: '$expected_date')" | tee -a "$VALIDATION_LOG"
+            WARNINGS=$((WARNINGS + 1))
+        fi
     else
         echo "❌ $file: '$current_date' (expected: '$expected_date')" | tee -a "$VALIDATION_LOG"
         ERRORS=$((ERRORS + 1))
