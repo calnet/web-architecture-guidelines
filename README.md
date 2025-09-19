@@ -19,8 +19,7 @@ monitoring, and production-ready deployment capabilities.
 ```text
 docs/
 ├── ai-agents/                          # AI agent-specific instructions
-│ ├── claude-architecture-instructions.md # Unified Claude instructions
-│   # (all levels)
+│   ├── claude-architecture-instructions.md # Unified Claude instructions
 │   ├── chatgpt-architecture-instructions.md
 │   ├── copilot-architecture-instructions.md
 │   ├── gemini-architecture-instructions.md
@@ -141,12 +140,12 @@ For automated code review and CI/CD workflows:
 
 ## AI Agent Instructions
 
-### [Claude](docs/ai-agents/claude/)
+### [Claude](docs/ai-agents/claude-architecture-instructions.md)
 
-- **V1**: Foundational architecture guidance
-- **V2**:
-  Enhanced with advanced patterns, performance optimization, and modern
-  practices
+Unified instruction file with comprehensive implementation maturity model:
+- **Foundation Level**: Essential practices for small teams, MVPs, and learning environments with basic security, testing, and monolithic architecture
+- **Professional Level**: Production-ready guidance for medium teams with comprehensive CI/CD, advanced security, and modular monolith design
+- **Enterprise Level**: Large-scale system architecture for enterprise teams with distributed systems and advanced DevOps practices
 
 ### [ChatGPT](docs/ai-agents/chatgpt-architecture-instructions.md)
 
