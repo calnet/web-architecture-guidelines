@@ -73,7 +73,7 @@
     "next-steps:monitor": "npm run workflow:monitor-report"
   },
   "dependencies": {
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/node": "^24.3.1",
